@@ -1,0 +1,52 @@
+#include "SQLServerSession.hh"
+
+
+     WhSQL::SQLServerSession::SQLServerSession()
+     {
+        m_mysql  = SQLInstance::getInstance();
+        this->setErrorHandler(this);
+     }
+
+
+
+     bool connect(std::string user, std::string pass, std::string host = "127.0.0.1",std::string db = "", short port = 3306)
+     {
+            if( NULL != mysql_real_connect(&m_mysql, host.c_str(),user.c_str(),pass.c_str(), db.c_str(), port, NULL, 0)
+                    return true;
+
+            m_errhndl->onError( SQLError(&m_mysql) );
+            return false;
+     }
+
+
+
+     bool WhSQL::SQLServerSession::isAlive()
+     {
+        if( mysql_ping(&m_mysql) == 0)
+                return true;
+
+        m_errhndl->onError( SQLError(&m_mysql) );
+        return false;
+     }
+
+
+     bool changeUser(std::string user, std::string pass, std::string db)
+     {
+            if(!mysql_change_user(&m_mysql,user.c_str(),pass.c_str(), db.c_str()))
+                return true;
+
+            m_errhndl->onError( SQLError(&m_mysql) );
+            return false;
+     }
+
+
+     bool setSSL(std::string key, std::string cert, std::string cauto,std::string capath, std::string ciph)
+     {
+        int mysql_ssl_set(&m_mysql,key.c_str(),cert.c_str(),cauto.c_str(),capath.c_str(),ciph.)
+     }
+
+
+     void WhSQL::SQLServerSession::onError(SQLError err)
+     {
+            err.print();
+     }
