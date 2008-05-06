@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="whitehawkav" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../whitehawkav" prefix_auto="1" extension_auto="1" />
+				<Option working_dir=".." />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Option projectLinkerOptionsRelation="2" />
+				<Option projectIncludeDirsRelation="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="`wx-config  --cflags`" />
+					<Add option="`clamav-config --cflags`" />
+					<Add directory="/usr/local/include/whiteHawk/whclamav" />
+					<Add directory="/usr/local/include/whiteHawk/system" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add option="`wx-config  --version=2.8 --static=no --unicode=no --debug=no --libs`" />
+					<Add option="`clamav-config --libs`" />
+					<Add library="whclamav" />
+					<Add library="clamav" />
+					<Add library="whsystem" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add option="-lzzip" />
+		</Linker>
+		<Unit filename="../src/GUI/AvFrame.cpp" />
+		<Unit filename="../src/GUI/AvFrame.hh" />
+		<Unit filename="../src/GUI/AvNotebook.cpp" />
+		<Unit filename="../src/GUI/AvNotebook.h" />
+		<Unit filename="../src/GUI/AvPanel.cpp" />
+		<Unit filename="../src/GUI/AvPanel.hh" />
+		<Unit filename="../src/GUI/FileSelectionDialog.cpp" />
+		<Unit filename="../src/GUI/FileSelectionDialog.hh" />
+		<Unit filename="../src/GUI/StatusPanel.cpp" />
+		<Unit filename="../src/GUI/StatusPanel.hh" />
+		<Unit filename="../src/GUI/rcids.h" />
+		<Unit filename="../src/whitehawkav.cpp" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
