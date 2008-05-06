@@ -1,0 +1,69 @@
+#include "InventoryViewer.hh"
+
+
+       InventoryViewer::InventoryViewer(wxWindow *parent) : wxFrame(NULL,wxID_ANY, wxT("Visor de Inventario"), wxDefaultPosition, wxSize(700,300), wxDEFAULT_FRAME_STYLE, wxT("frame"))
+       {
+          wxBoxSizer   *horizontal = new wxBoxSizer(wxHORIZONTAL);
+          wxBoxSizer   *vertical   = new wxBoxSizer(wxVERTICAL);
+          wxBoxSizer   *control    = new wxBoxSizer(wxVERTICAL);
+
+
+                wxButton     *add   = new wxButton(this,INV_ADD,wxT("&Agregar"));
+                wxButton     *del   = new wxButton(this,INV_DEL,wxT("&Eliminar"));
+                wxButton     *find  = new wxButton(this,INV_FIND,wxT("&Busqueda"));
+                wxButton     *repo  = new wxButton(this,INV_REP,wxT("&Reporte"));
+
+                wxCheckBox   *modif = new wxCheckBox( this, INV_MOD, wxT("&Modificar"));
+                wxButton     *refre = new wxButton(this,INV_REF,wxT("A&ctualizar"));
+
+                wxStaticLine *line  = new wxStaticLine(this,wxID_ANY);
+                wxArrayString array;
+
+                array.Add(wxT("Todo"));
+                array.Add(wxT("Por Item"));
+                array.Add(wxT("Por Familia"));
+                array.Add(wxT("Por Barras"));
+                array.Add(wxT("Por Descripcion"));
+                array.Add(wxT("Por Cantidad"));
+                array.Add(wxT("Por Valor"));
+
+                wxComboBox   *comb  = new wxComboBox(this,wxID_ANY,wxT("Todo"), wxDefaultPosition, wxDefaultSize, array);
+
+
+                m_grid = new InventoryGrid(this,INV_GRID);
+                m_grid->SetEditable(false);
+
+
+
+                control->AddSpacer(30);
+                control->Add(add);
+                control->AddSpacer(20);
+                control->Add(del);
+                control->AddSpacer(20);
+                control->Add(find);
+                control->AddSpacer(20);
+                control->Add(repo);
+                control->AddSpacer(20);
+                control->Add(modif,1,wxALIGN_CENTER_HORIZONTAL);
+
+                control->Add(line,1,wxEXPAND,2);
+                control->Add(comb);
+                control->Add(refre,1,wxCEN);
+
+
+                vertical->Add(m_grid,1,wxEXPAND|wxALL,5);
+
+                horizontal->Add(vertical,1,wxEXPAND|wxALL,5);
+                horizontal->Add(control,0,wxSHAPED,0);
+
+
+                this->SetSizer(horizontal);
+                this->Layout();
+                this->Center();
+
+       }
+
+
+
+    BEGIN_EVENT_TABLE(InventoryViewer,wxFrame)
+    END_EVENT_TABLE()

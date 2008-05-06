@@ -1,0 +1,41 @@
+#ifndef _FACTURER_
+#define _FACTURER_
+
+#include <wx/wx.h>
+#include <wx/grid.h>
+#include <wx/statline.h>
+
+enum
+{
+  FACT_CREDIT = 0,
+  FACT_GRID,
+  FACT_DEL,
+  FACT_PRINT,
+  FACT_FORMAT,
+  FACT_TOT,
+
+};
+
+
+class Facturer : public wxDialog
+{
+
+public:
+
+    Facturer(wxWindow *parent);
+
+    void onEnter(wxKeyEvent &evt);
+
+    void onDelete(wxCommandEvent &evt);
+
+    void onChange(wxGrid);
+
+protected:
+wxGrid *m_grid;
+
+
+protected:
+DECLARE_EVENT_TABLE();
+};
+
+#endif
