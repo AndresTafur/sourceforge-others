@@ -1,0 +1,104 @@
+# depslib dependency file v1.0
+1196617501 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/ClientButton.cpp
+	"ClientButton.hh"
+	<wx/tooltip.h>
+	<wx/wx.h>
+
+1196617488 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/ClientButton.hh
+	<wx/tglbtn.h>
+	<X11/Xlib.h>
+	"SystemUtils.hh"
+
+1196479046 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/SystemUtils.hh
+	<X11/Xlib.h>
+
+1196617878 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/ClientListener.cpp
+	"ClientListener.hh"
+	<stdio.h>
+
+1196617855 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/ClientListener.hh
+	<Thread.hh>
+	"SystemUtils.hh"
+
+1196617901 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/Clock.cpp
+	"Clock.hh"
+
+1196619100 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/Clock.hh
+	<Thread.hh>
+	<wx/wx.h>
+
+1196618201 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/RunFrame.cpp
+	"RunFrame.hh"
+
+1196618180 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/RunFrame.hh
+	<wx/wx.h>
+
+1196618331 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/SystemUtils.cpp
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	<gtk/gtk.h>
+	<gdk/gdkx.h>
+	<stdlib.h>
+	"SystemUtils.hh"
+
+1196618647 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/TaskBar.cpp
+	"wxCircleToggleButton.hh"
+	"WindowList.hh"
+	"TrayPanel.hh"
+	"Clock.hh"
+	"TaskBar.hh"
+
+1196479536 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/wxCircleToggleButton.hh
+	"wxCircleButton.hh"
+
+1196618417 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/wxCircleButton.hh
+	<wx/wx.h>
+	<wx/control.h>
+
+1196621077 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/WindowList.hh
+	<wx/wx.h>
+	<list>
+	"SystemUtils.hh"
+	"ClientButton.hh"
+
+1196619011 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/TrayPanel.hh
+
+1196619051 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/TaskBar.hh
+	<wx/statline.h>
+	"WhiteHawkMenuFrame.hh"
+	"WindowList.hh"
+	"TrayPanel.hh"
+	"Clock.hh"
+
+1196618890 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/WhiteHawkMenuFrame.hh
+	"wxCircleToggleButton.hh"
+
+1196618694 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/TrayPanel.cpp
+	<wx/wx.h>
+
+1196619976 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/WhiteHawkBar.cpp
+	<wx/wx.h>
+	<wx/tglbtn.h>
+	<wx/tipwin.h>
+	<wx/statline.h>
+	<wx/tooltip.h>
+	<gtk/gtk.h>
+	<gdk/gdkx.h>
+	"SystemUtils.hh"
+	"WhiteHawkBar.hh"
+	"TaskBar.hh"
+
+1196618846 /mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/WhiteHawkBar.hh
+	<wx/wx.h>
+
+1196480445 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/WhiteHawkMenuFrame.cpp
+	"WhiteHawkMenuFrame.hh"
+	"RunFrame.hh"
+
+1196619272 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/wxCircleButton.cpp
+	"wxCircleButton.hh"
+
+1196479456 source:/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/src/wxCircleToggleButton.cpp
+	"wxCircleToggleButton.hh"
+

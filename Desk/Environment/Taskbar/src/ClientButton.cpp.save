@@ -1,0 +1,109 @@
+#include "ClientButton.hh"
+#include <wx/tooltip.h>
+#include <wx/wx.h>
+
+ClientButton::ClientButton(wxWindow* parent,wxWindowID id, Window window,wxString label, SystemUtils *sysUtils) : wxToggleButton(parent, id, label.SubString(0,16), wxDefaultPosition, wxDefaultSize,wxBU_EXACTFIT|wxBU_TOP),
+            wxBitmapButton(parent,id,wxNullBitma)
+	{
+
+	  this->xwindow  = window;
+	  this->label    = label;
+	  this->sysUtils = sysUtils;
+      this->m_marked = false;
+
+	   menu = new wxMenu();
+
+	   menu->Append(1, wxT("Mi&nimizar"),wxT("Cerrar"), wxITEM_NORMAL);
+	   menu->Append(2, wxT("&Restaurar"),wxT("Cerrar"), wxITEM_NORMAL);
+	   menu->Append(3, wxT("&Mover"),wxT("Cerrar"), wxITEM_NORMAL);
+	   menu->AppendSeparator();
+	   menu->Append(wxID_CLOSE, wxT("&Cerrar"),wxT("Cerrar"), wxITEM_NORMAL);
+
+
+ 	  this->SetToolTip(label);
+	  this->GetToolTip()->SetDelay(550);
+	  AddToTaskbar();
+      ShrinkLabel(true);
+	}
+
+
+	void ClientButton::AddToTaskbar()
+	{
+ 	  GetParent()->GetSizer()->Add(this);
+	}
+
+    void ClientButton::setMark(bool mark)
+    {
+            m_marked = mark;
+    }
+
+    void ClientButton::updateName()
+    {
+        this->SetLabel( sysUtils->getWindowName(xwindow) );
+        ShrinkLabel(true);
+    }
+
+	 void ClientButton::ShrinkLabel(bool shrink )
+	 {
+		if( shrink )
+		  this->SetLabel(label.SubString(0,16));
+		else
+		  this->SetLabel(label);
+	 }
+
+
+    void ClientButton::CloseXWindow()
+    {
+	    if(xwindow)
+	     sysUtils->closeWindow(xwindow);
+    }
+
+
+	wxString ClientButton::GetRealName()
+	{
+	  return label;
+	}
+
+	Window ClientButton::GetXWindow()
+	{
+	  return xwindow;
+	}
+
+    bool ClientButton::isMarked()
+    {
+           return m_marked;
+    }
+
+
+	void ClientButton::onRightClick(wxMouseEvent &evt)
+	{
+	  PopupMenu(menu);
+	}
+
+
+	void ClientButton::Maximize(wxCommandEvent &evt)
+	{
+	    if(xwindow)
+            sysUtils->setActiveWindow(xwindow);
+	}
+
+
+	void ClientButton::Minimize(wxCommandEvent &evt)
+	{
+	    if(xwindow)
+            sysUtils->iconifyWindow(xwindow);
+	}
+
+
+	void ClientButton::CloseWnd(wxCommandEvent &evt)
+	{
+          this->CloseXWindow();
+	}
+
+BEGIN_EVENT_TABLE(ClientButton,wxToggleButton)
+EVT_RIGHT_UP(ClientButton::onRightClick)
+EVT_MENU(1,ClientButton::Minimize)
+EVT_MENU(2,ClientButton::Maximize)
+EVT_MENU(wxID_CLOSE,ClientButton::CloseWnd)
+END_EVENT_TABLE()
+

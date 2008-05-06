@@ -1,0 +1,46 @@
+
+#ifndef _PACK_MAN_
+#define _PACK_MAN_
+
+#include <wx/wx.h>
+
+class Package
+{
+public:
+
+        Package(std::string file);
+
+        std::string getName();
+
+        std::string getVersion();
+
+        std::string getPath();
+
+        int      getTotalDeps();
+
+        Package* getNextDep();
+
+        std::list <Package*> getDeps();
+
+        void setName(std::string name);
+
+        void setVersion(std::string ver);
+
+        void setPath(std::string path);
+
+        void setTotalDeps(int total)
+
+
+
+protected:
+std::string m_name;
+std::string m_ver;
+std::string m_path;
+
+std::list<Package*> m_deps;
+std::list<Package*>::iterator  m_index;
+
+int  m_totalDeps;
+bool m_installe
+};
+#endif

@@ -1,0 +1,234 @@
+#include "WindowList.hh"
+
+
+
+	WindowList::WindowList(wxWindow *parent,wxWindowID id, SystemUtils *sysUtils ) : wxPanel(parent,id,wxDefaultPosition,wxDefaultSize, wxCLIP_CHILDREN|wxTAB_TRAVERSAL)
+	{
+		sizer = new wxBoxSizer(wxHORIZONTAL);
+
+		this->sysUtils = sysUtils;
+		this->SetSizer(sizer);
+		this->initState();
+	}
+
+	void WindowList::initState()
+	{
+	  std::list <Window> windows;
+	  std::list<Window>::iterator iter;
+	  int i=0;
+	  Window act;
+	  int num, desknum;
+
+		 windows = sysUtils->getWindows(&num);
+		 act 	 = sysUtils->getActiveWindow();
+		 desknum = sysUtils->getCurrentDesk();
+
+
+		for(iter = windows.begin(); i < num; i++, ++iter)
+		{
+			if( sysUtils->getWndDesktop((*iter)) == desknum )
+			{
+			   if( act == (*iter))
+			  	addWindow((*iter), true);
+			   else
+				addWindow((*iter), false);
+			}
+		}
+
+		isFull();
+	}
+
+
+
+	void WindowList::updateWindows()
+	{
+	  std::list<Window> windows;
+	  std::list<Window>::iterator iter;
+	  Window act;
+	  int num, desknum, i=0;
+
+		 windows = sysUtils->getWindows(&num);
+		 act 	 = sysUtils->getActiveWindow();
+		 desknum = sysUtils->getCurrentDesk();
+
+
+
+         this->markAllClients();
+
+
+        if( windows.size() > 0)
+            for(iter = windows.begin(); i < num; i++, ++iter)
+                if( sysUtils->getWndDesktop(*iter) == desknum )
+                {
+
+                    if(*iter)
+                    {
+                        ClientButton *button = windowToClient(*iter);
+
+
+                        if( button == NULL)
+                        {
+                            if( act == *iter)
+                                addWindow(*iter, true);
+                            else
+                                addWindow(*iter, false);
+                        }
+                        else
+                            button->setMark(false);
+                    }
+                }
+
+        this->removeAllMarked();
+
+		isFull();
+
+	}
+
+
+	void WindowList::addWindow(Window window, bool stat)
+	{
+        if( window)
+            if(sysUtils->isNormalWnd(window) )
+            {
+
+              ClientButton *item = new ClientButton(this,100,window,sysUtils->getWindowName(window),sysUtils);
+
+                item->SetValue(stat);
+                clients.push_back(item);
+                isFull();
+                this->Layout();
+            }
+	}
+
+
+    void WindowList::updateWindowState(Window window)
+	{
+        if(window)
+        {
+         ClientButton *button = this->windowToClient(window);
+
+                if( button )
+                {
+
+                    for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
+                             (*i)->SetValue(false);
+                    button->SetValue(true);
+                }
+
+        }
+	}
+
+
+
+    void WindowList::removeAllWindows()
+	{
+            for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); i=clients.begin())
+            {
+                    clients.erase(i);
+                    sizer->Remove(*i);
+                    (*i)->Destroy();
+            }
+           this->Update();
+           this->Layout();
+    }
+
+    void WindowList::removeAllMarked()
+	{
+         int max = clients.size();
+
+            for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
+            {
+                if(*i)
+                    if( (*i)->isMarked())
+                    {
+                        clients.erase(i);
+                        sizer->Remove(*i);
+                        (*i)->Destroy();
+                        i=clients.begin();
+                    }
+            }
+           this->Update();
+           this->Layout();
+    }
+
+    void WindowList::markAllClients()
+	{
+         int max = clients.size();
+
+            for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
+                    (*i)->setMark(true);
+    }
+
+
+	void WindowList::removeWindow(Window window)
+	{
+	   if(window)
+	   {
+         int max = clients.size();
+
+            for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
+                if((*i)->GetXWindow() == window)
+                {
+                    clients.erase(i);
+                    sizer->Remove(*i);
+                    (*i)->Destroy();
+                    break;
+                }
+
+                this->Update();
+                this->Layout();
+	   }
+    }
+
+
+	void WindowList::isFull()
+	{
+	  bool flag = false;
+	  int max = clients.size();
+
+
+        flag = max > 2;
+
+		for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
+		{
+		    if(*i))
+		   if( (*i)->GetLabel().Length() > 11 )
+		 	 (*i)->ShrinkLabel(flag);
+		}
+	}
+
+
+    ClientButton* WindowList::windowToClient(Window window)
+    {
+         for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
+                if((*i)->GetXWindow() == window)
+                    return (*i);
+        return NULL;
+    }
+
+	void WindowList::onClick(wxCommandEvent &evt)
+	{
+	  ClientButton *button = (ClientButton*)evt.GetEventObject();
+
+		if( button)
+		{
+			if(button->GetValue())
+			{
+				for(std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
+					(*i)->SetValue(false);
+
+				button->SetValue(true);
+				sysUtils->setActiveWindow(button->GetXWindow());
+			}
+			else
+			{
+			  sysUtils->iconifyWindow(button->GetXWindow());
+			}
+		}
+	}
+
+
+
+BEGIN_EVENT_TABLE(WindowList,wxPanel)
+EVT_TOGGLEBUTTON(100,WindowList::onClick)
+END_EVENT_TABLE()

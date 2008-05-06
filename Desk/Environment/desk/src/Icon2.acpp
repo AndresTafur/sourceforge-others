@@ -1,0 +1,66 @@
+
+#include "rcids.h"
+#include "Icon.h"
+
+
+
+  Icon::Icon(wxWindow *parent,wxBitmap &bmp, wxString name) : wxBitmapButton(parent,100,bmp,wxPoint(50,50),wxDefaultSize,wxNO_BORDER)
+  {
+     menu = new wxMenu;
+
+     menu->Append(100, wxT("Abrir"),wxT(""), wxITEM_NORMAL);
+     menu->Append(100, wxT("Explorar"),wxT(""), wxITEM_NORMAL);
+     menu->AppendSeparator();
+     menu->Append(ID_ALIGN, wxT("Renombrar"),wxT("") , wxITEM_NORMAL);
+     menu->Append(ID_ALIGN, wxT("Cortar"),wxT("") , wxITEM_NORMAL);
+     menu->Append(ID_ALIGN, wxT("Copiar"),wxT("") , wxITEM_NORMAL);
+     menu->Append(ID_ALIGN, wxT("Pegar"),wxT("") ,  wxITEM_NORMAL);
+     menu->AppendSeparator();
+     menu->Append(ID_BGIMAGE, wxT("Propiedades")   ,wxT("")  , wxITEM_NORMAL);
+
+
+     label = new wxStaticText(parent,wxID_ANY,name,wxPoint(45,bmp.GetHeight()+60));
+     label->SetForegroundColour(wxColour("WHITE"));
+
+  }
+
+ void Icon::onClick(wxMouseEvent &evt)
+ {
+		grabing=false;
+ }
+
+
+ void Icon::onRightClick(wxMouseEvent &evt)
+ {
+     PopupMenu(menu);
+
+ }
+
+
+ void Icon::onDoubleClick(wxMouseEvent &evt)
+ {
+     if( !grabing)	
+        popen("nautilus /","r");
+
+ }
+
+void Icon::OnFocus(wxMouseEvent &evt)
+{
+	//	Draw(hover, 0, 0);
+}
+
+
+void Icon::OnLost(wxMouseEvent &evt)
+{
+	///	Draw(normal, 0, 0);
+}
+
+
+BEGIN_EVENT_TABLE(Icon,wxControl)
+EVT_LEFT_UP(Icon::onClick)
+EVT_LEFT_DCLICK(Icon::onDoubleClick)
+EVT_RIGHT_UP(Icon::onRightClick)
+EVT_ENTER_WINDOW(Icon::OnFocus)	
+EVT_LEAVE_WINDOW(Icon::OnLost)
+END_EVENT_TABLE()
+
