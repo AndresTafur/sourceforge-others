@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Sytem" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../libwhsystem" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="" />
+				<Option object_output="obj/Release/" />
+				<Option type="2" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option projectCompilerOptionsRelation="1" />
+				<Compiler>
+					<Add option="-O2" />
+					<Add option="-W" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+					<Add library="pthread" />
+					<Add library="tar" />
+					<Add library="zzip" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="../FileInfo.cpp" />
+		<Unit filename="../FileInfo.hh" />
+		<Unit filename="../FileListNode.cpp" />
+		<Unit filename="../FileListNode.hh" />
+		<Unit filename="../FileStream.cpp" />
+		<Unit filename="../FileStream.hh" />
+		<Unit filename="../ListNode.cpp" />
+		<Unit filename="../ListNode.hh" />
+		<Unit filename="../SystemPath.cpp" />
+		<Unit filename="../SystemPath.hh" />
+		<Unit filename="../Thread.cpp" />
+		<Unit filename="../Thread.hh" />
+		<Unit filename="../Time.cpp" />
+		<Unit filename="../Time.hh" />
+		<Unit filename="../WhiteHawkSystem.hh" />
+		<Unit filename="../ZipFile.hh" />
+		<Unit filename="../ZipResource.hh" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

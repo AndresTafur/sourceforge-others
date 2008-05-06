@@ -1,0 +1,29 @@
+#ifndef _SYSTEMPATH_COUNT_
+#define _SYSTEMPATH_COUNT_
+
+/**
+ *  This class encapsulates two counted data from a SystemPath
+ */
+
+class SystemPathCount
+{
+public:
+
+            /**
+             *  Default constructor
+             *  @param files  t    
+             */
+
+            SystemPathCount(long files = 0, long folders = 0);
+
+            long getFilesCount();
+
+            long getFoldersCount();
+
+
+protected:
+long m_files;
+long m_folders;
+};
+
+#endif

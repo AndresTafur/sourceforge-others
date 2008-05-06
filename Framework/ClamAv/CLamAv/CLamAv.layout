@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="../src/ClamFile.hh" open="0" top="0" tabpos="2">
+		<Cursor position="304" topLine="0" />
+	</File>
+	<File name="../src/Clamav.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="482" topLine="10" />
+	</File>
+	<File name="../src/Clamav.hh" open="0" top="0" tabpos="0">
+		<Cursor position="1088" topLine="26" />
+	</File>
+	<File name="../src/ClamavEvtListener.hh" open="0" top="0" tabpos="0">
+		<Cursor position="496" topLine="23" />
+	</File>
+	<File name="../src/ClamavInstance.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="1139" topLine="55" />
+	</File>
+	<File name="../src/ClamavInstance.hh" open="0" top="0" tabpos="0">
+		<Cursor position="884" topLine="27" />
+	</File>
+</CodeBlocks_layout_file>
