@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="ConnectionCfg.cpp" open="1" top="1" tabpos="6">
+		<Cursor position="878" topLine="123" />
+	</File>
+	<File name="ControlCenter.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="103" topLine="0" />
+	</File>
+	<File name="ControlCenterFrame.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="283" topLine="9" />
+	</File>
+	<File name="SubPane.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1904" topLine="75" />
+	</File>
+	<File name="TreeCtrl.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="5138" topLine="105" />
+	</File>
+	<File name="Welcome.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="25" topLine="11" />
+	</File>
+</CodeBlocks_layout_file>
