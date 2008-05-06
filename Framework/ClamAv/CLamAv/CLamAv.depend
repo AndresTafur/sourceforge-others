@@ -1,0 +1,66 @@
+# depslib dependency file v1.0
+1196309728 source:/mnt/hda7/whiteHawk/Framework/ClamAv/ClamFile.cpp
+	"ClamFile.hh"
+
+1196309718 /mnt/hda7/whiteHawk/Framework/ClamAv/ClamFile.hh
+	<WhiteHawkSystem.hh>
+	"WhiteHawkClamav.hh"
+	<ListNode.hh>
+	<FileListNode.hh>
+	<SystemPath.hh>
+	<FileInfo.hh>
+	<FileStream.hh>
+
+1196301664 /mnt/hda7/whiteHawk/Framework/System/WhiteHawkSystem.hh
+
+1196299581 /mnt/hda7/whiteHawk/Framework/System/ListNode.hh
+	"WhiteHawkSystem.hh"
+
+1196211041 /mnt/hda7/whiteHawk/Framework/System/FileListNode.hh
+	"WhiteHawkSystem.hh"
+	"FileInfo.hh"
+	"ListNode.hh"
+
+1195710754 /mnt/hda7/whiteHawk/Framework/System/FileInfo.hh
+	<sys/stat.h>
+	"Time.hh"
+
+1194816944 /mnt/hda7/whiteHawk/Framework/System/Time.hh
+	<time.h>
+	<string>
+	"WhiteHawkSystem.hh"
+
+1196212234 /mnt/hda7/whiteHawk/Framework/System/SystemPath.hh
+	"WhiteHawkSystem.hh"
+	"FileListNode.hh"
+	<string>
+	<dirent.h>
+
+1196308381 source:/mnt/hda7/whiteHawk/Framework/ClamAv/Clamav.cpp
+	"Clamav.hh"
+	<SystemPath.hh>
+
+1196302160 /mnt/hda7/whiteHawk/Framework/ClamAv/Clamav.hh
+	"WhiteHawkClamav.hh"
+	"ClamavInstance.hh"
+	<Thread.hh>
+
+1196302149 /mnt/hda7/whiteHawk/Framework/ClamAv/ClamavInstance.hh
+	"WhiteHawkClamav.hh"
+	<clamav.h>
+	"ClamavEvtListener.hh"
+
+1196308013 /mnt/hda7/whiteHawk/Framework/ClamAv/ClamavEvtListener.hh
+	"WhiteHawkClamav.hh"
+	"ClamFile.hh"
+
+1194825176 /mnt/hda7/whiteHawk/Framework/System/Thread.hh
+	<pthread.h>
+	<unistd.h>
+	"WhiteHawkSystem.hh"
+
+1196308534 source:/mnt/hda7/whiteHawk/Framework/ClamAv/ClamavInstance.cpp
+	"ClamavInstance.hh"
+
+1196302013 /mnt/hda7/whiteHawk/Framework/ClamAv/WhiteHawkClamav.hh
+
