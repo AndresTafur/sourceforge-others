@@ -1,0 +1,16 @@
+#!/bin/bash
+
+
+/mnt/hda7/whiteHawk/Desk/Environment/Splash/Splash &
+
+echo "iniciando metacity"
+metacity &
+
+echo "iniciando taskbar"
+/mnt/hda7/whiteHawk/Desk/Environment/Taskbar/Taskbar &
+
+echo "iniciando desktop"
+/mnt/hda7/whiteHawk/Desk/Environment/desk/desk &
+
+echo "iniciando tray"
+/home/darkhawk665/Desktop/stalonetray-0.7.5/src/stalonetray &

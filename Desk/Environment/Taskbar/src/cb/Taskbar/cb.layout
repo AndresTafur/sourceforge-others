@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="../../ClientButton.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="2295" topLine="72" />
+	</File>
+	<File name="../../ClientButton.hh" open="0" top="0" tabpos="2">
+		<Cursor position="501" topLine="22" />
+	</File>
+	<File name="../../Clock.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="276" topLine="8" />
+	</File>
+	<File name="../../Clock.hh" open="0" top="0" tabpos="0">
+		<Cursor position="412" topLine="21" />
+	</File>
+	<File name="../../DockPanel.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="327" topLine="0" />
+	</File>
+	<File name="../../DockPanel.hh" open="0" top="0" tabpos="0">
+		<Cursor position="65" topLine="0" />
+	</File>
+	<File name="../../RunFrame.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="579" topLine="69" />
+	</File>
+	<File name="../../RunFrame.hh" open="0" top="0" tabpos="0">
+		<Cursor position="506" topLine="23" />
+	</File>
+	<File name="../../SystemUtils.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="830" topLine="6" />
+	</File>
+	<File name="../../SystemUtils.hh" open="0" top="0" tabpos="5">
+		<Cursor position="741" topLine="27" />
+	</File>
+	<File name="../../TaskBar.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="1231" topLine="0" />
+	</File>
+	<File name="../../TaskBar.hh" open="0" top="0" tabpos="2">
+		<Cursor position="147" topLine="3" />
+	</File>
+	<File name="../../TrayPanel.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="1444" topLine="9" />
+	</File>
+	<File name="../../TrayPanel.hh" open="0" top="0" tabpos="2">
+		<Cursor position="62" topLine="0" />
+	</File>
+	<File name="../../WhiteHawkBar.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="742" topLine="0" />
+	</File>
+	<File name="../../WhiteHawkBar.hh" open="0" top="0" tabpos="0">
+		<Cursor position="112" topLine="0" />
+	</File>
+	<File name="../../WhiteHawkMenuFrame.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="2515" topLine="34" />
+	</File>
+	<File name="../../WhiteHawkMenuFrame.hh" open="0" top="0" tabpos="2">
+		<Cursor position="1066" topLine="52" />
+	</File>
+	<File name="../../WindowEventManager.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="2095" topLine="63" />
+	</File>
+	<File name="../../WindowEventManager.hh" open="0" top="0" tabpos="1">
+		<Cursor position="489" topLine="0" />
+	</File>
+	<File name="../../WindowList.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="20" topLine="72" />
+	</File>
+	<File name="../../WindowList.hh" open="0" top="0" tabpos="1">
+		<Cursor position="430" topLine="15" />
+	</File>
+	<File name="../../wxCircleButton.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="557" topLine="35" />
+	</File>
+	<File name="../../wxCircleButton.hh" open="0" top="0" tabpos="3">
+		<Cursor position="255" topLine="12" />
+	</File>
+	<File name="../../wxCircleToggleButton.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="25" topLine="0" />
+	</File>
+	<File name="../../wxCircleToggleButton.hh" open="0" top="0" tabpos="3">
+		<Cursor position="338" topLine="2" />
+	</File>
+</CodeBlocks_layout_file>

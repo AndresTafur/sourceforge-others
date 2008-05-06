@@ -1,0 +1,19 @@
+
+
+enum 
+{
+ID_FRM = 100,
+ID_ORDER,
+ID_ALIGN,
+ID_BGIMAGE,
+ID_VOL,
+ID_PLAY,
+ID_PAUSE,
+ID_STOP,
+ID_REPEAT,
+ID_VOLCTRL,
+
+
+
+
+};

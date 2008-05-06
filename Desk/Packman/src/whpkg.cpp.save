@@ -1,0 +1,57 @@
+#include <wx/wx.h>
+
+
+#include "Page.hh"
+#include "WelcomePage.hh"
+#include "DepsPage.hh"
+#include "PrefixPage.hh"
+#include "InstallerFrame.hh"
+#include "Package.hh"
+
+class Installer: public wxApp
+{
+public:
+
+        bool OnInit()
+        {
+         wxString str;
+	     WelcomePage    *welco;
+	     DepsPage       *deps;
+	     PrefixPage     *pref;
+	     CopyPage       *copyn
+
+         InstallerFrame *frame;
+
+            pack = new Package("");
+
+            pack->setName("Whitehawk Antivirus");
+            pack->setTotalDeps(10);
+
+            ::wxInitAllImageHandlers();
+            str << this->argv[0];
+            str = str.BeforeLast('/');
+
+
+            frame  = new InstallerFrame(str);
+            welco  = new WelcomePage(frame->GetPanel(),pack->getName());
+            deps   = new DepsPage(frame->GetPanel());
+            pref   = new PrefixPage(frame->GetPanel(),pack);
+
+	    welco->SetNextPage(deps);
+	    deps->SetNextPage(pref);/*
+	    prtpg->SetNextPage(instl);*/
+            frame->SetPage(welco);
+
+            this->SetTopWindow(frame);
+            frame->Show();
+
+           return TRUE;
+        }
+
+protected:
+Package    *pack;
+};
+
+
+
+IMPLEMENT_APP(Installer)

@@ -1,0 +1,26 @@
+
+#include "Packman.hh"
+
+wxString Packman::getName()
+{
+   return name;
+}
+
+wxString Packman::getVersion()
+{
+   return ver;
+}
+
+wxString Packman::getPath()
+{
+  return path;
+}
+
+void Packman::setName(wxString name)
+{
+  
+}
+
+wxString Packman::setVersion();
+
+wxString Packman::setPath();

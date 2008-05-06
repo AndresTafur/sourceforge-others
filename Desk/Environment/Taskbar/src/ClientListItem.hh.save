@@ -1,0 +1,58 @@
+#include "ClientButton.hh"
+
+class ClientListItem : public ClientButton
+{
+public:
+
+	ClientListItem(wxWindow* parent,wxWindowID id, Window window, wxString label, SystemUtils *sysUtils) 
+
+
+	void AppendItem(ClientListItem *client)
+	{
+	    if( next )
+		next->AppendItem(client);
+	    else
+	    {
+		next = client;
+		client->SetBefore(this);
+	    }
+
+	}
+
+	void SetBefore(ClientListItem *client)
+	{
+	   befo  = client;
+	   index = client->GetIndex()+1;
+	}
+
+
+	int GetIndex()
+	{
+	  return index;
+	}
+
+
+	ClientListItem* GetItem(int index)
+	{
+		if( this->index ==  index)
+			return this;
+		else if( next != NULL )
+			return next->GetItem(index);
+	}
+
+	int GetClientCount()
+	{
+		if( next)
+		   return next->GetClientCount();
+		else
+		 return index;
+
+	}
+
+
+protected:
+ClientListItem *befo;
+ClientListItem *next;
+int index;
+
+};
