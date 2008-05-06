@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>WhiteHawk::Control Center: Referencia de la Clase TreeCtrl</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.2 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Página&nbsp;principal</span></a></li>
+    <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
+  </ul>
+</div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Lista&nbsp;de&nbsp;clases</span></a></li>
+    <li><a href="functions.html"><span>Miembros&nbsp;de&nbsp;las&nbsp;clases</span></a></li>
+  </ul>
+</div>
+<h1>Referencia de la Clase TreeCtrl</h1><!-- doxytag: class="TreeCtrl" --><a href="classTreeCtrl-members.html">Lista de todos los miembros.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Métodos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTreeCtrl.html#5e681ca33d5012b1e3f47c17e816f637">TreeCtrl</a> (wxWindow *parent)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTreeCtrl.html#5e7a038c2e43a7fae4a1f3753c5766af">setPane</a> (<a class="el" href="classSubPane.html">SubPane</a> *pane)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTreeCtrl.html#e9fe0b3b06f9a9f957fe32fef670a4c6">onItemChanged</a> (wxTreeEvent &amp;evt)</td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Clasee que maneja el arbol de la ventana deriva de wxTreeCtrl, implementa un objeto <a class="el" href="classSubPane.html">SubPane</a> para manejar los eventos recibidos del Arbol <dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="classSubPane.html">SubPane</a> </dd></dl>
+
+<p>
+<hr><h2>Documentación del constructor y destructor</h2>
+<a class="anchor" name="5e681ca33d5012b1e3f47c17e816f637"></a><!-- doxytag: member="TreeCtrl::TreeCtrl" ref="5e681ca33d5012b1e3f47c17e816f637" args="(wxWindow *parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TreeCtrl::TreeCtrl           </td>
+          <td>(</td>
+          <td class="paramtype">wxWindow *&nbsp;</td>
+          <td class="paramname"> <em>parent</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructor por defecto, inicializa su super constructor <dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>Padre del objeto </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Documentación de las funciones miembro</h2>
+<a class="anchor" name="5e7a038c2e43a7fae4a1f3753c5766af"></a><!-- doxytag: member="TreeCtrl::setPane" ref="5e7a038c2e43a7fae4a1f3753c5766af" args="(SubPane *pane)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TreeCtrl::setPane           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classSubPane.html">SubPane</a> *&nbsp;</td>
+          <td class="paramname"> <em>pane</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Asigna el puntero al objeto <a class="el" href="classSubPane.html">SubPane</a> <dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>pane</em>&nbsp;</td><td>Puntero que recibe el evento </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="e9fe0b3b06f9a9f957fe32fef670a4c6"></a><!-- doxytag: member="TreeCtrl::onItemChanged" ref="e9fe0b3b06f9a9f957fe32fef670a4c6" args="(wxTreeEvent &amp;evt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void TreeCtrl::onItemChanged           </td>
+          <td>(</td>
+          <td class="paramtype">wxTreeEvent &amp;&nbsp;</td>
+          <td class="paramname"> <em>evt</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Metodo que maneja el cambio de item del arbol, envia el id del item seleccionado al <a class="el" href="classSubPane.html">SubPane</a> <dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>evt</em>&nbsp;</td><td>Evento realizado por el arbol </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr>La documentación para esta clase fué generada a partir del siguiente fichero:<ul>
+<li>TreeCtrl.cpp</ul>
+<hr size="1"><address style="text-align: right;"><small>Generado el Fri May 11 22:28:32 2007 para WhiteHawk::Control Center por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.2 </small></address>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>WhiteHawk::Control Center: Referencia de la Clase SubPane</title>
+<link href="doxygen.css" rel="stylesheet" type="text/css">
+<link href="tabs.css" rel="stylesheet" type="text/css">
+</head><body>
+<!-- Generado por Doxygen 1.5.2 -->
+<div class="tabs">
+  <ul>
+    <li><a href="main.html"><span>Página&nbsp;principal</span></a></li>
+    <li class="current"><a href="annotated.html"><span>Clases</span></a></li>
+  </ul>
+</div>
+<div class="tabs">
+  <ul>
+    <li><a href="annotated.html"><span>Lista&nbsp;de&nbsp;clases</span></a></li>
+    <li><a href="functions.html"><span>Miembros&nbsp;de&nbsp;las&nbsp;clases</span></a></li>
+  </ul>
+</div>
+<h1>Referencia de la Clase SubPane</h1><!-- doxytag: class="SubPane" --><a href="classSubPane-members.html">Lista de todos los miembros.</a><table border="0" cellpadding="0" cellspacing="0">
+<tr><td></td></tr>
+<tr><td colspan="2"><br><h2>Métodos públicos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubPane.html#509c7e000f419a659a18fc33e9e5d59b">SubPane</a> (wxWindow *parent)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSubPane.html#364c8081b4eef9aab52ce1a20ac0ffa0">OnChange</a> (wxTreeItemId item)</td></tr>
+
+<tr><td colspan="2"><br><h2>Atributos protegidos</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="1e0dc00ff81e7357f619fe222ddf2f8a"></a><!-- doxytag: member="SubPane::cuaderno" ref="1e0dc00ff81e7357f619fe222ddf2f8a" args="" -->
+wxNotebook *&nbsp;</td><td class="memItemRight" valign="bottom"><b>cuaderno</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="74d7f4759bcb9c10505d15862d0860fd"></a><!-- doxytag: member="SubPane::sizer" ref="74d7f4759bcb9c10505d15862d0860fd" args="" -->
+wxBoxSizer *&nbsp;</td><td class="memItemRight" valign="bottom"><b>sizer</b></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="anchor" name="0c6d7d092278468c3e8858f341b4b961"></a><!-- doxytag: member="SubPane::welcome" ref="0c6d7d092278468c3e8858f341b4b961" args="" -->
+<a class="el" href="classWelcome.html">Welcome</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><b>welcome</b></td></tr>
+
+</table>
+<hr><a name="_details"></a><h2>Descripción detallada</h2>
+Clase que representa el panel de la derecha en la ventana principal Esta "Monta" y "Desmonta" los paneles de cada item del arbol de la izquierda basado en el id del item. <dl class="see" compact><dt><b>Ver también:</b></dt><dd><a class="el" href="classWelcome.html">Welcome</a> <p>
+<a class="el" href="classConnectionCfg.html">ConnectionCfg</a> </dd></dl>
+
+<p>
+<hr><h2>Documentación del constructor y destructor</h2>
+<a class="anchor" name="509c7e000f419a659a18fc33e9e5d59b"></a><!-- doxytag: member="SubPane::SubPane" ref="509c7e000f419a659a18fc33e9e5d59b" args="(wxWindow *parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SubPane::SubPane           </td>
+          <td>(</td>
+          <td class="paramtype">wxWindow *&nbsp;</td>
+          <td class="paramname"> <em>parent</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Constructor por defecto <dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>parent</em>&nbsp;</td><td>Padre de este subpanel </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr><h2>Documentación de las funciones miembro</h2>
+<a class="anchor" name="364c8081b4eef9aab52ce1a20ac0ffa0"></a><!-- doxytag: member="SubPane::OnChange" ref="364c8081b4eef9aab52ce1a20ac0ffa0" args="(wxTreeItemId item)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SubPane::OnChange           </td>
+          <td>(</td>
+          <td class="paramtype">wxTreeItemId&nbsp;</td>
+          <td class="paramname"> <em>item</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td width="100%"><code> [inline]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Metodo que desmonta el panel anterior y monta el actual llamado desde <a class="el" href="classTreeCtrl.html">TreeCtrl</a>. <dl compact><dt><b>Parámetros:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>Item</em>&nbsp;</td><td>Identificador del item seleccionado en el arbol. </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<hr>La documentación para esta clase fué generada a partir del siguiente fichero:<ul>
+<li>SubPane.cpp</ul>
+<hr size="1"><address style="text-align: right;"><small>Generado el Fri May 11 22:28:32 2007 para WhiteHawk::Control Center por&nbsp;
+<a href="http://www.doxygen.org/index.html">
+<img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.2 </small></address>
+</body>
+</html>
