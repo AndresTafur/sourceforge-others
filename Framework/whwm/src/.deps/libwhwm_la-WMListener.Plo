@@ -1,0 +1,1 @@
+libwhwm_la-WMListener.lo libwhwm_la-WMListener.o: WMListener.cpp

@@ -1,0 +1,13 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libwhwm
+Description: whitehawk window manager client events library
+Requires: libwhsystem-1.0
+Version: 1.0
+Libs: -L${libdir} -lX11 -lpthread
+Cflags: -I${includedir}/whiteHawk/whwm
+
+
