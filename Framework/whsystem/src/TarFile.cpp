@@ -1,4 +1,8 @@
 #include "TarFile.hh"
+#include "Exception.hh"
+#include "FileInfo.hh"
+#include "SystemPath.hh"
+#include <stdlib.h>
 #include <fcntl.h>
 
 
@@ -34,6 +38,38 @@
             return NULL;
 
         return (new WhiteHawkSystem::TarResource(dir));
+    }
+
+
+    bool WhiteHawkSystem::TarFile::append(std::string path, std::string savedName)
+    {
+        if( savedName.empty())
+                savedName = path;
+        if( tar_append_file(dir, (char*)path.c_str(),(char*) savedName.c_str()) != 0)
+                throw (Exception("Failed adding file.","WhiteHawkSystem::TarFile::append"));
+
+        return tar_append_eof(dir) == 0;
+    }
+
+    bool WhiteHawkSystem::TarFile::append(WhiteHawkSystem::FileInfo *file, std::string savedName)
+    {
+        if( savedName.empty())
+                savedName = path;
+        if( tar_append_file(dir,(char*) file->getPath().c_str(), (char*)savedName.c_str()) != 0)
+                throw Exception("Failed adding file.","WhiteHawkSystem::TarFile::append");
+
+        return tar_append_eof(dir) == 0;
+    }
+
+
+    bool  WhiteHawkSystem::TarFile::appendTree( std::string path,std::string savedName)
+    {
+        return tar_append_tree(dir,(char*)path.c_str(),(char*) savedName.c_str()) == 0;
+    }
+
+    bool  WhiteHawkSystem::TarFile::appendTree(WhiteHawkSystem::SystemPath *path, std::string savedName)
+    {
+        return tar_append_tree(dir, (char*)path->getPath().c_str(),(char*) savedName.c_str()) == 0;
     }
 
 

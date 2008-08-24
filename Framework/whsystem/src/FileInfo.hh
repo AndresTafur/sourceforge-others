@@ -45,7 +45,7 @@ public:
 	 *	@return	 true if sucessfull false other wise
 	 * 	@see	 Time
 	 */
-	bool setLastAccess(WhiteHawkSystem::Time time);
+	bool setLastAccess(WhiteHawkSystem::Time &time);
 
 
 	/**
@@ -54,7 +54,7 @@ public:
 	 *	@return	 true if sucessfull false other wise
 	 * 	@see	 Time
 	 */
-	bool setLastModification(WhiteHawkSystem::Time time);
+	bool setLastModification(WhiteHawkSystem::Time &time);
 
 
 	/**

@@ -22,28 +22,46 @@ public:
 
 	std::string getName();
 
-
 	std::string getContent();
 
 
 	bool extract();
 
-
     bool extract(std::string path);
-
 
 	bool isOpen();
 
 	bool isEof();
 
-	void rewind();
+	bool isFile();
 
-	void close();
+    bool isHardLink();
+
+    bool isSoftLink();
+
+	bool isLink();
+
+	bool isDirectory();
+
+	bool isCharDevice();
+
+	bool isBlockDevice();
+
+	bool isFIFO();
+
+	bool isDevice();
 
 
 protected:
-TAR *handler;
-std::string name;
-bool eof;
+TAR *m_handler;
+std::string m_name;
+bool m_eof;
+bool m_reg;
+bool m_dir;
+bool m_link;
+bool m_sym;
+bool m_blck;
+bool m_chr;
+bool m_fifo;
 };
 #endif

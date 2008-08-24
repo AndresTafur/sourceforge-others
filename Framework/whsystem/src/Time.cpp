@@ -20,7 +20,7 @@
 	}
 
 
-	float WhiteHawkSystem::Time::difference(Time obj)
+	float WhiteHawkSystem::Time::difference(Time &obj)
 	{
 	  return difftime(handler, obj.getHandler());
 	}

@@ -55,7 +55,8 @@ LTLIBRARIES = $(lib_LTLIBRARIES)
 libwhsystem_la_LIBADD =
 am_libwhsystem_la_OBJECTS = AbstractFile.lo DynamicLibrary.lo \
 	FileInfo.lo SystemPathCount.lo SystemPath.lo TarFile.lo \
-	TarResource.lo Thread.lo Time.lo ZipFile.lo ZipResource.lo
+	TarResource.lo Thread.lo Time.lo ZipFile.lo ZipResource.lo \
+	Exception.lo
 libwhsystem_la_OBJECTS = $(am_libwhsystem_la_OBJECTS)
 libwhsystem_la_LINK = $(LIBTOOL) --tag=CXX $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CXXLD) $(AM_CXXFLAGS) \
@@ -196,7 +197,7 @@ lib_LTLIBRARIES = libwhsystem.la
 library_includedir = $(includedir)/whiteHawk/system
 library_include_HEADERS = *.hh
 libwhsystem_la_LDFLAGS = lpthread -ltar -lzzip -ldl
-libwhsystem_la_SOURCES = AbstractFile.cpp DynamicLibrary.cpp FileInfo.cpp SystemPathCount.cpp SystemPath.cpp TarFile.cpp TarResource.cpp Thread.cpp Time.cpp ZipFile.cpp ZipResource.cpp
+libwhsystem_la_SOURCES = AbstractFile.cpp DynamicLibrary.cpp FileInfo.cpp SystemPathCount.cpp SystemPath.cpp TarFile.cpp TarResource.cpp Thread.cpp Time.cpp ZipFile.cpp ZipResource.cpp Exception.cpp
 all: all-am
 
 .SUFFIXES:
@@ -268,6 +269,7 @@ distclean-compile:
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/AbstractFile.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/DynamicLibrary.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Exception.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/FileInfo.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SystemPath.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/SystemPathCount.Plo@am__quote@
