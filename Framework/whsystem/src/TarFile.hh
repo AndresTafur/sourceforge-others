@@ -22,11 +22,17 @@ public:
 	WhiteHawkSystem::TarResource* getNextResource();
 
 
+    bool append(std::string path,std::string savedName = "");
+
+    bool append(WhiteHawkSystem::FileInfo *file,std::string savedName = "");
+
+    bool appendTree( std::string path,std::string savedName = "");
+
+    bool appendTree(WhiteHawkSystem::SystemPath *path, std::string savedName = "");
+
 	bool extractResource(std::string name, std::string path );
 
-
 	bool extractResource(WhiteHawkSystem::TarResource *resource, std::string path );
-
 
     bool extractAll(std::string path);
 

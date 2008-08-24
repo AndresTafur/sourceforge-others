@@ -40,7 +40,7 @@ public:
 	 *  @param obj Another Time object.
 	 *  @return Seconds of difference.
 	 */
-	 float difference(Time obj);
+	 float difference(Time &obj);
 
 
 	/**

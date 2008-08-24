@@ -1,24 +1,32 @@
 #include "TarResource.hh"
 #include "SystemPath.hh"
+#include <string.h>
 
 
 	WhiteHawkSystem::TarResource::TarResource(TAR *handler)
 	{
-		eof = false;
-		this->handler = handler;
-		this->name    = th_get_pathname(handler);
+		m_eof = false;
+		m_handler = handler;
+		m_name    = th_get_pathname(handler);
+		m_reg     = TH_ISREG(handler);
+        m_dir     = TH_ISDIR(handler);
+        m_link    = TH_ISLNK(handler);
+        m_sym     = TH_ISSYM(handler);
+        m_blck    = TH_ISBLK(handler);
+        m_chr     = TH_ISCHR(handler);
+        m_fifo    = TH_ISFIFO(handler);
 	}
 
 
 	void WhiteHawkSystem::TarResource::setName(std::string name)
 	{
-		this->name = name;
+		this->m_name = name;
 	}
 
 
 	std::string WhiteHawkSystem::TarResource::getName()
 	{
-		return name;
+		return m_name;
 	}
 
 
@@ -28,9 +36,9 @@
 	   int   i,k;
 	   std::string str;
 
-	        for (i = th_get_size(handler); i > 0; i -= T_BLOCKSIZE)
+	        for (i = th_get_size(m_handler); i > 0; i -= T_BLOCKSIZE)
             {
-                k = tar_block_read(handler, buf);
+                k = tar_block_read(m_handler, buf);
                 if (k != T_BLOCKSIZE)
                   break;
             }
@@ -43,7 +51,7 @@
 
 	bool WhiteHawkSystem::TarResource::extract()
 	{
-	    return  tar_extract_file(handler,(char*)name.c_str()) == 0;
+	     return  tar_extract_file(m_handler,(char*)m_name.c_str()) == 0;
 	}
 
 
@@ -56,11 +64,9 @@
             if( path.at(path.length()) != '/')
                 path += '/';
 
-
             WhiteHawkSystem::SystemPath::mkdirhier(path.c_str());
 
-            path += th_get_pathname(handler);
-
+            path += th_get_pathname(m_handler);
 
             fdout = fopen(path.c_str(),"ab");
 
@@ -74,26 +80,59 @@
 
 	bool WhiteHawkSystem::TarResource::isOpen()
 	{
-		if(handler)
+		if(m_handler)
 		  return true;
 	   return false;
 	}
 
 	bool WhiteHawkSystem::TarResource::isEof()
 	{
-	  return eof;
+	  return m_eof;
 	}
 
 
-	void WhiteHawkSystem::TarResource::rewind()
+	bool WhiteHawkSystem::TarResource::isFile()
 	{
-	 // zzip_rewind(handler);
+        return m_reg;
 	}
 
-
-	void WhiteHawkSystem::TarResource::close()
+    bool WhiteHawkSystem::TarResource::isHardLink()
 	{
-	   //zzip_file_close(handler);
+        return m_link;
 	}
 
+	bool WhiteHawkSystem::TarResource::isSoftLink()
+	{
+        return m_sym;
+	}
+
+	bool WhiteHawkSystem::TarResource::isLink()
+	{
+        return m_link || m_sym;
+	}
+
+	bool WhiteHawkSystem::TarResource::isDirectory()
+	{
+        return m_dir;
+	}
+
+	bool WhiteHawkSystem::TarResource::isCharDevice()
+	{
+        return m_chr;
+	}
+
+	bool WhiteHawkSystem::TarResource::isBlockDevice()
+	{
+        return m_blck;
+	}
+
+	bool WhiteHawkSystem::TarResource::isFIFO()
+	{
+        return m_fifo;
+	}
+
+	bool WhiteHawkSystem::TarResource::isDevice()
+	{
+        return m_chr || m_blck;
+	}
 

@@ -5,6 +5,7 @@ namespace WhiteHawkSystem
    class DynamicLibrary;
    class Time;
    class FileInfo;
+   class Exception;
    class Thread;
    class TarFile;
    class TarResource;

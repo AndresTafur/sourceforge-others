@@ -1,7 +1,7 @@
 
-
 #include "ZipFile.hh"
-
+#include "Exception.hh"
+#include <stdlib.h>
 
 //TODO: Compression
 
@@ -12,7 +12,8 @@
 
 
 
-	/* recomended strip the initial '/'
+	/*
+	 * recomended strip the initial '/'
 	 */
 	WhiteHawkSystem::ZipResource*  WhiteHawkSystem::ZipFile::getResource(std::string name)
 	{
@@ -23,7 +24,7 @@
 	  ZipResource *file;
 
 		if(!myfile)
-		   return NULL;
+		   throw Exception("Failed obtaining resource.","WhiteHawkSystem::ZipFile::getResource");
 
 		file = new ZipResource(myfile);
 		file->setName(name);
@@ -37,7 +38,7 @@
 	  ZZIP_DIRENT *dirent = zzip_readdir(dir);
 
 		if( !dirent)
-		  return NULL;
+		 throw Exception("Failed obtaining resource.","WhiteHawkSystem::ZipFile::getNextResource");
 
 		return getResource(dirent->d_name);
 

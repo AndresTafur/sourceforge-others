@@ -24,6 +24,13 @@ public:
          */
         SystemPath(std::string path);
 
+        /**
+         *   Gets the file count of a defined file, should be accessed in
+         *   a statical way.
+         *   @param file Folder to start counting.
+         *   @return the number of files, folders, etc in the current folder.
+         */
+        static SystemPathCount getCount(AbstractFile &file);
 
         /**
          *   Gets the file count of a defined path, should be accessed in
@@ -40,6 +47,11 @@ public:
          */
         SystemPathCount getCount();
 
+        /**
+         *   Gets the file count of the current path.
+         *   @return Path of this object.
+         */
+        std::string getPath();
 
 
         /**

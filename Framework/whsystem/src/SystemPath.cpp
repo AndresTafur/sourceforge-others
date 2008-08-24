@@ -1,7 +1,9 @@
 #include <errno.h>
+#include <string.h>
+#include <stdlib.h>
 #include <sys/param.h>
 #include "SystemPath.hh"
-
+#include "Exception.hh"
 
         WhiteHawkSystem::SystemPath::SystemPath(std::string path)
         {
@@ -24,66 +26,97 @@
 
         WhiteHawkSystem::SystemPathCount WhiteHawkSystem::SystemPath::getCount(std::string path)
         {
-            unsigned long long file = 0;
-            unsigned long long dirs = 0;
-            unsigned long long link = 0;
-            unsigned long long dev  = 0;
-
             struct dirent *red;
+            SystemPathCount count;
 
             if( path.at( path.length()-1) != '/')
                 path.append("/");
 
             DIR *buff = opendir(path.c_str());
 
+            if( !buff)
+                return count;
+
             while( NULL != (red = readdir(buff)) )
 	        {
               WhiteHawkSystem::AbstractFile tmp( path + red->d_name);
 
+                    count += tmp;
+            }
+             closedir(buff);
+
+            return count;
+        }
+
+
+
+
+        WhiteHawkSystem::SystemPathCount WhiteHawkSystem::SystemPath::getCount(AbstractFile &objDir)
+        {
+            SystemPathCount count;
+            struct dirent *red;
+            DIR *buff;
+
+
+            if( !objDir.isDirectory())
+                return SystemPathCount(1);
+
+            if( objDir.getPath().at( objDir.getPath().length()-1) != '/')
+                objDir.setPath(objDir.getPath() + "/");
+
+            buff = opendir(objDir.getPath().c_str());
+
+            if( !buff)
+             return count;
+
+            while( NULL != (red = readdir(buff)) )
+	        {
+              WhiteHawkSystem::AbstractFile tmp( objDir.getPath() + red->d_name);
+
                     if(tmp.isDirectory())
-                         dirs++;
-                    else if( tmp.isFile())
-                        file++;
-                    else if( tmp.isLink() )
-                        link++;
-                    else if( tmp.isDevice ())
-                        dev++;
+                    {
+                        if( strcmp(red->d_name,".") != 0 && strcmp(red->d_name,"..") != 0  )
+                        {
+                            SystemPathCount subCount = WhiteHawkSystem::SystemPath::getCount(tmp);
+
+                                count += subCount;
+                                count.setFoldersCount( count.getFoldersCount()+1);
+                        }
+
+                    }
+
+                    count += tmp;
              }
              closedir(buff);
 
-            return SystemPathCount(file,dirs,link,dev);
+            return count;
         }
 
         WhiteHawkSystem::SystemPathCount WhiteHawkSystem::SystemPath::getCount()
         {
-            unsigned long long file = 0;
-            unsigned long long dirs = 0;
-            unsigned long long link = 0;
-            unsigned long long dev  = 0;
+          SystemPathCount count;
 
            if( path.at( path.length()-1) != '/')
                 path.append("/");
 
             rewinddir(dir);
+
             while( NULL != (red = readdir(dir)) )
 	        {
               WhiteHawkSystem::AbstractFile tmp( path + red->d_name);
 
-                     if(tmp.isDirectory())
-                         dirs++;
-                    else if( tmp.isFile())
-                        file++;
-                    else if( tmp.isLink() )
-                        link++;
-                    else if( tmp.isDevice ())
-                        dev++;
-
-                        //TODO: Fix for devices, links
+                    count += tmp;
             }
             rewinddir(dir);
-            return SystemPathCount(file,dirs,link,dev);
+            return count;
         }
 
+
+
+        std::string WhiteHawkSystem::SystemPath::getPath()
+        {
+            return path;
+        }
 
 
         WhiteHawkSystem::AbstractFile WhiteHawkSystem::SystemPath::getCurrentWDir()
@@ -98,6 +131,8 @@
                     free(buff);
                     return file;
                 }
+                else
+                 throw (Exception("Failed getting current directory","Line 145 : WhiteHawkSystem::SystemPath::getCurrentWDir()"));
         }
 
         bool WhiteHawkSystem::SystemPath::setCurrentWDir(AbstractFile dir)
@@ -167,11 +202,9 @@
                 if (mkdir(dst, 0777) == -1)
                 {
                     if (errno != EEXIST)
-                        return -1;
+                        throw( Exception("Failed to make directory.","Line 220 : WhiteHawkSystem::SystemPath::mkdirhier()"));
                 }
-                else
-			     retval = 0;
             }
 
-        return retval;
+        return 0;
        }

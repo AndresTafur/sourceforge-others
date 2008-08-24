@@ -1,4 +1,5 @@
 #include "DynamicLibrary.hh"
+#include "Exception.hh"
 #include <unistd.h>
 
 //TODO: what happend here?
@@ -12,6 +13,9 @@ WhiteHawkSystem::DynamicLibrary::DynamicLibrary(std::string path, int flag)
 
 void* WhiteHawkSystem::DynamicLibrary::getSymbol(std::string symbol)
 {
+    if( !handler)
+         throw (Exception("Failed. Bad lubrary handler"));
+
     return dlsym(handler,symbol.c_str());
 }
 
@@ -19,6 +23,9 @@ void* WhiteHawkSystem::DynamicLibrary::getSymbol(std::string symbol)
 
 bool WhiteHawkSystem::DynamicLibrary::close()
 {
+    if( !handler)
+     throw (Exception("Failed. Bad lubrary handler"));
+
     return (dlclose(handler)==0);
 }
 

@@ -1,3 +1,6 @@
+
+#include <stdlib.h>
+
 #include "ZipResource.hh"
 #include "SystemPath.hh"
 
