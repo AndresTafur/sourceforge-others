@@ -2,31 +2,31 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
 	<File name="../src/GUI/AvFrame.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2003" topLine="3" />
+		<Cursor position="3632" topLine="114" />
 	</File>
 	<File name="../src/GUI/AvFrame.hh" open="0" top="0" tabpos="2">
 		<Cursor position="0" topLine="2" />
 	</File>
 	<File name="../src/GUI/AvNotebook.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="1391" topLine="33" />
+		<Cursor position="1050" topLine="30" />
 	</File>
 	<File name="../src/GUI/AvNotebook.h" open="0" top="0" tabpos="0">
 		<Cursor position="99" topLine="10" />
 	</File>
-	<File name="../src/GUI/AvPanel.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="3220" topLine="170" />
+	<File name="../src/GUI/AvPanel.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="945" topLine="18" />
 	</File>
-	<File name="../src/GUI/AvPanel.hh" open="1" top="0" tabpos="3">
-		<Cursor position="1014" topLine="34" />
+	<File name="../src/GUI/AvPanel.hh" open="0" top="0" tabpos="3">
+		<Cursor position="935" topLine="34" />
 	</File>
-	<File name="../src/GUI/FileSelectionDialog.cpp" open="1" top="0" tabpos="4">
+	<File name="../src/GUI/FileSelectionDialog.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="869" topLine="0" />
 	</File>
 	<File name="../src/GUI/FileSelectionDialog.hh" open="0" top="0" tabpos="0">
 		<Cursor position="292" topLine="0" />
 	</File>
-	<File name="../src/GUI/StatusPanel.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1188" topLine="0" />
+	<File name="../src/GUI/StatusPanel.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="232" topLine="0" />
 	</File>
 	<File name="../src/GUI/StatusPanel.hh" open="0" top="0" tabpos="0">
 		<Cursor position="213" topLine="0" />
@@ -34,7 +34,7 @@
 	<File name="../src/GUI/rcids.h" open="0" top="0" tabpos="3">
 		<Cursor position="174" topLine="0" />
 	</File>
-	<File name="../src/whitehawkav.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="522" topLine="0" />
+	<File name="../src/whitehawkav.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="522" topLine="24" />
 	</File>
 </CodeBlocks_layout_file>

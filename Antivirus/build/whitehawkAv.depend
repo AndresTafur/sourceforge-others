@@ -1,15 +1,15 @@
 # depslib dependency file v1.0
-1195692728 source:/mnt/hda7/whiteHawk/Antivirus/src/AvFrame.cpp
+1218939127 source:/mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/AvFrame.cpp
 	"AvFrame.hh"
 
-1195686932 /mnt/hda7/whiteHawk/Antivirus/src/AvFrame.hh
+1210202594 /mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/AvFrame.hh
 	<wx/wx.h>
 	<wx/aboutdlg.h>
-	"StatusPanel.hh"
 	"rcids.h"
 	"AvNotebook.h"
+	<wx/taskbar.h>
 
-1193343158 /usr/local/include/wx-2.8/wx/wx.h
+1217627147 /usr/local/include/wx-2.8/wx/wx.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/dynarray.h"
@@ -89,7 +89,7 @@
 	"wx/validate.h"
 	"wx/valtext.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/defs.h
+1217627147 /usr/local/include/wx-2.8/wx/defs.h
 	"wx/platform.h"
 	"wx/features.h"
 	"wx/version.h"
@@ -98,8 +98,9 @@
 	<stddef.h>
 	<sys/types.h>
 	<unistd.h>
+	"wx/msw/winundef.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/platform.h
+1217627147 /usr/local/include/wx-2.8/wx/platform.h
 	<stddef.h>
 	<AvailabilityMacros.h>
 	<unistd.h>
@@ -111,9 +112,9 @@
 	"wx/msw/gccpriv.h"
 	<AvailabilityMacros.h>
 
-1193343157 /usr/local/lib/wx/include/gtk2-ansi-release-2.8/wx/setup.h
+1217627146 /usr/local/lib/wx/include/gtk2-ansi-release-2.8/wx/setup.h
 
-1193343157 /usr/local/include/wx-2.8/wx/chkconf.h
+1217627146 /usr/local/include/wx-2.8/wx/chkconf.h
 	"wx/palmos/chkconf.h"
 	"wx/msw/wince/chkconf.h"
 	"wx/msw/chkconf.h"
@@ -125,21 +126,21 @@
 	"wx/x11/chkconf.h"
 	"wx/univ/chkconf.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/features.h
+1217627147 /usr/local/include/wx-2.8/wx/features.h
 
-1193343158 /usr/local/include/wx-2.8/wx/version.h
+1217627147 /usr/local/include/wx-2.8/wx/version.h
 	"wx/cpp.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/cpp.h
+1217627146 /usr/local/include/wx-2.8/wx/cpp.h
 
-1193343157 /usr/local/include/wx-2.8/wx/dlimpexp.h
+1217627147 /usr/local/include/wx-2.8/wx/dlimpexp.h
 
-1193343157 /usr/local/include/wx-2.8/wx/debug.h
+1217627147 /usr/local/include/wx-2.8/wx/debug.h
 	<assert.h>
 	<limits.h>
 	"wx/wxchar.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/wxchar.h
+1217627147 /usr/local/include/wx-2.8/wx/wxchar.h
 	"wx/platform.h"
 	"wx/dlimpexp.h"
 	<stdio.h>
@@ -169,18 +170,18 @@
 	<time.h>
 	<string.h>
 
-1193343158 /usr/local/include/wx-2.8/wx/object.h
+1217627147 /usr/local/include/wx-2.8/wx/object.h
 	"wx/memory.h"
 	"wx/xti.h"
 	"wx/msw/msvcrt.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/memory.h
+1217627147 /usr/local/include/wx-2.8/wx/memory.h
 	"wx/defs.h"
 	"wx/string.h"
 	"wx/msgout.h"
 	<stddef.h>
 
-1193343158 /usr/local/include/wx-2.8/wx/string.h
+1217627147 /usr/local/include/wx-2.8/wx/string.h
 	"wx/defs.h"
 	<ctype.h>
 	<stdio.h>
@@ -203,11 +204,11 @@
 	"wx/arrstr.h"
 	"wx/iosfwrap.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/buffer.h
+1217627146 /usr/local/include/wx-2.8/wx/buffer.h
 	"wx/wxchar.h"
 	<stdlib.h>
 
-1193343158 /usr/local/include/wx-2.8/wx/strconv.h
+1217627147 /usr/local/include/wx-2.8/wx/strconv.h
 	"wx/defs.h"
 	"wx/wxchar.h"
 	"wx/buffer.h"
@@ -215,35 +216,35 @@
 	<stdlib.h>
 	"wx/fontenc.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/fontenc.h
+1217627147 /usr/local/include/wx-2.8/wx/fontenc.h
 
-1193343157 /usr/local/include/wx-2.8/wx/beforestd.h
+1217627146 /usr/local/include/wx-2.8/wx/beforestd.h
 
-1193343157 /usr/local/include/wx-2.8/wx/afterstd.h
+1217627146 /usr/local/include/wx-2.8/wx/afterstd.h
 	"wx/msw/winundef.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/arrstr.h
+1217627146 /usr/local/include/wx-2.8/wx/arrstr.h
 	"wx/defs.h"
 	"wx/string.h"
 	"wx/dynarray.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/dynarray.h
+1217627147 /usr/local/include/wx-2.8/wx/dynarray.h
 	"wx/defs.h"
 	"wx/beforestd.h"
 	<vector>
 	<algorithm>
 	"wx/afterstd.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/iosfwrap.h
+1217627147 /usr/local/include/wx-2.8/wx/iosfwrap.h
 	<iostream.h>
 	<iosfwd>
 	"wx/msw/winundef.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/msgout.h
+1217627147 /usr/local/include/wx-2.8/wx/msgout.h
 	"wx/defs.h"
 	"wx/wxchar.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/xti.h
+1217627147 /usr/local/include/wx-2.8/wx/xti.h
 	"wx/defs.h"
 	"wx/memory.h"
 	"wx/flags.h"
@@ -255,13 +256,13 @@
 	<typeinfo>
 	"wx/dynarray.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/hashmap.h
+1217627147 /usr/local/include/wx-2.8/wx/hashmap.h
 	"wx/string.h"
 	<ext/hash_map>
 	<hash_map>
 	<stddef.h>
 
-1193343158 /usr/local/include/wx-2.8/wx/log.h
+1217627147 /usr/local/include/wx-2.8/wx/log.h
 	"wx/defs.h"
 	"wx/string.h"
 	"wx/arrstr.h"
@@ -271,14 +272,14 @@
 	"wx/generic/logg.h"
 	"wx/cocoa/log.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/generic/logg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/logg.h
 
-1193343157 /usr/local/include/wx-2.8/wx/intl.h
+1217627147 /usr/local/include/wx-2.8/wx/intl.h
 	"wx/defs.h"
 	"wx/string.h"
 	"wx/fontenc.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/list.h
+1217627147 /usr/local/include/wx-2.8/wx/list.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/string.h"
@@ -288,13 +289,13 @@
 	<list>
 	"wx/afterstd.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/hash.h
+1217627147 /usr/local/include/wx-2.8/wx/hash.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/list.h"
 	"wx/dynarray.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/event.h
+1217627147 /usr/local/include/wx-2.8/wx/event.h
 	"wx/defs.h"
 	"wx/cpp.h"
 	"wx/object.h"
@@ -304,16 +305,16 @@
 	"wx/thread.h"
 	"wx/dynarray.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/clntdata.h
+1217627146 /usr/local/include/wx-2.8/wx/clntdata.h
 	"wx/defs.h"
 	"wx/string.h"
 	"wx/hashmap.h"
 	"wx/vector.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/vector.h
+1217627147 /usr/local/include/wx-2.8/wx/vector.h
 	"wx/defs.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/gdicmn.h
+1217627148 /usr/local/include/wx-2.8/wx/gdicmn.h
 	"wx/defs.h"
 	"wx/list.h"
 	"wx/string.h"
@@ -321,12 +322,12 @@
 	"wx/hashmap.h"
 	"wx/math.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/math.h
+1217627147 /usr/local/include/wx-2.8/wx/math.h
 	"wx/defs.h"
 	<math.h>
 	<float.h>
 
-1193343158 /usr/local/include/wx-2.8/wx/cursor.h
+1217627148 /usr/local/include/wx-2.8/wx/cursor.h
 	"wx/defs.h"
 	"wx/palmos/cursor.h"
 	"wx/msw/cursor.h"
@@ -341,10 +342,10 @@
 	"wx/os2/cursor.h"
 	"wx/utils.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/cursor.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/cursor.h
 	"wx/object.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/utils.h
+1217627147 /usr/local/include/wx-2.8/wx/utils.h
 	"wx/object.h"
 	"wx/list.h"
 	"wx/filefn.h"
@@ -356,7 +357,7 @@
 	<unistd.h>
 	<stdio.h>
 
-1193343157 /usr/local/include/wx-2.8/wx/filefn.h
+1217627147 /usr/local/include/wx-2.8/wx/filefn.h
 	"wx/list.h"
 	"wx/arrstr.h"
 	"wx/msw/wince/time.h"
@@ -392,19 +393,19 @@
 	<fcntl.h>
 	<sys/types.h>
 
-1193343158 /usr/local/include/wx-2.8/wx/longlong.h
+1217627147 /usr/local/include/wx-2.8/wx/longlong.h
 	"wx/defs.h"
 	"wx/string.h"
 	<limits.h>
 	"wx/iosfwrap.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/platinfo.h
+1217627147 /usr/local/include/wx-2.8/wx/platinfo.h
 	"wx/string.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/thread.h
+1217627147 /usr/local/include/wx-2.8/wx/thread.h
 	"wx/defs.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/app.h
+1217627146 /usr/local/include/wx-2.8/wx/app.h
 	"wx/event.h"
 	"wx/build.h"
 	"wx/init.h"
@@ -422,32 +423,32 @@
 	"wx/os2/app.h"
 	"wx/univ/theme.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/build.h
+1217627146 /usr/local/include/wx-2.8/wx/build.h
 	"wx/version.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/init.h
+1217627147 /usr/local/include/wx-2.8/wx/init.h
 	"wx/defs.h"
 	"wx/wxchar.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/app.h
+1217627148 /usr/local/include/wx-2.8/wx/gtk/app.h
 
-1193343158 /usr/local/include/wx-2.8/wx/stream.h
+1217627147 /usr/local/include/wx-2.8/wx/stream.h
 	"wx/defs.h"
 	<stdio.h>
 	"wx/object.h"
 	"wx/string.h"
 	"wx/filefn.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/stopwatch.h
+1217627147 /usr/local/include/wx-2.8/wx/stopwatch.h
 	"wx/defs.h"
 	"wx/longlong.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/module.h
+1217627147 /usr/local/include/wx-2.8/wx/module.h
 	"wx/object.h"
 	"wx/list.h"
 	"wx/dynarray.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/window.h
+1217627148 /usr/local/include/wx-2.8/wx/window.h
 	"wx/event.h"
 	"wx/list.h"
 	"wx/cursor.h"
@@ -473,7 +474,7 @@
 	"wx/os2/window.h"
 	"wx/univ/window.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/font.h
+1217627148 /usr/local/include/wx-2.8/wx/font.h
 	"wx/defs.h"
 	"wx/fontenc.h"
 	"wx/gdiobj.h"
@@ -489,12 +490,12 @@
 	"wx/cocoa/font.h"
 	"wx/os2/font.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/gdiobj.h
+1217627148 /usr/local/include/wx-2.8/wx/gdiobj.h
 	"wx/object.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/font.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/font.h
 
-1193343159 /usr/local/include/wx-2.8/wx/colour.h
+1217627148 /usr/local/include/wx-2.8/wx/colour.h
 	"wx/defs.h"
 	"wx/gdiobj.h"
 	"wx/variant.h"
@@ -510,7 +511,7 @@
 	"wx/cocoa/colour.h"
 	"wx/os2/colour.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/variant.h
+1217627147 /usr/local/include/wx-2.8/wx/variant.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/string.h"
@@ -521,7 +522,7 @@
 	"wx/db.h"
 	"wx/iosfwrap.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/datetime.h
+1217627146 /usr/local/include/wx-2.8/wx/datetime.h
 	"wx/defs.h"
 	<time.h>
 	"wx/msw/wince/time.h"
@@ -529,7 +530,7 @@
 	"wx/longlong.h"
 	"wx/dynarray.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/db.h
+1217627148 /usr/local/include/wx-2.8/wx/db.h
 	"wx/defs.h"
 	"wx/string.h"
 	<afxwin.h>
@@ -544,14 +545,14 @@
 	<sqlext.h>
 	"wx/object.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/isql.h
+1217627147 /usr/local/include/wx-2.8/wx/isql.h
 
-1193343158 /usr/local/include/wx-2.8/wx/isqlext.h
+1217627147 /usr/local/include/wx-2.8/wx/isqlext.h
 	"wx/isql.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/colour.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/colour.h
 
-1193343160 /usr/local/include/wx-2.8/wx/region.h
+1217627148 /usr/local/include/wx-2.8/wx/region.h
 	"wx/gdiobj.h"
 	"wx/gdicmn.h"
 	"wx/palmos/region.h"
@@ -565,13 +566,13 @@
 	"wx/cocoa/region.h"
 	"wx/os2/region.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/region.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/region.h
 
-1193343159 /usr/local/include/wx-2.8/wx/validate.h
+1217627148 /usr/local/include/wx-2.8/wx/validate.h
 	"wx/defs.h"
 	"wx/event.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/palette.h
+1217627148 /usr/local/include/wx-2.8/wx/palette.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/gdiobj.h"
@@ -584,13 +585,13 @@
 	"wx/mac/palette.h"
 	"wx/os2/palette.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/generic/paletteg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/paletteg.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/gdiobj.h"
 	"wx/gdicmn.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/accel.h
+1217627148 /usr/local/include/wx-2.8/wx/accel.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/generic/accel.h"
@@ -602,29 +603,29 @@
 	"wx/generic/accel.h"
 	"wx/os2/accel.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/generic/accel.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/accel.h
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/accel.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/accel.h
 	"wx/generic/accel.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/access.h
+1217627148 /usr/local/include/wx-2.8/wx/access.h
 	"wx/defs.h"
 	"wx/variant.h"
 	"wx/msw/ole/access.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/window.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/window.h
 	"wx/dynarray.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/containr.h
+1217627146 /usr/local/include/wx-2.8/wx/containr.h
 
-1193343159 /usr/local/include/wx-2.8/wx/panel.h
+1217627148 /usr/local/include/wx-2.8/wx/panel.h
 	"wx/generic/panelg.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/generic/panelg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/panelg.h
 	"wx/window.h"
 	"wx/containr.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/toplevel.h
+1217627148 /usr/local/include/wx-2.8/wx/toplevel.h
 	"wx/window.h"
 	"wx/iconbndl.h"
 	"wx/palmos/toplevel.h"
@@ -640,13 +641,13 @@
 	"wx/motif/toplevel.h"
 	"wx/univ/toplevel.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/iconbndl.h
+1217627148 /usr/local/include/wx-2.8/wx/iconbndl.h
 	"wx/dynarray.h"
 	"wx/gdicmn.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/toplevel.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/toplevel.h
 
-1193343158 /usr/local/include/wx-2.8/wx/frame.h
+1217627148 /usr/local/include/wx-2.8/wx/frame.h
 	"wx/toplevel.h"
 	"wx/univ/frame.h"
 	"wx/palmos/frame.h"
@@ -658,9 +659,9 @@
 	"wx/cocoa/frame.h"
 	"wx/os2/frame.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/frame.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/frame.h
 
-1193343159 /usr/local/include/wx-2.8/wx/bitmap.h
+1217627148 /usr/local/include/wx-2.8/wx/bitmap.h
 	"wx/string.h"
 	"wx/gdicmn.h"
 	"wx/colour.h"
@@ -678,9 +679,9 @@
 	"wx/os2/bitmap.h"
 	"wx/generic/mask.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/bitmap.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/bitmap.h
 
-1193343159 /usr/local/include/wx-2.8/wx/image.h
+1217627148 /usr/local/include/wx-2.8/wx/image.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/string.h"
@@ -699,40 +700,40 @@
 	"wx/imagxpm.h"
 	"wx/imagiff.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imagbmp.h
+1217627148 /usr/local/include/wx-2.8/wx/imagbmp.h
 	"wx/image.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imagpng.h
+1217627148 /usr/local/include/wx-2.8/wx/imagpng.h
 	"wx/defs.h"
 	"wx/image.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imaggif.h
+1217627148 /usr/local/include/wx-2.8/wx/imaggif.h
 	"wx/image.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imagpcx.h
+1217627148 /usr/local/include/wx-2.8/wx/imagpcx.h
 	"wx/image.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imagjpeg.h
+1217627148 /usr/local/include/wx-2.8/wx/imagjpeg.h
 	"wx/defs.h"
 	"wx/image.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imagtga.h
+1217627148 /usr/local/include/wx-2.8/wx/imagtga.h
 	"wx/image.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imagtiff.h
+1217627148 /usr/local/include/wx-2.8/wx/imagtiff.h
 	"wx/defs.h"
 	"wx/image.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imagpnm.h
+1217627148 /usr/local/include/wx-2.8/wx/imagpnm.h
 	"wx/image.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imagxpm.h
+1217627148 /usr/local/include/wx-2.8/wx/imagxpm.h
 	"wx/image.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imagiff.h
+1217627148 /usr/local/include/wx-2.8/wx/imagiff.h
 	"wx/image.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/dc.h
+1217627148 /usr/local/include/wx-2.8/wx/dc.h
 	"wx/object.h"
 	"wx/intl.h"
 	"wx/cursor.h"
@@ -758,7 +759,7 @@
 	"wx/os2/dc.h"
 	"wx/dcgraph.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/brush.h
+1217627148 /usr/local/include/wx-2.8/wx/brush.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/gdiobj.h"
@@ -773,9 +774,9 @@
 	"wx/cocoa/brush.h"
 	"wx/os2/brush.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/brush.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/brush.h
 
-1193343159 /usr/local/include/wx-2.8/wx/pen.h
+1217627148 /usr/local/include/wx-2.8/wx/pen.h
 	"wx/defs.h"
 	"wx/palmos/pen.h"
 	"wx/msw/pen.h"
@@ -788,28 +789,29 @@
 	"wx/cocoa/pen.h"
 	"wx/os2/pen.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/pen.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/pen.h
 	"wx/gdiobj.h"
 	"wx/gdicmn.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/dc.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/dc.h
 
-1193343158 /usr/local/include/wx-2.8/wx/dcgraph.h
+1217627148 /usr/local/include/wx-2.8/wx/dcgraph.h
 	"wx/geometry.h"
 	"wx/dynarray.h"
 	"wx/graphics.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/geometry.h
+1217627148 /usr/local/include/wx-2.8/wx/geometry.h
 	"wx/defs.h"
 	"wx/utils.h"
 	"wx/gdicmn.h"
 	"wx/math.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/graphics.h
+1217627148 /usr/local/include/wx-2.8/wx/graphics.h
+	"wx/defs.h"
 	"wx/geometry.h"
 	"wx/dynarray.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/dcclient.h
+1217627148 /usr/local/include/wx-2.8/wx/dcclient.h
 	"wx/defs.h"
 	"wx/palmos/dcclient.h"
 	"wx/msw/dcclient.h"
@@ -823,11 +825,11 @@
 	"wx/cocoa/dcclient.h"
 	"wx/os2/dcclient.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/dcclient.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/dcclient.h
 	"wx/dc.h"
 	"wx/region.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/dcmemory.h
+1217627148 /usr/local/include/wx-2.8/wx/dcmemory.h
 	"wx/bitmap.h"
 	"wx/palmos/dcmemory.h"
 	"wx/msw/dcmemory.h"
@@ -841,17 +843,17 @@
 	"wx/cocoa/dcmemory.h"
 	"wx/os2/dcmemory.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/dcmemory.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/dcmemory.h
 	"wx/dcclient.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/dcprint.h
+1217627148 /usr/local/include/wx-2.8/wx/dcprint.h
 	"wx/defs.h"
 	"wx/palmos/dcprint.h"
 	"wx/msw/dcprint.h"
 	"wx/os2/dcprint.h"
 	"wx/mac/dcprint.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/dcscreen.h
+1217627148 /usr/local/include/wx-2.8/wx/dcscreen.h
 	"wx/defs.h"
 	"wx/palmos/dcscreen.h"
 	"wx/msw/dcscreen.h"
@@ -865,10 +867,10 @@
 	"wx/cocoa/dcscreen.h"
 	"wx/os2/dcscreen.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/dcscreen.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/dcscreen.h
 	"wx/dcclient.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/button.h
+1217627148 /usr/local/include/wx-2.8/wx/button.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/univ/button.h"
@@ -881,7 +883,7 @@
 	"wx/os2/button.h"
 	"wx/palmos/button.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/control.h
+1217627148 /usr/local/include/wx-2.8/wx/control.h
 	"wx/defs.h"
 	"wx/window.h"
 	"wx/univ/control.h"
@@ -894,11 +896,11 @@
 	"wx/cocoa/control.h"
 	"wx/os2/control.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/control.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/control.h
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/button.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/button.h
 
-1193343159 /usr/local/include/wx-2.8/wx/menuitem.h
+1217627148 /usr/local/include/wx-2.8/wx/menuitem.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/univ/menuitem.h"
@@ -911,10 +913,10 @@
 	"wx/cocoa/menuitem.h"
 	"wx/os2/menuitem.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/menuitem.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/menuitem.h
 	"wx/bitmap.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/menu.h
+1217627148 /usr/local/include/wx-2.8/wx/menu.h
 	"wx/defs.h"
 	"wx/list.h"
 	"wx/window.h"
@@ -929,9 +931,9 @@
 	"wx/cocoa/menu.h"
 	"wx/os2/menu.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/menu.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/menu.h
 
-1193343159 /usr/local/include/wx-2.8/wx/icon.h
+1217627148 /usr/local/include/wx-2.8/wx/icon.h
 	"wx/iconloc.h"
 	"wx/generic/icon.h"
 	"wx/msw/icon.h"
@@ -946,13 +948,13 @@
 	"wx/os2/icon.h"
 	"wx/variant.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/iconloc.h
+1217627147 /usr/local/include/wx-2.8/wx/iconloc.h
 	"wx/string.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/generic/icon.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/icon.h
 	"wx/bitmap.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/dialog.h
+1217627148 /usr/local/include/wx-2.8/wx/dialog.h
 	"wx/defs.h"
 	"wx/containr.h"
 	"wx/toplevel.h"
@@ -966,10 +968,10 @@
 	"wx/cocoa/dialog.h"
 	"wx/os2/dialog.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/dialog.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/dialog.h
 	"wx/defs.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/timer.h
+1217627147 /usr/local/include/wx-2.8/wx/timer.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/longlong.h"
@@ -985,15 +987,15 @@
 	"wx/mac/timer.h"
 	"wx/os2/timer.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/timer.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/timer.h
 
-1193343159 /usr/local/include/wx-2.8/wx/generic/timer.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/timer.h
 
-1193343159 /usr/local/include/wx-2.8/wx/settings.h
+1217627148 /usr/local/include/wx-2.8/wx/settings.h
 	"wx/colour.h"
 	"wx/font.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/msgdlg.h
+1217627148 /usr/local/include/wx-2.8/wx/msgdlg.h
 	"wx/defs.h"
 	"wx/generic/msgdlgg.h"
 	"wx/generic/msgdlgg.h"
@@ -1004,18 +1006,18 @@
 	"wx/generic/msgdlgg.h"
 	"wx/generic/msgdlgg.h"
 	"wx/mac/msgdlg.h"
-	"wx/generic/msgdlgg.h"
+	"wx/cocoa/msgdlg.h"
 	"wx/os2/msgdlg.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/generic/msgdlgg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/msgdlgg.h
 	"wx/defs.h"
 	"wx/dialog.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/msgdlg.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/msgdlg.h
 	"wx/defs.h"
 	"wx/dialog.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/cmndata.h
+1217627148 /usr/local/include/wx-2.8/wx/cmndata.h
 	"wx/window.h"
 	"wx/font.h"
 	"wx/encinfo.h"
@@ -1023,10 +1025,10 @@
 	"wx/gdicmn.h"
 	"wx/stream.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/encinfo.h
+1217627148 /usr/local/include/wx-2.8/wx/encinfo.h
 	"wx/string.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/dataobj.h
+1217627148 /usr/local/include/wx-2.8/wx/dataobj.h
 	"wx/defs.h"
 	"wx/string.h"
 	"wx/bitmap.h"
@@ -1057,17 +1059,17 @@
 	"wx/cocoa/dataobj2.h"
 	"wx/os2/dataobj2.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/dataform.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/dataform.h
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/dataobj.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/dataobj.h
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/dataobj2.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/dataobj2.h
 
-1193343158 /usr/local/include/wx-2.8/wx/ctrlsub.h
+1217627148 /usr/local/include/wx-2.8/wx/ctrlsub.h
 	"wx/defs.h"
 	"wx/control.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/bmpbuttn.h
+1217627148 /usr/local/include/wx-2.8/wx/bmpbuttn.h
 	"wx/defs.h"
 	"wx/bitmap.h"
 	"wx/button.h"
@@ -1080,9 +1082,9 @@
 	"wx/cocoa/bmpbuttn.h"
 	"wx/os2/bmpbuttn.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/bmpbuttn.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/bmpbuttn.h
 
-1193343158 /usr/local/include/wx-2.8/wx/checkbox.h
+1217627148 /usr/local/include/wx-2.8/wx/checkbox.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/univ/checkbox.h"
@@ -1095,9 +1097,9 @@
 	"wx/os2/checkbox.h"
 	"wx/palmos/checkbox.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/checkbox.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/checkbox.h
 
-1193343158 /usr/local/include/wx-2.8/wx/checklst.h
+1217627148 /usr/local/include/wx-2.8/wx/checklst.h
 	"wx/listbox.h"
 	"wx/univ/checklst.h"
 	"wx/msw/wince/checklst.h"
@@ -1109,7 +1111,7 @@
 	"wx/cocoa/checklst.h"
 	"wx/os2/checklst.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/listbox.h
+1217627148 /usr/local/include/wx-2.8/wx/listbox.h
 	"wx/defs.h"
 	"wx/ctrlsub.h"
 	"wx/univ/listbox.h"
@@ -1121,11 +1123,11 @@
 	"wx/os2/listbox.h"
 	"wx/cocoa/listbox.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/listbox.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/listbox.h
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/checklst.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/checklst.h
 
-1193343158 /usr/local/include/wx-2.8/wx/choice.h
+1217627148 /usr/local/include/wx-2.8/wx/choice.h
 	"wx/defs.h"
 	"wx/ctrlsub.h"
 	"wx/univ/choice.h"
@@ -1138,9 +1140,9 @@
 	"wx/cocoa/choice.h"
 	"wx/os2/choice.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/choice.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/choice.h
 
-1193343159 /usr/local/include/wx-2.8/wx/scrolbar.h
+1217627148 /usr/local/include/wx-2.8/wx/scrolbar.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/univ/scrolbar.h"
@@ -1152,10 +1154,10 @@
 	"wx/cocoa/scrolbar.h"
 	"wx/os2/scrolbar.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/scrolbar.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/scrolbar.h
 	"wx/defs.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/stattext.h
+1217627148 /usr/local/include/wx-2.8/wx/stattext.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/univ/stattext.h"
@@ -1168,9 +1170,9 @@
 	"wx/os2/stattext.h"
 	"wx/palmos/stattext.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/stattext.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/stattext.h
 
-1193343159 /usr/local/include/wx-2.8/wx/statbmp.h
+1217627148 /usr/local/include/wx-2.8/wx/statbmp.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/bitmap.h"
@@ -1184,10 +1186,10 @@
 	"wx/cocoa/statbmp.h"
 	"wx/os2/statbmp.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/statbmp.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/statbmp.h
 	"wx/icon.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/statbox.h
+1217627148 /usr/local/include/wx-2.8/wx/statbox.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/univ/statbox.h"
@@ -1199,9 +1201,9 @@
 	"wx/cocoa/statbox.h"
 	"wx/os2/statbox.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/statbox.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/statbox.h
 
-1193343159 /usr/local/include/wx-2.8/wx/radiobox.h
+1217627148 /usr/local/include/wx-2.8/wx/radiobox.h
 	"wx/ctrlsub.h"
 	"wx/dynarray.h"
 	"wx/univ/radiobox.h"
@@ -1214,11 +1216,11 @@
 	"wx/os2/radiobox.h"
 	"wx/palmos/radiobox.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/radiobox.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/radiobox.h
 	"wx/bitmap.h"
 	"wx/list.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/radiobut.h
+1217627148 /usr/local/include/wx-2.8/wx/radiobut.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/univ/radiobut.h"
@@ -1231,9 +1233,9 @@
 	"wx/os2/radiobut.h"
 	"wx/palmos/radiobut.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/radiobut.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/radiobut.h
 
-1193343159 /usr/local/include/wx-2.8/wx/textctrl.h
+1217627148 /usr/local/include/wx-2.8/wx/textctrl.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/dynarray.h"
@@ -1250,14 +1252,14 @@
 	"wx/cocoa/textctrl.h"
 	"wx/os2/textctrl.h"
 
-1193343157 /usr/local/include/wx-2.8/wx/ioswrap.h
+1217627147 /usr/local/include/wx-2.8/wx/ioswrap.h
 	<iostream.h>
 	<iostream>
 	"wx/msw/winundef.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/textctrl.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/textctrl.h
 
-1193343159 /usr/local/include/wx-2.8/wx/slider.h
+1217627148 /usr/local/include/wx-2.8/wx/slider.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/univ/slider.h"
@@ -1270,9 +1272,9 @@
 	"wx/os2/slider.h"
 	"wx/palmos/slider.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/slider.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/slider.h
 
-1193343158 /usr/local/include/wx-2.8/wx/gauge.h
+1217627148 /usr/local/include/wx-2.8/wx/gauge.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/univ/gauge.h"
@@ -1284,16 +1286,16 @@
 	"wx/cocoa/gauge.h"
 	"wx/os2/gauge.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/gauge.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/gauge.h
 
-1193343159 /usr/local/include/wx-2.8/wx/scrolwin.h
+1217627148 /usr/local/include/wx-2.8/wx/scrolwin.h
 	"wx/panel.h"
 	"wx/gtk/scrolwin.h"
 	"wx/gtk1/scrolwin.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/scrolwin.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/scrolwin.h
 
-1193343158 /usr/local/include/wx-2.8/wx/dirdlg.h
+1217627148 /usr/local/include/wx-2.8/wx/dirdlg.h
 	"wx/dialog.h"
 	"wx/generic/dirdlgg.h"
 	"wx/generic/dirdlgg.h"
@@ -1305,13 +1307,13 @@
 	"wx/cocoa/dirdlg.h"
 	"wx/generic/dirdlgg.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/generic/dirdlgg.h
+1217627149 /usr/local/include/wx-2.8/wx/generic/dirdlgg.h
 	"wx/dialog.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/dirdlg.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/dirdlg.h
 	"wx/generic/dirdlgg.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/toolbar.h
+1217627148 /usr/local/include/wx-2.8/wx/toolbar.h
 	"wx/defs.h"
 	"wx/tbarbase.h"
 	"wx/univ/toolbar.h"
@@ -1325,15 +1327,15 @@
 	"wx/cocoa/toolbar.h"
 	"wx/os2/toolbar.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/tbarbase.h
+1217627148 /usr/local/include/wx-2.8/wx/tbarbase.h
 	"wx/defs.h"
 	"wx/bitmap.h"
 	"wx/list.h"
 	"wx/control.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/tbargtk.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/tbargtk.h
 
-1193343158 /usr/local/include/wx-2.8/wx/combobox.h
+1217627148 /usr/local/include/wx-2.8/wx/combobox.h
 	"wx/defs.h"
 	"wx/textctrl.h"
 	"wx/ctrlsub.h"
@@ -1346,16 +1348,16 @@
 	"wx/cocoa/combobox.h"
 	"wx/os2/combobox.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/combobox.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/combobox.h
 
-1193343159 /usr/local/include/wx-2.8/wx/layout.h
+1217627148 /usr/local/include/wx-2.8/wx/layout.h
 	"wx/object.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/sizer.h
+1217627148 /usr/local/include/wx-2.8/wx/sizer.h
 	"wx/defs.h"
 	"wx/window.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/mdi.h
+1217627148 /usr/local/include/wx-2.8/wx/mdi.h
 	"wx/defs.h"
 	"wx/generic/mdig.h"
 	"wx/msw/mdi.h"
@@ -1366,10 +1368,10 @@
 	"wx/cocoa/mdi.h"
 	"wx/generic/mdig.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/mdi.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/mdi.h
 	"wx/frame.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/statusbr.h
+1217627148 /usr/local/include/wx-2.8/wx/statusbr.h
 	"wx/defs.h"
 	"wx/window.h"
 	"wx/list.h"
@@ -1381,41 +1383,41 @@
 	"wx/mac/statusbr.h"
 	"wx/generic/statusbr.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/generic/statusbr.h
+1217627149 /usr/local/include/wx-2.8/wx/generic/statusbr.h
 	"wx/defs.h"
 	"wx/pen.h"
 	"wx/arrstr.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/choicdlg.h
+1217627148 /usr/local/include/wx-2.8/wx/choicdlg.h
 	"wx/generic/choicdgg.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/generic/choicdgg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/choicdgg.h
 	"wx/dynarray.h"
 	"wx/dialog.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/textdlg.h
+1217627148 /usr/local/include/wx-2.8/wx/textdlg.h
 	"wx/generic/textdlgg.h"
 	"wx/numdlg.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/generic/textdlgg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/textdlgg.h
 	"wx/defs.h"
 	"wx/dialog.h"
 	"wx/valtext.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/valtext.h
+1217627148 /usr/local/include/wx-2.8/wx/valtext.h
 	"wx/defs.h"
 	"wx/textctrl.h"
 	"wx/validate.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/numdlg.h
+1217627148 /usr/local/include/wx-2.8/wx/numdlg.h
 	"wx/defs.h"
 	"wx/generic/numdlgg.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/generic/numdlgg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/numdlgg.h
 	"wx/defs.h"
 	"wx/dialog.h"
 
-1193343158 /usr/local/include/wx-2.8/wx/filedlg.h
+1217627148 /usr/local/include/wx-2.8/wx/filedlg.h
 	"wx/defs.h"
 	"wx/dialog.h"
 	"wx/arrstr.h"
@@ -1429,179 +1431,52 @@
 	"wx/cocoa/filedlg.h"
 	"wx/os2/filedlg.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/generic/filedlgg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/filedlgg.h
 	"wx/listctrl.h"
 	"wx/datetime.h"
 	"wx/filefn.h"
 	"wx/filedlg.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/listctrl.h
+1217627148 /usr/local/include/wx-2.8/wx/listctrl.h
 	"wx/defs.h"
 	"wx/listbase.h"
 	"wx/msw/listctrl.h"
 	"wx/mac/carbon/listctrl.h"
 	"wx/generic/listctrl.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/listbase.h
+1217627148 /usr/local/include/wx-2.8/wx/listbase.h
 	"wx/colour.h"
 	"wx/font.h"
 	"wx/gdicmn.h"
 	"wx/event.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/generic/listctrl.h
+1217627149 /usr/local/include/wx-2.8/wx/generic/listctrl.h
 	"wx/textctrl.h"
 
-1193343161 /usr/local/include/wx-2.8/wx/gtk/filedlg.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/filedlg.h
 	"wx/generic/filedlgg.h"
 
-1195674022 /mnt/hda7/whiteHawk/Antivirus/src/AvPanel.hh
-	<wx/wx.h>
-	<wx/animate.h>
-	"rcids.h"
-	"Clamscanner.hh"
-
-1195673703 /mnt/hda7/whiteHawk/Antivirus/src/Clamscanner.hh
-	"ClamavInterface.hh"
-	"FileManager/ClamFileManager.hh"
-	<Thread.hh>
-
-1195673695 /mnt/hda7/whiteHawk/Antivirus/src/ClamavInterface.hh
-	<clamav.h>
-	"FileManager/ClamFile.hh"
-	"ClamavEvtListener.hh"
-
-1195672853 /mnt/hda7/whiteHawk/Antivirus/src/FileManager/ClamFile.hh
-	<WhiteHawkSystem.hh>
-	<FileInfo.hh>
-
-1194817884 /mnt/hda7/whiteHawk/Framework/System/WhiteHawkSystem.hh
-
-1195710754 /mnt/hda7/whiteHawk/Framework/System/FileInfo.hh
-	<sys/stat.h>
-	"Time.hh"
-
-1194816944 /mnt/hda7/whiteHawk/Framework/System/Time.hh
-	<time.h>
-	<string>
-	"WhiteHawkSystem.hh"
-
-1194729409 /mnt/hda7/whiteHawk/Antivirus/src/ClamavEvtListener.hh
-
-1195674141 /mnt/hda7/whiteHawk/Antivirus/src/FileManager/ClamFileManager.hh
-	<dirent.h>
-	<iostream>
-	"ClamFile.hh"
-
-1194825176 /mnt/hda7/whiteHawk/Framework/System/Thread.hh
-	<pthread.h>
-	<unistd.h>
-	"WhiteHawkSystem.hh"
-
-1193343161 /usr/local/include/wx-2.8/wx/animate.h
-	"wx/defs.h"
-	"wx/animdecod.h"
-	"wx/control.h"
-	"wx/timer.h"
-	"wx/bitmap.h"
-	"wx/gtk/animate.h"
-	"wx/generic/animate.h"
-
-1193343161 /usr/local/include/wx-2.8/wx/animdecod.h
-	"wx/defs.h"
-	"wx/colour.h"
-	"wx/gdicmn.h"
-
-1193343162 /usr/local/include/wx-2.8/wx/gtk/animate.h
-
-1193343161 /usr/local/include/wx-2.8/wx/generic/animate.h
-	"wx/bitmap.h"
-
-1195674187 /mnt/hda7/whiteHawk/Antivirus/src/StatusPanel.hh
-	<wx/wx.h>
-
-1195673871 /mnt/hda7/whiteHawk/Antivirus/src/rcids.h
-
-1195691805 source:/mnt/hda7/whiteHawk/Antivirus/src/AvPanel.cpp
-	"AvPanel.hh"
-
-1195672764 source:/mnt/hda7/whiteHawk/Antivirus/src/ClamavInterface.cpp
-	"ClamavInterface.hh"
-
-1195672632 source:/mnt/hda7/whiteHawk/Antivirus/src/Clamscanner.cpp
-	"Clamscanner.hh"
-
-1195672882 source:/mnt/hda7/whiteHawk/Antivirus/src/FileManager/ClamFile.cpp
-	"ClamFile.hh"
-
-1195673902 source:/mnt/hda7/whiteHawk/Antivirus/src/FileManager/ClamFileManager.cpp
-	"ClamFileManager.hh"
-
-1195690186 source:/mnt/hda7/whiteHawk/Antivirus/src/StatusPanel.cpp
-	"StatusPanel.hh"
-
-1196477091 source:/mnt/hda7/whiteHawk/Antivirus/src/whitehawkav.cpp
-	<iostream>
-	<wx/wx.h>
-	<wx/animate.h>
-	<X11/Xlib.h>
-	"GUI/AvFrame.hh"
-
-1193784839 /usr/local/include/clamav.h
-	<sys/types.h>
-	<sys/stat.h>
-
-1193343161 /usr/local/include/wx-2.8/wx/aboutdlg.h
+1217627149 /usr/local/include/wx-2.8/wx/aboutdlg.h
 	"wx/defs.h"
 	"wx/app.h"
 	"wx/icon.h"
 
-1195689194 /mnt/hda7/whiteHawk/Antivirus/src/AvNotebook.h
+1210202594 /mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/rcids.h
+
+1210202594 /mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/AvNotebook.h
 	<wx/aui/auibook.h>
 	"AvPanel.hh"
 	"StatusPanel.hh"
+	<Clamav.hh>
 
-1193343160 /usr/local/include/wx-2.8/wx/notebook.h
-	"wx/defs.h"
-	"wx/bookctrl.h"
-	"wx/univ/notebook.h"
-	"wx/msw/notebook.h"
-	"wx/generic/notebook.h"
-	"wx/gtk/notebook.h"
-	"wx/gtk1/notebook.h"
-	"wx/mac/notebook.h"
-	"wx/cocoa/notebook.h"
-	"wx/os2/notebook.h"
-
-1193343159 /usr/local/include/wx-2.8/wx/bookctrl.h
-	"wx/defs.h"
-	"wx/control.h"
-	"wx/dynarray.h"
-	"wx/notebook.h"
-	"wx/choicebk.h"
-
-1193343159 /usr/local/include/wx-2.8/wx/choicebk.h
-	"wx/defs.h"
-	"wx/bookctrl.h"
-	"wx/choice.h"
-
-1193343159 /usr/local/include/wx-2.8/wx/generic/notebook.h
-	"wx/event.h"
-	"wx/control.h"
-
-1193343161 /usr/local/include/wx-2.8/wx/gtk/notebook.h
-	"wx/list.h"
-
-1195691823 source:/mnt/hda7/whiteHawk/Antivirus/src/AvNotebook.cpp
-	"AvNotebook.h"
-
-1193343162 /usr/local/include/wx-2.8/wx/aui/auibook.h
+1217627149 /usr/local/include/wx-2.8/wx/aui/auibook.h
 	"wx/defs.h"
 	"wx/aui/framemanager.h"
 	"wx/aui/dockart.h"
 	"wx/aui/floatpane.h"
 	"wx/control.h"
 
-1193343162 /usr/local/include/wx-2.8/wx/aui/framemanager.h
+1217627149 /usr/local/include/wx-2.8/wx/aui/framemanager.h
 	"wx/defs.h"
 	"wx/dynarray.h"
 	"wx/gdicmn.h"
@@ -1609,19 +1484,19 @@
 	"wx/timer.h"
 	"wx/sizer.h"
 
-1193343162 /usr/local/include/wx-2.8/wx/aui/dockart.h
+1217627149 /usr/local/include/wx-2.8/wx/aui/dockart.h
 	"wx/defs.h"
 	"wx/pen.h"
 	"wx/brush.h"
 	"wx/bitmap.h"
 	"wx/colour.h"
 
-1193343162 /usr/local/include/wx-2.8/wx/aui/floatpane.h
+1217627149 /usr/local/include/wx-2.8/wx/aui/floatpane.h
 	"wx/defs.h"
 	"wx/frame.h"
 	"wx/minifram.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/minifram.h
+1217627148 /usr/local/include/wx-2.8/wx/minifram.h
 	"wx/defs.h"
 	"wx/palmos/minifram.h"
 	"wx/msw/minifram.h"
@@ -1633,40 +1508,151 @@
 	"wx/os2/minifram.h"
 	"wx/frame.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/gtk/minifram.h
+1217627149 /usr/local/include/wx-2.8/wx/gtk/minifram.h
 	"wx/defs.h"
 	"wx/object.h"
 	"wx/bitmap.h"
 	"wx/frame.h"
 
-1195693660 source:/mnt/hda7/whiteHawk/Antivirus/src/FileSelectionDialog.cpp
+1218937303 /mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/AvPanel.hh
+	<wx/wx.h>
+	<wx/animate.h>
+	"rcids.h"
+	<ClamavEvtListener.hh>
+	<Clamav.hh>
+	<ClamFile.hh>
+	"../Scanner.hh"
+	<WhiteHawkClamav.hh>
+
+1217627149 /usr/local/include/wx-2.8/wx/animate.h
+	"wx/defs.h"
+	"wx/animdecod.h"
+	"wx/control.h"
+	"wx/timer.h"
+	"wx/bitmap.h"
+	"wx/gtk/animate.h"
+	"wx/generic/animate.h"
+
+1217627149 /usr/local/include/wx-2.8/wx/animdecod.h
+	"wx/defs.h"
+	"wx/colour.h"
+	"wx/gdicmn.h"
+
+1217627149 /usr/local/include/wx-2.8/wx/gtk/animate.h
+
+1217627149 /usr/local/include/wx-2.8/wx/generic/animate.h
+	"wx/bitmap.h"
+
+1219547657 /usr/local/include/whiteHawk/whclamav/ClamavEvtListener.hh
+	"WhiteHawkClamav.hh"
+	"ClamFile.hh"
+
+1219547657 /usr/local/include/whiteHawk/whclamav/WhiteHawkClamav.hh
+
+1219547657 /usr/local/include/whiteHawk/whclamav/ClamFile.hh
+	<WhiteHawkSystem.hh>
+	"WhiteHawkClamav.hh"
+	<AbstractFile.hh>
+	<SystemPath.hh>
+
+1219547500 /usr/local/include/whiteHawk/system/WhiteHawkSystem.hh
+
+1219547500 /usr/local/include/whiteHawk/system/AbstractFile.hh
+	"WhiteHawkSystem.hh"
+	"FileInfo.hh"
+	<unistd.h>
+
+1219547500 /usr/local/include/whiteHawk/system/FileInfo.hh
+	<sys/stat.h>
+	<sys/types.h>
+	<utime.h>
+	"Time.hh"
+
+1219547500 /usr/local/include/whiteHawk/system/Time.hh
+	<time.h>
+	<string>
+	"WhiteHawkSystem.hh"
+
+1219547500 /usr/local/include/whiteHawk/system/SystemPath.hh
+	<string>
+	<list>
+	<dirent.h>
+	"WhiteHawkSystem.hh"
+	"AbstractFile.hh"
+	"SystemPathCount.hh"
+
+1219547500 /usr/local/include/whiteHawk/system/SystemPathCount.hh
+	"WhiteHawkSystem.hh"
+	"AbstractFile.hh"
+
+1219547657 /usr/local/include/whiteHawk/whclamav/Clamav.hh
+	"WhiteHawkClamav.hh"
+	"ClamavInstance.hh"
+	<Thread.hh>
+
+1219547657 /usr/local/include/whiteHawk/whclamav/ClamavInstance.hh
+	"WhiteHawkClamav.hh"
+	<clamav.h>
+	"ClamavEvtListener.hh"
+
+1218421033 /usr/local/include/clamav.h
+	<sys/types.h>
+	<sys/stat.h>
+
+1219547500 /usr/local/include/whiteHawk/system/Thread.hh
+	<pthread.h>
+	<unistd.h>
+	"WhiteHawkSystem.hh"
+
+1218500682 /mnt/sda7/part7/whiteHawk/svn/Antivirus/src/Scanner.hh
+	<WhiteHawkClamav.hh>
+	<ClamavEvtListener.hh>
+	<wx/wx.h>
+
+1210202594 /mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/StatusPanel.hh
+	<wx/wx.h>
+	<Clamav.hh>
+
+1217627149 /usr/local/include/wx-2.8/wx/taskbar.h
+	"wx/defs.h"
+	"wx/event.h"
+	"wx/palmos/taskbar.h"
+	"wx/msw/taskbar.h"
+	"wx/unix/taskbarx11.h"
+	"wx/mac/taskbarosx.h"
+	"wx/cocoa/taskbar.h"
+
+1217627149 /usr/local/include/wx-2.8/wx/unix/taskbarx11.h
+
+1218496046 source:/mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/AvNotebook.cpp
+	"AvNotebook.h"
 	"FileSelectionDialog.hh"
+
+1210202594 /mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/FileSelectionDialog.hh
+	<wx/wx.h>
 	<wx/dirctrl.h>
 
-1195693437 /mnt/hda7/whiteHawk/Antivirus/src/FileSelectionDialog.hh
-	<wx/dialog.h>
-
-1193343159 /usr/local/include/wx-2.8/wx/dirctrl.h
+1217627148 /usr/local/include/wx-2.8/wx/dirctrl.h
 	"wx/generic/dirctrlg.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/generic/dirctrlg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/dirctrlg.h
 	"wx/imaglist.h"
 	"wx/treectrl.h"
 	"wx/dialog.h"
 	"wx/dirdlg.h"
 	"wx/choice.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/imaglist.h
+1217627148 /usr/local/include/wx-2.8/wx/imaglist.h
 	"wx/generic/imaglist.h"
 	"wx/msw/imaglist.h"
 	"wx/mac/imaglist.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/generic/imaglist.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/imaglist.h
 	"wx/defs.h"
 	"wx/list.h"
 	"wx/icon.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/treectrl.h
+1217627148 /usr/local/include/wx-2.8/wx/treectrl.h
 	"wx/defs.h"
 	"wx/control.h"
 	"wx/treebase.h"
@@ -1680,165 +1666,60 @@
 	"wx/generic/treectlg.h"
 	"wx/generic/treectlg.h"
 
-1193343160 /usr/local/include/wx-2.8/wx/treebase.h
+1217627148 /usr/local/include/wx-2.8/wx/treebase.h
 	"wx/defs.h"
 	"wx/window.h"
 	"wx/event.h"
 	"wx/dynarray.h"
 
-1193343159 /usr/local/include/wx-2.8/wx/generic/treectlg.h
+1217627148 /usr/local/include/wx-2.8/wx/generic/treectlg.h
 	"wx/scrolwin.h"
 	"wx/pen.h"
 
-1196561857 source:/mnt/hda7/whiteHawk/Antivirus/src/GUI/AvFrame.cpp
-	"AvFrame.hh"
-
-1196561733 /mnt/hda7/whiteHawk/Antivirus/src/GUI/AvFrame.hh
-	<wx/wx.h>
-	<wx/aboutdlg.h>
-	"rcids.h"
-	"AvNotebook.h"
-	<wx/taskbar.h>
-
-1196561244 /mnt/hda7/whiteHawk/Antivirus/src/GUI/rcids.h
-
-1196382280 /mnt/hda7/whiteHawk/Antivirus/src/GUI/AvNotebook.h
-	<wx/aui/auibook.h>
+1219545968 source:/mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/AvPanel.cpp
 	"AvPanel.hh"
+	"Exception.hh"
+
+1210202594 source:/mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/FileSelectionDialog.cpp
+	"FileSelectionDialog.hh"
+
+1218944395 source:/mnt/sda7/part7/whiteHawk/svn/Antivirus/src/GUI/StatusPanel.cpp
 	"StatusPanel.hh"
-	<Clamav.hh>
 
-1195710241 /mnt/hda7/whiteHawk/Antivirus/src/core/ClamavManager.hh
-	"ClamavInterface.hh"
-	"FileManager/ClamFileManager.hh"
-	<Thread.hh>
-
-1195673695 /mnt/hda7/whiteHawk/Antivirus/src/core/ClamavInterface.hh
-	<clamav.h>
-	"FileManager/ClamFile.hh"
-	"ClamavEvtListener.hh"
-
-1195672853 /mnt/hda7/whiteHawk/Antivirus/src/core/FileManager/ClamFile.hh
-	<WhiteHawkSystem.hh>
-	<FileInfo.hh>
-
-1195697055 /mnt/hda7/whiteHawk/Antivirus/src/core/ClamavEvtListener.hh
-
-1195674141 /mnt/hda7/whiteHawk/Antivirus/src/core/FileManager/ClamFileManager.hh
-	<dirent.h>
+1210202594 source:/mnt/sda7/part7/whiteHawk/svn/Antivirus/src/whitehawkav.cpp
 	<iostream>
-	"ClamFile.hh"
-
-1198266485 /mnt/hda7/whiteHawk/Antivirus/src/GUI/AvPanel.hh
 	<wx/wx.h>
 	<wx/animate.h>
-	"rcids.h"
-	<ClamavEvtListener.hh>
-	<Clamav.hh>
-	<ClamFile.hh>
+	<X11/Xlib.h>
+	"GUI/AvFrame.hh"
 
-1196386096 /mnt/hda7/whiteHawk/Antivirus/src/GUI/StatusPanel.hh
-	<wx/wx.h>
-	<Clamav.hh>
-
-1196556853 source:/mnt/hda7/whiteHawk/Antivirus/src/GUI/AvNotebook.cpp
-	"AvNotebook.h"
-	"FileSelectionDialog.hh"
-
-1195706591 /mnt/hda7/whiteHawk/Antivirus/src/GUI/FileSelectionDialog.hh
-	<wx/wx.h>
-	<wx/dirctrl.h>
-
-1204774157 source:/mnt/hda7/whiteHawk/Antivirus/src/GUI/FileSelectionDialog.cpp
-	"FileSelectionDialog.hh"
-
-1198266616 source:/mnt/hda7/whiteHawk/Antivirus/src/GUI/AvPanel.cpp
-	"AvPanel.hh"
-
-1196386180 source:/mnt/hda7/whiteHawk/Antivirus/src/GUI/StatusPanel.cpp
-	"StatusPanel.hh"
-
-1195672764 source:/mnt/hda7/whiteHawk/Antivirus/src/core/ClamavInterface.cpp
-	"ClamavInterface.hh"
-
-1195701698 source:/mnt/hda7/whiteHawk/Antivirus/src/core/ClamavManager.cpp
-	"ClamavManager.hh"
-
-1195672882 source:/mnt/hda7/whiteHawk/Antivirus/src/core/FileManager/ClamFile.cpp
-	"ClamFile.hh"
-
-1195673902 source:/mnt/hda7/whiteHawk/Antivirus/src/core/FileManager/ClamFileManager.cpp
-	"ClamFileManager.hh"
-
-1198214023 /usr/local/include/whiteHawk/whclamav/ClamavEvtListener.hh
-	"WhiteHawkClamav.hh"
-	"ClamFile.hh"
-
-1198214023 /usr/local/include/whiteHawk/whclamav/WhiteHawkClamav.hh
-
-1198214023 /usr/local/include/whiteHawk/whclamav/ClamFile.hh
-	<WhiteHawkSystem.hh>
-	"WhiteHawkClamav.hh"
-	<AbstractFile.hh>
-	<SystemPath.hh>
-
-1199668940 /usr/local/include/whiteHawk/system/WhiteHawkSystem.hh
-
-1196389135 /usr/local/include/whiteHawk/system/ListNode.hh
-	"WhiteHawkSystem.hh"
-
-1196389135 /usr/local/include/whiteHawk/system/FileListNode.hh
-	"WhiteHawkSystem.hh"
-	"FileInfo.hh"
-	"ListNode.hh"
-	"AbstractFile.hh"
-
-1199668940 /usr/local/include/whiteHawk/system/FileInfo.hh
-	<sys/stat.h>
+1214977373 /usr/local/include/X11/Xlib.h
 	<sys/types.h>
-	<utime.h>
-	"Time.hh"
+	<sys/types.h>
+	<sys/types.h>
+	<stdint.h>
+	<X11/X.h>
+	<X11/Xfuncproto.h>
+	<X11/Xosdefs.h>
+	<stddef.h>
+	<stdlib.h>
 
-1199668940 /usr/local/include/whiteHawk/system/Time.hh
-	<time.h>
+1214886788 /usr/local/include/X11/X.h
+	<X11/Xmd.h>
+
+1214886788 /usr/local/include/X11/Xmd.h
+	<sys/isa_defs.h>
+
+1214886788 /usr/local/include/X11/Xfuncproto.h
+
+1214886788 /usr/local/include/X11/Xosdefs.h
+
+1218500750 source:/mnt/sda7/part7/whiteHawk/svn/Antivirus/src/Scanner.cpp
+	"Scanner.hh"
+	"GUI/AvPanel.hh"
+
+1219547500 /usr/local/include/whiteHawk/system/Exception.hh
 	<string>
+	<exception>
 	"WhiteHawkSystem.hh"
-
-1199668940 /usr/local/include/whiteHawk/system/AbstractFile.hh
-	"WhiteHawkSystem.hh"
-	"FileInfo.hh"
-	<unistd.h>
-
-1199668940 /usr/local/include/whiteHawk/system/SystemPath.hh
-	"WhiteHawkSystem.hh"
-	"AbstractFile.hh"
-	<string>
-	<list>
-	<dirent.h>
-
-1198214023 /usr/local/include/whiteHawk/whclamav/Clamav.hh
-	"WhiteHawkClamav.hh"
-	"ClamavInstance.hh"
-	<Thread.hh>
-
-1198214023 /usr/local/include/whiteHawk/whclamav/ClamavInstance.hh
-	"WhiteHawkClamav.hh"
-	<clamav.h>
-	"ClamavEvtListener.hh"
-
-1199668940 /usr/local/include/whiteHawk/system/Thread.hh
-	<pthread.h>
-	<unistd.h>
-	"WhiteHawkSystem.hh"
-
-1193343162 /usr/local/include/wx-2.8/wx/taskbar.h
-	"wx/defs.h"
-	"wx/event.h"
-	"wx/palmos/taskbar.h"
-	"wx/msw/taskbar.h"
-	"wx/unix/taskbarx11.h"
-	"wx/mac/taskbarosx.h"
-	"wx/cocoa/taskbar.h"
-
-1193343162 /usr/local/include/wx-2.8/wx/unix/taskbarx11.h
 

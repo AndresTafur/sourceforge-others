@@ -1,136 +1,84 @@
 #include "AvPanel.hh"
+#include "Exception.hh"
 
 
-
-
-AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim, WhiteHawkClamav::Clamav *mgr) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL)
+AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim,wxString path) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL|wxMAXIMIZE_BOX)
   {
 	wxBoxSizer	 *ctrlSizer  = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer   *sizer      = new wxBoxSizer(wxVERTICAL);
-	wxGridSizer	 *prgrsSizer = new wxGridSizer(2,2);
+	wxGridSizer	 *prgrsSizer = new wxGridSizer(2,3);
 
 		start = new wxButton(this,ID_AVSTART,wxT("Start"));
 		stop  = new wxButton(this,ID_AVSTOP,wxT("Stop"));
 
 
-		bar    = new wxGauge(this,wxID_ANY,100);
-		file   = new wxTextCtrl(this, wxID_ANY,wxT(""));
+		m_bar  = new wxGauge(this,wxID_ANY,100);
+		m_file = new wxTextCtrl(this, wxID_ANY,wxT(""));
+		m_path = new wxTextCtrl(this, wxID_ANY,path);
 
 
-		list  = new wxListCtrl(this,ID_LISTCTRL,wxDefaultPosition,wxDefaultSize,wxLC_REPORT|wxLC_VRULES);
-		this->mgr = mgr;
-		mgr->setListener(this);
-		m_total = mgr->getTotalFiles();
+		m_list  = new wxListCtrl(this,ID_LISTCTRL,wxDefaultPosition,wxDefaultSize,wxLC_REPORT|wxLC_VRULES);
+
+        WhiteHawkClamav::Clamav::getInstance()->setPath(path.ToAscii());
+        WhiteHawkClamav::Clamav::getInstance()->addListener(this);
 
 		this->anim = anim;
 
 		stop->Disable();
-		file->Disable();
+		m_file->SetEditable(false);
 
-
-
-		list->InsertColumn(0, wxString("File"));
-		list->InsertColumn(1, wxString("Type"));
-		list->InsertColumn(2, wxString("Status"));
-		list->SetColumnWidth(0, 300);
+		m_list->InsertColumn(0, wxString("File"));
+		m_list->InsertColumn(1, wxString("Type"));
+		m_list->InsertColumn(2, wxString("Status"));
+		m_list->SetColumnWidth(0, 300);
 
 
 		prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT("Progress: ")));
-		prgrsSizer->Add(bar,0,wxEXPAND);
-		prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT("Scanning File: ")));
-		prgrsSizer->Add(file,0,wxEXPAND);
-
+		prgrsSizer->Add(m_bar,0,wxEXPAND);
+		prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT("Scanning Path: ")));
+		prgrsSizer->Add(m_path,0,wxEXPAND);
+        prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT("Scanning File: ")));
+		prgrsSizer->Add(m_file,0,wxEXPAND);
 
 		ctrlSizer->Add(start,0,wxALIGN_CENTER_HORIZONTAL|wxFIXED_MINSIZE|wxBOTTOM|wxALL,5);
 		ctrlSizer->AddSpacer(20);
 		ctrlSizer->Add(stop,0,wxALIGN_CENTER_HORIZONTAL|wxFIXED_MINSIZE|wxBOTTOM|wxALL,5);
 
 		sizer->Add(prgrsSizer,0,wxALL|wxEXPAND,10);
-		sizer->Add(list,1,wxEXPAND|wxALL,5);
+		sizer->Add(m_list,1,wxEXPAND|wxALL,5);
 		sizer->Add(ctrlSizer,0,wxALIGN_CENTER_HORIZONTAL);
 
 		this->SetSizer(sizer);
   }
 
-
-        void AvPanel::setPath(wxString path)
-        {
-             this->path = path;
-        }
-
-
-
-		void AvPanel::onVirus(WhiteHawkClamav::ClamFile file)
-		{
-		  wxString str, str2;
-		  int id;
-			str << file.getPath().c_str();
-			str2 << file.getVirName().c_str();
-
-			list->InsertItem(0,str); //todo include All files here
-			list->SetItem(0, 1, str2);
-			list->SetItem(0, 2, wxT("Infected"));
-        }
-
-		void AvPanel::onScan(WhiteHawkClamav::ClamFile fileName)
-		{
-		    if( fileName.getId() != 0)
-		    {
-              wxString str, str2;
-              unsigned long percent = (fileName.getId()+1)*100/m_total;
-
-                fprintf(stderr,"%i",m_total);
-                str << fileName.getPath().c_str();/*
-                str2 << percent << wxT("% - WhiteHawkClamAv");
-
-                wxMutexGuiEnter();
-                bar->SetValue(percent);
-                file->ChangeValue( str );
-                ((wxFrame*)this->GetParent()->GetParent())->SetTitle(str2);
-                wxMutexGuiLeave();*/
-		    }
-		}
-
-
-
-		void AvPanel::onFinish()
-		{
-              wxMutexGuiEnter();
-			  start->Enable();
-			  stop->Disable();
-			  anim->Stop();
-			  ((wxFrame*)this->GetParent()->GetParent())->RequestUserAttention(wxUSER_ATTENTION_INFO);
-			  wxMutexGuiLeave();
-		}
-
-
-		void AvPanel::onError(WhiteHawkClamav::ClamFile file,std::string errtype )
-		{
-			fprintf(stderr,"[%s] ",errtype.c_str(), file.getPath().c_str() );
-		}
-
-
-
-		void AvPanel::OnStart(wxCommandEvent &evt)
-		{
-			list->DeleteAllItems();
+  void AvPanel::OnStart(wxCommandEvent &evt)
+  {
+			m_list->DeleteAllItems();
 
 			start->Disable();
 			stop->Enable();
-
-
 			anim->Play();
-            file->SetValue(path);
-			bar->SetValue(0);
-			mgr->startScan(path.ToAscii());
-		}
+			m_bar->SetValue(0);
+
+			try
+			{
+                    WhiteHawkClamav::Clamav::getInstance()->startScan();
+			}
+			catch(WhiteHawkSystem::Exception ex)
+			{
+              wxString err;
+
+                    err << ex.getMessage() << wxT("\n:") << ex.getMethod();
+                    wxMessageBox(err,wxT("Error scanning files"),wxICON_ERROR);
+			}
+  }
 
 
-		void AvPanel::OnStop(wxCommandEvent &evt)
-		{
-			mgr->Terminate();
-			this->onFinish();
-		}
+  void AvPanel::OnStop(wxCommandEvent &evt)
+  {
+	 WhiteHawkClamav::Clamav::getInstance()->Terminate();
+	 this->onFinish();
+  }
 
 
 		void AvPanel::OnListItem(wxListEvent &evt)
@@ -163,20 +111,20 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim, WhiteHawkClamav::Clama
         void AvPanel::onDel(wxCommandEvent &evt)
         {
           long item = -1;
-          int  selected = list->GetSelectedItemCount();
+          int  selected = m_list->GetSelectedItemCount();
 
             for (int iter=0; iter < selected;)
             {
-                item = list->GetNextItem(item,wxLIST_NEXT_ALL,wxLIST_STATE_SELECTED);
+                item = m_list->GetNextItem(item,wxLIST_NEXT_ALL,wxLIST_STATE_SELECTED);
                 if ( item != -1 )
                 {
-                    WhiteHawkSystem::AbstractFile file(list->GetItemText(item).ToAscii());
+                    WhiteHawkSystem::AbstractFile file(m_list->GetItemText(item).ToAscii());
 
                     if( file.Remove() )
-                      list->SetItem(item, 2, wxT("Removed"));
+                      m_list->SetItem(item, 2, wxT("Removed"));
                     else
                     {
-                      list->SetItem(item, 2, wxT("Error"));
+                      m_list->SetItem(item, 2, wxT("Error"));
                       wxMessageBox(wxT("There was an error trying to remove file.\n"
                       "Do you have already deleted it?\n"
                       "Do you have permissions?"),wxT("Error"),wxICON_ERROR);
@@ -186,6 +134,56 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim, WhiteHawkClamav::Clama
                 }
             }
         }
+
+	void AvPanel::onScan(WhiteHawkClamav::ClamFile &file, int totalFiles)
+	{
+        if( file.getId() != 0)
+        {
+         wxString str, str2;
+         unsigned long percent = (file.getId()+1)*100/totalFiles;
+
+            str << file.getPath().c_str();
+            str2 << percent << wxT("% - WhiteHawkClamAv");
+
+                wxMutexGuiEnter();
+                ((wxFrame*)  GetParent()->GetParent())->SetTitle(str2);
+                m_bar->SetValue(percent);
+                m_file->ChangeValue(str.AfterLast('/'));
+                m_path->ChangeValue(str.BeforeLast('/'));
+                m_file->SetInsertionPointEnd();
+                wxMutexGuiLeave();
+        }
+    }
+
+	void AvPanel::onVirus(WhiteHawkClamav::ClamFile &file)
+	 {
+		  wxString str, str2;
+		  int id;
+
+			str << file.getPath().c_str();
+			str2 << file.getVirName().c_str();
+
+			m_list->InsertItem(0,str); //todo include All files here
+			m_list->SetItem(0, 1, str2);
+			m_list->SetItem(0, 2, wxT("Infected"));
+    }
+
+	void AvPanel::onError(WhiteHawkClamav::ClamFile &file,std::string errtype )
+	{
+			fprintf(stderr,"[%s] ",errtype.c_str(), file.getPath().c_str() );
+    }
+
+
+    void AvPanel::onFinish()
+	{
+              wxMutexGuiEnter();
+              ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("WhiteHawkClamAv"));
+			  start->Enable();
+			  stop->Disable();
+			  m_bar->SetValue(0);
+			  anim->Stop();
+			  wxMutexGuiLeave();
+    }
 
 
 BEGIN_EVENT_TABLE(AvPanel,wxPanel)
