@@ -10,11 +10,7 @@
 
             this->load = load;
 
-            clammgr = new WhiteHawkClamav::Clamav();
             status  = new StatusPanel(this,clammgr);
-
-            clammgr->loadDatabase();
-
             this->AddPage(status, wxT("Status"));
     }
 
@@ -42,11 +38,10 @@
 
              if( dlg.ShowModal() == wxID_OK)
              {
-                scan = new AvPanel(this,load,clammgr);
+                scan = new AvPanel(this,load,dlg.getFullPath());
                 scan->Show(false);
 
                 this->AddPage(scan, wxT("Scan"), true);
-                scan->setPath( dlg.getFullPath() );
              }
          }
          else

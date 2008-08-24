@@ -2,8 +2,7 @@
 
 	StatusPanel::StatusPanel(wxWindow *parent, WhiteHawkClamav::Clamav *mgr) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL)
 	{
-      wxStaticBoxSizer *summary = new wxStaticBoxSizer(wxVERTICAL,this,wxT("Summary"));
-	  wxStaticBoxSizer *stadis  = new wxStaticBoxSizer(wxVERTICAL,this,wxT("Stadistics"));
+      wxBoxSizer *summary = new wxBoxSizer(wxVERTICAL);
 
 
 	  wxBoxSizer  *sizer = new wxBoxSizer(wxVERTICAL);
@@ -33,7 +32,7 @@
         summary->Add(grid,1,wxEXPAND);
 
 		sizer->AddSpacer(40);
-		sizer->Add(summary,1,wxEXPAND|wxALIGN_CENTER_HORIZONTAL|wxALL,5);
+		sizer->Add(summary,0,wxEXPAND|wxALIGN_CENTER|wxALL,10);
 		sizer->AddSpacer(40);
 
 

@@ -105,17 +105,23 @@ void AvFrame::onQuit(wxCommandEvent &evt)
 void AvFrame::onAbout(wxCommandEvent &evt)
 {
     wxAboutDialogInfo info;
+    wxString desc;
+
+            desc << wxT("\n\nThis is the antivirus of the WhiteHawk System\nIt's a Frontend for the clamav antivirus.\n");
+            desc << wxT("\nClamav version: ") << cl_retver();
+            desc << wxT("\nClamav f-ret: ") << cl_retflevel() << wxT("\n");
+
 
         info.SetName(wxT("WhitehawkAv"));
         info.SetVersion(wxT("0.0.1"));
-        info.SetDescription(wxT("This is the antivirus of the WhiteHawk System\nIt's a GUI for the clamav antivirus."));
-        info.SetWebSite(wxT("http://whitehawk.servehttp.com"));
+        info.SetDescription(desc);
+        info.SetWebSite(wxT("http://whsystems.sf.net"));
         info.SetCopyright(wxT("(C) 2007 Jorge Andres Tafur."));
         info.AddDeveloper(wxT("Jorge Andres Tafur"));
         info.SetLicence(wxT
 
-        ("  WhiteHawkAntivirus an antivirus based on top of clamav.\n"
-                  "Copyright (C) 2007  Jorge andres tafur\n\n"
+        ("\tWhiteHawkAntivirus an antivirus based on top of clamav.\n"
+                  "\t\t\tCopyright (C) 2007  Jorge andres tafur\n\n\n"
 
     "This program is free software: you can redistribute it and/or modify\n"
     "it under the terms of the GNU General Public License as published by\n"

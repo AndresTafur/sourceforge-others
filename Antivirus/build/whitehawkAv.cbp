@@ -17,8 +17,10 @@
 				<Option projectIncludeDirsRelation="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-g" />
 					<Add option="`wx-config  --cflags`" />
 					<Add option="`clamav-config --cflags`" />
+					<Add option="`pkg-config --cflags libwhsystem-1.0`" />
 					<Add directory="/usr/local/include/whiteHawk/whclamav" />
 					<Add directory="/usr/local/include/whiteHawk/system" />
 				</Compiler>
@@ -26,14 +28,16 @@
 					<Add option="-s" />
 					<Add option="`wx-config  --version=2.8 --static=no --unicode=no --debug=no --libs`" />
 					<Add option="`clamav-config --libs`" />
-					<Add library="whclamav" />
-					<Add library="clamav" />
-					<Add library="whsystem" />
+					<Add option="`pkg-config --libs libwhsystem-1.0`" />
+					<Add option="-L/usr/local/lib/" />
+					<Add option="-lwhclamav" />
+					<Add option="-g3" />
 				</Linker>
 			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-g" />
 		</Compiler>
 		<Linker>
 			<Add option="-lzzip" />
