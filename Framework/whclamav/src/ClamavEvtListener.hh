@@ -21,20 +21,20 @@ public:
 	 *  This method is called for the Clamav-instance when a file is starting to be scanned
 	 *  @param file	File being scanned.
 	 */
-	virtual void onScan(ClamFile file) = 0;
+	virtual void onScan(ClamFile &file, int totalFiles) = 0;
 
 	/**
 	 *  This method is called for the Clamav-instance when a virus is found
 	 *  @param file File with virus.
 	 */
-	virtual void onVirus(ClamFile file) = 0;
+	virtual void onVirus(ClamFile &file) = 0;
 
 	/**
 	 *  This method is called when an error ocurrs
 	 *  @param file File scanned when the error ocurred
 	 *  @param errtype Message with the error description
 	 */
-	virtual void onError(ClamFile file,std::string errtype ) = 0;
+	virtual void onError(ClamFile &file,std::string errtype ) = 0;
 
 	/**
 	 *   This method is called when all files were scanned
