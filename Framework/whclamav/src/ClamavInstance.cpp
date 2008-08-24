@@ -1,15 +1,14 @@
-
 #include "ClamavInstance.hh"
+#include <string.h>
+#include <Exception.hh>
 
-
-
-	bool WhiteHawkClamav::ClamavInstance::loadDatabase()
+	void WhiteHawkClamav::ClamavInstance::loadDatabase()
 	{
    	   struct cl_stat dbstat;
 	   int ret;
 	   unsigned int sigs = 0;
 
-		        engine = NULL;
+		    engine = NULL;
 			memset(&dbstat, 0, sizeof(struct cl_stat));
 
 
@@ -19,15 +18,12 @@
 			{
 			    printf("cl_build() error: %s\n", cl_strerror(ret));
 			    cl_free(engine);
-			    return false;
+			    throw( new WhiteHawkSystem::Exception(cl_strerror(ret)));
 			}
-
-        dbLoaded = true;
-        return true;
 	}
 
 
-	bool WhiteHawkClamav::ClamavInstance::scanFile(ClamFile file)
+	bool WhiteHawkClamav::ClamavInstance::scanFile(ClamFile &file, int total)
 	{
    	 struct cl_limits limits;
 	 const char *name;
@@ -36,11 +32,11 @@
 		memset(&limits, 0, sizeof(struct cl_limits));
 		limits.maxfiles    = 1000;
 		limits.maxfilesize = 10 * 1048576;
-		limits.maxreclevel = 5;
-		limits.maxmailrec = 64;
-		limits.maxratio = 200;
+		limits.maxreclevel = 16;
+		limits.maxscansize = 100 * 1048576;
 
-		listener->onScan(file);
+        for( std::list<ClamavEvtListener*>::iterator beg = listeners.begin(); beg != listeners.end(); beg++)
+            (*beg)->onScan(file, total);
 
 
 		status = cl_scanfile( file.getPath().c_str(), &name, NULL, engine,&limits, CL_SCAN_STDOPT);
@@ -49,28 +45,29 @@
 		{
 			file.setVirName(name);
 			file.setInfected(true);
-			listener->onVirus(file);
+			for( std::list<ClamavEvtListener*>::iterator beg = listeners.begin(); beg != listeners.end(); beg++)
+                (*beg)->onVirus(file);
 		}
 	    else if(status != CL_CLEAN)
-	        	listener->onError(file, cl_strerror(status));
+	        for( std::list<ClamavEvtListener*>::iterator beg = listeners.begin(); beg != listeners.end(); beg++)
+            (*beg)->onError(file, cl_strerror(status));
 
         return true;
 	}
 
 
-	void WhiteHawkClamav::ClamavInstance::setListener(ClamavEvtListener *listener)
+	void WhiteHawkClamav::ClamavInstance::addListener(ClamavEvtListener *listener)
 	{
-	  this->listener = listener;
+        listeners.push_back(listener);
 	}
 
-
-	bool WhiteHawkClamav::ClamavInstance::isDBLoaded()
-	{
-	  return dbLoaded;
-	}
 
 	void WhiteHawkClamav::ClamavInstance::destroy()
 	{
 	  cl_free(engine);
 	}
 
+    WhiteHawkClamav::ClamavInstance::~ClamavInstance()
+    {
+        this->destroy();
+    }

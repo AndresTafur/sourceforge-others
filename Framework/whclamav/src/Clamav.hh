@@ -14,11 +14,15 @@
 
 class WhiteHawkClamav::Clamav : public WhiteHawkClamav::ClamavInstance, public WhiteHawkSystem::Thread
 {
-public:
+protected:
 
     Clamav();
 
-    void scanSubFolder(std::string path);
+public:
+
+    static WhiteHawkClamav::Clamav* getInstance();
+
+    void scanSubFolder(ClamFile objDir);
 
 	/**
 	 *  This method runs as a thread for background scanning, should never be called directly
@@ -26,17 +30,20 @@ public:
 	void ThreadRoutine();
 
 
+
+    void setPath(std::string path);
+
 	/**
 	 * Method that scan's the specified path
 	 * @param path Path to the folder or file to be scanned.
 	 */
-	void startScan(std::string path);
+	void startScan();
 
 	/**
 	 *  This method returns the total amount of files which will be scanned
-	 *  @returns Files in the list to be processed
+	 *  @return Files in the list to be processed
      */
-	int getTotalFiles();
+	long long getTotalFiles();
 
 	/**
 	 *  This method returns the age (in days of the database)
@@ -54,13 +61,13 @@ protected:
 /**
  *  Path to the file/folder to be scanned
  */
-std::string defaultPath;
+std::string m_path;
+static Clamav *m_instance;
 
 /**
  *  Amount of files to be scanned
  */
 int m_total;
-
-int id;
+int m_curr;
 };
 #endif

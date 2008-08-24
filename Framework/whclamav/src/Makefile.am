@@ -4,4 +4,4 @@ library_include_HEADERS = *.hh
 
 libwhclamav_la_SOURCES = Clamav.cpp  ClamavInstance.cpp ClamFile.cpp
 libwhclamav_la_CXXFLAGS = -I$(includedir)/whiteHawk/system/
-libwhclamav_la_LDFLAGS = -lclamav
+libwhclamav_la_LDFLAGS = -lclamav -g2

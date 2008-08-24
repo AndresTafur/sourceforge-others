@@ -18,38 +18,35 @@ public:
 	 *   loads the virus definitions database
 	 *   @return true if success otherwise false
      */
-	bool loadDatabase();
+	void loadDatabase();
 
 	/**
 	 *   Scan a file (it doesn't scan a folder path)
 	 *   @param  file File to be scanned;
 	 *   @return true if success otherwise false
      */
-	bool scanFile(ClamFile file);
+	bool scanFile(ClamFile &file, int total);
 
 	/**
-	 *   Sets the default event listener
+	 *   Adds a new event listener
 	 *   @param listener The ClamavEvtListener listener pointer
      */
-	void setListener(ClamavEvtListener *listener);
-
-	/**
-	 *  This method returns the age (in days of the database)
-	 *  @return Days from the last virus database update.
-	 */
-	bool isDBLoaded();
+	void addListener(ClamavEvtListener *listener);
 
 	/**
 	 *  This method frees all memory used by libclamav
 	 */
 	void destroy();
 
+
+    ~ClamavInstance();
+
 protected:
 
 /**
  *  Pointer to a event listener
  */
-ClamavEvtListener *listener;
+std::list<ClamavEvtListener*> listeners;
 
 /**
  *  Defaul database directory
@@ -66,10 +63,6 @@ struct cl_engine *engine;
  */
 struct cl_stat dbstat;
 
-/**
- *  Clamav database structure
- */
-bool dbLoaded;
 
 };
 #endif
