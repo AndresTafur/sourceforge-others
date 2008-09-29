@@ -1,82 +1,55 @@
+/*  This file is part of WhiteHawkClamav.
+
+    WhiteHawkClamav is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    WhiteHawkClamav is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#ifndef _Thread_
+#define _Thread_
+
 #include <pthread.h>
-// Thread.h V0.1pre Header File, Provides thread class definition
-// © 2003 Elliot Nierman
 
 #ifndef WIN32
 #include <unistd.h>
 #endif
 
 
-#ifndef _Thread_
-#define _Thread_
-
 #include "WhiteHawkSystem.hh"
+#include "Runnable.hh"
 
-enum priority_level { IDLE = 11,
-                               LOWEST = 11,
-                               BELOW_NORMAL = 11,
-                               NORMAL = 11,
-                               ABOVE_NORMAL = 11,
-                               HIGHEST = 11,
-                               TIME_CRITICAL = 11 };
-
-
-
-struct thread_var{
-
-    priority_level b_prio;
-    int b_trueprio;
-    bool b_term;
-    bool b_susp;
-    bool b_created;
-    void * b_exitcode;
-
-
-
-
-    pthread_t           p_handle;
-    struct sched_param  p_param;
-    pthread_attr_t      p_attr;
-    pthread_mutex_t     p_mux;
-    pthread_cond_t      p_cond;
-};
-
-class WhiteHawkSystem::Thread
+class WhiteHawkSystem::Thread : public WhiteHawkSystem::Runnable
 {
 public:
 
-                               Thread();
-    virtual                   ~Thread(){};
-    bool                       CreateSuspended();
-    bool                       CreateSuspended(unsigned long stack_size);
-    bool                       Create();
-    bool                       Create(unsigned long stack_size);
-    const pthread_t            GetID() const;
-    bool                       Execute();
-    void                       Resume();
-    void                       Suspend();
-    void                       Terminate();
-    void                       Lock();
-    void                       Unlock();
-    bool                       SetPriority(priority_level b_prio);
-    char *                     GetPriority();
-    bool                       Join() const;
-    void                       SafePoint();
-    void                       Suspend_Thread();
-    void                       T_Sleep(unsigned long millisecs);
+    Thread();
+    Thread(Runnable *run_obj);
 
-protected:
-    virtual void               ThreadRoutine() = 0; // User overridden
-    virtual void	           onTerminate() = 0; // User overriden
+    void          startThread(unsigned long stack_size = 0);
+    pthread_t     getThreadHandler();
+
+    void          terminateThread();
+    bool          join();
+    void          sleep(unsigned long millisecs);
+
+    ~Thread();
 
 private:
-    thread_var             T_Var;
-    pthread_mutex_t        mutex;
+pthread_t        m_handler;
+pthread_attr_t   m_attr;
+pthread_mutex_t  m_mux;
+pthread_cond_t   m_cond;
+Runnable        *m_runObj;
 
-    static void               threadfunc(Thread*);
-    static void               susp_threadfunc(Thread*);
-    void                      Start();
-    void                      Start_Suspended();
-
+static void  threadfunc(Runnable *obj);
 };
 #endif

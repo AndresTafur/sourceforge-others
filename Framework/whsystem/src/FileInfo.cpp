@@ -1,3 +1,19 @@
+/*  This file is part of WhiteHawkClamav.
+
+    WhiteHawkClamav is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    WhiteHawkClamav is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include "FileInfo.hh"
 #include "Exception.hh"
 
@@ -85,7 +101,7 @@
 	int WhiteHawkSystem::FileInfo::getSize()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::getSize");
+            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::getSize");
 
 	  return fileStatus.st_size;
 	}
@@ -94,7 +110,7 @@
 	WhiteHawkSystem::Time WhiteHawkSystem::FileInfo::getLastAccess()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0 )
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::getLastAccess");
+            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::getLastAccess");
 
         accTime.setTime( fileStatus.st_atime  );
         return accTime;
@@ -103,7 +119,7 @@
 	WhiteHawkSystem::Time WhiteHawkSystem::FileInfo::getLastModification()
 	{
 	  if( lstat(m_path.c_str(), &fileStatus) != 0 )
-           throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::getLastModification");
+           throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::getLastModification");
 
 	    modTime.setTime( fileStatus.st_atime  );
         return modTime;
@@ -119,7 +135,7 @@
 	bool WhiteHawkSystem::FileInfo::isFile()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-	        throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isFile");
+	        throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isFile");
 
 		return S_ISREG(fileStatus.st_mode);
 	}
@@ -127,21 +143,21 @@
 	bool WhiteHawkSystem::FileInfo::isUserReadable()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isUserReadable");
+            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isUserReadable");
         return access(m_path.c_str(),R_OK) == 0;
     }
 
 	bool WhiteHawkSystem::FileInfo::isUserWritable()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isUserWritable");
+            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isUserWritable");
         return access(m_path.c_str(),W_OK) == 0;
     }
 
     bool WhiteHawkSystem::FileInfo::isUserExecutable()
     {
         if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isUserExecutable");
+            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isUserExecutable");
         return access(m_path.c_str(),X_OK) == 0;
     }
 
@@ -153,42 +169,42 @@
 	bool WhiteHawkSystem::FileInfo::isLink()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isLink");
+            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isLink");
 		return S_ISLNK(fileStatus.st_mode);
 	}
 
 	bool WhiteHawkSystem::FileInfo::isDirectory()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isDirectory");
+            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isDirectory");
 		return S_ISDIR(fileStatus.st_mode);
 	}
 
 	bool WhiteHawkSystem::FileInfo::isCharDevice()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isCharDevice");
+            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isCharDevice");
 		return S_ISCHR(fileStatus.st_mode);
 	}
 
 	bool WhiteHawkSystem::FileInfo::isBlockDevice()
 	{
 	    if(lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isBlockDevice");
+            throw Exception(m_path +" lstat failed","WhiteHawkSystem::FileInfo::isBlockDevice");
 		return S_ISBLK(fileStatus.st_mode);
 	}
 
 	bool WhiteHawkSystem::FileInfo::isFIFO()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isFIFO");
+            throw Exception(m_path +" lstat failed","WhiteHawkSystem::FileInfo::isFIFO");
 		return S_ISFIFO(fileStatus.st_mode);
 	}
 
 	bool WhiteHawkSystem::FileInfo::isSocket()
 	{
 	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("File lstat failed","WhiteHawkSystem::FileInfo::isSocket");
+            throw Exception(m_path +" lstat failed","WhiteHawkSystem::FileInfo::isSocket");
 		return S_ISSOCK(fileStatus.st_mode);
 	}
 

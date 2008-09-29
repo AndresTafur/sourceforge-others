@@ -14,61 +14,31 @@
     along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _ZIP_RESOURCE_
-#define _ZIP_RESOURCE_
 
-#include <zzip/lib.h>
-#include <zzip/file.h>
-#include <dirent.h>
-#include <iostream>
+#ifndef _RCIDS_H
+#define _RCIDS_H
 
-#include "WhiteHawkSystem.hh"
+enum rcIds{
 
+	ID_HOME,
+	ID_SCANF,
+	ID_FSCAN,
+	ID_QUAR,
+	ID_CONFIG,
 
-int zzip_fstat(ZZIP_FILE* file, ZZIP_STAT* zs);
+	ID_LISTCTRL,
+	ID_AVSTART,
+	ID_AVSTOP,
+	ID_DIALOG,
+	ID_SELECT_ALL,
 
-class WhiteHawkSystem::ZipResource
-{
-public:
+    	ID_SHOWHIDE,
+    	ID_EXIT,
 
-	ZipResource( std::string path);
+	ID_VIR_MOV,
+	ID_VIR_DEL,
 
-	ZipResource(ZZIP_FILE *file);
-
-
-	void setName(std::string name);
-
-
-	std::string getName();
-
-
-	std::string getContent(int size=1);
-
-
-	bool extract();
-
-
-    bool extract(std::string path);
-
-
-	bool isOpen();
-
-	bool isEof();
-
-	zzip_off_t getOffset();
-
-	void setOffset(zzip_off_t offset, int pos = SEEK_SET);
-
-
-	void rewind();
-
-
-	void close();
-
-
-protected:
-ZZIP_FILE *handler;
-std::string name;
-bool eof;
+	ID_TRAY_SHOW,
+	ID_TRAY_QUIT,
 };
 #endif

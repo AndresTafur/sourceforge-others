@@ -1,3 +1,19 @@
+/*  This file is part of WhiteHawkClamav.
+
+    WhiteHawkClamav is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    WhiteHawkClamav is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
 #include <errno.h>
 #include <string.h>
 #include <stdlib.h>
@@ -10,6 +26,8 @@
           WhiteHawkSystem::AbstractFile tmp(path);
           eof = false;
 
+          try
+          {
             if( tmp.isDirectory())
             {
                 if( path.at(path.length()-1) != '/')
@@ -21,31 +39,16 @@
             }
             else
              count = 1;
+          }
+          catch(WhiteHawkSystem::Exception ex) { ex.print();}
 
         }
 
         WhiteHawkSystem::SystemPathCount WhiteHawkSystem::SystemPath::getCount(std::string path)
         {
-            struct dirent *red;
-            SystemPathCount count;
+          WhiteHawkSystem::AbstractFile file(path);
 
-            if( path.at( path.length()-1) != '/')
-                path.append("/");
-
-            DIR *buff = opendir(path.c_str());
-
-            if( !buff)
-                return count;
-
-            while( NULL != (red = readdir(buff)) )
-	        {
-              WhiteHawkSystem::AbstractFile tmp( path + red->d_name);
-
-                    count += tmp;
-            }
-             closedir(buff);
-
-            return count;
+            return getCount(file);
         }
 
 
@@ -57,37 +60,41 @@
             struct dirent *red;
             DIR *buff;
 
+          try
+          {
 
-            if( !objDir.isDirectory())
-                return SystemPathCount(1);
+                if( !objDir.isDirectory())
+                    return SystemPathCount(1);
 
-            if( objDir.getPath().at( objDir.getPath().length()-1) != '/')
-                objDir.setPath(objDir.getPath() + "/");
+                if( objDir.getPath().at( objDir.getPath().length()-1) != '/')
+                    objDir.setPath(objDir.getPath() + "/");
 
-            buff = opendir(objDir.getPath().c_str());
+                buff = opendir(objDir.getPath().c_str());
 
-            if( !buff)
-             return count;
+                if( !buff)
+                    return count;
 
-            while( NULL != (red = readdir(buff)) )
-	        {
-              WhiteHawkSystem::AbstractFile tmp( objDir.getPath() + red->d_name);
+                while( NULL != (red = readdir(buff)) )
+                {
+                    WhiteHawkSystem::AbstractFile tmp( objDir.getPath() + red->d_name);
 
-                    if(tmp.isDirectory())
-                    {
-                        if( strcmp(red->d_name,".") != 0 && strcmp(red->d_name,"..") != 0  )
+                        if(tmp.isDirectory())
                         {
-                            SystemPathCount subCount = WhiteHawkSystem::SystemPath::getCount(tmp);
+                            if( strcmp(red->d_name,".") != 0 && strcmp(red->d_name,"..") != 0  )
+                            {
+                                SystemPathCount subCount = WhiteHawkSystem::SystemPath::getCount(tmp);
 
-                                count += subCount;
-                                count.setFoldersCount( count.getFoldersCount()+1);
+                                 count += tmp;
+                                 count += subCount;
+                            }
+
                         }
+                        else
+                            count += tmp;
+                }
+                closedir(buff);
 
-                    }
-
-                    count += tmp;
-             }
-             closedir(buff);
+            }catch(WhiteHawkSystem::Exception ex){ex.print();}
 
             return count;
         }
@@ -132,7 +139,7 @@
                     return file;
                 }
                 else
-                 throw (Exception("Failed getting current directory","Line 145 : WhiteHawkSystem::SystemPath::getCurrentWDir()"));
+                 throw (Exception("Failed getting current directory","WhiteHawkSystem::SystemPath::getCurrentWDir()"));
         }
 
         bool WhiteHawkSystem::SystemPath::setCurrentWDir(AbstractFile dir)

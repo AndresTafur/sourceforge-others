@@ -14,61 +14,32 @@
     along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _ZIP_RESOURCE_
-#define _ZIP_RESOURCE_
-
-#include <zzip/lib.h>
-#include <zzip/file.h>
-#include <dirent.h>
-#include <iostream>
-
-#include "WhiteHawkSystem.hh"
+#include "AvNotebook.h"
 
 
-int zzip_fstat(ZZIP_FILE* file, ZZIP_STAT* zs);
+    AvNotebook::AvNotebook(wxWindow *parent, wxAnimationCtrl *load,int id) : wxAuiNotebook(parent, id,wxDefaultPosition,wxDefaultSize,wxAUI_NB_TOP|wxAUI_NB_TAB_MOVE|wxAUI_NB_WINDOWLIST_BUTTON)
+    {
+            this->m_load = load;
 
-class WhiteHawkSystem::ZipResource
-{
-public:
+            m_status  = new StatusPanel(this);
+            m_scan    = new AvPanel(this,load);
 
-	ZipResource( std::string path);
-
-	ZipResource(ZZIP_FILE *file);
-
-
-	void setName(std::string name);
+            this->AddPage(m_status, wxT("Status"));
+            this->AddPage(m_scan, wxT("Scan Files"), true);
+    }
 
 
-	std::string getName();
+
+    void AvNotebook::insertStatus()
+    {
+       int stat = GetPageIndex(m_status);
+            SetSelection(stat);
+    }
 
 
-	std::string getContent(int size=1);
+    void AvNotebook::insertScan()
+    {
+       int stat =  GetPageIndex(m_scan);
 
-
-	bool extract();
-
-
-    bool extract(std::string path);
-
-
-	bool isOpen();
-
-	bool isEof();
-
-	zzip_off_t getOffset();
-
-	void setOffset(zzip_off_t offset, int pos = SEEK_SET);
-
-
-	void rewind();
-
-
-	void close();
-
-
-protected:
-ZZIP_FILE *handler;
-std::string name;
-bool eof;
-};
-#endif
+         SetSelection(stat);
+    }

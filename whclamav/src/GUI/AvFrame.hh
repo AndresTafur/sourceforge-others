@@ -14,61 +14,54 @@
     along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _ZIP_RESOURCE_
-#define _ZIP_RESOURCE_
+#include <wx/wx.h>
+#include <wx/aboutdlg.h>
+#include "rcids.h"
+#include "AvNotebook.h"
+#include <wx/taskbar.h>
 
-#include <zzip/lib.h>
-#include <zzip/file.h>
-#include <dirent.h>
-#include <iostream>
-
-#include "WhiteHawkSystem.hh"
+#ifndef _AVFRAME_H_
+#define _AVFRAME_H_
 
 
-int zzip_fstat(ZZIP_FILE* file, ZZIP_STAT* zs);
-
-class WhiteHawkSystem::ZipResource
+class AvFrame : public wxFrame
 {
 public:
 
-	ZipResource( std::string path);
 
-	ZipResource(ZZIP_FILE *file);
-
-
-	void setName(std::string name);
+    AvFrame(wxString path);
 
 
-	std::string getName();
+    void createMenu();
 
+    void createTrayIcon();
 
-	std::string getContent(int size=1);
+    void onTaskClick(wxTaskBarIconEvent &evt);
 
+    void onTaskLClick(wxTaskBarIconEvent &evt);
 
-	bool extract();
+    void onHome(wxCommandEvent &evt);
 
+    void onScan(wxCommandEvent &evt);
 
-    bool extract(std::string path);
+    void onQuit(wxCommandEvent &evt);
 
+    void onClose(wxCloseEvent &evt);
 
-	bool isOpen();
+    void onIconize(wxIconizeEvent &evt);
 
-	bool isEof();
-
-	zzip_off_t getOffset();
-
-	void setOffset(zzip_off_t offset, int pos = SEEK_SET);
-
-
-	void rewind();
-
-
-	void close();
+    void onAbout(wxCommandEvent &evt);
 
 
 protected:
-ZZIP_FILE *handler;
-std::string name;
-bool eof;
+wxBoxSizer  *m_sizer;
+wxPanel	    *m_current;
+AvNotebook  *m_note;
+StatusPanel *m_status;
+wxMenu      *m_trayMenu;
+wxTaskBarIcon *m_trayIcon;
+DECLARE_EVENT_TABLE()
+
 };
+
 #endif
