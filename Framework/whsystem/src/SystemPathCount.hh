@@ -1,3 +1,20 @@
+/*  This file is part of WhiteHawkClamav.
+
+    WhiteHawkClamav is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    WhiteHawkClamav is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
 #ifndef _SYSTEMPATH_COUNT_
 #define _SYSTEMPATH_COUNT_
 
@@ -110,7 +127,7 @@ public:
              *  Returns total amount of files including regular,folders,devices,and soft-links.
              *  @return total amount of files, including '.' and '..' (when comes from SystemPath).
              */
-            unsigned long long getTotal();
+            unsigned long long getTotalCount();
 
             void operator += (WhiteHawkSystem::FileInfo obj);
 
@@ -126,33 +143,33 @@ protected:
 /**
  * Total amount of files.
  */
-long long m_files;
+unsigned long long m_files;
 
 /**
  * Total amount of folders.
  */
-long long m_folders;
+unsigned long long m_folders;
 
 
 /**
  * Total amount of devices.
  */
-long long m_chardev;
+unsigned long long m_chardev;
 
 /**
  * Total amount of devices.
  */
-long long m_blkdev;
+unsigned long long m_blkdev;
 
 /**
  * Total amount of devices.
  */
-long long m_fifo;
+unsigned long long m_fifo;
 
 /**
  * Total amount of links.
  */
-long long m_link;
+unsigned long long m_link;
 
 };
 

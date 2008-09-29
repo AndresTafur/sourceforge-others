@@ -14,61 +14,39 @@
     along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _ZIP_RESOURCE_
-#define _ZIP_RESOURCE_
+#ifndef _SCANNER_
+#define _SCANNER_
 
-#include <zzip/lib.h>
-#include <zzip/file.h>
-#include <dirent.h>
-#include <iostream>
+#include "ClamLayer/WhiteHawkClamav.hh"
+#include "ClamLayer/ClamavEvtListener.hh"
+#include <wx/wx.h>
 
-#include "WhiteHawkSystem.hh"
-
-
-int zzip_fstat(ZZIP_FILE* file, ZZIP_STAT* zs);
-
-class WhiteHawkSystem::ZipResource
+class Scanner : public WhiteHawkClamav::ClamavEvtListener
 {
 public:
 
-	ZipResource( std::string path);
+        void setList(wxListCtrl *panel);
 
-	ZipResource(ZZIP_FILE *file);
+        void setFileCtrl(wxTextCtrl *file);
 
+        void setGauge(wxGauge *bar);
 
-	void setName(std::string name);
+    	void onVirus(WhiteHawkClamav::ClamFile &file);
 
+		void onScan(WhiteHawkClamav::ClamFile &fileName, int totalFiles);
 
-	std::string getName();
+        void setPath(wxString path);
 
-
-	std::string getContent(int size=1);
-
-
-	bool extract();
+		void onFinish();
 
 
-    bool extract(std::string path);
-
-
-	bool isOpen();
-
-	bool isEof();
-
-	zzip_off_t getOffset();
-
-	void setOffset(zzip_off_t offset, int pos = SEEK_SET);
-
-
-	void rewind();
-
-
-	void close();
-
+		void onError(WhiteHawkClamav::ClamFile &file,std::string errtype );
 
 protected:
-ZZIP_FILE *handler;
-std::string name;
-bool eof;
+wxTextCtrl *m_file;
+wxListCtrl *m_list;
+wxGauge *m_bar;
 };
+
+
 #endif

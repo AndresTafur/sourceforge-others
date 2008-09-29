@@ -14,61 +14,35 @@
     along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef _ZIP_RESOURCE_
-#define _ZIP_RESOURCE_
+#include <wx/aui/auibook.h>
 
-#include <zzip/lib.h>
-#include <zzip/file.h>
-#include <dirent.h>
-#include <iostream>
+#include "AvPanel.hh"
+#include "StatusPanel.hh"
 
-#include "WhiteHawkSystem.hh"
+#ifndef _AVNOTEBOOK_H_
+#define _AVNOTEBOOK_H_
 
 
-int zzip_fstat(ZZIP_FILE* file, ZZIP_STAT* zs);
 
-class WhiteHawkSystem::ZipResource
+class AvNotebook : public wxAuiNotebook
 {
 public:
+    AvNotebook(wxWindow *parent, wxAnimationCtrl *load,int id);
 
-	ZipResource( std::string path);
+    void loadDb();
 
-	ZipResource(ZZIP_FILE *file);
+    void insertStatus();
 
+    void insertScan();
 
-	void setName(std::string name);
-
-
-	std::string getName();
-
-
-	std::string getContent(int size=1);
-
-
-	bool extract();
-
-
-    bool extract(std::string path);
-
-
-	bool isOpen();
-
-	bool isEof();
-
-	zzip_off_t getOffset();
-
-	void setOffset(zzip_off_t offset, int pos = SEEK_SET);
-
-
-	void rewind();
-
-
-	void close();
 
 
 protected:
-ZZIP_FILE *handler;
-std::string name;
-bool eof;
+AvPanel	      *m_scan;
+StatusPanel   *m_status;
+wxAnimationCtrl *m_load;
 };
-#endif
+
+
+
+#endif // AVNOTEBOOK_H_INCLUDED
