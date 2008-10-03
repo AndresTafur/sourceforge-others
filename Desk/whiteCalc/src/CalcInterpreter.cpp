@@ -1,6 +1,32 @@
+#include "CalcInterpreter.h"
 
+CalcEngine::CalcEngine()
+{
 
+}
 
+wxString CalcEngine::Process(wxString formula)
+{
+    wxString result = wxT("");
+
+    mu::Parser parser;
+
+    double fVal;
+    parser.SetExpr(formula.c_str());
+    try
+    {
+      fVal = parser.Eval();
+      result = wxString::Format(wxT("%f"),fVal);
+    }
+    catch (Parser::exception_type &e)
+    {
+      result = wxT("Parser Error!!!");
+    }
+
+    return result;
+}
+
+/*
 class CalcInterpreter
 {
 public:
@@ -85,3 +111,4 @@ private:
 int type;
 double num, num2, res;
 };
+*/

@@ -25,10 +25,35 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="src/CalcFrame.cpp" />
+		<Unit filename="src/CalcFrame.h" />
 		<Unit filename="src/CalcInterpreter.cpp" />
+		<Unit filename="src/CalcInterpreter.h" />
+		<Unit filename="src/ParserLib/muParser.cpp" />
+		<Unit filename="src/ParserLib/muParser.h" />
+		<Unit filename="src/ParserLib/muParser.rc" />
+		<Unit filename="src/ParserLib/muParserBase.cpp" />
+		<Unit filename="src/ParserLib/muParserBase.h" />
+		<Unit filename="src/ParserLib/muParserBytecode.cpp" />
+		<Unit filename="src/ParserLib/muParserBytecode.h" />
+		<Unit filename="src/ParserLib/muParserCallback.cpp" />
+		<Unit filename="src/ParserLib/muParserCallback.h" />
+		<Unit filename="src/ParserLib/muParserDef.h" />
+		<Unit filename="src/ParserLib/muParserError.cpp" />
+		<Unit filename="src/ParserLib/muParserError.h" />
+		<Unit filename="src/ParserLib/muParserFixes.h" />
+		<Unit filename="src/ParserLib/muParserInt.cpp" />
+		<Unit filename="src/ParserLib/muParserInt.h" />
+		<Unit filename="src/ParserLib/muParserStack.h" />
+		<Unit filename="src/ParserLib/muParserTest.cpp" />
+		<Unit filename="src/ParserLib/muParserTest.h" />
+		<Unit filename="src/ParserLib/muParserToken.h" />
+		<Unit filename="src/ParserLib/muParserTokenReader.cpp" />
+		<Unit filename="src/ParserLib/muParserTokenReader.h" />
+		<Unit filename="src/ParserLib/resource.h" />
 		<Unit filename="src/WhiteCalc.cpp" />
 		<Extensions>
 			<code_completion />
+			<debugger />
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>
