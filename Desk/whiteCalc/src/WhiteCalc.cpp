@@ -4,18 +4,15 @@
 
 class WhiteCalc: public wxApp
 {
+    bool OnInit()
+    {
+        ::wxInitAllImageHandlers();
+        CalcFrame *frame = new CalcFrame( );
 
-        bool OnInit()
-        {
-            ::wxInitAllImageHandlers();
-            CalcFrame *frame = new CalcFrame( );
-
-                    frame->Show(true);
-                    this->SetTopWindow(frame);
-           return TRUE;
-        }
-
-
+        frame->Show(true);
+        this->SetTopWindow(frame);
+        return TRUE;
+    }
 };
 
 
