@@ -21,16 +21,13 @@
 
 	StatusPanel::StatusPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL)
 	{
-      wxBoxSizer *summary = new wxBoxSizer(wxVERTICAL);
-
-
-	  wxBoxSizer  *sizer = new wxBoxSizer(wxVERTICAL);
-	  wxGridSizer *grid  = new wxGridSizer(2,2);
-      wxTextCtrl  *age   = new wxTextCtrl(this,wxID_ANY);
-      wxTextCtrl  *quar  = new wxTextCtrl(this,wxID_ANY);
-
-
-      wxString str, str2;
+      	wxBoxSizer *summary = new wxBoxSizer(wxVERTICAL);
+	wxBoxSizer  *sizer = new wxBoxSizer(wxVERTICAL);
+	wxGridSizer *grid  = new wxGridSizer(2,2);
+      	wxTextCtrl  *age   = new wxTextCtrl(this,wxID_ANY);
+	wxTextCtrl  *quar  = new wxTextCtrl(this,wxID_ANY);
+	wxTextCtrl  *lastscan  = new wxTextCtrl(this,wxID_ANY);
+	wxString str, str2;
 
 
         str   << WhiteHawkClamav::ClamavInstance::getInstance()->getDatabaseAge() << wxT(" days");
@@ -41,11 +38,14 @@
 
         age->Disable();
         quar->Disable();
+	lastscan->Disable();
 
 		grid->Add( new wxStaticText(this,wxID_ANY,wxT("Database age:")));
 		grid->Add( age);
 		grid->Add( new wxStaticText(this,wxID_ANY,wxT("Quarentine:")));
 		grid->Add( quar);
+		grid->Add( new wxStaticText(this,wxID_ANY,wxT("Last scan:")));
+		grid->Add( lastscan);
 
         summary->AddSpacer(40);
         summary->Add(grid,1,wxEXPAND);
