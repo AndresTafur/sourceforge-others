@@ -43,6 +43,7 @@ public:
 
     ~Thread();
 
+
 private:
 pthread_t        m_handler;
 pthread_attr_t   m_attr;
