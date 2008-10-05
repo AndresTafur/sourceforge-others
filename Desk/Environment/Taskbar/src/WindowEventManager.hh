@@ -13,7 +13,7 @@ public:
 
         WindowEventManager(SystemUtils *sysUtils, TaskBar *bar);
 
-        void ThreadRoutine();
+        void run();
 
         void onTerminate();
 

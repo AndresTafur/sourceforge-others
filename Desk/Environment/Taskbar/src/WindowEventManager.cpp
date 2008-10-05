@@ -13,7 +13,7 @@
     }
 
 
-    void WindowEventManager::ThreadRoutine()
+    void WindowEventManager::run()
     {
        XEvent evt;
 

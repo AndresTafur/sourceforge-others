@@ -6,17 +6,16 @@
 		this->txt = txt;
 
 	  	txt->SetLabel( getTime() );
-
 	}
 
-	void TaskTime::ThreadRoutine()
+	void TaskTime::run()
 	{
 		while(true)
 		{
             wxMutexGuiEnter();
 		  	txt->SetLabel(getTime() );
 		  	wxMutexGuiLeave();
-			this->T_Sleep(600);
+			this->sleep(600);
 		}
 	}
 
@@ -60,7 +59,7 @@
     Clock::Clock(wxWindow *parent, wxWindowID id) : wxButton(parent,id,wxT("00:00"),wxDefaultPosition, wxSize(50,25),wxBU_EXACTFIT|wxNO_BORDER, wxDefaultValidator,wxT(""))
 	{
 		time = new TaskTime(this);
-		time->Create();
+		time->startThread();
 
 		this->SetToolTip(  time->getDate()  );
 		this->Fit();
