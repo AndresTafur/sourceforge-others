@@ -13,7 +13,7 @@ public:
 
 	TaskTime(wxButton *txt);
 
-	void ThreadRoutine();
+	void run();
 	void onTerminate();
 
 	wxString getTime();

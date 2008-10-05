@@ -29,7 +29,7 @@ bool WhiteHawkBar::OnInit()
         taskbar->setAsTaskbar();
 
         evtmgr = new WindowEventManager(sysUtils,taskbar);
-        evtmgr->Create();
+        evtmgr->startThread();
         return TRUE;
 }
 
