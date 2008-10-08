@@ -10,11 +10,17 @@
 
 using namespace mu;
 
+enum base { Decimal = 0, Bin, Hex };
+
 class CalcEngine
 {
+private:
+    base _base;
+
 public:
     CalcEngine();
 
+    wxString NumberToText(double d,int decimal_places);
     wxString Process(wxString formula);
 };
 

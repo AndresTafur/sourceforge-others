@@ -37,7 +37,7 @@ CalcFrame::CalcFrame() : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculator"), wxDe
     help->Append(wxID_ABOUT,wxT("A&cerca de"), wxT("Acerca de este programa"));
 
     display = new wxTextCtrl(this, -1, wxT(""), wxPoint(-1, -1),
-    wxSize(-1, -1), wxTE_RIGHT);
+    wxSize(-1, -1), wxTE_RIGHT+wxTE_READONLY);
 
     sizer->Add(display, 0, wxEXPAND | wxTOP | wxBOTTOM, 4);
 
@@ -59,7 +59,8 @@ CalcFrame::CalcFrame() : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculator"), wxDe
     grid->Add(new wxButton(this, ID_SUS, wxT("-")), 0, wxEXPAND);
     grid->Add(new wxButton(this, ID_0, wxT("0")), 0, wxEXPAND);
     grid->Add(new wxButton(this, ID_DOT, wxT(".")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_EQU, wxT("=")), 0, wxEXPAND);
+    btn_calc= new wxButton(this, ID_EQU, wxT("="));
+    grid->Add(btn_calc, 0, wxEXPAND);
     grid->Add(new wxButton(this, ID_ADD, wxT("+")), 0, wxEXPAND);
 
     this->SetMenuBar(bar);
@@ -69,6 +70,83 @@ CalcFrame::CalcFrame() : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculator"), wxDe
     this->SetSizer(sizer);
     this->SetMinSize(wxSize(150, 150));
     this->Centre();
+    Clear();
+    btn_calc->SetFocus();
+}
+
+void CalcFrame::KeyPressed(wxKeyEvent &event)
+{
+    char key = event.GetUnicodeKey();
+    if(display->GetValue().Cmp(wxT("0")) == 0)
+        display->SetValue(wxT(""));
+
+    wxString str = wxString::FromAscii(key);
+    switch(key)
+    {
+        case WXK_NUMPAD0:
+            str = wxT("0");
+            break;
+        case WXK_NUMPAD1:
+            str = wxT("1");
+            break;
+        case WXK_NUMPAD2:
+            str = wxT("2");
+            break;
+        case WXK_NUMPAD3:
+            str = wxT("3");
+            break;
+        case WXK_NUMPAD4:
+            str = wxT("4");
+            break;
+        case WXK_NUMPAD5:
+            str = wxT("5");
+            break;
+        case WXK_NUMPAD6:
+            str = wxT("6");
+            break;
+        case WXK_NUMPAD7:
+            str = wxT("7");
+            break;
+        case WXK_NUMPAD8:
+            str = wxT("8");
+            break;
+        case WXK_NUMPAD9:
+            str = wxT("9");
+            break;
+        case WXK_NUMPAD_ADD:
+            str = wxT("+");
+            break;
+        case WXK_NUMPAD_SUBTRACT:
+            str = wxT("-");
+            break;
+        case WXK_NUMPAD_DIVIDE:
+            str = wxT("/");
+            break;
+        case WXK_NUMPAD_MULTIPLY:
+            str = wxT("*");
+            break;
+        case WXK_NUMPAD_DECIMAL:
+            str = wxT(".");
+            break;
+        case WXK_ESCAPE:
+            str = wxT("");
+            Clear();
+            break;
+        case WXK_RETURN:
+        case WXK_NUMPAD_ENTER:
+            str = wxT("");
+            ProcessResult();
+            break;
+        case WXK_BACK:
+            str = wxT("");
+            Back();
+            break;
+        default:
+            str = wxT("");
+            break;
+    }
+    display->AppendText(str);
+    btn_calc->SetFocus();
 }
 
 void CalcFrame::onNumberAdded(wxCommandEvent &e)
@@ -81,6 +159,25 @@ void CalcFrame::onNumberAdded(wxCommandEvent &e)
 }
 
 void CalcFrame::GetResult(wxCommandEvent &e)
+{
+    ProcessResult();
+}
+
+void CalcFrame::Clear()
+{
+    display->SetValue(wxT("0"));
+}
+
+void CalcFrame::Back()
+{
+    display->SetValue(display->GetValue().RemoveLast());
+    if(display->GetValue()==wxT(""))
+    {
+        display->SetValue(wxT("0"));
+    }
+}
+
+void CalcFrame::ProcessResult()
 {
     wxString result = display->GetValue();
     CalcEngine *ce = new CalcEngine();
