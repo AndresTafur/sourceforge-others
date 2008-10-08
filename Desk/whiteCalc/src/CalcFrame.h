@@ -16,13 +16,19 @@ public:
     CalcFrame();
 
     void onNumberAdded(wxCommandEvent &e);
+    void KeyPressed(wxKeyEvent &event);
     void GetResult(wxCommandEvent &e);
+
+    void ProcessResult();
+    void Clear();
+    void Back();
 
     void Quit(wxCommandEvent &evt);
     void About(wxCommandEvent &evt);
 
 private:
     wxTextCtrl  *display;
+    wxButton *btn_calc;
     DECLARE_EVENT_TABLE();
 };
 
@@ -50,6 +56,8 @@ EVT_BUTTON(ID_DIV,CalcFrame::onNumberAdded)
 EVT_BUTTON(ID_MULT,CalcFrame::onNumberAdded)
 
 EVT_BUTTON(ID_EQU,CalcFrame::GetResult)
+
+EVT_KEY_UP(CalcFrame::KeyPressed)
 
 END_EVENT_TABLE()
 

@@ -1,26 +1,26 @@
 /*
-                 __________                                      
-    _____   __ __\______   \_____  _______  ______  ____ _______ 
+                 __________
+    _____   __ __\______   \_____  _______  ______  ____ _______
    /     \ |  |  \|     ___/\__  \ \_  __ \/  ___/_/ __ \\_  __ \
   |  Y Y  \|  |  /|    |     / __ \_|  | \/\___ \ \  ___/ |  | \/
-  |__|_|  /|____/ |____|    (____  /|__|  /____  > \___  >|__|   
-        \/                       \/            \/      \/        
+  |__|_|  /|____/ |____|    (____  /|__|  /____  > \___  >|__|
+        \/                       \/            \/      \/
   Copyright (C) 2004-2006 Ingo Berg
 
-  Permission is hereby granted, free of charge, to any person obtaining a copy of this 
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this
   software and associated documentation files (the "Software"), to deal in the Software
-  without restriction, including without limitation the rights to use, copy, modify, 
-  merge, publish, distribute, sublicense, and/or sell copies of the Software, and to 
+  without restriction, including without limitation the rights to use, copy, modify,
+  merge, publish, distribute, sublicense, and/or sell copies of the Software, and to
   permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-  The above copyright notice and this permission notice shall be included in all copies or 
+  The above copyright notice and this permission notice shall be included in all copies or
   substantial portions of the Software.
 
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
-  NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND 
-  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
-  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
-  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+  NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+  NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+  DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 */
 #include "muParser.h"
 
@@ -81,8 +81,8 @@ namespace mu
   // Functions with variable number of arguments
   // sum
   value_type Parser::Sum(const value_type *a_afArg, int a_iArgc)
-  { 
-    if (!a_iArgc)	
+  {
+    if (!a_iArgc)
       throw exception_type(_T("too few arguments for function sum."));
 
     value_type fRes=0;
@@ -93,8 +93,8 @@ namespace mu
   //---------------------------------------------------------------------------
   // mean value
   value_type Parser::Avg(const value_type *a_afArg, int a_iArgc)
-  { 
-    if (!a_iArgc)	
+  {
+    if (!a_iArgc)
       throw exception_type(_T("too few arguments for function sum."));
 
     value_type fRes=0;
@@ -106,8 +106,8 @@ namespace mu
   //---------------------------------------------------------------------------
   // minimum
   value_type Parser::Min(const value_type *a_afArg, int a_iArgc)
-  { 
-      if (!a_iArgc)	
+  {
+      if (!a_iArgc)
           throw exception_type(_T("too few arguments for function min."));
 
       value_type fRes=a_afArg[0];
@@ -120,8 +120,8 @@ namespace mu
   //---------------------------------------------------------------------------
   // maximum
   value_type Parser::Max(const value_type *a_afArg, int a_iArgc)
-  { 
-      if (!a_iArgc)	
+  {
+      if (!a_iArgc)
           throw exception_type(_T("too few arguments for function min."));
 
       value_type fRes=a_afArg[0];
@@ -160,9 +160,55 @@ namespace mu
     return 1;
   }
 
+    int Parser::IsHexVal(const char_type *a_szExpr, int *a_iPos, value_type *a_fVal)
+    {
+      /*if (a_szExpr[0]!='$')
+        return 0;*/
+
+      unsigned iVal(0);
+
+    // New code based on streams for UNICODE compliance:
+      stringstream_type::pos_type nPos(0);
+      stringstream_type ss(a_szExpr);
+      ss >> std::hex >> iVal;
+      nPos = ss.tellg();
+
+      if (nPos==(stringstream_type::pos_type)0)
+        return 1;
+
+      *a_iPos += nPos;
+      *a_fVal = iVal;
+      return true;
+    }
+
+    //---------------------------------------------------------------------------
+    int Parser::IsBinVal(const char_type *a_szExpr, int *a_iPos, value_type *a_fVal)
+    {
+      if (a_szExpr[0]!='#')
+        return 0;
+
+      unsigned iVal(0),
+               iBits(sizeof(iVal)*8),
+               i(0);
+
+      for (i=0; (a_szExpr[i+1]=='0' || a_szExpr[i+1]=='1') && i<iBits; ++i)
+        iVal |= (int)(a_szExpr[i+1]=='1') << ((iBits-1)-i);
+
+      if (i==0)
+        return 0;
+
+      if (i==iBits)
+        throw exception_type(_T("Binary to integer conversion error (overflow)."));
+
+      *a_fVal = (unsigned)(iVal >> (iBits-i) );
+      *a_iPos += i+1;
+
+      return 1;
+    }
+
 
   //---------------------------------------------------------------------------
-  /** \brief Constructor. 
+  /** \brief Constructor.
 
     Call ParserBase class constructor and trigger Function, Operator and Constant initialization.
   */
@@ -170,8 +216,6 @@ namespace mu
     :ParserBase()
     ,m_fEpsilon((value_type)1e-7)
   {
-    AddValIdent(IsVal);
-
     InitCharSets();
     InitFun();
     InitConst();
