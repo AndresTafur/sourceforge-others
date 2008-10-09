@@ -1,19 +1,23 @@
 #include "CalcFrame.h"
 
+CalcFrame::~CalcFrame()
+{
+    /*delete(display);
+    delete(btn_calc);
+    delete(grid);
+    delete(sizer);*/
+}
 
-CalcFrame::CalcFrame() : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculator"), wxDefaultPosition, wxDefaultSize,  wxCAPTION | wxMINIMIZE_BOX | wxCLOSE_BOX | wxRESIZE_BORDER , wxT("WhiteCalc"))
+CalcFrame::CalcFrame(modes tipo) : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculator"), wxDefaultPosition, wxDefaultSize,  wxCAPTION | wxMINIMIZE_BOX | wxCLOSE_BOX | wxRESIZE_BORDER , wxT("WhiteCalc"))
 {
     wxMenuBar   *bar    = new wxMenuBar;
 
     wxMenu      *calc   = new wxMenu;
-        wxMenu      *edit   = new wxMenu;
-        wxMenu      *view   = new wxMenu;
-        wxMenu      *help   = new wxMenu;
+    wxMenu      *edit   = new wxMenu;
+    wxMenu      *view   = new wxMenu;
+    wxMenu      *help   = new wxMenu;
 
-        wxBoxSizer  *sizer  = new wxBoxSizer(wxVERTICAL);
-        wxGridSizer *grid   = new wxGridSizer(5,4,5,5);
-
-
+    sizer  = new wxBoxSizer(wxVERTICAL);
 
     bar->Append(calc, wxT("&Calculadora"));
         bar->Append(edit, wxT("&Editar"));
@@ -41,27 +45,67 @@ CalcFrame::CalcFrame() : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculator"), wxDe
 
     sizer->Add(display, 0, wxEXPAND | wxTOP | wxBOTTOM, 4);
 
-    grid->Add(new wxButton(this, ID_CLS, wxT("Cls")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_BCK, wxT("Bck")), 0, wxEXPAND);
-    grid->Add(new wxStaticText(this, -1, wxT("")), 0, wxEXPAND);
-    grid->Add(new wxStaticText(this, -1, wxT("")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_7, wxT("7")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_8, wxT("8")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_9, wxT("9")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_DIV, wxT("/")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_4, wxT("4")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_5, wxT("5")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_6, wxT("6")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_MULT, wxT("*")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_1, wxT("1")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_2, wxT("2")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_3, wxT("3")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_SUS, wxT("-")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_0, wxT("0")), 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_DOT, wxT(".")), 0, wxEXPAND);
-    btn_calc= new wxButton(this, ID_EQU, wxT("="));
-    grid->Add(btn_calc, 0, wxEXPAND);
-    grid->Add(new wxButton(this, ID_ADD, wxT("+")), 0, wxEXPAND);
+    _tipo=tipo;
+    switch(_tipo)
+    {
+        case BASIC:
+            grid = new wxGridSizer(5,4,5,5);
+            grid->Add(new wxButton(this, ID_CLS, wxT("Cls")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_BCK, wxT("Bck")), 0, wxEXPAND);
+            grid->Add(new wxStaticText(this, -1, wxT("")), 0, wxEXPAND);
+            grid->Add(new wxStaticText(this, -1, wxT("")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_7, wxT("7")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_8, wxT("8")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_9, wxT("9")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_DIV, wxT("/")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_4, wxT("4")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_5, wxT("5")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_6, wxT("6")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_MULT, wxT("*")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_1, wxT("1")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_2, wxT("2")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_3, wxT("3")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_SUS, wxT("-")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_0, wxT("0")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_DOT, wxT(".")), 0, wxEXPAND);
+            btn_calc= new wxButton(this, ID_EQU, wxT("="));
+            grid->Add(btn_calc, 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_ADD, wxT("+")), 0, wxEXPAND);
+            break;
+        case ADVANCED:
+            grid = new wxGridSizer(5,4,5,5);
+            grid->Add(new wxButton(this, ID_CLS, wxT("Cls")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_BCK, wxT("Bck")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_PO, wxT("(")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_PC, wxT(")")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_7, wxT("7")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_8, wxT("8")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_9, wxT("9")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_DIV, wxT("/")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_4, wxT("4")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_5, wxT("5")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_6, wxT("6")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_MULT, wxT("*")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_1, wxT("1")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_2, wxT("2")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_3, wxT("3")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_SUS, wxT("-")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_0, wxT("0")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_DOT, wxT(".")), 0, wxEXPAND);
+            btn_calc= new wxButton(this, ID_EQU, wxT("="));
+            grid->Add(btn_calc, 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_ADD, wxT("+")), 0, wxEXPAND);
+            break;
+    }
+
 
     this->SetMenuBar(bar);
     this->CreateStatusBar();
@@ -74,6 +118,20 @@ CalcFrame::CalcFrame() : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculator"), wxDe
     btn_calc->SetFocus();
 }
 
+void CalcFrame::CreateBasicCalculator()
+{
+    CalcFrame* frame = new CalcFrame(BASIC);
+    frame->Show();
+    this->Destroy();
+}
+
+void CalcFrame::CreateAdvancedCalculator()
+{
+    CalcFrame* frame = new CalcFrame(ADVANCED);
+    frame->Show();
+    this->Destroy();
+}
+
 void CalcFrame::KeyPressed(wxKeyEvent &event)
 {
     char key = event.GetUnicodeKey();
@@ -81,70 +139,149 @@ void CalcFrame::KeyPressed(wxKeyEvent &event)
         display->SetValue(wxT(""));
 
     wxString str = wxString::FromAscii(key);
-    switch(key)
+    switch(_tipo)
     {
-        case WXK_NUMPAD0:
-            str = wxT("0");
+        case BASIC:
+            switch(key)
+            {
+                case WXK_NUMPAD0:
+                    str = wxT("0");
+                    break;
+                case WXK_NUMPAD1:
+                    str = wxT("1");
+                    break;
+                case WXK_NUMPAD2:
+                    str = wxT("2");
+                    break;
+                case WXK_NUMPAD3:
+                    str = wxT("3");
+                    break;
+                case WXK_NUMPAD4:
+                    str = wxT("4");
+                    break;
+                case WXK_NUMPAD5:
+                    str = wxT("5");
+                    break;
+                case WXK_NUMPAD6:
+                    str = wxT("6");
+                    break;
+                case WXK_NUMPAD7:
+                    str = wxT("7");
+                    break;
+                case WXK_NUMPAD8:
+                    str = wxT("8");
+                    break;
+                case WXK_NUMPAD9:
+                    str = wxT("9");
+                    break;
+                case WXK_NUMPAD_ADD:
+                    str = wxT("+");
+                    break;
+                case WXK_NUMPAD_SUBTRACT:
+                    str = wxT("-");
+                    break;
+                case WXK_NUMPAD_DIVIDE:
+                    str = wxT("/");
+                    break;
+                case WXK_NUMPAD_MULTIPLY:
+                    str = wxT("*");
+                    break;
+                case WXK_NUMPAD_DECIMAL:
+                    str = wxT(".");
+                    break;
+                case WXK_ESCAPE:
+                    str = wxT("");
+                    Clear();
+                    break;
+                case WXK_RETURN:
+                case WXK_NUMPAD_ENTER:
+                    str = wxT("");
+                    ProcessResult();
+                    break;
+                case WXK_BACK:
+                    str = wxT("");
+                    Back();
+                    break;
+                default:
+                    str = wxT("");
+                    break;
+            }
             break;
-        case WXK_NUMPAD1:
-            str = wxT("1");
-            break;
-        case WXK_NUMPAD2:
-            str = wxT("2");
-            break;
-        case WXK_NUMPAD3:
-            str = wxT("3");
-            break;
-        case WXK_NUMPAD4:
-            str = wxT("4");
-            break;
-        case WXK_NUMPAD5:
-            str = wxT("5");
-            break;
-        case WXK_NUMPAD6:
-            str = wxT("6");
-            break;
-        case WXK_NUMPAD7:
-            str = wxT("7");
-            break;
-        case WXK_NUMPAD8:
-            str = wxT("8");
-            break;
-        case WXK_NUMPAD9:
-            str = wxT("9");
-            break;
-        case WXK_NUMPAD_ADD:
-            str = wxT("+");
-            break;
-        case WXK_NUMPAD_SUBTRACT:
-            str = wxT("-");
-            break;
-        case WXK_NUMPAD_DIVIDE:
-            str = wxT("/");
-            break;
-        case WXK_NUMPAD_MULTIPLY:
-            str = wxT("*");
-            break;
-        case WXK_NUMPAD_DECIMAL:
-            str = wxT(".");
-            break;
-        case WXK_ESCAPE:
-            str = wxT("");
-            Clear();
-            break;
-        case WXK_RETURN:
-        case WXK_NUMPAD_ENTER:
-            str = wxT("");
-            ProcessResult();
-            break;
-        case WXK_BACK:
-            str = wxT("");
-            Back();
-            break;
-        default:
-            str = wxT("");
+        case ADVANCED:
+            switch(key)
+            {
+                case WXK_NUMPAD0:
+                    str = wxT("0");
+                    break;
+                case WXK_NUMPAD1:
+                    str = wxT("1");
+                    break;
+                case WXK_NUMPAD2:
+                    str = wxT("2");
+                    break;
+                case WXK_NUMPAD3:
+                    str = wxT("3");
+                    break;
+                case WXK_NUMPAD4:
+                    str = wxT("4");
+                    break;
+                case WXK_NUMPAD5:
+                    str = wxT("5");
+                    break;
+                case WXK_NUMPAD6:
+                    str = wxT("6");
+                    break;
+                case WXK_NUMPAD7:
+                    str = wxT("7");
+                    break;
+                case WXK_NUMPAD8:
+                    str = wxT("8");
+                    break;
+                case WXK_NUMPAD9:
+                    str = wxT("9");
+                    break;
+                case WXK_NUMPAD_ADD:
+                    str = wxT("+");
+                    break;
+                case WXK_NUMPAD_SUBTRACT:
+                    str = wxT("-");
+                    break;
+                case WXK_NUMPAD_DIVIDE:
+                    str = wxT("/");
+                    break;
+                case WXK_NUMPAD_MULTIPLY:
+                    str = wxT("*");
+                    break;
+                case WXK_NUMPAD_DECIMAL:
+                    str = wxT(".");
+                    break;
+                case 40:
+                    str = wxT("(");
+                    break;
+                case 41:
+                    str = wxT(")");
+                    break;
+                case WXK_ESCAPE:
+                    str = wxT("");
+                    Clear();
+                    break;
+                case WXK_RETURN:
+                case WXK_NUMPAD_ENTER:
+                    str = wxT("");
+                    ProcessResult();
+                    break;
+                case WXK_BACK:
+                    str = wxT("");
+                    Back();
+                    break;
+                default:
+                    str = wxT("");
+                    break;
+            }
             break;
     }
+
+    display->AppendText(str);
     display->AppendText(str);
     btn_calc->SetFocus();
 }
@@ -175,6 +312,7 @@ void CalcFrame::Back()
     {
         display->SetValue(wxT("0"));
     }
+    CreateAdvancedCalculator();
 }
 
 void CalcFrame::ProcessResult()
