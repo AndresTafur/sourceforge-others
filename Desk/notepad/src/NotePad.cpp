@@ -1,5 +1,5 @@
 #include <wx/wx.h>
-
+#include "wx/fontdlg.h"
 #include "NotePadFrame.cpp"
 
 class WhiteCalc: public wxApp
