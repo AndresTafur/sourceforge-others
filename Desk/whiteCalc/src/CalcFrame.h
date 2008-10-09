@@ -7,18 +7,27 @@ enum buttons {
     ID_9,
     ID_DOT  , ID_EQU,
     ID_ADD  , ID_SUS, ID_MULT, ID_DIV,
-    ID_CLS  , ID_BCK
+    ID_CLS  , ID_BCK,
+    ID_PO   , ID_PC,
+};
+
+enum modes {
+    BASIC = 0,
+    ADVANCED = 1
 };
 
 class CalcFrame : public wxFrame
 {
 public:
-    CalcFrame();
+    CalcFrame(modes type);
+    ~CalcFrame();
 
     void onNumberAdded(wxCommandEvent &e);
     void KeyPressed(wxKeyEvent &event);
     void GetResult(wxCommandEvent &e);
 
+    void CreateBasicCalculator();
+    void CreateAdvancedCalculator();
     void ProcessResult();
     void Clear();
     void Back();
@@ -29,6 +38,9 @@ public:
 private:
     wxTextCtrl  *display;
     wxButton *btn_calc;
+    wxGridSizer *grid;
+    wxBoxSizer  *sizer;
+    modes   _tipo;
     DECLARE_EVENT_TABLE();
 };
 
@@ -54,6 +66,9 @@ EVT_BUTTON(ID_ADD,CalcFrame::onNumberAdded)
 EVT_BUTTON(ID_SUS,CalcFrame::onNumberAdded)
 EVT_BUTTON(ID_DIV,CalcFrame::onNumberAdded)
 EVT_BUTTON(ID_MULT,CalcFrame::onNumberAdded)
+
+EVT_BUTTON(ID_PO,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_PC,CalcFrame::onNumberAdded)
 
 EVT_BUTTON(ID_EQU,CalcFrame::GetResult)
 
