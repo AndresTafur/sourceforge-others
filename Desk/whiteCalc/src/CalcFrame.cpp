@@ -50,7 +50,7 @@ CalcFrame::CalcFrame(modes tipo) : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculat
     {
         case BASIC:
             grid = new wxGridSizer(5,4,5,5);
-            grid->Add(new wxButton(this, ID_CLS, wxT("Cls")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_CLS, wxT("&Cls")), 0, wxEXPAND);
             grid->Add(new wxButton(this, ID_BCK, wxT("Bck")), 0, wxEXPAND);
             grid->Add(new wxStaticText(this, -1, wxT("")), 0, wxEXPAND);
             grid->Add(new wxStaticText(this, -1, wxT("")), 0, wxEXPAND);
@@ -134,7 +134,8 @@ void CalcFrame::CreateAdvancedCalculator()
 
 void CalcFrame::KeyPressed(wxKeyEvent &event)
 {
-    char key = event.GetUnicodeKey();
+    char key=event.GetRawKeyCode();
+
     if(display->GetValue().Cmp(wxT("0")) == 0)
         display->SetValue(wxT(""));
 
@@ -144,33 +145,43 @@ void CalcFrame::KeyPressed(wxKeyEvent &event)
         case BASIC:
             switch(key)
             {
+                case 48:
                 case WXK_NUMPAD0:
                     str = wxT("0");
                     break;
+                case 49:
                 case WXK_NUMPAD1:
                     str = wxT("1");
                     break;
+                case 50:
                 case WXK_NUMPAD2:
                     str = wxT("2");
                     break;
+                case 51:
                 case WXK_NUMPAD3:
                     str = wxT("3");
                     break;
+                case 52:
                 case WXK_NUMPAD4:
                     str = wxT("4");
                     break;
+                case 53:
                 case WXK_NUMPAD5:
                     str = wxT("5");
                     break;
+                case 54:
                 case WXK_NUMPAD6:
                     str = wxT("6");
                     break;
+                case 55:
                 case WXK_NUMPAD7:
                     str = wxT("7");
                     break;
+                case 56:
                 case WXK_NUMPAD8:
                     str = wxT("8");
                     break;
+                case 57:
                 case WXK_NUMPAD9:
                     str = wxT("9");
                     break;
@@ -210,33 +221,43 @@ void CalcFrame::KeyPressed(wxKeyEvent &event)
         case ADVANCED:
             switch(key)
             {
+                case 48:
                 case WXK_NUMPAD0:
                     str = wxT("0");
                     break;
+                case 49:
                 case WXK_NUMPAD1:
                     str = wxT("1");
                     break;
+                case 50:
                 case WXK_NUMPAD2:
                     str = wxT("2");
                     break;
+                case 51:
                 case WXK_NUMPAD3:
                     str = wxT("3");
                     break;
+                case 52:
                 case WXK_NUMPAD4:
                     str = wxT("4");
                     break;
+                case 53:
                 case WXK_NUMPAD5:
                     str = wxT("5");
                     break;
+                case 54:
                 case WXK_NUMPAD6:
                     str = wxT("6");
                     break;
+                case 55:
                 case WXK_NUMPAD7:
                     str = wxT("7");
                     break;
+                case 56:
                 case WXK_NUMPAD8:
                     str = wxT("8");
                     break;
+                case 57:
                 case WXK_NUMPAD9:
                     str = wxT("9");
                     break;
@@ -281,7 +302,6 @@ void CalcFrame::KeyPressed(wxKeyEvent &event)
             break;
     }
 
-    display->AppendText(str);
     display->AppendText(str);
     btn_calc->SetFocus();
 }
