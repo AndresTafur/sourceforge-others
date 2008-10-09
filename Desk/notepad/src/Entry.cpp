@@ -4,11 +4,14 @@ class Entry : public  wxTextCtrl
 {
 public:
 
-	Entry(wxWindow* parent,wxStatusBar *statbar, int id ): wxTextCtrl(parent,id,wxT(""),wxDefaultPosition, 
+	Entry(wxWindow* parent,wxStatusBar *StatBar, int id ): wxTextCtrl(parent,id,wxT(""),wxDefaultPosition, 
 				    wxDefaultSize,wxTE_MULTILINE|wxTE_DONTWRAP,wxDefaultValidator,_T("entry"))
 	{
-		this->statbar = statbar;
-
+		statbar = StatBar;
+		wxTextAttr TextAttr;
+		TextAttr = GetDefaultStyle();
+		FontData.SetColour(TextAttr.GetTextColour());
+		FontData.SetChosenFont(TextAttr.GetFont());
 	}
 
 	void Count()
@@ -24,17 +27,17 @@ public:
 
 
 
-	bool readFile(wxString fileName)
+	bool readFile(wxString FileName)
 	{
 
 	  wxString buff;
 
-	    if( fileName.IsEmpty() )
+	    if( FileName.IsEmpty() )
 		return false;
 
-   	    if( this->LoadFile(fileName) )
+   	    if( LoadFile(FileName) )
 	    {
-		    this->fileName = fileName;
+		    fileName = FileName;
 		    return true;
 	    }
 
@@ -43,30 +46,27 @@ public:
 
 	bool writeFile()
 	{
-		return writeFile(this->fileName);
+		return writeFile(fileName);
 	}
 
-	bool writeFile(wxString fileName)
+	bool writeFile(wxString FileName)
 	{
-	  FILE *fl;	
-
-	    if( fileName.IsEmpty() )
+	    if( FileName.IsEmpty() )
 		return false;
 	
- 	    if(	this->SaveFile(fileName) )
+ 	    if(	SaveFile(FileName) )
 	    {	
-	        this->fileName = fileName;
+	        fileName = FileName;
        	        return true;
 	    }	
 
 	  return false;
 	}
 
-
 	
 	void SelectAll()
 	{
-	    this->SetSelection(0, this->GetLastPosition());
+	    SetSelection(0, this->GetLastPosition());
 	}
 
 	wxString getFileName()
@@ -80,16 +80,31 @@ public:
 		return relName;
 	}
 
-
-	void setFileName(wxString fileName)
+	wxFontData getFontData()
 	{
-		this->fileName = fileName;	
-		this->relName  = fileName.AfterLast('/');
+		return FontData;
+	}
+	
+	void setFontData(wxFontData fontData)
+	{
+		FontData = fontData;
+		wxTextAttr TextAttr;
+		TextAttr.SetTextColour(FontData.GetColour());
+		TextAttr.SetFont(FontData.GetChosenFont());
+		SetStyle(0,GetValue().Len(),TextAttr);
+		SetDefaultStyle(TextAttr);
+	}
+
+	void setFileName(wxString FileName)
+	{
+		fileName = FileName;	
+		relName  = FileName.AfterLast('/');
 	}
 
 private:
 wxString fileName;
 wxString relName;
 wxStatusBar *statbar;
+wxFontData FontData;
 };
 
