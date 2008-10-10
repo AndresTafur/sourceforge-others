@@ -21,39 +21,71 @@
 
 	StatusPanel::StatusPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL)
 	{
-      	wxBoxSizer *summary = new wxBoxSizer(wxVERTICAL);
-	wxBoxSizer  *sizer = new wxBoxSizer(wxVERTICAL);
-	wxGridSizer *grid  = new wxGridSizer(2,2);
-      	wxTextCtrl  *age   = new wxTextCtrl(this,wxID_ANY);
-	wxTextCtrl  *quar  = new wxTextCtrl(this,wxID_ANY);
-	wxTextCtrl  *lastscan  = new wxTextCtrl(this,wxID_ANY);
-	wxString str, str2;
+      wxBoxSizer  *summary   = new wxStaticBoxSizer(wxVERTICAL,this,wxT("Summary"));
+      wxBoxSizer  *versions  = new wxStaticBoxSizer(wxVERTICAL,this,wxT("Versions"));
+	  wxBoxSizer  *sizer     = new wxBoxSizer(wxVERTICAL);
+	  wxGridSizer *grid      = new wxGridSizer(2,3);
+	  wxGridSizer *grid2     = new wxGridSizer(2,3);
+      wxTextCtrl  *age       = new wxTextCtrl(this,wxID_ANY);
+	  wxTextCtrl  *quar      = new wxTextCtrl(this,wxID_ANY);
+	  wxTextCtrl  *lastscan  = new wxTextCtrl(this,wxID_ANY);
+	  wxTextCtrl  *version   = new wxTextCtrl(this,wxID_ANY);
+	  wxTextCtrl  *function  = new wxTextCtrl(this,wxID_ANY);
+	  wxTextCtrl  *database  = new wxTextCtrl(this,wxID_ANY);
+
+	  wxString str = wxT("");
 
 
-        str   << WhiteHawkClamav::ClamavInstance::getInstance()->getDatabaseAge() << wxT(" days");
-        str2  << 0 << wxT(" files");    //TODO quarentine
-
+        str << WhiteHawkClamav::ClamavInstance::getInstance()->getDatabaseAge();
         age->SetValue(str);
-        quar->SetValue(str2);
 
-        age->Disable();
-        quar->Disable();
-	lastscan->Disable();
+        str = wxT("0 files");    //TODO quarentine
+        quar->SetValue(str);
+
+        str = wxT("");
+        str << cl_retflevel();
+        function->SetValue(str);
+
+        str = wxT("");
+        str << cl_retver();
+        version->SetValue(str);
+
+        str = wxT("");
+        str << cl_retdbdir();
+	    database->SetValue(str);
+
+        age->SetEditable(false);
+        quar->SetEditable(false);
+        lastscan->SetEditable(false);
+        version->SetEditable(false);
+	    function->SetEditable(false);
+	    database->SetEditable(false);
 
 		grid->Add( new wxStaticText(this,wxID_ANY,wxT("Database age:")));
-		grid->Add( age);
+		grid->Add( age,1);
 		grid->Add( new wxStaticText(this,wxID_ANY,wxT("Quarentine:")));
-		grid->Add( quar);
+		grid->Add( quar,1);
 		grid->Add( new wxStaticText(this,wxID_ANY,wxT("Last scan:")));
-		grid->Add( lastscan);
+		grid->Add( lastscan,1);
 
-        summary->AddSpacer(40);
-        summary->Add(grid,1,wxEXPAND);
+		grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav version:")));
+		grid2->Add( version,1);
+        grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav functionality:")));
+		grid2->Add( function,1);
+		grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav database:")));
+		grid2->Add( database,1);
+
+
+        summary->AddSpacer(20);
+        summary->Add(grid,1,wxEXPAND|wxALIGN_CENTER_HORIZONTAL);
+
+        versions->AddSpacer(20);
+        versions->Add(grid2,1,wxEXPAND|wxALIGN_CENTER_HORIZONTAL);
 
 		sizer->AddSpacer(40);
 		sizer->Add(summary,0,wxEXPAND|wxALIGN_CENTER|wxALL,10);
+		sizer->Add(versions,0,wxEXPAND|wxALIGN_CENTER|wxALL,10);
 		sizer->AddSpacer(40);
-
 
 		this->SetSizer(sizer);
 	}

@@ -32,6 +32,7 @@ public:
 
     void OnMenuExit(wxCommandEvent&)
     {
+
         dialog->Destroy();
         this->RemoveIcon();
     }
@@ -40,8 +41,9 @@ public:
     {
     wxMenu *menu = new wxMenu;
 
-    menu->Append(ID_TRAY_SHOW, wxT("&Show/hide window"));
-    menu->Append(ID_TRAY_QUIT,wxT("&Close whclamav"));
+    menu->Append( wxID_PREVIEW, wxT("&Show/hide window"));
+    menu->AppendSeparator();
+    menu->Append(wxID_EXIT,wxT("&Close"));
     return menu;
     }
 protected:
@@ -50,8 +52,8 @@ DECLARE_EVENT_TABLE()
 };
 
 BEGIN_EVENT_TABLE(MyTaskBarIcon, wxTaskBarIcon)
-    EVT_MENU(ID_TRAY_SHOW, MyTaskBarIcon::OnMenuRestore)
-    EVT_MENU(ID_TRAY_QUIT,   MyTaskBarIcon::OnMenuExit)
+    EVT_MENU(wxID_PREVIEW, MyTaskBarIcon::OnMenuRestore)
+    EVT_MENU(wxID_EXIT,   MyTaskBarIcon::OnMenuExit)
     EVT_TASKBAR_LEFT_DOWN(MyTaskBarIcon::OnLeftButtonDClick)
 END_EVENT_TABLE()
 
@@ -126,11 +128,6 @@ void AvFrame::createMenu()
     wxMenu      *help   = new wxMenu;
 
 
-        m_trayMenu = new wxMenu(wxT("Menu"));
-
-        m_trayMenu->Append(ID_TRAY_SHOW,wxT("&Show window"));
-        m_trayMenu->Append(ID_TRAY_QUIT,wxT("&Close whclamav"));
-
         bar->Append(file,   wxT("&File"));
         bar->Append(config, wxT("&Configuration"));
         bar->Append(help,   wxT("&Help"));
@@ -188,11 +185,8 @@ void AvFrame::onAbout(wxCommandEvent &evt)
     wxAboutDialogInfo info;
     wxString desc;
 
-            desc << wxT("\n\nWelcome to WhiteHawk System antivirus.\nwhClamav is a frontend of the clamav antivirus \nideal for your WhDE.\n\n");
-            desc << wxT("\nClamav funcinality: ") << cl_retflevel();
-            desc << wxT("\nClamav version: ") << cl_retver();
-            desc << wxT("\nClamav db: ") << cl_retdbdir() << wxT("\n");
-
+        desc << wxT("\n\nWelcome to WhiteHawk System antivirus."
+                    "\nwhClamav is a frontend of the clamav antivirus \nideal for your WhiteHawk Desktop.\n\n");
 
         info.SetName(wxT("WhitehawkAv"));
         info.SetVersion(wxT("0.0.1"));
