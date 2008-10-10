@@ -1,10 +1,7 @@
+#include "Entry.hh"
 
 
-class Entry : public  wxTextCtrl
-{
-public:
-
-	Entry(wxWindow* parent,wxStatusBar *StatBar, int id ): wxTextCtrl(parent,id,wxT(""),wxDefaultPosition, 
+	Entry::Entry(wxWindow* parent,wxStatusBar *StatBar, int id ): wxTextCtrl(parent,id,wxT(""),wxDefaultPosition,
 				    wxDefaultSize,wxTE_MULTILINE|wxTE_DONTWRAP,wxDefaultValidator,_T("entry"))
 	{
 		statbar = StatBar;
@@ -14,7 +11,7 @@ public:
 		FontData.SetChosenFont(TextAttr.GetFont());
 	}
 
-	void Count()
+	void Entry::Count()
 	{
 	  wxString str;
 	  long x, y;
@@ -27,7 +24,7 @@ public:
 
 
 
-	bool readFile(wxString FileName)
+	bool Entry::readFile(wxString FileName)
 	{
 
 	  wxString buff;
@@ -44,48 +41,48 @@ public:
 	  return false;
 	}
 
-	bool writeFile()
+	bool Entry::writeFile()
 	{
 		return writeFile(fileName);
 	}
 
-	bool writeFile(wxString FileName)
+	bool Entry::writeFile(wxString FileName)
 	{
 	    if( FileName.IsEmpty() )
 		return false;
-	
+
  	    if(	SaveFile(FileName) )
-	    {	
+	    {
 	        fileName = FileName;
        	        return true;
-	    }	
+	    }
 
 	  return false;
 	}
 
-	
-	void SelectAll()
+
+	void Entry::SelectAll()
 	{
 	    SetSelection(0, this->GetLastPosition());
 	}
 
-	wxString getFileName()
+	wxString Entry::getFileName()
 	{
 		return fileName;
 	}
 
 
-	wxString getRelName()
+	wxString Entry::getRelName()
 	{
 		return relName;
 	}
 
-	wxFontData getFontData()
+	wxFontData Entry::getFontData()
 	{
 		return FontData;
 	}
-	
-	void setFontData(wxFontData fontData)
+
+	void Entry::setFontData(wxFontData fontData)
 	{
 		FontData = fontData;
 		wxTextAttr TextAttr;
@@ -95,16 +92,8 @@ public:
 		SetDefaultStyle(TextAttr);
 	}
 
-	void setFileName(wxString FileName)
+	void Entry::setFileName(wxString FileName)
 	{
-		fileName = FileName;	
+		fileName = FileName;
 		relName  = FileName.AfterLast('/');
 	}
-
-private:
-wxString fileName;
-wxString relName;
-wxStatusBar *statbar;
-wxFontData FontData;
-};
-
