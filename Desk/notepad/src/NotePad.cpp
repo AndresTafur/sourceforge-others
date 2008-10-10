@@ -1,6 +1,6 @@
 #include <wx/wx.h>
 #include "wx/fontdlg.h"
-#include "NotePadFrame.cpp"
+#include "NotePadFrame.hh"
 
 class WhiteCalc: public wxApp
 {
@@ -9,8 +9,8 @@ class WhiteCalc: public wxApp
         {
             ::wxInitAllImageHandlers();
             NotePadFrame *frame = new NotePadFrame( );
-	
-	     if( argc > 1)	
+
+	     if( argc > 1)
 		    frame->openFile(argv[1]);
 
              frame->Show(true);

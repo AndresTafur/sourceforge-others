@@ -1,76 +1,64 @@
-#include "Entry.cpp"
+#include "NotePadFrame.hh"
+#include <wx/fontdlg.h>
+#include <wx/aboutdlg.h>
 
 
-enum
-{
-	ID_SB = 100,
-	ID_EN,
-	ID_GOTO,
- 	ID_FORMAT
-
-};
-
-
-class NotePadFrame : public  wxFrame
-{
-public:
-
-  NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wxDefaultPosition, wxDefaultSize,  wxDEFAULT_FRAME_STYLE, wxT("WhiteHawkNotePad"))
+ NotePadFrame::NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wxDefaultPosition, wxDefaultSize,  wxDEFAULT_FRAME_STYLE, wxT("WhiteHawkNotePad"))
         {
-            wxMenuBar   *bar    = new wxMenuBar;
-	    wxBoxSizer  *sizer   = new wxBoxSizer(wxVERTICAL);
+         wxMenuBar   *bar    = new wxMenuBar;
+  	     wxBoxSizer  *sizer   = new wxBoxSizer(wxVERTICAL);
+  	     wxMenu      *file   = new wxMenu;
+         wxMenu      *edit   = new wxMenu;
+         wxMenu      *view   = new wxMenu;
+         wxMenu      *help   = new wxMenu;
+	     wxMenu	*format = new wxMenu;
 
-	    wxMenu      *file   = new wxMenu;
-            wxMenu      *edit   = new wxMenu;
-            wxMenu      *view   = new wxMenu;
-            wxMenu      *help   = new wxMenu;
-	    wxMenu	*format = new wxMenu;
 
+            bar->Append(file, wxT("&FIle"));
+            bar->Append(edit, wxT("&Edit"));
+            bar->Append(format,wxT("&Format"));
+            bar->Append(view, wxT("&View"));
+            bar->Append(help, wxT("&Help"));
 
-		bar->Append(file, wxT("&Archivo"));
-                bar->Append(edit, wxT("&Editar"));
-		bar->Append(format,wxT("&Format"));
-                bar->Append(view, wxT("&Ver"));
-                bar->Append(help, wxT("A&yuda"));
+            file->Append(wxID_NEW,wxT("&New"),wxT("New document"));
+            file->Append(wxID_OPEN,wxT("&Open"), wxT("Opens a new document"));
+            file->Append(wxID_SAVE,wxT("&Save"), wxT("Saves current document"));
+            file->Append(wxID_SAVEAS,wxT("Save &As"), wxT("Saves in a new file "));
+            file->AppendSeparator();
+            file->Append(wxID_EXIT,wxT("&Quit"), wxT("Leaves this program"));
 
-		file->Append(wxID_NEW,wxT("&New"),wxT("New document"));
-		file->Append(wxID_OPEN,wxT("&Abrir"), wxT("Abre un documento"));
-		file->Append(wxID_SAVE,wxT("&Guardar"), wxT("Guarda el documento actual"));
-		file->Append(wxID_SAVEAS,wxT("Guardar &como"), wxT("Guarda en un nuevo documento"));
-		file->AppendSeparator();
-		file->Append(wxID_EXIT,wxT("&Salir"), wxT("Sale de este programa"));
+            edit->Append(wxID_UNDO,wxT("&Undo"),wxT("Undo last action"));
+            edit->Append(wxID_REDO,wxT("&Redo"),wxT("Redp last action"));
+            edit->AppendSeparator();
+            edit->Append(wxID_CUT,wxT("Cu&t"), wxT("Cuts current selection"));
+            edit->Append(wxID_COPY,wxT("&Copy"),wxT("Copy current selection"));
+            edit->Append(wxID_PASTE,wxT("&Paste"),wxT("Paste current selection"));
+            edit->AppendSeparator();
+            edit->Append(wxID_SELECTALL,wxT("&Select All"),wxT("Selects all of the text"));
+            edit->AppendSeparator();
+            edit->Append(wxID_FIND,wxT("&Find"),wxT("Search for an expression"));
+            edit->Append(wxID_REPLACE,wxT("&Replace"),wxT("Search and replace an expression")); //todo
+            edit->AppendSeparator();
+            edit->Append(ID_GOTO,wxT("&Go to"), wxT("Go to line"));
+            view->Append(ID_SB, wxT("&Status bar"), wxT("Shows/Hides the status bar"));
+            format->Append(ID_FORMAT,wxT("Font..."),wxT("change font, size")); //todo
+            help->Append(wxID_HELP,wxT("&Help"),wxT("Shows the help"));
+            help->Append(wxID_ABOUT,wxT("&About"), wxT("About this program"));
 
-		edit->Append(wxID_UNDO,wxT("&Deshacer"),wxT("Deshace la accion"));
-		edit->Append(wxID_REDO,wxT("&Rehacer"),wxT("Rehace la accion"));
-		edit->AppendSeparator();
-		edit->Append(wxID_CUT,wxT("Cor&tar"), wxT("Corta la seleccion"));
-		edit->Append(wxID_COPY,wxT("&Copiar"),wxT("Copia la seleccion"));
-		edit->Append(wxID_PASTE,wxT("&Pegar"),wxT("Pega  la seleccion"));
-		edit->AppendSeparator();
-		edit->Append(wxID_SELECTALL,wxT("&Select All"),wxT("Selecciona el texto"));
-		edit->AppendSeparator();
-		edit->Append(wxID_FIND,wxT("&Find"),wxT("Search for an expression")); 
-		edit->Append(wxID_REPLACE,wxT("&Replace"),wxT("Search and replace an expression")); //todo
-		edit->AppendSeparator();
-		edit->Append(ID_GOTO,wxT("&Ir a"), wxT("Va a la linea"));
-		view->Append(ID_SB, wxT("&Barra de estado"), wxT("Muestra u oculta esta barra"));
-		format->Append(ID_FORMAT,wxT("Font..."),wxT("change font, size")); //todo
-		help->Append(wxID_HELP,wxT("&Ayuda"),wxT("Ayuda de este programa"));
-		help->Append(wxID_ABOUT,wxT("A&cerca de"), wxT("Acerca de este programa"));
+            statbar = this->CreateStatusBar();
+            statbar->SetFieldsCount(2, NULL);
 
-		statbar = this->CreateStatusBar();
-		statbar->SetFieldsCount(2, NULL);
+            entry = new  Entry(this,statbar,ID_EN);
 
-		entry = new  Entry(this,statbar,ID_EN);
-
-		sizer->Add(entry,1,wxEXPAND,0);
-		this->Centre();
-		this->SetSizer(sizer);
-                this->SetMenuBar(bar);
-                this->Layout();
+            sizer->Add(entry,1,wxEXPAND,0);
+            this->Centre();
+            this->SetSizer(sizer);
+            this->SetMenuBar(bar);
+            this->Layout();
         }
 
-	void openDlg(wxCommandEvent &evt)
+
+	void NotePadFrame::openDlg(wxCommandEvent &evt)
 	{
  	  wxFileDialog dlg(this, _T("Open file"),_T(""),_T("*"), _T("*"),wxFD_OPEN|
 			wxFD_FILE_MUST_EXIST, wxDefaultPosition, wxDefaultSize, wxT("filedlg"));
@@ -82,7 +70,7 @@ public:
 	}
 
 
-	void SaveAsDlg()
+	void NotePadFrame::SaveAsDlg()
 	{
 	  wxFileDialog dlg(this, _T("Save file"),_T(""),_T("*"), _T("*"),wxFD_SAVE|
 			wxFD_OVERWRITE_PROMPT, wxDefaultPosition, wxDefaultSize, wxT("filedlg"));
@@ -94,9 +82,9 @@ public:
 		}
 	}
 
-	void GoToDlg()
+	void NotePadFrame::GoToDlg()
 	{
-	  wxTextEntryDialog dlg(this, wxT("Ir a la linea:"),wxT("Ir a"),wxT(""), wxOK|wxCANCEL | wxCENTRE,wxDefaultPosition);
+	  wxTextEntryDialog dlg(this, wxT("Go to line:"),wxT("Go to"),wxT(""), wxOK|wxCANCEL | wxCENTRE,wxDefaultPosition);
 	  long val;
 
 		if( dlg.ShowModal() == wxID_OK )
@@ -109,20 +97,20 @@ public:
 	}
 
 
-	void openFile(wxString str)
+	void NotePadFrame::openFile(wxString str)
 	{
 	    entry->readFile( str );
 	    saved = true;
 	}
 
 
-	void openFile(wxString str, wxString file)
+	void NotePadFrame::openFile(wxString str, wxString file)
 	{
 	    openFile(str);
 	    this->SetTitle( file + wxT(" - ") + wxT("WhiteHawkNotePad") );
 	}
 
-	void newFile(wxCommandEvent &evt)
+	void NotePadFrame::newFile(wxCommandEvent &evt)
 	{
 		int i = HaveSaved();
 		if (i==wxID_YES || i==wxID_NO)
@@ -132,9 +120,9 @@ public:
 			this->SetTitle( wxT("WhiteHawkNotePad") );
 			entry->setFileName(wxT(""));
 		}
-	}	
+	}
 
-	int HaveSaved()
+	int NotePadFrame::HaveSaved()
 	{
 		int i;
 		if (!saved)
@@ -146,11 +134,11 @@ public:
 		}
 		else
 			i = wxID_YES;
-		return i;		
-		
+		return i;
+
 	}
-	
-	void SaveFile()
+
+	void NotePadFrame::SaveFile()
 	{
 	    if( !entry->getFileName().IsEmpty() )
 	    {
@@ -167,19 +155,19 @@ public:
 		SaveAsDlg();
 	}
 
-	void Save( wxCommandEvent &evt)
+	void NotePadFrame::Save( wxCommandEvent &evt)
 	{
 		SaveFile();
 	}
 
 
-	void SaveAs(wxCommandEvent &evt)
+	void NotePadFrame::SaveAs(wxCommandEvent &evt)
 	{
 	   SaveAsDlg();
 	}
 
 
-	void Find ( wxCommandEvent &evt)
+	void NotePadFrame::Find ( wxCommandEvent &evt)
 	{
 		wxString findValue;
 		wxTextEntryDialog dlg(this, wxT("Text to find:"),wxT("Find"),wxT(""), wxOK|wxCANCEL | wxCENTRE,wxDefaultPosition);
@@ -189,20 +177,20 @@ public:
 			int i = entry->GetValue().Find(findValue);
 			if (i==wxNOT_FOUND)
 			{
-        			{ 
+        			{
         				wxMessageDialog dlg(this,wxT("Could not find" + findValue),wxT("Failed"), wxOK | wxICON_ERROR , wxDefaultPosition);
 					dlg.ShowModal();
-        			}			
+        			}
 			}
 			else
 			{
 				entry->SetSelection(i,i + findValue.Len());
 			}
-			
+
 		}
 	}
 
-	void Action(wxCommandEvent &evt)
+	void NotePadFrame::Action(wxCommandEvent &evt)
 	{
 		switch( evt.GetId())
 		{
@@ -249,7 +237,7 @@ public:
 
 	}
 
-	void TextEvt(wxCommandEvent &evt)
+	void NotePadFrame::TextEvt(wxCommandEvent &evt)
 	{
 		if( saved == true)
 		{
@@ -258,40 +246,66 @@ public:
 		}
 		entry->Count();
 	}
-	
-	void FormatFont(wxCommandEvent &evt)
+
+	void NotePadFrame::FormatFont(wxCommandEvent &evt)
 	{
 		wxFontData fd;
 		fd = entry->getFontData();
 		//statbar->SetStatusText(fd.GetChosenFont().GetFaceName());
 		wxFontDialog dlg(this,fd);
 		if (dlg.ShowModal()==wxID_OK)
-		{	
+		{
 			entry->setFontData(dlg.GetFontData());
 		}
 	}
 
-	void Quit(wxCommandEvent &evt)
+	void NotePadFrame::Quit(wxCommandEvent &evt)
 	{
 		int i = HaveSaved();
 		if (i==wxID_YES || i==wxID_NO)
 			exit(0);
 	}
 
-	void About(wxCommandEvent &evt)
-	{
-	  wxMessageBox(_T("Este es el block de notas de whiteHawk")
-		      wxT("\n\nDesarrollada por Jorge Andres Tafur (c) 2007")
-		     ,wxT("Acerca de..."), wxOK| wxICON_INFORMATION,this);
-	}
+	void NotePadFrame::About(wxCommandEvent &evt)
+    {
+      wxAboutDialogInfo info;
+      wxString desc;
 
-private:
-bool saved;
-wxStatusBar *statbar;
-Entry  *entry;
-DECLARE_EVENT_TABLE();
+        desc << wxT("\n\nWelcome to WhiteHawk notepad."
+                    "\nWhiteHawk notepad is a simple editor \nideal for your WhiteHawk Desktop.\n\n");
 
-};
+        info.SetName(wxT("WhiteHawk notepad"));
+        info.SetVersion(wxT("0.0.1"));
+        info.SetDescription(desc);
+        info.SetWebSite(wxT("http://whsystems.sf.net"));
+        info.SetCopyright(wxT("Copyright (C) 2007 (lostmarbles)."));
+        info.AddDeveloper(wxT("lostmarbles"));
+        info.AddDeveloper(wxT("Jorge Andres Tafur"));
+        info.SetLicence(wxT
+
+        ("\tWhiteHawkNotepad a simple text editor.\n"
+                  "\t\t\tCopyright (C) 2007  (lost marbles)\n\n\n"
+
+    "This program is free software: you can redistribute it and/or modify\n"
+    "it under the terms of the GNU General Public License as published by\n"
+    "the Free Software Foundation, either version 3 of the License, or\n"
+    "any later version.\n\n"
+
+    "This program is distributed in the hope that it will be useful,\n"
+    "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+    "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+    "GNU General Public License for more details.\n\n"
+
+    "You should have received a copy of the GNU General Public License\n"
+    "along with this program.  If not, see http://www.gnu.org/licenses/.")
+    );
+
+    wxAboutBox(info);
+}
+
+
+
+
 
 BEGIN_EVENT_TABLE(NotePadFrame,wxFrame)
 
