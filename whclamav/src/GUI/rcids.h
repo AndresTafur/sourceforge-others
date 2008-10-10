@@ -37,8 +37,5 @@ enum rcIds{
 
 	ID_VIR_MOV,
 	ID_VIR_DEL,
-
-	ID_TRAY_SHOW,
-	ID_TRAY_QUIT,
 };
 #endif

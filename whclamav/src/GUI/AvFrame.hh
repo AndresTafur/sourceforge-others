@@ -58,7 +58,6 @@ wxBoxSizer  *m_sizer;
 wxPanel	    *m_current;
 AvNotebook  *m_note;
 StatusPanel *m_status;
-wxMenu      *m_trayMenu;
 wxTaskBarIcon *m_trayIcon;
 DECLARE_EVENT_TABLE()
 

@@ -57,7 +57,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 		m_list->InsertColumn(0, wxString("File"));
 		m_list->InsertColumn(1, wxString("Type"));
 		m_list->InsertColumn(2, wxString("Status"));
-		m_list->SetColumnWidth(0, 300);
+		m_list->SetColumnWidth(0, 240);
 
         virbtnsSzr->Add(remove,0,wxALL|wxALIGN_CENTER_VERTICAL,5);
         virbtnsSzr->Add(quaran,0,wxALL|wxALIGN_CENTER_VERTICAL,5);
