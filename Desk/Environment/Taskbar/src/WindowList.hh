@@ -4,18 +4,21 @@
 
 #include <wx/wx.h>
 #include <list>
-#include "SystemUtils.hh"
+#include "WindowController.hh"
 #include "ClientButton.hh"
+#include "WMEventListener.hh"
 
 
-class WindowList : public wxPanel
+class WindowList : public wxPanel, public WMEventListener
 {
 public:
 
-	WindowList(wxWindow *parent,wxWindowID id, SystemUtils *sysUtils );
+	WindowList(wxWindow *parent,wxWindowID id);
 
 
 	void updateWindows();
+
+    void onEvent(Window &wnd, Atom &atom);
 
 	void addWindow(Window window, bool stat);
 
@@ -27,15 +30,12 @@ public:
 
     void markAllClients();
 
-	void isFull();
-
 	void onClick(wxCommandEvent &evt);
 
 	ClientButton* windowToClient(Window window);
 
 protected:
 std::list <ClientButton*> clients;
-SystemUtils    *sysUtils;
 wxBoxSizer     *sizer;
 
 public:

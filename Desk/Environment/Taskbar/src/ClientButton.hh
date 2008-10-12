@@ -5,13 +5,14 @@
 
 #include <wx/tglbtn.h>
 #include <X11/Xlib.h>
-#include "SystemUtils.hh"
+#include "WindowController.hh"
+#include "DeskController.hh"
 
 class ClientButton : public wxToggleButton
 {
 public:
 
-    ClientButton(wxWindow* parent,wxWindowID id, Window window, wxString label, SystemUtils *sysUtils);
+    ClientButton(wxWindow* parent,wxWindowID id, Window window, wxString label);
 
 
 	void AddToTaskbar();
@@ -47,7 +48,6 @@ wxMenu *m_menu;
 wxMenu *m_desk;
 wxString label;
 Window   xwindow;
-SystemUtils *sysUtils;
 bool m_marked;
 DECLARE_EVENT_TABLE()
 };

@@ -2,11 +2,10 @@
 #include <wx/tooltip.h>
 #include <wx/wx.h>
 
-   ClientButton::ClientButton(wxWindow* parent,wxWindowID id, Window window,wxString label, SystemUtils *sysUtils) : wxToggleButton(parent, id, label.SubString(0,16), wxDefaultPosition, wxDefaultSize,wxBU_EXACTFIT|wxBU_TOP)
+   ClientButton::ClientButton(wxWindow* parent,wxWindowID id, Window window,wxString label) : wxToggleButton(parent, id, label.SubString(0,16), wxDefaultPosition, wxDefaultSize,wxBU_EXACTFIT|wxBU_TOP)
 	{
 	  this->xwindow  = window;
 	  this->label    = label;
-	  this->sysUtils = sysUtils;
       this->m_marked = false;
 
        m_menu = new wxMenu();
@@ -40,14 +39,14 @@
 
     void ClientButton::updateName()
     {
-        this->SetLabel( sysUtils->getWindowName(xwindow) );
+        this->SetLabel( WindowController::getInstance()->getWindowName(xwindow) );
     }
 
 
     void ClientButton::CloseXWindow()
     {
 	    if(xwindow)
-	     sysUtils->closeWindow(xwindow);
+	     WindowController::getInstance()->closeWindow(xwindow);
     }
 
 
@@ -69,7 +68,7 @@
 
 	void ClientButton::onRightClick(wxMouseEvent &evt)
 	{
-	  short desks = sysUtils->getDesktops();
+	  short desks = DeskController::getInstance()->getDesktops();
       wxString  str;
 
 
@@ -88,33 +87,33 @@
     void ClientButton::onDeskChange(wxCommandEvent &evt)
 	{
 	    //if(xwindow)
-         //   sysUtils->setActiveWindow(xwindow);
+         //   WindowController::getInstance()->setActiveWindow(xwindow);
 	}
 
 
 	void ClientButton::Maximize(wxCommandEvent &evt)
 	{
 	    if(xwindow)
-            sysUtils->setActiveWindow(xwindow);
+            WindowController::getInstance()->setActiveWindow(xwindow);
 	}
 
 
 	void ClientButton::Minimize(wxCommandEvent &evt)
 	{
 	    if(xwindow)
-            sysUtils->iconifyWindow(xwindow);
+            WindowController::getInstance()->iconifyWindow(xwindow);
 	}
 
 	void ClientButton::StartMoving(wxCommandEvent &evt)
 	{
 	    if(xwindow)
-            sysUtils->startMoveWindow(xwindow);
+            WindowController::getInstance()->startMoveWindow(xwindow);
 	}
 
 	void ClientButton::StartResizing(wxCommandEvent &evt)
 	{
 	    if(xwindow)
-            sysUtils->startSizeWindow(xwindow);
+            WindowController::getInstance()->startSizeWindow(xwindow);
 	}
 
 	void ClientButton::CloseWnd(wxCommandEvent &evt)
