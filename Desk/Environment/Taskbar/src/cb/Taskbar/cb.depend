@@ -3428,21 +3428,22 @@
 1208852159 /usr/local/include/gtk-2.0/gtk/gtkvolumebutton.h
 	<gtk/gtkscalebutton.h>
 
-1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/ClientButton.cpp
+1223770512 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/ClientButton.cpp
 	"ClientButton.hh"
 	<wx/tooltip.h>
 	<wx/wx.h>
 
-1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/ClientButton.hh
+1223770528 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/ClientButton.hh
 	<wx/tglbtn.h>
 	<X11/Xlib.h>
-	"SystemUtils.hh"
+	"WindowController.hh"
+	"DeskController.hh"
 
-1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/SystemUtils.hh
+1223763132 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/SystemUtils.hh
 	<X11/Xlib.h>
 	<list>
 
-1223172585 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/Clock.cpp
+1223172701 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/Clock.cpp
 	"Clock.hh"
 
 1223172464 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/Clock.hh
@@ -5243,13 +5244,13 @@
 1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DockPanel.hh
 	<wx/frame.h>
 
-1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/RunFrame.cpp
+1223761000 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/RunFrame.cpp
 	"RunFrame.hh"
 
 1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/RunFrame.hh
 	<wx/wx.h>
 
-1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/SystemUtils.cpp
+1223754353 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/SystemUtils.cpp
 	<X11/Xlib.h>
 	<X11/Xutil.h>
 	<X11/Xatom.h>
@@ -5258,23 +5259,26 @@
 	<stdlib.h>
 	"SystemUtils.hh"
 
-1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/TaskBar.cpp
+1223775075 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/TaskBar.cpp
 	"Clock.hh"
 	"TrayPanel.hh"
 	"WindowList.hh"
 	"wxCircleToggleButton.hh"
+	"DeskCtrl.hh"
 	"TaskBar.hh"
+	"WindowManager.hh"
 
 1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/TrayPanel.hh
 	<wx/wx.h>
 	<gtk/gtk.h>
 	<gdk/gdkx.h>
 
-1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowList.hh
+1223770457 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowList.hh
 	<wx/wx.h>
 	<list>
-	"SystemUtils.hh"
+	"WindowController.hh"
 	"ClientButton.hh"
+	"WMEventListener.hh"
 
 1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/wxCircleToggleButton.hh
 	"wxCircleButton.hh"
@@ -5283,7 +5287,7 @@
 	<wx/wx.h>
 	<wx/control.h>
 
-1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/TaskBar.hh
+1223754440 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/TaskBar.hh
 	<wx/statline.h>
 	"DockPanel.hh"
 	"WhiteHawkMenuFrame.hh"
@@ -5297,20 +5301,20 @@
 1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/TrayPanel.cpp
 	"TrayPanel.hh"
 
-1223172667 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WhiteHawkBar.cpp
+1223841262 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WhiteHawkBar.cpp
 	<wx/wx.h>
 	<gtk/gtk.h>
 	<gdk/gdkx.h>
 	"WindowEventManager.hh"
-	"SystemUtils.hh"
 	"WhiteHawkBar.hh"
 	"TaskBar.hh"
 	<X11/Xlib.h>
 	<X11/Xatom.h>
 
-1223172636 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowEventManager.hh
+1223771524 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowEventManager.hh
+	<list>
 	<Thread.hh>
-	"SystemUtils.hh"
+	"WindowManager.hh"
 	"WindowList.hh"
 	"TaskBar.hh"
 
@@ -5321,17 +5325,60 @@
 	"WhiteHawkMenuFrame.hh"
 	"RunFrame.hh"
 
-1223172636 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowEventManager.cpp
+1223841516 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowEventManager.cpp
 	"WindowEventManager.hh"
 	<X11/Xatom.h>
 	<stdlib.h>
 
-1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowList.cpp
+1223775384 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowList.cpp
 	"WindowList.hh"
+	"WindowEventManager.hh"
 
 1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/wxCircleButton.cpp
 	"wxCircleButton.hh"
 
 1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/wxCircleToggleButton.cpp
 	"wxCircleToggleButton.hh"
+
+1223773055 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskCtrl.cpp
+	"DeskCtrl.hh"
+	"DeskController.hh"
+	"WindowEventManager.hh"
+
+1223762580 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskCtrl.hh
+	<wx/wx.h>
+	"WMEventListener.hh"
+
+1223759110 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WMEventListener.hh
+	<X11/Xlib.h>
+
+1223773616 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskController.cpp
+	"DeskController.hh"
+	"WindowManager.hh"
+
+1223769788 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskController.hh
+	<X11/Xlib.h>
+	<list>
+
+1223772511 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowManager.hh
+	<X11/Xlib.h>
+	<X11/Xatom.h>
+	<string>
+
+1223769912 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowController.hh
+	<X11/Xlib.h>
+	<list>
+
+1223771068 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowController.cpp
+	<X11/Xlib.h>
+	<X11/Xutil.h>
+	<X11/Xatom.h>
+	<gtk/gtk.h>
+	<gdk/gdkx.h>
+	<stdlib.h>
+	"WindowManager.hh"
+	"WindowController.hh"
+
+1223775510 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowManager.cpp
+	"WindowManager.hh"
 

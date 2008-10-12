@@ -20,27 +20,20 @@ class TaskBar : public DockPanel
 {
 public:
 
-     TaskBar(wxString str, SystemUtils *sysUtils);
+     TaskBar(wxString str);
 
-     wxButton* createDeskButton();
 
 	 void ShowMenu( wxCommandEvent &evt);
 
 	 WindowList* getWndListPanel();
 
- 	 void showDeskSelector(wxCommandEvent &evt);
-
- 	 void onChangeDesk(int desknum);
-
-	 void changeDesk(wxCommandEvent &evt);
 
 
 protected:
-wxMenu *m_menu;
 wxString path;
 wxButton *m_deskbtn;
 wxCircleToggleButton *btn;
-
+wxMenu *m_menu;
 
 WhiteHawkMenuFrame  *frame;
 WindowList *list;
@@ -48,7 +41,6 @@ TrayPanel  *tray;
 int m_coordy;
 
 Clock *date;
-SystemUtils  *m_sysUtils;
 DECLARE_EVENT_TABLE();
 
 };

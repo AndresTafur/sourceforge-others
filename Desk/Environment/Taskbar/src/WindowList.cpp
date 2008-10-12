@@ -1,13 +1,14 @@
 #include "WindowList.hh"
+#include "WindowEventManager.hh"
 
 
-
-	WindowList::WindowList(wxWindow *parent,wxWindowID id, SystemUtils *sysUtils ) : wxPanel(parent,id,wxDefaultPosition,wxDefaultSize, wxCLIP_CHILDREN|wxTAB_TRAVERSAL)
+	WindowList::WindowList(wxWindow *parent,wxWindowID id) : wxPanel(parent,id,wxDefaultPosition,wxDefaultSize, wxCLIP_CHILDREN|wxTAB_TRAVERSAL)
 	{
 		sizer = new wxBoxSizer(wxHORIZONTAL);
 
-		this->sysUtils = sysUtils;
-		this->SetSizer(sizer);
+        WindowEventManager::getInstance()->addListener(this);
+
+    	this->SetSizer(sizer);
 		this->updateWindows();
 	}
 
@@ -21,9 +22,9 @@
 	  int num, desknum, i=0;
 
 
-		 desknum = sysUtils->getCurrentDesk();
-         windows = sysUtils->getWindows(&num);
-		 act 	 = sysUtils->getActiveWindow();
+		 desknum = DeskController::getInstance()->getCurrentDesk();
+         windows = WindowController::getInstance()->getWindows(&num);
+		 act 	 = WindowController::getInstance()->getActiveWindow();
 
 
          this->markAllClients();
@@ -32,7 +33,7 @@
         if( windows.size() > 0)
             for(iter = windows.begin(); i != num; i++, ++iter)
               if(*iter)
-                if( sysUtils->getWndDesktop(*iter) == desknum )
+                if( WindowController::getInstance()->getWndDesktop(*iter) == desknum )
                     {
                         ClientButton *button = windowToClient(*iter);
 
@@ -48,21 +49,34 @@
                     }
 
         this->removeAllMarked();
-		isFull();
+			     this->Update();
+		 this->Layout();
 	}
+
+
+    void WindowList::onEvent(Window &wnd, Atom &atom)
+    {
+        if(wnd == WindowManager::getInstance()->getRoot() && atom == WindowManager::getInstance()->getAtom("_NET_CLIENT_LIST"))
+        {
+                  wxMutexGuiEnter();
+                  this->updateWindows();
+                  wxMutexGuiLeave();
+        }
+
+    }
 
 
 	void WindowList::addWindow(Window window, bool stat)
 	{
         if( window)
-            if(sysUtils->isNormalWnd(window) )
+            if(WindowController::getInstance()->isNormalWnd(window) )
             {
 
-              ClientButton *item = new ClientButton(this,100,window,sysUtils->getWindowName(window),sysUtils);
+              ClientButton *item = new ClientButton(this,100,window,WindowController::getInstance()->getWindowName(window));
 
                 item->SetValue(stat);
                 clients.push_back(item);
-                isFull();
+                this->Update();
                 this->Layout();
             }
 	}
@@ -82,7 +96,8 @@
                              (*i)->SetValue(false);
                     }
                     button->SetValue(true);
-                    isFull();
+                    this->Update();
+                    this->Layout();
                 }
         }
 	}
@@ -115,13 +130,6 @@
     }
 
 
-	void WindowList::isFull()
-	{
-	     this->Update();
-		 this->Layout();
-	}
-
-
     ClientButton* WindowList::windowToClient(Window window)
     {
          for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
@@ -142,12 +150,10 @@
 					(*i)->SetValue(false);
 
 				button->SetValue(true);
-				sysUtils->setActiveWindow(button->GetXWindow());
+				WindowController::getInstance()->setActiveWindow(button->GetXWindow());
 			}
 			else
-			{
-			  sysUtils->iconifyWindow(button->GetXWindow());
-			}
+			  WindowController::getInstance()->iconifyWindow(button->GetXWindow());
 		}
 	}
 

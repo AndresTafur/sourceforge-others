@@ -3,7 +3,6 @@
 #include <gdk/gdkx.h>
 
 #include "WindowEventManager.hh"
-#include "SystemUtils.hh"
 #include "WhiteHawkBar.hh"
 #include "TaskBar.hh"
 #include <X11/Xlib.h>
@@ -13,8 +12,8 @@ bool WhiteHawkBar::OnInit()
 {
 	  wxString str;
 	  TaskBar *taskbar;
-	  SystemUtils *sysUtils = new SystemUtils();
-	  WindowEventManager *evtmgr;
+
+
 
         XInitThreads();
 
@@ -22,14 +21,14 @@ bool WhiteHawkBar::OnInit()
 	    str << this->argv[0];
 	    str = str.BeforeLast( '/');
 
-	    taskbar = new TaskBar(str,sysUtils);
+	    taskbar = new TaskBar(str);
 
         this->SetTopWindow(taskbar);
         taskbar->Show(true);
         taskbar->setAsTaskbar();
 
-        evtmgr = new WindowEventManager(sysUtils,taskbar);
-        evtmgr->startThread();
+        WindowEventManager::getInstance()->startThread();
+
         return TRUE;
 }
 

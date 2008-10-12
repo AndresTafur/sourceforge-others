@@ -2,30 +2,40 @@
 #include <X11/Xatom.h>
 #include <stdlib.h>
 
-    WindowEventManager::WindowEventManager(SystemUtils *sysUtils, TaskBar *bar)
+WindowEventManager *WindowEventManager::sm_instance = NULL;
+
+
+    WindowEventManager::WindowEventManager()
     {
-         this->m_run      = true;
-         this->m_sysUtils = sysUtils;
-         this->m_list     = bar->getWndListPanel();
-         this->m_dsp      = XOpenDisplay(NULL);
-         this->m_root     = XDefaultRootWindow(m_dsp);
-         this->m_bar      = bar;
+        m_run = true;
+    }
+
+
+    WindowEventManager* WindowEventManager::getInstance()
+    {
+            if(!sm_instance)
+             sm_instance = new WindowEventManager();
+        return sm_instance;
     }
 
 
     void WindowEventManager::run()
     {
        XEvent evt;
+       Window root = WindowManager::getInstance()->getRoot();
+       Display *dsp = WindowManager::getInstance()->getDisplay();
 
-			XSelectInput(m_dsp,m_root,StructureNotifyMask | FocusChangeMask | PropertyChangeMask | ExposureMask);
-            XFlush(m_dsp);
+			XSelectInput(dsp,root,StructureNotifyMask | FocusChangeMask | PropertyChangeMask | ExposureMask);
+            XFlush(dsp);
+
+
 
             while(m_run)
             {
                 usleep(200);
-                while (XPending(m_dsp))
+                while (XPending(dsp))
                 {
-                    XNextEvent(m_dsp,&evt);
+                    XNextEvent(dsp,&evt);
 
                     switch (evt.type)
                     {
@@ -64,41 +74,31 @@
             }
     }
 
-    void WindowEventManager::onTerminate()
-    {}
+    void WindowEventManager::addListener( WMEventListener *list)
+    {
+        m_listeners.push_back(list);
+    }
 
+    void WindowEventManager::removeListener( WMEventListener *list)
+    {
+        m_listeners.remove(list);
+    }
 
     void WindowEventManager::onEvent(Window window,Atom atom)
     {
-           if(window == m_root)
-            {
-                if (atom == m_sysUtils->getWindowListA())
-                {
-                  wxMutexGuiEnter();
-                  m_list->updateWindows();
-                  wxMutexGuiLeave();
-                  return;
-                }
-                else if( atom == m_sysUtils->getCurrDeskA())
-                {
-                  unsigned short curdesk = m_sysUtils->getCurrentDesk() + 1;
-
-                  wxMutexGuiEnter();
-                  m_list->updateWindows();
-                  m_bar->onChangeDesk(curdesk);
-                  wxMutexGuiLeave();
-                  return;
-                }
-
-            }
+      std::list<WMEventListener*>::iterator iter;
 
 
+        for( iter = m_listeners.begin(); iter != m_listeners.end(); iter++)
+                (*iter)->onEvent(window,atom);
+
+/*
 
             if (atom == XA_WM_NAME ) //TODO: Makes this fu.... thing works
             {/*
                   wxMutexGuiEnter();
                  // m_list->updateWindows();
-                  wxMutexGuiLeave();*/
+                  wxMutexGuiLeave();
             }
             if (atom == m_sysUtils->getActiveWindowA())
             {
@@ -111,5 +111,11 @@
                 //TODO: Icon Loading
 
             }*/
+
+    }
+
+
+    void WindowEventManager::onTerminate()
+    {
 
     }
