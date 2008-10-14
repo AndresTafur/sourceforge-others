@@ -1,9 +1,18 @@
+/**
+ *    @brief Notepad Frame class.
+ *    Notepad Frame class.
+ *    @class  NotePadFrame
+ *    @author Lostmarbles
+ *    @version 0.1
+ */
+
+
 #ifndef _NOTEPAD_FRAME_
 #define _NOTEPAD_FRAME_
 
-
 #include "Entry.hh"
-#include <wx/wx.h>
+#include <wx/fontdlg.h>
+#include <wx/aboutdlg.h>
 
 enum
 {
@@ -20,7 +29,8 @@ class NotePadFrame : public  wxFrame
 {
 public:
 
-  NotePadFrame();
+	NotePadFrame();
+	~NotePadFrame();
 
 	void openDlg(wxCommandEvent &evt);
 
@@ -61,10 +71,10 @@ public:
 
 
 private:
-bool saved;
-wxStatusBar *statbar;
-Entry  *entry;
-DECLARE_EVENT_TABLE();
+	bool m_saved;
+	wxStatusBar *m_statbar;
+	Entry  *m_entry;
+	DECLARE_EVENT_TABLE();
 
 };
 

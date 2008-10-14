@@ -1,44 +1,40 @@
+/**
+ *    @brief Text entry class.
+ *    Text entry class.
+ *    @class  Entry
+ *    @author Lostmarbles
+ *    @version 0.1
+ */
+
 #ifndef _ENTRY_
 #define _ENTRY_
 
 #include <wx/wx.h>
 
-//TODO: document everything
-
-
 class Entry : public  wxTextCtrl
 {
 public:
-
-	Entry(wxWindow* parent,wxStatusBar *StatBar, int id );
-
+	/*
+	* Default constructor
+	*/
+	Entry(wxWindow* parent,wxStatusBar *statBar, int id );
+	~Entry();
 	void Count();
-
-	bool readFile(wxString FileName);
-
+	bool readFile(wxString fileName);
 	bool writeFile();
-
-	bool writeFile(wxString FileName);
-
-
+	bool writeFile(wxString fileName);
 	void SelectAll();
-
 	wxString getFileName();
-
-
 	wxString getRelName();
-
 	wxFontData getFontData();
-
 	void setFontData(wxFontData fontData);
-
-	void setFileName(wxString FileName);
+	void setFileName(wxString fileName);
 
 private:
-wxString fileName;
-wxString relName;
-wxStatusBar *statbar;
-wxFontData FontData;
+	wxString m_fileName;
+	wxString m_relName;
+	wxStatusBar *m_statbar;
+	wxFontData m_fontData;
 };
 
 #endif

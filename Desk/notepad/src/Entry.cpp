@@ -1,16 +1,20 @@
 #include "Entry.hh"
 
-
-	Entry::Entry(wxWindow* parent,wxStatusBar *StatBar, int id ): wxTextCtrl(parent,id,wxT(""),wxDefaultPosition,
+	Entry::Entry(wxWindow* parent,wxStatusBar *statBar, int id ): wxTextCtrl(parent,id,wxT(""),wxDefaultPosition,
 				    wxDefaultSize,wxTE_MULTILINE|wxTE_DONTWRAP,wxDefaultValidator,_T("entry"))
 	{
-		statbar = StatBar;
-		wxTextAttr TextAttr;
-		TextAttr = GetDefaultStyle();
-		FontData.SetColour(TextAttr.GetTextColour());
-		FontData.SetChosenFont(TextAttr.GetFont());
+		m_statbar = statBar;
+		wxTextAttr textAttr;
+		textAttr = GetDefaultStyle();
+		m_fontData.SetColour(textAttr.GetTextColour());
+		m_fontData.SetChosenFont(textAttr.GetFont());
 	}
 
+	Entry::~Entry()
+	{
+		delete m_statbar;
+	}
+	
 	void Entry::Count()
 	{
 	  wxString str;
@@ -19,22 +23,22 @@
 		PositionToXY( GetInsertionPoint(), &x, &y);
 
 		str << wxT("Linea ") <<  y+1 << wxT("     Columna ") << x+1;
-		statbar->SetStatusText(str, 1);
+		m_statbar->SetStatusText(str, 1);
 	}
 
 
 
-	bool Entry::readFile(wxString FileName)
+	bool Entry::readFile(wxString fileName)
 	{
 
 	  wxString buff;
 
-	    if( FileName.IsEmpty() )
+	    if( fileName.IsEmpty() )
 		return false;
 
-   	    if( LoadFile(FileName) )
+   	    if( LoadFile(fileName) )
 	    {
-		    fileName = FileName;
+		    m_fileName = fileName;
 		    return true;
 	    }
 
@@ -43,57 +47,56 @@
 
 	bool Entry::writeFile()
 	{
-		return writeFile(fileName);
+		return writeFile(m_fileName);
 	}
 
-	bool Entry::writeFile(wxString FileName)
+	bool Entry::writeFile(wxString fileName)
 	{
-	    if( FileName.IsEmpty() )
+	    if( fileName.IsEmpty() )
 		return false;
 
- 	    if(	SaveFile(FileName) )
+ 	    if(	SaveFile(fileName) )
 	    {
-	        fileName = FileName;
+	        m_fileName = fileName;
        	        return true;
 	    }
 
 	  return false;
 	}
 
-
 	void Entry::SelectAll()
 	{
-	    SetSelection(0, this->GetLastPosition());
+	    SetSelection(0, GetLastPosition());
 	}
 
 	wxString Entry::getFileName()
 	{
-		return fileName;
+		return m_fileName;
 	}
 
 
 	wxString Entry::getRelName()
 	{
-		return relName;
+		return m_relName;
 	}
 
 	wxFontData Entry::getFontData()
 	{
-		return FontData;
+		return m_fontData;
 	}
 
 	void Entry::setFontData(wxFontData fontData)
 	{
-		FontData = fontData;
-		wxTextAttr TextAttr;
-		TextAttr.SetTextColour(FontData.GetColour());
-		TextAttr.SetFont(FontData.GetChosenFont());
-		SetStyle(0,GetValue().Len(),TextAttr);
-		SetDefaultStyle(TextAttr);
+		m_fontData = fontData;
+		wxTextAttr textAttr;
+		textAttr.SetTextColour(m_fontData.GetColour());
+		textAttr.SetFont(m_fontData.GetChosenFont());
+		SetStyle(0,GetValue().Len(),textAttr);
+		SetDefaultStyle(textAttr);
 	}
 
-	void Entry::setFileName(wxString FileName)
+	void Entry::setFileName(wxString fileName)
 	{
-		fileName = FileName;
-		relName  = FileName.AfterLast('/');
+		m_fileName = fileName;
+		m_relName  = fileName.AfterLast('/');
 	}
