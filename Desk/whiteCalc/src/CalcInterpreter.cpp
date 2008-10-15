@@ -1,5 +1,10 @@
 #include "CalcInterpreter.h"
 
+double HandlePercent(double fVal)
+{
+    return fVal/100;
+}
+
 CalcEngine::CalcEngine()
 {
     _base = Decimal;
@@ -24,6 +29,7 @@ wxString CalcEngine::Process(wxString formula)
             parser.AddValIdent(Parser::IsHexVal);
             break;
     }
+    parser.DefinePostfixOprt(_T("%"), HandlePercent);
     parser.SetExpr(formula.c_str());
     try
     {

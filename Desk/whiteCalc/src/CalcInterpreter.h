@@ -1,12 +1,12 @@
  #ifndef CalcEngine_H
  #define CalcEngine_H
 
-#include "ParserLib/muParser.cpp"
-#include "ParserLib/muParserBase.cpp"
-#include "ParserLib/muParserBytecode.cpp"
-#include "ParserLib/muParserCallback.cpp"
-#include "ParserLib/muParserError.cpp"
-#include "ParserLib/muParserTokenReader.cpp"
+#include "muparser/muParser.cpp"
+#include "muparser/muParserBase.cpp"
+#include "muparser/muParserBytecode.cpp"
+#include "muparser/muParserCallback.cpp"
+#include "muparser/muParserError.cpp"
+#include "muparser/muParserTokenReader.cpp"
 
 using namespace mu;
 

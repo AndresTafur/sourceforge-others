@@ -8,7 +8,9 @@ enum buttons {
     ID_DOT  , ID_EQU,
     ID_ADD  , ID_SUS, ID_MULT, ID_DIV,
     ID_CLS  , ID_BCK,
-    ID_PO   , ID_PC,
+    ID_PO   , ID_PC, ID_PERCENT, ID_RECIPROCAL, ID_CHANGESIGN,
+    ID_SQUARE,ID_SQUAREROOT,
+    ID_BASICA,ID_AVANZADA,ID_CIENTIFICA
 };
 
 enum modes {
@@ -23,14 +25,17 @@ public:
     ~CalcFrame();
 
     void onNumberAdded(wxCommandEvent &e);
+    void onReciprocalAdded(wxCommandEvent &e);
+    void onSignChanged(wxCommandEvent &e);
     void KeyPressed(wxKeyEvent &event);
     void GetResult(wxCommandEvent &e);
 
-    void CreateBasicCalculator();
-    void CreateAdvancedCalculator();
+    void CreateBasicCalculator(wxCommandEvent &e);
+    void CreateAdvancedCalculator(wxCommandEvent &e);
     void ProcessResult();
     void Clear();
     void Back();
+    void ChangeSign();
 
     void Quit(wxCommandEvent &evt);
     void About(wxCommandEvent &evt);
@@ -69,10 +74,19 @@ EVT_BUTTON(ID_MULT,CalcFrame::onNumberAdded)
 
 EVT_BUTTON(ID_PO,CalcFrame::onNumberAdded)
 EVT_BUTTON(ID_PC,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_PERCENT,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_RECIPROCAL,CalcFrame::onReciprocalAdded)
+EVT_BUTTON(ID_CHANGESIGN,CalcFrame::onSignChanged)
+EVT_BUTTON(ID_SQUAREROOT,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_SQUARE,CalcFrame::onNumberAdded)
 
 EVT_BUTTON(ID_EQU,CalcFrame::GetResult)
 
 EVT_KEY_UP(CalcFrame::KeyPressed)
+
+
+EVT_MENU(ID_BASICA,CalcFrame::CreateBasicCalculator)
+EVT_MENU(ID_AVANZADA,CalcFrame::CreateAdvancedCalculator)
 
 END_EVENT_TABLE()
 
