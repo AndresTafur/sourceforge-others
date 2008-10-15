@@ -7,7 +7,7 @@ class WhiteCalc: public wxApp
     bool OnInit()
     {
         ::wxInitAllImageHandlers();
-        CalcFrame *frame = new CalcFrame(BASIC);
+        CalcFrame *frame = new CalcFrame(ADVANCED);
 
         frame->Show(true);
         this->SetTopWindow(frame);
