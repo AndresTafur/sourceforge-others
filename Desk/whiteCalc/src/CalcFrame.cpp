@@ -78,6 +78,59 @@ CalcFrame::CalcFrame(modes tipo) : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculat
             break;
         case ADVANCED:
             grid = new wxGridSizer(5,5,5,5);
+
+            grid->Add(new wxButton(this, ID_CLS, wxT("Cls")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_BCK, wxT("Bck")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_PO, wxT("(")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_PC, wxT(")")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_PERCENT, wxT("%")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_7, wxT("7")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_8, wxT("8")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_9, wxT("9")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_DIV, wxT("/")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_RECIPROCAL, wxT("1/X")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_4, wxT("4")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_5, wxT("5")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_6, wxT("6")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_MULT, wxT("*")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_CHANGESIGN, wxT("+/-")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_1, wxT("1")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_2, wxT("2")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_3, wxT("3")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_SUS, wxT("-")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_SQUAREROOT, wxT("Sqrt(")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_0, wxT("0")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_DOT, wxT(".")), 0, wxEXPAND);
+            btn_calc= new wxButton(this, ID_EQU, wxT("="));
+            grid->Add(btn_calc, 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_ADD, wxT("+")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_SQUARE, wxT("^2")), 0, wxEXPAND);
+            break;
+        case SCIENTIFIC:
+            grid = new wxGridSizer(8,5,5,5);
+
+            grid->Add(new wxButton(this, ID_ETOPOWER, wxT("e^")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_TENTOPOWER, wxT("10^")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_XPOWERY, wxT("^")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_XFACTORIAL, wxT("!")), 0, wxEXPAND);
+            grid->Add(new wxStaticText(this, -1, wxT("")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_COS, wxT("cos(")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_SIN, wxT("sin(")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_TAN, wxT("tan(")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_MOD, wxT(" mod ")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_E, wxT("e")), 0, wxEXPAND);
+
+            grid->Add(new wxButton(this, ID_AND, wxT(" and ")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_OR, wxT(" or ")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_NOT, wxT("~(")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_XOR, wxT(" xor ")), 0, wxEXPAND);
+            grid->Add(new wxButton(this, ID_XNOR, wxT(" xnor ")), 0, wxEXPAND);
+
             grid->Add(new wxButton(this, ID_CLS, wxT("Cls")), 0, wxEXPAND);
             grid->Add(new wxButton(this, ID_BCK, wxT("Bck")), 0, wxEXPAND);
             grid->Add(new wxButton(this, ID_PO, wxT("(")), 0, wxEXPAND);
@@ -125,6 +178,9 @@ CalcFrame::CalcFrame(modes tipo) : wxFrame(NULL,wxID_ANY, wxT("WhiteHawkCalculat
         case ADVANCED:
             this->SetSize(wxSize(500, 300));
             break;
+        case SCIENTIFIC:
+            this->SetSize(wxSize(700, 500));
+            break;
     }
     this->SetMinSize(wxSize(250, 250));
     this->Centre();
@@ -142,6 +198,13 @@ void CalcFrame::CreateBasicCalculator(wxCommandEvent &e)
 void CalcFrame::CreateAdvancedCalculator(wxCommandEvent &e)
 {
     CalcFrame* frame = new CalcFrame(ADVANCED);
+    frame->Show();
+    this->Destroy();
+}
+
+void CalcFrame::CreateScientificCalculator(wxCommandEvent &e)
+{
+    CalcFrame* frame = new CalcFrame(SCIENTIFIC);
     frame->Show();
     this->Destroy();
 }
@@ -170,6 +233,10 @@ void CalcFrame::KeyPressed(wxKeyEvent &event)
     wxString str = wxString::FromAscii(key);
     switch(_tipo)
     {
+        case SCIENTIFIC:
+            switch(key)
+            {
+            }
         case ADVANCED:
             switch(key)
             {

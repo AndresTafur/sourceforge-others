@@ -10,12 +10,16 @@ enum buttons {
     ID_CLS  , ID_BCK,
     ID_PO   , ID_PC, ID_PERCENT, ID_RECIPROCAL, ID_CHANGESIGN,
     ID_SQUARE,ID_SQUAREROOT,
+    ID_ETOPOWER,ID_TENTOPOWER,ID_XPOWERY,ID_XFACTORIAL,
+    ID_COS, ID_SIN, ID_MOD, ID_E, ID_TAN,
+    ID_AND, ID_OR, ID_NOT, ID_XOR, ID_XNOR,
     ID_BASICA,ID_AVANZADA,ID_CIENTIFICA
 };
 
 enum modes {
     BASIC = 0,
-    ADVANCED = 1
+    ADVANCED = 1,
+    SCIENTIFIC = 2
 };
 
 class CalcFrame : public wxFrame
@@ -32,6 +36,7 @@ public:
 
     void CreateBasicCalculator(wxCommandEvent &e);
     void CreateAdvancedCalculator(wxCommandEvent &e);
+    void CreateScientificCalculator(wxCommandEvent &e);
     void ProcessResult();
     void Clear();
     void Back();
@@ -80,6 +85,23 @@ EVT_BUTTON(ID_CHANGESIGN,CalcFrame::onSignChanged)
 EVT_BUTTON(ID_SQUAREROOT,CalcFrame::onNumberAdded)
 EVT_BUTTON(ID_SQUARE,CalcFrame::onNumberAdded)
 
+EVT_BUTTON(ID_XFACTORIAL,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_XPOWERY,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_TENTOPOWER,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_ETOPOWER,CalcFrame::onNumberAdded)
+
+EVT_BUTTON(ID_COS,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_SIN,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_TAN,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_E,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_MOD,CalcFrame::onNumberAdded)
+
+EVT_BUTTON(ID_AND,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_OR,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_NOT,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_XOR,CalcFrame::onNumberAdded)
+EVT_BUTTON(ID_XNOR,CalcFrame::onNumberAdded)
+
 EVT_BUTTON(ID_EQU,CalcFrame::GetResult)
 
 EVT_KEY_UP(CalcFrame::KeyPressed)
@@ -87,6 +109,7 @@ EVT_KEY_UP(CalcFrame::KeyPressed)
 
 EVT_MENU(ID_BASICA,CalcFrame::CreateBasicCalculator)
 EVT_MENU(ID_AVANZADA,CalcFrame::CreateAdvancedCalculator)
+EVT_MENU(ID_CIENTIFICA,CalcFrame::CreateScientificCalculator)
 
 END_EVENT_TABLE()
 
