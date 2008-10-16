@@ -10,13 +10,6 @@ NotePadFrame::NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wx
 	wxMenu      *help   = new wxMenu;
 	wxMenu	*format = new wxMenu;
 	
-	
-	bar->Append(file, wxT("&FIle"));
-	bar->Append(edit, wxT("&Edit"));
-	bar->Append(format,wxT("&Format"));
-	bar->Append(view, wxT("&View"));
-	bar->Append(help, wxT("&Help"));
-	
 	file->Append(wxID_NEW,wxT("&New"),wxT("New document"));
 	file->Append(wxID_OPEN,wxT("&Open"), wxT("Opens a new document"));
 	file->Append(wxID_SAVE,wxT("&Save"), wxT("Saves current document"));
@@ -42,6 +35,12 @@ NotePadFrame::NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wx
 	help->Append(wxID_HELP,wxT("&Help"),wxT("Shows the help"));
 	help->Append(wxID_ABOUT,wxT("&About"), wxT("About this program"));
 	
+	bar->Append(file, wxT("&FIle"));
+	bar->Append(edit, wxT("&Edit"));
+	bar->Append(format,wxT("&Format"));
+	bar->Append(view, wxT("&View"));
+	bar->Append(help, wxT("&Help"));	
+	
 	m_statbar = this->CreateStatusBar();
 	m_statbar->SetFieldsCount(2, NULL);
 	
@@ -52,12 +51,15 @@ NotePadFrame::NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wx
 	this->SetSizer(sizer);
 	this->SetMenuBar(bar);
 	this->Layout();
+	m_lastSearchPos = 0;
 }
 
 	NotePadFrame::~NotePadFrame()
 	{
 		delete m_statbar;
+		m_statbar = NULL;
 		delete m_entry;
+		m_entry = NULL;
 	}
 
 	void NotePadFrame::openDlg(wxCommandEvent &evt)
@@ -172,27 +174,150 @@ NotePadFrame::NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wx
 	   SaveAsDlg();
 	}
 
-
-	void NotePadFrame::Find ( wxCommandEvent &evt)
+	void NotePadFrame::OnFindDialog(wxFindDialogEvent& event)
 	{
-		wxString findValue;
-		wxTextEntryDialog dlg(this, wxT("Text to find:"),wxT("Find"),wxT(""), wxOK|wxCANCEL | wxCENTRE,wxDefaultPosition);
-		if( dlg.ShowModal() == wxID_OK )
+		wxEventType type = event.GetEventType();
+
+		if ( type == wxEVT_COMMAND_FIND || type == wxEVT_COMMAND_FIND_NEXT )
 		{
-			findValue = dlg.GetValue();
-			int i = m_entry->GetValue().Find(findValue);
-			if (i==wxNOT_FOUND)
+			Find(event.GetFindString().c_str(),event.GetFlags(),type == wxEVT_COMMAND_FIND_NEXT);
+		}
+		else if ( type == wxEVT_COMMAND_FIND_REPLACE ||
+					type == wxEVT_COMMAND_FIND_REPLACE_ALL )
+		{
+			Replace(event.GetFindString().c_str(), event.GetReplaceString().c_str(), event.GetFlags(),type == wxEVT_COMMAND_FIND_REPLACE_ALL);
+		}
+		else if ( type == wxEVT_COMMAND_FIND_CLOSE )
+		{
+			wxFindReplaceDialog *dlg = event.GetDialog();
+
+			int idMenu;
+			const wxChar *txt;
+			if ( dlg == m_dlgFind )
 			{
-        			{
-        				wxMessageDialog dlg(this,wxT("Could not find" + findValue),wxT("Failed"), wxOK | wxICON_ERROR , wxDefaultPosition);
-					dlg.ShowModal();
-        			}
+				txt = _T("Find");
+				idMenu = 1 /*DIALOGS_FIND*/;
+				m_dlgFind = NULL;
+			}
+			else if ( dlg == m_dlgReplace )
+			{
+				txt = _T("Replace");
+				idMenu = 2 /*DIALOGS_REPLACE*/;
+				m_dlgReplace = NULL;
 			}
 			else
 			{
-				m_entry->SetSelection(i,i + findValue.Len());
+				txt = _T("Unknown");
+				idMenu = wxID_ANY;
+
+				wxFAIL_MSG( _T("unexpected event") );
 			}
 
+			//wxLogMessage(wxT("%s dialog is being closed."), txt);
+
+			if ( idMenu != wxID_ANY )
+			{
+				GetMenuBar()->Check(idMenu, false);
+			}
+
+			dlg->Destroy();
+		}
+		else
+		{
+			wxLogError(wxT("Unknown find dialog event!"));
+		}
+	}
+
+	void NotePadFrame::ShowFindDialog( wxCommandEvent& WXUNUSED(event) )
+	{
+		if ( m_dlgFind )
+		{
+			delete m_dlgFind;
+			m_dlgFind = NULL;
+		}
+		else
+		{
+			m_dlgFind = new wxFindReplaceDialog
+					(
+					 this,
+      &m_findData,
+      _T("Find"),wxFR_NOMATCHCASE | wxFR_NOWHOLEWORD
+			);
+
+			m_dlgFind->Show(true);
+		}
+	}
+		
+	void NotePadFrame::ShowReplaceDialog( wxCommandEvent& WXUNUSED(event) )
+	{
+		if ( m_dlgReplace )
+		{
+			delete m_dlgReplace;
+			m_dlgReplace = NULL;
+		}
+		else
+		{
+			m_dlgReplace = new wxFindReplaceDialog
+					(
+					 this,
+					&m_findData,
+					_T("Find and Replace"),
+					   wxFR_REPLACEDIALOG | wxFR_NOMATCHCASE | wxFR_NOWHOLEWORD
+					);
+
+			m_dlgReplace->Show(true);
+		}
+	}
+	
+	void NotePadFrame::Replace (wxString findValue, wxString replaceValue, int searchFlags, bool replaceOnce)
+	{
+		
+	}
+	
+	void NotePadFrame::Find (wxString findValue, int searchFlags, bool findNext)
+	{
+		int i = wxNOT_FOUND;
+		long x, y;
+		wxString searchString = m_entry->GetValue();
+		
+		if (!findNext)
+		{
+			switch (searchFlags)
+			{
+				case wxFR_DOWN:
+					i = searchString.find(findValue);
+					break;
+				case 0:
+					i = searchString.rfind(findValue);
+					break;					
+			}
+		}
+		else
+		{
+			switch (searchFlags)
+			{
+				case wxFR_DOWN:
+					i = searchString.find(findValue, m_lastSearchPos+1);
+					break;
+				case 0:
+					i = searchString.rfind(findValue, m_lastSearchPos-1);
+					break;					
+			}						
+		}
+		
+		if (i==wxNOT_FOUND)
+		{
+			{
+				wxMessageDialog dlg(this,wxT("Could not find" + findValue),wxT("Failed"), wxOK | wxICON_ERROR , wxDefaultPosition);
+				dlg.ShowModal();
+			}
+		}
+		else
+		{
+			m_lastSearchPos = i;
+			m_entry->SetInsertionPoint(i);
+			m_entry->Count();
+			m_entry->SetSelection(i,i + findValue.Len());
 		}
 	}
 
@@ -320,7 +445,8 @@ EVT_MENU(wxID_PASTE, NotePadFrame::Action)
 
 EVT_MENU(wxID_SELECTALL, NotePadFrame::Action)
 
-EVT_MENU(wxID_FIND, NotePadFrame::Find)
+EVT_MENU(wxID_FIND, NotePadFrame::ShowFindDialog)
+EVT_MENU(wxID_REPLACE, NotePadFrame::ShowReplaceDialog)
 EVT_MENU(ID_GOTO, NotePadFrame::Action)
 EVT_MENU(ID_FORMAT, NotePadFrame::FormatFont)
 
@@ -328,4 +454,11 @@ EVT_MENU(ID_SB, NotePadFrame::Action)
 
 EVT_TEXT(ID_EN, NotePadFrame::TextEvt)
 EVT_MENU(wxID_ABOUT, NotePadFrame::About)
+		
+EVT_FIND(wxID_ANY, NotePadFrame::OnFindDialog)
+EVT_FIND_NEXT(wxID_ANY, NotePadFrame::OnFindDialog)
+EVT_FIND_REPLACE(wxID_ANY, NotePadFrame::OnFindDialog)
+EVT_FIND_REPLACE_ALL(wxID_ANY, NotePadFrame::OnFindDialog)
+EVT_FIND_CLOSE(wxID_ANY, NotePadFrame::OnFindDialog)		
+		
 END_EVENT_TABLE()
