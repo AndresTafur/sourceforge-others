@@ -13,6 +13,7 @@
 #include "Entry.hh"
 #include <wx/fontdlg.h>
 #include <wx/aboutdlg.h>
+#include <wx/fdrepdlg.h>
 
 enum
 {
@@ -38,10 +39,12 @@ public:
 	void SaveAsDlg();
 
 	void GoToDlg();
-
+	//void SaveAs(wxCommandEvent &evt);
+	void OnFindDialog(wxFindDialogEvent& event);
+	void ShowFindDialog( wxCommandEvent& WXUNUSED(event) );
+	void ShowReplaceDialog( wxCommandEvent& WXUNUSED(event) );
 
 	void openFile(wxString str);
-
 
 	void openFile(wxString str, wxString file);
 
@@ -53,11 +56,10 @@ public:
 
 	void Save( wxCommandEvent &evt);
 
-
 	void SaveAs(wxCommandEvent &evt);
 
-
-	void Find ( wxCommandEvent &evt);
+	void Find (wxString findValue, int searchFlags, bool findNext);
+	void Replace (wxString findValue, wxString replaceValue, int searchFlags, bool replaceOnce);
 
 	void Action(wxCommandEvent &evt);
 
@@ -72,8 +74,12 @@ public:
 
 private:
 	bool m_saved;
+	int m_lastSearchPos;
 	wxStatusBar *m_statbar;
 	Entry  *m_entry;
+	wxFindReplaceDialog *m_dlgFind;
+	wxFindReplaceDialog *m_dlgReplace;
+	wxFindReplaceData m_findData;
 	DECLARE_EVENT_TABLE();
 
 };

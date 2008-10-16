@@ -22,7 +22,7 @@
 
 		PositionToXY( GetInsertionPoint(), &x, &y);
 
-		str << wxT("Linea ") <<  y+1 << wxT("     Columna ") << x+1;
+		str << wxT("Line ") <<  y+1 << wxT("     Column ") << x+1;
 		m_statbar->SetStatusText(str, 1);
 	}
 
