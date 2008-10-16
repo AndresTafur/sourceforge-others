@@ -185,7 +185,7 @@ NotePadFrame::NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wx
 		else if ( type == wxEVT_COMMAND_FIND_REPLACE ||
 					type == wxEVT_COMMAND_FIND_REPLACE_ALL )
 		{
-			Replace(event.GetFindString().c_str(), event.GetReplaceString().c_str(), event.GetFlags(),type == wxEVT_COMMAND_FIND_REPLACE_ALL);
+			Replace(event.GetFindString().c_str(), event.GetReplaceString().c_str(), event.GetFlags(),type != wxEVT_COMMAND_FIND_REPLACE_ALL);
 		}
 		else if ( type == wxEVT_COMMAND_FIND_CLOSE )
 		{
@@ -212,8 +212,6 @@ NotePadFrame::NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wx
 
 				wxFAIL_MSG( _T("unexpected event") );
 			}
-
-			//wxLogMessage(wxT("%s dialog is being closed."), txt);
 
 			if ( idMenu != wxID_ANY )
 			{
@@ -271,14 +269,47 @@ NotePadFrame::NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wx
 	
 	void NotePadFrame::Replace (wxString findValue, wxString replaceValue, int searchFlags, bool replaceOnce)
 	{
-		
+		int i = wxNOT_FOUND;
+		wxString searchString = m_entry->GetValue();
+				
+		if (replaceOnce)
+		{
+			if (m_lastSearchPos > 0)
+				m_lastSearchPos--;
+			i = FindPos(searchString, findValue, searchFlags, true);
+						
+			if (i == wxNOT_FOUND)
+			{
+				{
+					wxMessageDialog dlg(this,wxT("Could not find " + findValue),wxT("Failed"), wxOK | wxICON_ERROR , wxDefaultPosition);
+					dlg.ShowModal();
+				}
+			}
+			else
+			{
+				searchString.replace(i,findValue.Len(),replaceValue);
+				m_entry->SetValue(searchString);
+				m_lastSearchPos = i;
+				Find(findValue, searchFlags, true);
+			}
+		}
+		else
+		{
+			switch (searchFlags)
+			{
+				case wxFR_DOWN:
+					i = searchString.find(findValue, m_lastSearchPos+1);
+					break;
+				case 0:
+					i = searchString.rfind(findValue, m_lastSearchPos-1);
+					break;					
+			}						
+		}	
 	}
 	
-	void NotePadFrame::Find (wxString findValue, int searchFlags, bool findNext)
+	int NotePadFrame::FindPos (wxString searchString, wxString findValue, int searchFlags, bool findNext)
 	{
 		int i = wxNOT_FOUND;
-		long x, y;
-		wxString searchString = m_entry->GetValue();
 		
 		if (!findNext)
 		{
@@ -305,10 +336,18 @@ NotePadFrame::NotePadFrame() : wxFrame(NULL,wxID_ANY,wxT("WhiteHawkNotePad"), wx
 			}						
 		}
 		
-		if (i==wxNOT_FOUND)
+		return i;
+		
+	}
+			
+	void NotePadFrame::Find (wxString findValue, int searchFlags, bool findNext)
+	{
+		wxString searchString = m_entry->GetValue();
+		int i = FindPos(searchString, findValue, searchFlags, findNext);
+		if (i == wxNOT_FOUND)
 		{
 			{
-				wxMessageDialog dlg(this,wxT("Could not find" + findValue),wxT("Failed"), wxOK | wxICON_ERROR , wxDefaultPosition);
+				wxMessageDialog dlg(this,wxT("Could not find " + findValue),wxT("Failed"), wxOK | wxICON_ERROR , wxDefaultPosition);
 				dlg.ShowModal();
 			}
 		}

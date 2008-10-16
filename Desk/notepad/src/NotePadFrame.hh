@@ -59,6 +59,7 @@ public:
 	void SaveAs(wxCommandEvent &evt);
 
 	void Find (wxString findValue, int searchFlags, bool findNext);
+	int FindPos (wxString searchString, wxString findValue, int searchFlags, bool findNext);
 	void Replace (wxString findValue, wxString replaceValue, int searchFlags, bool replaceOnce);
 
 	void Action(wxCommandEvent &evt);
