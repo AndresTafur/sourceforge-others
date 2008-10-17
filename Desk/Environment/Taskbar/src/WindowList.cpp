@@ -48,23 +48,30 @@
                             button->setMark(false);
                     }
 
-        this->removeAllMarked();
-			     this->Update();
+         this->removeAllMarked();
+         this->Update();
 		 this->Layout();
 	}
 
 
-    void WindowList::onEvent(Window &wnd, Atom &atom)
+    void WindowList::onEvent(Window wnd, Atom atom)
     {
-        if(wnd == WindowManager::getInstance()->getRoot() && atom == WindowManager::getInstance()->getAtom("_NET_CLIENT_LIST"))
+
+        if( atom == WindowManager::getInstance()->getAtom("_NET_ACTIVE_WINDOW"))
         {
+            wxMutexGuiEnter();
+            updateWindow(WindowController::getInstance()->getActiveWindow());
+            this->Update();
+            wxMutexGuiLeave();
+        }
+        else if(wnd == WindowManager::getInstance()->getRoot() )
+               if(atom == WindowManager::getInstance()->getAtom("_NET_CLIENT_LIST"))
+               {
                   wxMutexGuiEnter();
                   this->updateWindows();
                   wxMutexGuiLeave();
-        }
-
+               }
     }
-
 
 	void WindowList::addWindow(Window window, bool stat)
 	{
@@ -88,8 +95,10 @@
         {
            ClientButton *button = windowToClient(window);
 
+
                 if( NULL != button )
                 {
+
                     for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
                     {
                             if( NULL != (*i) )

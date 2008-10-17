@@ -18,7 +18,7 @@ public:
 
 	void updateWindows();
 
-    void onEvent(Window &wnd, Atom &atom);
+    void onEvent(Window wnd, Atom atom);
 
 	void addWindow(Window window, bool stat);
 

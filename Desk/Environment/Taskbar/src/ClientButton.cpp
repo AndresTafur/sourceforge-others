@@ -4,8 +4,8 @@
 
    ClientButton::ClientButton(wxWindow* parent,wxWindowID id, Window window,wxString label) : wxToggleButton(parent, id, label.SubString(0,16), wxDefaultPosition, wxDefaultSize,wxBU_EXACTFIT|wxBU_TOP)
 	{
-	  this->xwindow  = window;
-	  this->label    = label;
+	  this->m_xwindow  = window;
+	  this->m_label    = label;
       this->m_marked = false;
 
        m_menu = new wxMenu();
@@ -21,7 +21,7 @@
 	   m_menu->Append(wxID_CLOSE, wxT("&Cerrar"),wxT("Cierra la ventana"), wxITEM_NORMAL);
 
 
- 	  this->SetToolTip(label);
+ 	  this->SetToolTip(m_label);
 	  this->GetToolTip()->SetDelay(550);
 	  AddToTaskbar();
 	}
@@ -39,25 +39,25 @@
 
     void ClientButton::updateName()
     {
-        this->SetLabel( WindowController::getInstance()->getWindowName(xwindow) );
+        this->SetLabel( WindowController::getInstance()->getWindowName(m_xwindow) );
     }
 
 
     void ClientButton::CloseXWindow()
     {
-	    if(xwindow)
-	     WindowController::getInstance()->closeWindow(xwindow);
+	    if(m_xwindow)
+	     WindowController::getInstance()->closeWindow(m_xwindow);
     }
 
 
 	wxString ClientButton::GetRealName()
 	{
-	  return label;
+	  return m_label;
 	}
 
 	Window ClientButton::GetXWindow()
 	{
-	  return xwindow;
+	  return m_xwindow;
 	}
 
     bool ClientButton::isMarked()
@@ -93,33 +93,36 @@
 
 	void ClientButton::Maximize(wxCommandEvent &evt)
 	{
-	    if(xwindow)
-            WindowController::getInstance()->setActiveWindow(xwindow);
+	    if(m_xwindow)
+            WindowController::getInstance()->setActiveWindow(m_xwindow);
 	}
 
 
 	void ClientButton::Minimize(wxCommandEvent &evt)
 	{
-	    if(xwindow)
-            WindowController::getInstance()->iconifyWindow(xwindow);
+	    if(m_xwindow)
+            WindowController::getInstance()->iconifyWindow(m_xwindow);
 	}
 
 	void ClientButton::StartMoving(wxCommandEvent &evt)
 	{
-	    if(xwindow)
-            WindowController::getInstance()->startMoveWindow(xwindow);
+	    if(m_xwindow)
+            WindowController::getInstance()->startMoveWindow(m_xwindow);
 	}
 
 	void ClientButton::StartResizing(wxCommandEvent &evt)
 	{
-	    if(xwindow)
-            WindowController::getInstance()->startSizeWindow(xwindow);
+	    if(m_xwindow)
+            WindowController::getInstance()->startSizeWindow(m_xwindow);
 	}
 
 	void ClientButton::CloseWnd(wxCommandEvent &evt)
 	{
           this->CloseXWindow();
 	}
+
+
+
 
 BEGIN_EVENT_TABLE(ClientButton,wxToggleButton)
 EVT_RIGHT_UP(ClientButton::onRightClick)

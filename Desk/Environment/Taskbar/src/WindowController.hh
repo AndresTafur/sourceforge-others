@@ -40,6 +40,9 @@ public:
 
         void startSizeWindow( Window window);
 
+        static void destroy();
+
+        ~WindowController();
 
 protected:
 static WindowController *sm_instance;

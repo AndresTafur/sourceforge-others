@@ -10,7 +10,7 @@ public:
 
         DeskCtrl(wxWindow *parent);
 
-        void onEvent(Window &wnd, Atom &atom);
+        void onEvent(Window wnd, Atom atom);
 
         void changeDesktop(wxCommandEvent &evt);
 

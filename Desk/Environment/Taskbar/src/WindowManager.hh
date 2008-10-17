@@ -38,6 +38,9 @@ public:
 
         Window getRoot();
 
+        static void destroy();
+
+        ~WindowManager();
 
 protected:
 

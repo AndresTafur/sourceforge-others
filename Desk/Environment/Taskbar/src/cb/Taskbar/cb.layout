@@ -2,10 +2,10 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
 	<File name="../../ClientButton.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1754" topLine="57" />
+		<Cursor position="1241" topLine="0" />
 	</File>
 	<File name="../../ClientButton.hh" open="0" top="0" tabpos="2">
-		<Cursor position="141" topLine="0" />
+		<Cursor position="833" topLine="26" />
 	</File>
 	<File name="../../Clock.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="308" topLine="0" />
@@ -20,10 +20,10 @@
 		<Cursor position="373" topLine="6" />
 	</File>
 	<File name="../../DeskCtrl.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2325" topLine="19" />
+		<Cursor position="1864" topLine="21" />
 	</File>
 	<File name="../../DeskCtrl.hh" open="0" top="0" tabpos="3">
-		<Cursor position="336" topLine="0" />
+		<Cursor position="234" topLine="0" />
 	</File>
 	<File name="../../DockPanel.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="327" topLine="5" />
@@ -38,7 +38,7 @@
 		<Cursor position="506" topLine="23" />
 	</File>
 	<File name="../../TaskBar.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1459" topLine="36" />
+		<Cursor position="1067" topLine="17" />
 	</File>
 	<File name="../../TaskBar.hh" open="0" top="0" tabpos="2">
 		<Cursor position="564" topLine="22" />
@@ -50,7 +50,7 @@
 		<Cursor position="62" topLine="0" />
 	</File>
 	<File name="../../WMEventListener.hh" open="0" top="0" tabpos="0">
-		<Cursor position="170" topLine="0" />
+		<Cursor position="112" topLine="0" />
 	</File>
 	<File name="../../WhiteHawkBar.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="634" topLine="6" />
@@ -65,25 +65,25 @@
 		<Cursor position="1066" topLine="52" />
 	</File>
 	<File name="../../WindowController.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="611" topLine="3" />
+		<Cursor position="1748" topLine="32" />
 	</File>
 	<File name="../../WindowController.hh" open="0" top="0" tabpos="5">
 		<Cursor position="867" topLine="26" />
 	</File>
-	<File name="../../WindowEventManager.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="2283" topLine="87" />
+	<File name="../../WindowEventManager.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="1005" topLine="36" />
 	</File>
 	<File name="../../WindowEventManager.hh" open="0" top="0" tabpos="1">
 		<Cursor position="365" topLine="10" />
 	</File>
 	<File name="../../WindowList.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1584" topLine="41" />
+		<Cursor position="3534" topLine="103" />
 	</File>
-	<File name="../../WindowList.hh" open="0" top="0" tabpos="1">
-		<Cursor position="107" topLine="0" />
+	<File name="../../WindowList.hh" open="0" top="0" tabpos="3">
+		<Cursor position="345" topLine="11" />
 	</File>
 	<File name="../../WindowManager.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="414" topLine="51" />
+		<Cursor position="2048" topLine="54" />
 	</File>
 	<File name="../../WindowManager.hh" open="0" top="0" tabpos="3">
 		<Cursor position="577" topLine="9" />

@@ -25,50 +25,22 @@ WindowEventManager *WindowEventManager::sm_instance = NULL;
        Window root = WindowManager::getInstance()->getRoot();
        Display *dsp = WindowManager::getInstance()->getDisplay();
 
-			XSelectInput(dsp,root,StructureNotifyMask | FocusChangeMask | PropertyChangeMask | ExposureMask);
+			XSelectInput(dsp,root,StructureNotifyMask|PropertyChangeMask|SubstructureNotifyMask);
             XFlush(dsp);
 
 
 
             while(m_run)
             {
-                usleep(200);
+                usleep(20);
                 while (XPending(dsp))
                 {
                     XNextEvent(dsp,&evt);
 
-                    switch (evt.type)
-                    {
-                        case PropertyNotify:
-                            onEvent(evt.xproperty.window,evt.xproperty.atom);
-                        break;
+                    fprintf(stderr,"[Event reached]\n");
 
-                        case Expose:
-                          fprintf(stderr,"EXPOSURE\n");
-                        break;
-
-                        case DestroyNotify:
-                        fprintf(stderr,"DESTROY\n");
-                        break;
-
-                        case ClientMessage:
-                        fprintf(stderr,"MESSAGE\n");
-                        break;
-
-
-                        case ConfigureNotify:
-                        fprintf(stderr,"CONFIGURE\n");
-                        break;
-
-                        case MapNotify:
-                        fprintf(stderr,"MAP\n");
-                        break;
-
-                        case ReparentNotify:
-                        fprintf(stderr,"REPARENT\n");
-                        break;
-                    }
-
+                    if (evt.type ==  PropertyNotify)
+                            onEvent(evt.xany.window,evt.xproperty.atom);
                  }
 
             }
@@ -89,33 +61,40 @@ WindowEventManager *WindowEventManager::sm_instance = NULL;
       std::list<WMEventListener*>::iterator iter;
 
 
+
         for( iter = m_listeners.begin(); iter != m_listeners.end(); iter++)
                 (*iter)->onEvent(window,atom);
 
-/*
 
             if (atom == XA_WM_NAME ) //TODO: Makes this fu.... thing works
-            {/*
+            {
+                printf("[Name changed]\n");
+             /*
                   wxMutexGuiEnter();
                  // m_list->updateWindows();
-                  wxMutexGuiLeave();
-            }
-            if (atom == m_sysUtils->getActiveWindowA())
-            {
-                  wxMutexGuiEnter();
-                  m_list->updateWindow(  m_sysUtils->getActiveWindow() );
-                  wxMutexGuiLeave();
-            }
+                  wxMutexGuiLeave();*/
+            }/*
+
           /*else if (atom == XA_WM_HINTS)
             {
                 //TODO: Icon Loading
 
             }*/
-
     }
 
 
     void WindowEventManager::onTerminate()
     {
 
+    }
+
+
+    void WindowEventManager::destroy()
+    {
+        delete sm_instance;
+    }
+
+    WindowEventManager::~WindowEventManager()
+    {
+        //
     }

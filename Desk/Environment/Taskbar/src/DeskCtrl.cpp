@@ -30,7 +30,7 @@
         }
 
 
-        void DeskCtrl::onEvent(Window &wnd,Atom &atom)
+        void DeskCtrl::onEvent(Window wnd,Atom atom)
         {
               if(wnd == WindowManager::getInstance()->getRoot() && atom == WindowManager::getInstance()->getAtom("_NET_CURRENT_DESKTOP"))
                 {

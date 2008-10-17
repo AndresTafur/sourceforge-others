@@ -33,4 +33,18 @@ bool WhiteHawkBar::OnInit()
 }
 
 
-IMPLEMENT_APP(WhiteHawkBar)
+IMPLEMENT_APP_NO_MAIN(WhiteHawkBar)
+
+
+int main(int argc, char *argv[])
+{
+   int ret_val;
+
+	XInitThreads();
+	ret_val = wxEntry(argc, argv);
+
+    WindowEventManager::getInstance()->destroy();
+    WindowManager::getInstance()->destroy();
+
+	return ret_val;
+}
