@@ -147,3 +147,15 @@ WindowController* WindowController::sm_instance = NULL;
 		{
             WindowManager::getInstance()->sendToManager(window,m_wmoveresA,0,0,9,0);
 		}
+
+
+        void WindowController::destroy()
+        {
+            delete sm_instance;
+        }
+
+        WindowController::~WindowController()
+        {
+
+
+        }

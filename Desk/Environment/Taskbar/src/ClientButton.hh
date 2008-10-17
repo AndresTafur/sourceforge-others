@@ -43,11 +43,12 @@ public:
 
     void StartResizing(wxCommandEvent &evt);
 
+
 protected:
 wxMenu *m_menu;
 wxMenu *m_desk;
-wxString label;
-Window   xwindow;
+wxString m_label;
+Window   m_xwindow;
 bool m_marked;
 DECLARE_EVENT_TABLE()
 };

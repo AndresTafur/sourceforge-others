@@ -26,6 +26,9 @@ public:
 
         void removeListener( WMEventListener *list);
 
+        static void destroy();
+
+        ~WindowEventManager();
 
 protected:
 

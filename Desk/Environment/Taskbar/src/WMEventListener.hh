@@ -8,7 +8,7 @@ class WMEventListener
 {
 public:
 
-        virtual void onEvent(Window &wnd, Atom &atom) = 0;
+        virtual void onEvent(Window wnd, Atom atom) = 0;
 
 
 };

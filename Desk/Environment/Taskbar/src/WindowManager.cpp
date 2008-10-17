@@ -20,7 +20,12 @@ WindowManager *WindowManager::sm_instance = NULL;
 
    int WindowManager::errorHandler(Display *dsp, XErrorEvent *err)
    {
-            fprintf(stderr,"Warning: Xlib error found\n");
+      char buffer_return[100];
+
+            XGetErrorText(WindowManager::getInstance()->getDisplay(), err->error_code, buffer_return, 100);
+
+
+            fprintf(stderr,"Warning Xlib error found: %s\n",buffer_return);
             return -1;
    }
 
@@ -74,9 +79,7 @@ WindowManager *WindowManager::sm_instance = NULL;
 			xevent.data.l[4]    = data4;
 
 
-
 			XSendEvent(m_display, m_root, false, SubstructureNotifyMask, (XEvent*)&xevent);
-            XFlush(m_display);
 		}
 
 
@@ -112,3 +115,14 @@ WindowManager *WindowManager::sm_instance = NULL;
         return m_root;
     }
 
+
+    void WindowManager::destroy()
+    {
+       delete sm_instance;
+    }
+
+
+    WindowManager::~WindowManager()
+    {
+        XCloseDisplay(m_display);
+    }
