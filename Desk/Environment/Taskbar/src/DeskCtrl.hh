@@ -2,6 +2,8 @@
 #define _DESK_CTRL_
 
 #include <wx/wx.h>
+#include <wx/tglbtn.h>
+
 #include "WMEventListener.hh"
 
 class DeskCtrl : public wxButton, public WMEventListener

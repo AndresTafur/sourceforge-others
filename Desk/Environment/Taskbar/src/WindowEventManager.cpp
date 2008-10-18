@@ -61,14 +61,13 @@ WindowEventManager *WindowEventManager::sm_instance = NULL;
       std::list<WMEventListener*>::iterator iter;
 
 
-
         for( iter = m_listeners.begin(); iter != m_listeners.end(); iter++)
                 (*iter)->onEvent(window,atom);
 
 
             if (atom == XA_WM_NAME ) //TODO: Makes this fu.... thing works
             {
-                printf("[Name changed]\n");
+
              /*
                   wxMutexGuiEnter();
                  // m_list->updateWindows();

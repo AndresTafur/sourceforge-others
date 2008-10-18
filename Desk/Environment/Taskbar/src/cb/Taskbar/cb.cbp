@@ -33,9 +33,12 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-pg" />
+			<Add option="-g" />
 			<Add option="`wx-config --cflags`" />
 		</Compiler>
 		<Linker>
+			<Add option="-pg" />
 			<Add option="`wx-config --libs`" />
 		</Linker>
 		<Unit filename="../../ClientButton.cpp" />

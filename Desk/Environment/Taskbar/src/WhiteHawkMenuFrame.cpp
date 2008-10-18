@@ -224,7 +224,7 @@ WhiteHawkMenu::WhiteHawkMenu(wxMenu *parent,int id, const wxString text, const w
 	void  WhiteHawkMenuFrame::RunDlg( wxCommandEvent &evt)
 	{
 	        RunFrame *frame = new RunFrame(path);
-                frame->ShowModal();
+                frame->Show();
 	}
 
 
