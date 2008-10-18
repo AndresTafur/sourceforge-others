@@ -24,6 +24,8 @@ public:
         void showDesktop(bool val);
 
 
+        bool isVisible();
+
 protected:
 static DeskController *sm_instance;
 

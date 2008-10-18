@@ -61,7 +61,8 @@
 
         void DeskCtrl::showDesktop(wxCommandEvent &evt)
         {
-            DeskController::getInstance()->showDesktop(true);
+          DeskController *inst =  DeskController::getInstance();
+                inst->showDesktop(  !inst->isVisible() );
         }
 
 

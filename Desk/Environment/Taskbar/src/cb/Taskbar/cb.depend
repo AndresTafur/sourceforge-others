@@ -5244,7 +5244,7 @@
 1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DockPanel.hh
 	<wx/frame.h>
 
-1223761000 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/RunFrame.cpp
+1224356374 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/RunFrame.cpp
 	"RunFrame.hh"
 
 1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/RunFrame.hh
@@ -5321,11 +5321,11 @@
 1222645780 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WhiteHawkBar.hh
 	<wx/wx.h>
 
-1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WhiteHawkMenuFrame.cpp
+1224356428 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WhiteHawkMenuFrame.cpp
 	"WhiteHawkMenuFrame.hh"
 	"RunFrame.hh"
 
-1224217328 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowEventManager.cpp
+1224356950 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowEventManager.cpp
 	"WindowEventManager.hh"
 	<X11/Xatom.h>
 	<stdlib.h>
@@ -5340,23 +5340,24 @@
 1222645780 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/wxCircleToggleButton.cpp
 	"wxCircleToggleButton.hh"
 
-1223931936 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskCtrl.cpp
+1224357402 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskCtrl.cpp
 	"DeskCtrl.hh"
 	"DeskController.hh"
 	"WindowEventManager.hh"
 
-1223931928 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskCtrl.hh
+1224357742 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskCtrl.hh
 	<wx/wx.h>
+	<wx/tglbtn.h>
 	"WMEventListener.hh"
 
 1223931851 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WMEventListener.hh
 	<X11/Xlib.h>
 
-1223773616 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskController.cpp
+1224356965 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskController.cpp
 	"DeskController.hh"
 	"WindowManager.hh"
 
-1223769788 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskController.hh
+1224356836 /mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/DeskController.hh
 	<X11/Xlib.h>
 	<list>
 
@@ -5379,6 +5380,6 @@
 	"WindowManager.hh"
 	"WindowController.hh"
 
-1224214149 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowManager.cpp
+1224357670 source:/mnt/sda6/part7/whiteHawk/realsvn/Desk/Environment/Taskbar/src/WindowManager.cpp
 	"WindowManager.hh"
 

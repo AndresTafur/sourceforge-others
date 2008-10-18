@@ -80,6 +80,7 @@ WindowManager *WindowManager::sm_instance = NULL;
 
 
 			XSendEvent(m_display, m_root, false, SubstructureNotifyMask, (XEvent*)&xevent);
+			XFlush(m_display);
 		}
 
 

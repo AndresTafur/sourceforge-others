@@ -62,3 +62,19 @@ DeskController* DeskController::sm_instance = NULL;
 		{
             WindowManager::getInstance()->sendToManager(m_showDeskA,val,0,0,0);
 		}
+
+        bool DeskController::isVisible()
+        {
+		  unsigned long *desktop;
+		  unsigned int currDesk;
+
+	 		 WindowManager::getInstance()->queryManager(m_showDeskA,XA_CARDINAL,&desktop);
+
+			   currDesk = (*desktop);
+
+			if(desktop != NULL)
+                XFree(desktop);
+
+		return currDesk;
+
+        }
