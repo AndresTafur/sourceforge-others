@@ -1,4 +1,15 @@
 
+============ October 21, 2008 ============
+- Added reload database in runtime.
+- Fixed disclaimer.
+- Fixed some memory leaks.
+
+============ September 29, 2008 ============
+- Added Whclamav First beta.
+- Fixed some issues of SystemPath.
+- Added tray.
+- Added splash.
+
 ============ September 26, 2008 ============
 - Removed animation (it looks bad).
 - Added exception catching.

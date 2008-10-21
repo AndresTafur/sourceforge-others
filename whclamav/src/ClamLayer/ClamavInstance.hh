@@ -50,6 +50,16 @@ public:
      */
 	void loadDatabase();
 
+
+	/**
+	 *   loads the virus definitions database
+	 *   @return true if success otherwise false
+	 *   @throw  WhiteHawkException
+     */
+
+    void updateEngine();
+
+
 	/**
 	 *  Checks if the database is already loaded.
 	 *  @return true if loaded, false otherwise.

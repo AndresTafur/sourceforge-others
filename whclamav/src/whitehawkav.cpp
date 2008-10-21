@@ -1,17 +1,18 @@
-/*  This file is part of WhiteHawkClamav.
-
-    WhiteHawkClamav is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
-
-    WhiteHawkClamav is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-
-    You should have received a copy of the GNU General Public License
-    along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
+/*  This file is part of WhiteHawkClamav,
+ *  Copyright (C) 2007 - 2008 Jorge Tafur <darkhawk665@users.sf.net>.
+ *
+ *   WhiteHawkClamav is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   WhiteHawkClamav is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include <iostream>
@@ -30,7 +31,6 @@ class MyApp: public wxApp
     {
      wxString str = DATA_DIR"/splash.png";
      wxBitmap bitmap(str);
-     AvFrame *frame = NULL;
      wxSplashScreen* splash;
 
       ::wxInitAllImageHandlers();
@@ -45,11 +45,11 @@ class MyApp: public wxApp
       str << this->argv[0];
 
       str   = str.BeforeLast( '/');
-      frame = new AvFrame( str);
+      m_frame = new AvFrame( str);
 
       WhiteHawkClamav::ClamavInstance::getInstance()->loadDatabase();
-      frame->Show(TRUE);
-      this->SetTopWindow(frame);
+      m_frame->Show(TRUE);
+      this->SetTopWindow(m_frame);
 
       if( splash)
         splash->Destroy();
@@ -57,6 +57,10 @@ class MyApp: public wxApp
 
      return TRUE;
    }
+
+private:
+AvFrame *m_frame;
+
 
 };
 
@@ -73,6 +77,6 @@ int main(int argc, char *argv[])
 	ret_val = wxEntry(argc, argv);
 
     WhiteHawkClamav::ClamavInstance::getInstance()->destroy();
-
+    wxEntryCleanup();
 	return ret_val;
 }
