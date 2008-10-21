@@ -127,8 +127,11 @@
 
       try
       {
-		if( m_path.empty())
-			return;
+
+            WhiteHawkClamav::ClamavInstance::getInstance()->updateEngine();
+
+            if( m_path.empty())
+                return;
 
             count   = WhiteHawkSystem::SystemPath::getCount(file);
             m_total = count.getFilesCount();

@@ -1555,25 +1555,25 @@
 	<AbstractFile.hh>
 	<SystemPath.hh>
 
-1219547500 /usr/local/include/whiteHawk/system/WhiteHawkSystem.hh
+1223172879 /usr/local/include/whiteHawk/system/WhiteHawkSystem.hh
 
-1219547500 /usr/local/include/whiteHawk/system/AbstractFile.hh
+1223172879 /usr/local/include/whiteHawk/system/AbstractFile.hh
 	"WhiteHawkSystem.hh"
 	"FileInfo.hh"
 	<unistd.h>
 
-1219547500 /usr/local/include/whiteHawk/system/FileInfo.hh
+1223172879 /usr/local/include/whiteHawk/system/FileInfo.hh
 	<sys/stat.h>
 	<sys/types.h>
 	<utime.h>
 	"Time.hh"
 
-1219547500 /usr/local/include/whiteHawk/system/Time.hh
+1223172879 /usr/local/include/whiteHawk/system/Time.hh
 	<time.h>
 	<string>
 	"WhiteHawkSystem.hh"
 
-1219547500 /usr/local/include/whiteHawk/system/SystemPath.hh
+1223172879 /usr/local/include/whiteHawk/system/SystemPath.hh
 	<string>
 	<list>
 	<dirent.h>
@@ -1581,7 +1581,7 @@
 	"AbstractFile.hh"
 	"SystemPathCount.hh"
 
-1219547500 /usr/local/include/whiteHawk/system/SystemPathCount.hh
+1223172879 /usr/local/include/whiteHawk/system/SystemPathCount.hh
 	"WhiteHawkSystem.hh"
 	"AbstractFile.hh"
 
@@ -1595,14 +1595,15 @@
 	<clamav.h>
 	"ClamavEvtListener.hh"
 
-1218421033 /usr/local/include/clamav.h
+1221348026 /usr/local/include/clamav.h
 	<sys/types.h>
 	<sys/stat.h>
 
-1219547500 /usr/local/include/whiteHawk/system/Thread.hh
+1223172879 /usr/local/include/whiteHawk/system/Thread.hh
 	<pthread.h>
 	<unistd.h>
 	"WhiteHawkSystem.hh"
+	"Runnable.hh"
 
 1218500682 /mnt/sda7/part7/whiteHawk/svn/Antivirus/src/Scanner.hh
 	<WhiteHawkClamav.hh>
@@ -1718,8 +1719,42 @@
 	"Scanner.hh"
 	"GUI/AvPanel.hh"
 
-1219547500 /usr/local/include/whiteHawk/system/Exception.hh
+1223172879 /usr/local/include/whiteHawk/system/Exception.hh
 	<string>
 	<exception>
 	"WhiteHawkSystem.hh"
+
+1222482505 source:/mnt/sda6/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamFile.cpp
+	"ClamFile.hh"
+
+1222482482 /mnt/sda6/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamFile.hh
+	<WhiteHawkSystem.hh>
+	"WhiteHawkClamav.hh"
+	<AbstractFile.hh>
+	<SystemPath.hh>
+
+1222472831 /mnt/sda6/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/WhiteHawkClamav.hh
+
+1224570278 source:/mnt/sda6/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamavScanner.cpp
+	"ClamavScanner.hh"
+	<SystemPath.hh>
+	<string.h>
+	<Exception.hh>
+
+1222472854 /mnt/sda6/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamavScanner.hh
+	"WhiteHawkClamav.hh"
+	"ClamavInstance.hh"
+	<Thread.hh>
+
+1224570636 /mnt/sda6/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamavInstance.hh
+	<clamav.h>
+	"WhiteHawkClamav.hh"
+	"ClamavEvtListener.hh"
+	"ClamavScanner.hh"
+
+1222472869 /mnt/sda6/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamavEvtListener.hh
+	"WhiteHawkClamav.hh"
+	"ClamFile.hh"
+
+1223172879 /usr/local/include/whiteHawk/system/Runnable.hh
 
