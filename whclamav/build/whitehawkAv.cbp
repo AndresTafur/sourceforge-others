@@ -42,6 +42,15 @@
 		<Linker>
 			<Add option="-lzzip" />
 		</Linker>
+		<Unit filename="../src/ClamLayer/ClamFile.cpp" />
+		<Unit filename="../src/ClamLayer/ClamFile.hh" />
+		<Unit filename="../src/ClamLayer/ClamavEngine.hh" />
+		<Unit filename="../src/ClamLayer/ClamavEvtListener.hh" />
+		<Unit filename="../src/ClamLayer/ClamavInstance.cpp" />
+		<Unit filename="../src/ClamLayer/ClamavInstance.hh" />
+		<Unit filename="../src/ClamLayer/ClamavScanner.cpp" />
+		<Unit filename="../src/ClamLayer/ClamavScanner.hh" />
+		<Unit filename="../src/ClamLayer/WhiteHawkClamav.hh" />
 		<Unit filename="../src/GUI/AvFrame.cpp" />
 		<Unit filename="../src/GUI/AvFrame.hh" />
 		<Unit filename="../src/GUI/AvNotebook.cpp" />

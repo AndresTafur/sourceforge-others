@@ -46,8 +46,6 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
 		m_list  = new wxListCtrl(this,ID_LISTCTRL,wxDefaultPosition,wxDefaultSize,wxLC_REPORT|wxLC_VRULES);
 
-
-
 		this->m_anim = anim;
 
 		m_stop->Disable();
@@ -85,6 +83,8 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 		sizer->Add(ctrlSizer,0,wxALIGN_CENTER_HORIZONTAL);
 
 		this->SetSizer(sizer);
+		this->SetDropTarget(this);
+
   }
 
   void AvPanel::OnStart(wxCommandEvent &evt)
@@ -98,14 +98,12 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 			m_list->DeleteAllItems();
 			m_start->Disable();
 			m_stop->Enable();
-			if( m_anim )
-                m_anim->Play();
 			m_bar->SetValue(0);
 			m_path->Disable();
 
 			try
 			{
-                    scanner = WhiteHawkClamav::ClamavInstance::getScanner();
+                    scanner =  WhiteHawkClamav::ClamavInstance::getScanner();
                     claminst = WhiteHawkClamav::ClamavInstance::getInstance();
 
                     scanner->setPath(m_path->GetPath().ToAscii());
@@ -118,6 +116,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
                     }
 
                     ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("Starting scan - WhiteHawkClamAv"));
+                    scanner->removeListener(this);
                     scanner->addListener(this);
                     scanner->startScan();
 			}
@@ -224,9 +223,6 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
 
 
-
-
-
 	void AvPanel::onScan(WhiteHawkClamav::ClamFile &file, long long totalFiles)
 	{
         if( file.getId() != 0)
@@ -261,6 +257,87 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 			wxMutexGuiLeave();
     }
 
+
+    bool AvPanel::OnDropFiles(wxCoord x, wxCoord y, const wxArrayString& filenames)
+    {
+      WhiteHawkClamav::ClamavInstance *claminst;
+      WhiteHawkClamav::ClamavScanner  *scanner;
+      size_t nFiles = filenames.GetCount();
+      wxString title = wxT("Scan Finished ");
+      wxString str;
+
+
+
+			try
+			{
+                    scanner = WhiteHawkClamav::ClamavInstance::getScanner();
+                    claminst = WhiteHawkClamav::ClamavInstance::getInstance();
+
+                    if( !m_start->IsEnabled())
+                        return false;
+
+
+                    m_list->DeleteAllItems();
+                    m_start->Disable();
+                    m_stop->Enable();
+                    m_bar->SetValue(0);
+                    m_path->Disable();
+
+
+                    if(!claminst->isDbLoaded())
+                    {
+                            ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("Loading database - WhiteHawkClamAv"));
+                            this->Update();
+                            claminst->loadDatabase();
+                    }
+
+                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("Starting scan - WhiteHawkClamAv"));
+
+                    for ( size_t n = 0; n < nFiles; n++ )
+                    {
+                       str = filenames[n];
+                       WhiteHawkClamav::ClamFile file(str.ToAscii());
+
+                        m_file->ChangeValue( str.AfterLast('/') );
+                        m_fold->ChangeValue( str.BeforeLast('/') );
+
+                        if( scanner->scanFile(file) )
+                        {
+                            wxString str, str2;
+
+                                str << file.getPath().c_str();
+                                str2 << file.getVirName().c_str();
+
+                                m_list->InsertItem(0,str); //todo include All files here
+                                m_list->SetItem(0, 1, str2);
+                                m_list->SetItem(0, 2, wxT("Infected"));
+                        }
+
+                    }
+
+                    if( m_list->GetItemCount() == 0)
+                        title.Append("No virus found - ");
+
+
+                    m_start->Enable();
+                    m_stop->Disable();
+                    m_bar->SetValue(0);
+                    m_path->Enable();
+                    title.Append("WhiteHawkClamAv");
+                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(title);
+			}
+			catch(WhiteHawkSystem::Exception ex)
+			{
+              wxString err;
+                    ex.print();
+
+                    err << ex.getMessage() << wxT("\n:") << ex.getMethod();
+                    wxMessageBox(err,wxT("Error scanning files"),wxICON_ERROR);
+			}
+        return true;
+    }
+
+
 	void AvPanel::onError(WhiteHawkClamav::ClamFile &file,std::string errtype )
 	{
 			fprintf(stderr,"[%s %s] ",errtype.c_str(), file.getPath().c_str() );
@@ -269,13 +346,18 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
     void AvPanel::onFinish()
 	{
+	  wxString title = wxT("Scan Finished ");
+
+
+                if( m_list->GetItemCount() == 0)
+                    title.Append("No virus found - ");
+
+                title.Append("WhiteHawkClamAv");
               wxMutexGuiEnter();
-              ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("Scan Finished - WhiteHawkClamAv"));
+              ((wxFrame*)  GetParent()->GetParent())->SetTitle(title);
 			  m_start->Enable();
 			  m_stop->Disable();
 			  m_bar->SetValue(0);
-			  if(m_anim)
-			   m_anim->Stop();
 			  m_path->Enable();
 			  wxMutexGuiLeave();
     }

@@ -5,12 +5,12 @@
 - Fixed some memory leaks.
 
 ============ September 29, 2008 ============
-- Added Whclamav First beta.
 - Fixed some issues of SystemPath.
 - Added tray.
 - Added splash.
 
 ============ September 26, 2008 ============
+- Released first beta (0.03)
 - Removed animation (it looks bad).
 - Added exception catching.
 - Updated Thread Class.
