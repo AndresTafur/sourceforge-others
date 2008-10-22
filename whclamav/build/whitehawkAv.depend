@@ -1758,3 +1758,8 @@
 
 1223172879 /usr/local/include/whiteHawk/system/Runnable.hh
 
+1224571086 source:/mnt/sda6/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamavInstance.cpp
+	"ClamavInstance.hh"
+	<string.h>
+	<Exception.hh>
+

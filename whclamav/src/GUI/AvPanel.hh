@@ -17,6 +17,7 @@
 
 
 #include <wx/wx.h>
+#include <wx/dnd.h>
 #include <wx/animate.h>
 #include <wx/filepicker.h>
 
@@ -32,7 +33,7 @@
 #include "../Scanner.hh"
 #include "ClamLayer/WhiteHawkClamav.hh"
 
-class AvPanel : public wxPanel, public WhiteHawkClamav::ClamavEvtListener
+class AvPanel : public wxPanel, public WhiteHawkClamav::ClamavEvtListener, public wxFileDropTarget
 {
 public:
 
@@ -53,7 +54,6 @@ public:
 
         void onSwitchDir(wxFileDirPickerEvent &evt);
 
-
         void onScan(WhiteHawkClamav::ClamFile &file, long long totalFiles);
 
         void onVirus(WhiteHawkClamav::ClamFile &file);
@@ -61,6 +61,8 @@ public:
         void onError(WhiteHawkClamav::ClamFile &file,std::string errtype );
 
         void onFinish();
+
+        bool OnDropFiles(wxCoord x, wxCoord y, const wxArrayString& filenames);
 
 
 

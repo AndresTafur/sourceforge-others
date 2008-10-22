@@ -77,7 +77,17 @@
                     else if( tmp.isFile())
                     {
                         tmp.setId(m_curr);
-                        this->scanFile(tmp);
+
+
+                        for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
+                                    (*beg)->onScan(tmp,m_total);
+
+                        if( this->scanFile(tmp) )
+                        {
+                            for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
+                                    (*beg)->onVirus(tmp);
+
+                        }
                         m_curr++;
                     }
 
@@ -99,8 +109,7 @@
 		limits.maxreclevel = 16;
 		limits.maxscansize = 100 * 1048576;
 
-        for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
-            (*beg)->onScan(file,m_total);
+        file.setInfected(false);
 
 
 		status = cl_scanfile( file.getPath().c_str(), &name, NULL, m_engine,&limits, CL_SCAN_STDOPT);
@@ -109,14 +118,13 @@
 		{
 			file.setVirName(name);
 			file.setInfected(true);
-			for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
-                (*beg)->onVirus(file);
+			return true;
 		}
 	    else if(status != CL_CLEAN)
 	        for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
             (*beg)->onError(file, cl_strerror(status));
 
-        return true;
+        return false;
 	}
 
 
