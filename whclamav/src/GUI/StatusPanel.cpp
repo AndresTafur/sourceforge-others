@@ -70,7 +70,7 @@
 
 		grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav version:")));
 		grid2->Add( version,1);
-        grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav functionality:")));
+        grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav functionality level:")));
 		grid2->Add( function,1);
 		grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav database:")));
 		grid2->Add( database,1);

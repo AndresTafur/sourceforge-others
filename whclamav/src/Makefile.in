@@ -50,10 +50,10 @@ binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
 am_whclamav_OBJECTS = whclamav-Scanner.$(OBJEXT) \
 	whclamav-whitehawkav.$(OBJEXT) whclamav-AvFrame.$(OBJEXT) \
-	whclamav-AvNotebook.$(OBJEXT) whclamav-AvPanel.$(OBJEXT) \
-	whclamav-StatusPanel.$(OBJEXT) \
-	whclamav-ClamavInstance.$(OBJEXT) whclamav-ClamFile.$(OBJEXT) \
-	whclamav-ClamavScanner.$(OBJEXT)
+	whclamav-TrayIcon.$(OBJEXT) whclamav-AvNotebook.$(OBJEXT) \
+	whclamav-AvPanel.$(OBJEXT) whclamav-StatusPanel.$(OBJEXT) \
+	whclamav-UpdateDlg.$(OBJEXT) whclamav-ClamavInstance.$(OBJEXT) \
+	whclamav-ClamFile.$(OBJEXT) whclamav-ClamavScanner.$(OBJEXT)
 whclamav_OBJECTS = $(am_whclamav_OBJECTS)
 am__DEPENDENCIES_1 =
 whclamav_DEPENDENCIES = $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1) \
@@ -201,9 +201,11 @@ top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 whclamav_SOURCES = Scanner.cpp whitehawkav.cpp \
 		   GUI/AvFrame.cpp  \
+		   GUI/TrayIcon.cpp \
 		   GUI/AvNotebook.cpp \
 		   GUI/AvPanel.cpp \
 		   GUI/StatusPanel.cpp \
+		   GUI/UpdateDlg.cpp \
 		   ClamLayer/ClamavInstance.cpp \
 		   ClamLayer/ClamFile.cpp \
 		   ClamLayer/ClamavScanner.cpp
@@ -289,6 +291,8 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/whclamav-ClamavScanner.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/whclamav-Scanner.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/whclamav-StatusPanel.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/whclamav-TrayIcon.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/whclamav-UpdateDlg.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/whclamav-whitehawkav.Po@am__quote@
 
 .cpp.o:
@@ -354,6 +358,20 @@ whclamav-AvFrame.obj: GUI/AvFrame.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o whclamav-AvFrame.obj `if test -f 'GUI/AvFrame.cpp'; then $(CYGPATH_W) 'GUI/AvFrame.cpp'; else $(CYGPATH_W) '$(srcdir)/GUI/AvFrame.cpp'; fi`
 
+whclamav-TrayIcon.o: GUI/TrayIcon.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT whclamav-TrayIcon.o -MD -MP -MF $(DEPDIR)/whclamav-TrayIcon.Tpo -c -o whclamav-TrayIcon.o `test -f 'GUI/TrayIcon.cpp' || echo '$(srcdir)/'`GUI/TrayIcon.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/whclamav-TrayIcon.Tpo $(DEPDIR)/whclamav-TrayIcon.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='GUI/TrayIcon.cpp' object='whclamav-TrayIcon.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o whclamav-TrayIcon.o `test -f 'GUI/TrayIcon.cpp' || echo '$(srcdir)/'`GUI/TrayIcon.cpp
+
+whclamav-TrayIcon.obj: GUI/TrayIcon.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT whclamav-TrayIcon.obj -MD -MP -MF $(DEPDIR)/whclamav-TrayIcon.Tpo -c -o whclamav-TrayIcon.obj `if test -f 'GUI/TrayIcon.cpp'; then $(CYGPATH_W) 'GUI/TrayIcon.cpp'; else $(CYGPATH_W) '$(srcdir)/GUI/TrayIcon.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/whclamav-TrayIcon.Tpo $(DEPDIR)/whclamav-TrayIcon.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='GUI/TrayIcon.cpp' object='whclamav-TrayIcon.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o whclamav-TrayIcon.obj `if test -f 'GUI/TrayIcon.cpp'; then $(CYGPATH_W) 'GUI/TrayIcon.cpp'; else $(CYGPATH_W) '$(srcdir)/GUI/TrayIcon.cpp'; fi`
+
 whclamav-AvNotebook.o: GUI/AvNotebook.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT whclamav-AvNotebook.o -MD -MP -MF $(DEPDIR)/whclamav-AvNotebook.Tpo -c -o whclamav-AvNotebook.o `test -f 'GUI/AvNotebook.cpp' || echo '$(srcdir)/'`GUI/AvNotebook.cpp
 @am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/whclamav-AvNotebook.Tpo $(DEPDIR)/whclamav-AvNotebook.Po
@@ -395,6 +413,20 @@ whclamav-StatusPanel.obj: GUI/StatusPanel.cpp
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='GUI/StatusPanel.cpp' object='whclamav-StatusPanel.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o whclamav-StatusPanel.obj `if test -f 'GUI/StatusPanel.cpp'; then $(CYGPATH_W) 'GUI/StatusPanel.cpp'; else $(CYGPATH_W) '$(srcdir)/GUI/StatusPanel.cpp'; fi`
+
+whclamav-UpdateDlg.o: GUI/UpdateDlg.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT whclamav-UpdateDlg.o -MD -MP -MF $(DEPDIR)/whclamav-UpdateDlg.Tpo -c -o whclamav-UpdateDlg.o `test -f 'GUI/UpdateDlg.cpp' || echo '$(srcdir)/'`GUI/UpdateDlg.cpp
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/whclamav-UpdateDlg.Tpo $(DEPDIR)/whclamav-UpdateDlg.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='GUI/UpdateDlg.cpp' object='whclamav-UpdateDlg.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o whclamav-UpdateDlg.o `test -f 'GUI/UpdateDlg.cpp' || echo '$(srcdir)/'`GUI/UpdateDlg.cpp
+
+whclamav-UpdateDlg.obj: GUI/UpdateDlg.cpp
+@am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT whclamav-UpdateDlg.obj -MD -MP -MF $(DEPDIR)/whclamav-UpdateDlg.Tpo -c -o whclamav-UpdateDlg.obj `if test -f 'GUI/UpdateDlg.cpp'; then $(CYGPATH_W) 'GUI/UpdateDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/GUI/UpdateDlg.cpp'; fi`
+@am__fastdepCXX_TRUE@	mv -f $(DEPDIR)/whclamav-UpdateDlg.Tpo $(DEPDIR)/whclamav-UpdateDlg.Po
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='GUI/UpdateDlg.cpp' object='whclamav-UpdateDlg.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o whclamav-UpdateDlg.obj `if test -f 'GUI/UpdateDlg.cpp'; then $(CYGPATH_W) 'GUI/UpdateDlg.cpp'; else $(CYGPATH_W) '$(srcdir)/GUI/UpdateDlg.cpp'; fi`
 
 whclamav-ClamavInstance.o: ClamLayer/ClamavInstance.cpp
 @am__fastdepCXX_TRUE@	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(whclamav_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT whclamav-ClamavInstance.o -MD -MP -MF $(DEPDIR)/whclamav-ClamavInstance.Tpo -c -o whclamav-ClamavInstance.o `test -f 'ClamLayer/ClamavInstance.cpp' || echo '$(srcdir)/'`ClamLayer/ClamavInstance.cpp

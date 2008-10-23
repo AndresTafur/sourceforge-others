@@ -46,7 +46,6 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
 		m_list  = new wxListCtrl(this,ID_LISTCTRL,wxDefaultPosition,wxDefaultSize,wxLC_REPORT|wxLC_VRULES);
 
-		this->m_anim = anim;
 
 		m_stop->Disable();
 		m_fold->SetEditable(false);
@@ -56,7 +55,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 		m_list->InsertColumn(0, wxString("File"));
 		m_list->InsertColumn(1, wxString("Type"));
 		m_list->InsertColumn(2, wxString("Status"));
-		m_list->SetColumnWidth(0, 240);
+		m_list->SetColumnWidth(0, 250);
 
         virbtnsSzr->Add(remove,0,wxALL|wxALIGN_CENTER_VERTICAL,5);
         virbtnsSzr->Add(quaran,0,wxALL|wxALIGN_CENTER_VERTICAL,5);
@@ -140,8 +139,6 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
   	    m_start->Enable();
 		m_stop->Disable();
 		m_bar->SetValue(0);
-		if(m_anim)
-           m_anim->Stop();
 		m_path->Enable();
      }
      catch(WhiteHawkSystem::Exception e)
@@ -158,15 +155,15 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
 		    if( !evt.GetText().IsEmpty() )
 		    {
-                    context->Append(ID_VIR_MOV, wxT("Mover a cuarentena"),wxT("Mueve a la carpeta destinada a cuarentena.") , wxITEM_CHECK);
+                    context->Append(ID_VIR_MOV, wxT("Move to Quarantine"),wxT("Moves to the quarantine folder.") , wxITEM_CHECK);
                     context->AppendSeparator();
-                    context->Append(wxID_DELETE, wxT("Eliminar"),wxT("Elimina permanentemente el archivo."), wxITEM_NORMAL);
+                    context->Append(wxID_DELETE, wxT("Delete"),wxT("Delets the file."), wxITEM_NORMAL);
 		    }
 		    else
 		    {
-                   context->Append(ID_VIR_MOV, wxT("Mover todo a cuarentena"),wxT("") , wxITEM_CHECK);
+                   context->Append(ID_VIR_MOV, wxT("Move all to Quarantine"),wxT("") , wxITEM_CHECK);
                    context->AppendSeparator();
-                   context->Append(wxID_DELETE, wxT("Eliminar todo"),wxT(""), wxITEM_NORMAL);
+                   context->Append(wxID_DELETE, wxT("Deletes everything"),wxT(""), wxITEM_NORMAL);
             }
             PopupMenu(context);
 
@@ -187,10 +184,11 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
         void AvPanel::onDel(wxCommandEvent &evt)
         {
           long item = -1;
+          int iter=0;
           int  selected = m_list->GetSelectedItemCount();
 
             if( wxMessageDialog(this,wxT("Are you sure to delete the selected files?"), wxT("Virus removal"), wxYES_NO).ShowModal() == wxID_YES)
-                for (int iter=0; iter < selected;)
+                while (iter < selected)
                 {
                     item = m_list->GetNextItem(item,wxLIST_NEXT_ALL,wxLIST_STATE_SELECTED);
 
@@ -204,8 +202,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
                             else
                             {
                                 m_list->SetItem(item, 2, wxT("Error"));
-                                wxMessageBox(wxT("There was an error trying to remove file.\n"
-                                "Do you have permissions?"),wxT("Error"),wxICON_ERROR);
+                                wxMessageBox(wxT("There was an error trying to remove file.\nDo you have permissions?"),wxT("Error"),wxICON_ERROR);
                             }
                         }
 
@@ -267,7 +264,6 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
       wxString str;
 
 
-
 			try
 			{
                     scanner = WhiteHawkClamav::ClamavInstance::getScanner();
@@ -275,7 +271,6 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
                     if( !m_start->IsEnabled())
                         return false;
-
 
                     m_list->DeleteAllItems();
                     m_start->Disable();
@@ -350,10 +345,10 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 	  wxString title = wxT("Scan Finished ");
 
 
-                if( m_list->GetItemCount() == 0)
-                    title.Append("No virus found - ");
+              if( m_list->GetItemCount() == 0)
+                  title.Append("No virus found - ");
 
-                title.Append("WhiteHawkClamAv");
+              title.Append("WhiteHawkClamAv");
               wxMutexGuiEnter();
               ((wxFrame*)  GetParent()->GetParent())->SetTitle(title);
 			  m_start->Enable();
