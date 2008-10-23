@@ -263,7 +263,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
       WhiteHawkClamav::ClamavInstance *claminst;
       WhiteHawkClamav::ClamavScanner  *scanner;
       size_t nFiles = filenames.GetCount();
-      wxString title = wxT("Scan Finished ");
+      wxString msg = wxT("Scan finished ");
       wxString str;
 
 
@@ -316,15 +316,16 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
                     }
 
                     if( m_list->GetItemCount() == 0)
-                        title.Append("No virus found - ");
+                        msg.Append(wxT("no "));
 
+                    msg.Append(wxT("virus found."));
 
                     m_start->Enable();
                     m_stop->Disable();
                     m_bar->SetValue(0);
                     m_path->Enable();
-                    title.Append("WhiteHawkClamAv");
-                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(title);
+                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("WhiteHawkClamAv"));
+                    wxMessageBox(msg,wxT("Scan finished"),wxICON_INFORMATION);
 			}
 			catch(WhiteHawkSystem::Exception ex)
 			{
