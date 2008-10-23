@@ -67,8 +67,6 @@ public:
 
 
 protected:
-
-wxAnimationCtrl *m_anim;
 wxGauge         *m_bar;
 wxDirPickerCtrl *m_path;
 wxTextCtrl      *m_file;

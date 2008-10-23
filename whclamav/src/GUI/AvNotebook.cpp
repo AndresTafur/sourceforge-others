@@ -31,14 +31,14 @@
 
 
 
-    void AvNotebook::insertStatus()
+    void AvNotebook::showStatusPanel()
     {
        int stat = GetPageIndex(m_status);
             SetSelection(stat);
     }
 
 
-    void AvNotebook::insertScan()
+    void AvNotebook::showScanPanel()
     {
        int stat =  GetPageIndex(m_scan);
 

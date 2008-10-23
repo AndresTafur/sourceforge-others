@@ -15,34 +15,23 @@
  *   along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <wx/aui/auibook.h>
+#ifndef _UPDATEDLG_HH_
+#define _UPDATEDLG_HH_
 
-#include "AvPanel.hh"
-#include "StatusPanel.hh"
-
-#ifndef _AVNOTEBOOK_H_
-#define _AVNOTEBOOK_H_
+#include <wx/wx.h>
 
 
-
-class AvNotebook : public wxAuiNotebook
+class UpdateDlg : public wxDialog
 {
 public:
 
-    AvNotebook(wxWindow *parent, wxAnimationCtrl *load,int id);
+            UpdateDlg(wxWindow *parent);
 
-    void showStatusPanel();
-
-    void showScanPanel();
-
-
+            void onStartUpdate(wxCommandEvent &evt);
 
 protected:
-AvPanel	      *m_scan;
-StatusPanel   *m_status;
-wxAnimationCtrl *m_load;
+wxTextCtrl *m_msg;
+DECLARE_EVENT_TABLE()
 };
 
-
-
-#endif // AVNOTEBOOK_H_INCLUDED
+#endif

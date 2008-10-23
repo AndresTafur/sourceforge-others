@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
+	<File name="../src/ClamLayer/ClamFile.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="758" topLine="0" />
+	</File>
+	<File name="../src/ClamLayer/ClamavEvtListener.hh" open="0" top="0" tabpos="0">
+		<Cursor position="0" topLine="32" />
+	</File>
 	<File name="../src/ClamLayer/ClamavInstance.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2252" topLine="0" />
 	</File>
 	<File name="../src/ClamLayer/ClamavInstance.hh" open="0" top="0" tabpos="2">
 		<Cursor position="2035" topLine="78" />
 	</File>
-	<File name="../src/ClamLayer/ClamavScanner.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="3746" topLine="118" />
+	<File name="../src/ClamLayer/ClamavScanner.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="3336" topLine="98" />
+	</File>
+	<File name="../src/ClamLayer/ClamavScanner.hh" open="0" top="0" tabpos="0">
+		<Cursor position="1659" topLine="49" />
 	</File>
 	<File name="../src/GUI/AvFrame.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="0" topLine="0" />
@@ -22,11 +31,11 @@
 	<File name="../src/GUI/AvNotebook.h" open="0" top="0" tabpos="0">
 		<Cursor position="792" topLine="0" />
 	</File>
-	<File name="../src/GUI/AvPanel.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1730" topLine="0" />
+	<File name="../src/GUI/AvPanel.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="7113" topLine="158" />
 	</File>
-	<File name="../src/GUI/AvPanel.hh" open="1" top="1" tabpos="2">
-		<Cursor position="1067" topLine="12" />
+	<File name="../src/GUI/AvPanel.hh" open="0" top="0" tabpos="2">
+		<Cursor position="1934" topLine="44" />
 	</File>
 	<File name="../src/GUI/FileSelectionDialog.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="792" topLine="0" />
@@ -34,8 +43,8 @@
 	<File name="../src/GUI/FileSelectionDialog.hh" open="0" top="0" tabpos="0">
 		<Cursor position="793" topLine="0" />
 	</File>
-	<File name="../src/GUI/StatusPanel.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="792" topLine="0" />
+	<File name="../src/GUI/StatusPanel.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="985" topLine="60" />
 	</File>
 	<File name="../src/GUI/StatusPanel.hh" open="0" top="0" tabpos="0">
 		<Cursor position="792" topLine="0" />

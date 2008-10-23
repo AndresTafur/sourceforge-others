@@ -23,6 +23,7 @@ enum rcIds{
 
 	ID_HOME,
 	ID_SCANF,
+	ID_UPDAT,
 	ID_FSCAN,
 	ID_QUAR,
 	ID_CONFIG,

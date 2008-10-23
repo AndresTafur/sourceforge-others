@@ -16,10 +16,11 @@
 */
 
 #include <wx/wx.h>
+#include <wx/taskbar.h>
 #include <wx/aboutdlg.h>
 #include "rcids.h"
 #include "AvNotebook.h"
-#include <wx/taskbar.h>
+
 
 #ifndef _AVFRAME_H_
 #define _AVFRAME_H_
@@ -41,6 +42,9 @@ public:
 
     void onTaskLClick(wxTaskBarIconEvent &evt);
 
+
+    void onUpdate(wxCommandEvent &evt);
+
     void onHome(wxCommandEvent &evt);
 
     void onScan(wxCommandEvent &evt);
@@ -48,8 +52,6 @@ public:
     void onQuit(wxCommandEvent &evt);
 
     void onClose(wxCloseEvent &evt);
-
-    void onIconize(wxIconizeEvent &evt);
 
     void onAbout(wxCommandEvent &evt);
 

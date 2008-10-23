@@ -16,48 +16,8 @@
 */
 
 #include "AvFrame.hh"
-
-class MyTaskBarIcon: public wxTaskBarIcon
-{
-public:
-    MyTaskBarIcon(wxWindow *dialog) {this->dialog = dialog;}
-
-    void OnLeftButtonDClick(wxTaskBarIconEvent&)
-    {
-        dialog->Show( !dialog->IsShown());
-    }
-    void OnMenuRestore(wxCommandEvent&)
-    {
-       dialog->Show( !dialog->IsShown());
-    }
-
-    void OnMenuExit(wxCommandEvent&)
-    {
-
-        dialog->Destroy();
-        this->RemoveIcon();
-    }
-
-    virtual wxMenu *CreatePopupMenu()
-    {
-    wxMenu *menu = new wxMenu;
-
-    menu->Append( wxID_PREVIEW, wxT("&Show/hide window"));
-    menu->AppendSeparator();
-    menu->Append(wxID_EXIT,wxT("&Close"));
-    return menu;
-    }
-protected:
-wxWindow *dialog;
-DECLARE_EVENT_TABLE()
-};
-
-BEGIN_EVENT_TABLE(MyTaskBarIcon, wxTaskBarIcon)
-    EVT_MENU(wxID_PREVIEW, MyTaskBarIcon::OnMenuRestore)
-    EVT_MENU(wxID_EXIT,   MyTaskBarIcon::OnMenuExit)
-    EVT_TASKBAR_LEFT_DOWN(MyTaskBarIcon::OnLeftButtonDClick)
-END_EVENT_TABLE()
-
+#include "UpdateDlg.hh"
+#include "TrayIcon.hh"
 
 
 
@@ -70,7 +30,7 @@ AvFrame::AvFrame(wxString path) : wxFrame(NULL,-1,wxT("WhiteHawkClamAv"),wxDefau
     wxButton    *home  = new wxButton(this,ID_HOME,wxT("&Status"));
     wxButton    *ssca  = new wxButton(this,ID_SCANF,wxT("Sc&an Files"));
     wxButton    *qar   = new wxButton(this,102,wxT("&Quarantine"));
-    wxButton    *upd   = new wxButton(this,103,wxT("&Update"));
+    wxButton    *upd   = new wxButton(this,ID_UPDAT,wxT("&Update"));
     wxButton    *hlp   = new wxButton(this,104,wxT("&Help"));
 
     wxAnimationCtrl  *load = NULL;
@@ -78,15 +38,11 @@ AvFrame::AvFrame(wxString path) : wxFrame(NULL,-1,wxT("WhiteHawkClamAv"),wxDefau
     wxIcon appIcon(DATA_DIR"/whclicon.png", wxBITMAP_TYPE_ANY);
 
 
-/*
-    TODO: Find/Make a better animation
-      if(anim1.LoadFile(path+wxT(DATA_DIR"/scan.gif")))
-            load = new wxAnimationCtrl(this,wxID_ANY,anim1);*/
         m_trayIcon = new MyTaskBarIcon(this);
         SetIcon( appIcon);
 
-  if (!m_trayIcon->SetIcon(appIcon,wxT("whiteHawkClamav")))
-        wxMessageBox(wxT("Could not set icon."));
+        if (!m_trayIcon->SetIcon(appIcon,wxT("whiteHawkClamav")))
+            wxMessageBox(wxT("Could not set icon."));
 
         m_sizer = new wxBoxSizer(wxHORIZONTAL);
 
@@ -99,16 +55,12 @@ AvFrame::AvFrame(wxString path) : wxFrame(NULL,-1,wxT("WhiteHawkClamAv"),wxDefau
         princ->Add(upd, 0,wxEXPAND|wxBOTTOM,5);
         princ->Add(hlp, 0,wxEXPAND|wxBOTTOM,5);
 
-    /*    if( load )
-            imgSzr->Add(load,0,wxALL|wxCENTRE,10);
-        else*/
-            imgSzr->AddSpacer(50);
+        imgSzr->AddSpacer(50);
         imgSzr->Add(princ,0,wxALL,10);
 
 
         m_sizer->Add(imgSzr);
         m_sizer->Add(m_note,1,wxEXPAND|wxLEFT,10);
-
 
         vert->Add(m_sizer,1,wxEXPAND);
 
@@ -152,32 +104,32 @@ void AvFrame::createMenu()
 }
 
 
+void AvFrame::onUpdate(wxCommandEvent &evt)
+{
+ UpdateDlg dlg(this);
 
+        dlg.ShowModal();
+}
 
 void AvFrame::onHome(wxCommandEvent &evt)
 {
-    m_note->insertStatus();
+    m_note->showStatusPanel();
 }
 
 void AvFrame::onScan( wxCommandEvent &evt)
 {
-    m_note->insertScan();
+    m_note->showScanPanel();
 }
 
 
 void AvFrame::onQuit(wxCommandEvent &evt)
 {
-    this->Show(FALSE);
+    this->Show(false);
 }
 
 void AvFrame::onClose(wxCloseEvent &evt)
 {
-    this->Show(FALSE);
-}
-
-void AvFrame::onIconize(wxIconizeEvent &evt)
-{
-    this->Show(!evt.Iconized());
+    this->Show(false);
 }
 
 
@@ -221,12 +173,10 @@ void AvFrame::onAbout(wxCommandEvent &evt)
 BEGIN_EVENT_TABLE(AvFrame,wxFrame)
     EVT_BUTTON(ID_HOME ,AvFrame::onHome)
     EVT_BUTTON(ID_SCANF ,AvFrame::onScan)
+    EVT_BUTTON(ID_UPDAT ,AvFrame::onUpdate)
     EVT_MENU(wxID_EXIT, AvFrame::onQuit)
     EVT_MENU(wxID_ABOUT, AvFrame::onAbout)
     EVT_MENU(wxID_OPEN, AvFrame::onScan)
-    EVT_ICONIZE(AvFrame::onIconize)
-    EVT_CLOSE(AvFrame::onClose)/*
-    EVT_TASKBAR_CLICK(AvFrame::showTrayMenu)
-    EVT_TASKBAR_RIGHT_UP(AvFrame::showTrayMenu)*/
+    EVT_CLOSE(AvFrame::onClose)
 END_EVENT_TABLE()
 
