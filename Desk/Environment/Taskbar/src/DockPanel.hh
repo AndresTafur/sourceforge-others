@@ -8,7 +8,7 @@ class DockPanel : public wxFrame
 {
 public:
 
-     DockPanel(wxPoint position,wxSize size );
+     DockPanel(wxPoint position,wxSize size, wxString title = wxT("Dock") );
 
      void setDockable();
 

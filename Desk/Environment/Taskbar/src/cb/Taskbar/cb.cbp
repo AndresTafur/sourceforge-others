@@ -51,6 +51,7 @@
 		<Unit filename="../../DeskCtrl.hh" />
 		<Unit filename="../../DockPanel.cpp" />
 		<Unit filename="../../DockPanel.hh" />
+		<Unit filename="../../LauncherPanel.hh" />
 		<Unit filename="../../RunFrame.cpp" />
 		<Unit filename="../../RunFrame.hh" />
 		<Unit filename="../../TaskBar.cpp" />
