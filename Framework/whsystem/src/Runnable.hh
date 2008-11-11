@@ -21,7 +21,16 @@ class WhiteHawkSystem::Runnable
 {
 public:
 
+        /**
+         *  Virtual method wich will be runned in thread.
+         */
         virtual void run() = 0;
+
+
+        /**
+         * Function called within the thread at the end of the
+         * excecution.
+         */
         virtual void onTerminate() = 0;
 
 };

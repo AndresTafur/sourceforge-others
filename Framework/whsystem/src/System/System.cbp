@@ -30,22 +30,31 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="../AbstractFile.cpp" />
+		<Unit filename="../AbstractFile.hh" />
+		<Unit filename="../DynamicLibrary.cpp" />
+		<Unit filename="../DynamicLibrary.hh" />
+		<Unit filename="../Exception.cpp" />
+		<Unit filename="../Exception.hh" />
 		<Unit filename="../FileInfo.cpp" />
 		<Unit filename="../FileInfo.hh" />
-		<Unit filename="../FileListNode.cpp" />
-		<Unit filename="../FileListNode.hh" />
-		<Unit filename="../FileStream.cpp" />
-		<Unit filename="../FileStream.hh" />
-		<Unit filename="../ListNode.cpp" />
-		<Unit filename="../ListNode.hh" />
+		<Unit filename="../Runnable.hh" />
 		<Unit filename="../SystemPath.cpp" />
 		<Unit filename="../SystemPath.hh" />
+		<Unit filename="../SystemPathCount.cpp" />
+		<Unit filename="../SystemPathCount.hh" />
+		<Unit filename="../TarFile.cpp" />
+		<Unit filename="../TarFile.hh" />
+		<Unit filename="../TarResource.cpp" />
+		<Unit filename="../TarResource.hh" />
 		<Unit filename="../Thread.cpp" />
 		<Unit filename="../Thread.hh" />
 		<Unit filename="../Time.cpp" />
 		<Unit filename="../Time.hh" />
 		<Unit filename="../WhiteHawkSystem.hh" />
+		<Unit filename="../ZipFile.cpp" />
 		<Unit filename="../ZipFile.hh" />
+		<Unit filename="../ZipResource.cpp" />
 		<Unit filename="../ZipResource.hh" />
 		<Extensions>
 			<code_completion />

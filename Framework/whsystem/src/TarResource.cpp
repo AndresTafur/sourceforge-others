@@ -24,13 +24,6 @@
 		m_eof = false;
 		m_handler = handler;
 		m_name    = th_get_pathname(handler);
-		m_reg     = TH_ISREG(handler);
-        m_dir     = TH_ISDIR(handler);
-        m_link    = TH_ISLNK(handler);
-        m_sym     = TH_ISSYM(handler);
-        m_blck    = TH_ISBLK(handler);
-        m_chr     = TH_ISCHR(handler);
-        m_fifo    = TH_ISFIFO(handler);
 	}
 
 
@@ -109,46 +102,49 @@
 
 	bool WhiteHawkSystem::TarResource::isFile()
 	{
-        return m_reg;
+        return TH_ISREG(m_handler);
 	}
 
     bool WhiteHawkSystem::TarResource::isHardLink()
 	{
-        return m_link;
+        return TH_ISLNK(m_handler);
 	}
 
 	bool WhiteHawkSystem::TarResource::isSoftLink()
 	{
-        return m_sym;
+
+
+
+        return TH_ISSYM(m_handler);
 	}
 
 	bool WhiteHawkSystem::TarResource::isLink()
 	{
-        return m_link || m_sym;
+        return TH_ISLNK(m_handler) || TH_ISSYM(m_handler);
 	}
 
 	bool WhiteHawkSystem::TarResource::isDirectory()
 	{
-        return m_dir;
+        return TH_ISDIR(m_handler);
 	}
 
 	bool WhiteHawkSystem::TarResource::isCharDevice()
 	{
-        return m_chr;
+        return TH_ISCHR(m_handler);
 	}
 
 	bool WhiteHawkSystem::TarResource::isBlockDevice()
 	{
-        return m_blck;
+        return TH_ISBLK(m_handler);
 	}
 
 	bool WhiteHawkSystem::TarResource::isFIFO()
 	{
-        return m_fifo;
+        return TH_ISFIFO(m_handler);
 	}
 
 	bool WhiteHawkSystem::TarResource::isDevice()
 	{
-        return m_chr || m_blck;
+        return TH_ISCHR(m_handler) || TH_ISBLK(m_handler);
 	}
 

@@ -25,8 +25,7 @@
 
     WhiteHawkSystem::TarFile::TarFile(std::string path)
     {
-        tar_open(&dir,(char*)path.c_str(),NULL,O_RDONLY,0,0);
-        this->path = path;
+        tar_open(&m_handler,(char*)path.c_str(),NULL,O_RDONLY,0,0);
     }
 
     WhiteHawkSystem::TarResource*  WhiteHawkSystem::TarFile::getResource(std::string name)
@@ -50,10 +49,10 @@
 
     WhiteHawkSystem::TarResource* WhiteHawkSystem::TarFile::getNextResource()
     {
-        if( th_read(dir) == -1)
+        if( th_read(m_handler) == -1)
             return NULL;
 
-        return (new WhiteHawkSystem::TarResource(dir));
+        return (new WhiteHawkSystem::TarResource(m_handler));
     }
 
 
@@ -61,31 +60,31 @@
     {
         if( savedName.empty())
                 savedName = path;
-        if( tar_append_file(dir, (char*)path.c_str(),(char*) savedName.c_str()) != 0)
+        if( tar_append_file(m_handler, (char*)path.c_str(),(char*) savedName.c_str()) != 0)
                 throw (Exception("Failed adding file.","WhiteHawkSystem::TarFile::append"));
 
-        return tar_append_eof(dir) == 0;
+        return tar_append_eof(m_handler) == 0;
     }
 
     bool WhiteHawkSystem::TarFile::append(WhiteHawkSystem::FileInfo *file, std::string savedName)
     {
         if( savedName.empty())
-                savedName = path;
-        if( tar_append_file(dir,(char*) file->getPath().c_str(), (char*)savedName.c_str()) != 0)
+                savedName = file->getPath();
+        if( tar_append_file(m_handler,(char*) file->getPath().c_str(), (char*)savedName.c_str()) != 0)
                 throw Exception("Failed adding file.","WhiteHawkSystem::TarFile::append");
 
-        return tar_append_eof(dir) == 0;
+        return tar_append_eof(m_handler) == 0;
     }
 
 
     bool  WhiteHawkSystem::TarFile::appendTree( std::string path,std::string savedName)
     {
-        return tar_append_tree(dir,(char*)path.c_str(),(char*) savedName.c_str()) == 0;
+        return tar_append_tree(m_handler,(char*)path.c_str(),(char*) savedName.c_str()) == 0;
     }
 
     bool  WhiteHawkSystem::TarFile::appendTree(WhiteHawkSystem::SystemPath *path, std::string savedName)
     {
-        return tar_append_tree(dir, (char*)path->getPath().c_str(),(char*) savedName.c_str()) == 0;
+        return tar_append_tree(m_handler, (char*)path->getPath().c_str(),(char*) savedName.c_str()) == 0;
     }
 
 
@@ -115,5 +114,5 @@
 
     bool WhiteHawkSystem::TarFile::close()
 	{
-		return tar_close(dir) == 0;
+		return tar_close(m_handler) == 0;
 	}
