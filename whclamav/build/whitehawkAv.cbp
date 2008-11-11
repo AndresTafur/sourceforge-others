@@ -61,6 +61,10 @@
 		<Unit filename="../src/GUI/FileSelectionDialog.hh" />
 		<Unit filename="../src/GUI/StatusPanel.cpp" />
 		<Unit filename="../src/GUI/StatusPanel.hh" />
+		<Unit filename="../src/GUI/TrayIcon.cpp" />
+		<Unit filename="../src/GUI/TrayIcon.hh" />
+		<Unit filename="../src/GUI/UpdateDlg.cpp" />
+		<Unit filename="../src/GUI/UpdateDlg.hh" />
 		<Unit filename="../src/GUI/rcids.h" />
 		<Unit filename="../src/whitehawkav.cpp" />
 		<Extensions>

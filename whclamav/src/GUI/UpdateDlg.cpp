@@ -35,7 +35,7 @@ void UpdateDlg::onStartUpdate(wxCommandEvent &evt)
         do
         {
            c = fgetc(fl);
-
+            //todo select or poll
            if( c != EOF)
             str << c;
         }while( !feof(fl));

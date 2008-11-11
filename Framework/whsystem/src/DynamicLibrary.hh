@@ -25,19 +25,40 @@ class WhiteHawkSystem::DynamicLibrary
 {
 public:
 
+        /**
+         *  Default constructor.
+         *  @param path Path to the dynamic library.
+         *  @param flag dl system flag ( RTLD_NOW or RTLD_GLOBAL.
+         */
         DynamicLibrary(std::string path, int flag = RTLD_NOW|RTLD_GLOBAL);
 
-
+        /**
+         *  Returns a function pointer of the loaded library.
+         *  @param symbol Function name.
+         *  @return Function pointer.
+         */
         void* getSymbol(std::string symbol);
 
+        /**
+         *  Closes de library.
+         *  @return true if it was sucessfully removed.
+         */
         bool close();
 
+        /**
+         *  Selects a path to be used for a library
+         *  @param path path to be used
+         *  @return true if it could be changed, false otherwise
+         */
         bool use(std::string path);
 
+        /**
+         * Default destructor.
+         */
         ~DynamicLibrary();
 
 protected:
-void *handler;
+void *m_handler;
 
 };
 #endif

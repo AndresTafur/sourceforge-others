@@ -150,7 +150,6 @@ unsigned long long m_files;
  */
 unsigned long long m_folders;
 
-
 /**
  * Total amount of devices.
  */

@@ -35,21 +35,15 @@ public:
 
 	ZipResource(ZZIP_FILE *file);
 
-
 	void setName(std::string name);
-
 
 	std::string getName();
 
-
 	std::string getContent(int size=1);
-
 
 	bool extract();
 
-
     bool extract(std::string path);
-
 
 	bool isOpen();
 
@@ -59,9 +53,7 @@ public:
 
 	void setOffset(zzip_off_t offset, int pos = SEEK_SET);
 
-
 	void rewind();
-
 
 	void close();
 

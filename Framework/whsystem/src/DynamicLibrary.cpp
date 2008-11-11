@@ -23,26 +23,26 @@ extern int uselib(const char *path);
 
 WhiteHawkSystem::DynamicLibrary::DynamicLibrary(std::string path, int flag)
 {
-       handler = dlopen(path.c_str(), flag);
+       m_handler = dlopen(path.c_str(), flag);
 }
 
 
 void* WhiteHawkSystem::DynamicLibrary::getSymbol(std::string symbol)
 {
-    if( !handler)
+    if( !m_handler)
          throw (Exception("Failed. Bad lubrary handler"));
 
-    return dlsym(handler,symbol.c_str());
+    return dlsym(m_handler,symbol.c_str());
 }
 
 
 
 bool WhiteHawkSystem::DynamicLibrary::close()
 {
-    if( !handler)
+    if( !m_handler)
      throw (Exception("Failed. Bad lubrary handler"));
 
-    return (dlclose(handler)==0);
+    return (dlclose(m_handler)==0);
 }
 
 bool WhiteHawkSystem::DynamicLibrary::use(std::string path)
