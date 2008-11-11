@@ -10,7 +10,7 @@
 
 
 
-    TaskBar::TaskBar(wxString str): DockPanel(wxPoint(0,WindowManager::getInstance()->screenHeight()-29),wxSize(WindowManager::getInstance()->screenWidth(),29))
+    TaskBar::TaskBar(wxString str): DockPanel(wxPoint(0,WindowManager::getInstance()->screenHeight()-29),wxSize(WindowManager::getInstance()->screenWidth(),29),wxT("WhiteHawk taskbar"))
      {
 
 	   wxBoxSizer *sizer;

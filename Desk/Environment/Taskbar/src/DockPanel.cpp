@@ -6,7 +6,7 @@
 #include "DockPanel.hh"
 
 
-     DockPanel::DockPanel(wxPoint position,wxSize size ): wxFrame(NULL,wxID_ANY,wxT(""),position,size,wxSTAY_ON_TOP|wxFRAME_NO_TASKBAR|wxBORDER_NONE, wxT(""))
+     DockPanel::DockPanel(wxPoint position,wxSize size,wxString title ): wxFrame(NULL,wxID_ANY,title,position,size,wxSTAY_ON_TOP|wxFRAME_NO_TASKBAR|wxBORDER_NONE, wxT(""))
      {
 
 	 }
