@@ -83,6 +83,7 @@ void WhiteHawkSystem::Thread::threadfunc(Runnable *runObj)
 {
         runObj->run();
         pthread_exit(NULL);
+        runObj->onTerminate();
 }
 
 WhiteHawkSystem::Thread::~Thread()
