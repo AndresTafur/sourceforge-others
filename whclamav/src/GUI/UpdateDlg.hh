@@ -19,15 +19,21 @@
 #define _UPDATEDLG_HH_
 
 #include <wx/wx.h>
+#include <Thread.hh>
 
-
-class UpdateDlg : public wxDialog
+class UpdateDlg : public wxDialog, public WhiteHawkSystem::Thread
 {
 public:
 
             UpdateDlg(wxWindow *parent);
 
             void onStartUpdate(wxCommandEvent &evt);
+
+            void onClear(wxCommandEvent &evt);
+
+            void run();
+
+            void onTerminate();
 
 protected:
 wxTextCtrl *m_msg;
