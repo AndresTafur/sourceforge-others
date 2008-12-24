@@ -12,6 +12,6 @@ AC_PROG_YACC
 AC_PROG_LIBTOOL
 AC_STDC_HEADERS
 
-AC_HAVE_HEADERS(string fcntl.h zzip/lib.h)
+AC_HAVE_HEADERS(string fcntl.h)
 AC_OUTPUT(Makefile src/Makefile pc/libwhsystem-1.0.pc)
 

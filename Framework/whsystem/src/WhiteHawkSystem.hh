@@ -16,23 +16,17 @@
 
 namespace WhiteHawkSystem
 {
-   class DynamicLibrary;
-   class Time;
-   class FileInfo;
-   class Exception;
-   class Thread;
-   class Runnable;
-   class TarFile;
-   class TarResource;
    class AbstractFile;
-   class ListNode;
-   class FileListNode;
+   class DynamicLibrary;
+   class Exception;
+   class FileInfo;
+   class PointerContainer;
+   class PointerTracker;
+   class Runnable;
    class SystemPath;
    class SystemPathCount;
-   class ZipFile;
-   class ZipResource;
-
-
+   class Thread;
+   class Time;
 };
 
 

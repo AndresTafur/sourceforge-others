@@ -7,6 +7,6 @@ Name: libwhsystem
 Description: whitehawk system library
 Requires: 
 Version: @VERSION@
-Libs: -L${libdir} -lzzip -ltar -lpthread -lwhsystem -ldl
+Libs: -L${libdir} -lpthread -lwhsystem -ldl
 Cflags: -I${includedir}/whiteHawk/system/
 

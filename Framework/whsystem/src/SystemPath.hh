@@ -121,6 +121,7 @@ public:
          */
         static int mkdirhier(const char*path);
 
+        ~SystemPath();
 
 protected:
 /**

@@ -33,6 +33,8 @@ public:
          */
         virtual void onTerminate() = 0;
 
+        inline virtual ~Runnable() {};
+
 };
 
 
