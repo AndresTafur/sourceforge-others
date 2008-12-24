@@ -20,9 +20,8 @@
 
 
 
-AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL|wxMAXIMIZE_BOX)
+AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL|wxMAXIMIZE_BOX)
   {
-
 	wxBoxSizer   *sizer      = new wxBoxSizer(wxVERTICAL);
 	wxGridSizer	 *prgrsSizer = new wxGridSizer(2,3);
 
@@ -30,15 +29,14 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
     wxBoxSizer	 *virctrlSzr = new wxBoxSizer(wxHORIZONTAL);
 	wxBoxSizer	 *ctrlSizer  = new wxBoxSizer(wxHORIZONTAL);
 
+    wxButton     *remove  = new wxButton(this,ID_VIR_DEL, wxT(_("&Remove")));
+    wxButton     *quaran  = new wxButton(this,ID_VIR_MOV, wxT(_("Q&uarantine")));
+    wxButton     *select  = new wxButton(this,ID_SELECT_ALL, wxT(_("&Select All")));
 
-    wxButton     *remove  = new wxButton(this,ID_VIR_DEL,wxT("&Remove"));
-    wxButton     *quaran  = new wxButton(this,ID_VIR_MOV,wxT("Q&uarantine"));
-    wxButton     *select  = new wxButton(this,ID_SELECT_ALL,wxT("&Select All"));
+		m_start = new wxButton(this,ID_AVSTART, wxT(_("Start")));
+		m_stop  = new wxButton(this,ID_AVSTOP, wxT(_("Stop")));
 
-		m_start = new wxButton(this,ID_AVSTART,wxT("Start"));
-		m_stop  = new wxButton(this,ID_AVSTOP,wxT("Stop"));
-
-        m_path = new wxDirPickerCtrl(this,ID_DIALOG,wxT("/"));
+        m_path = new wxDirPickerCtrl(this,ID_DIALOG);
 		m_bar  = new wxGauge(this,wxID_ANY,100);
 		m_file = new wxTextCtrl(this, wxID_ANY,wxT(""));
 		m_fold = new wxTextCtrl(this, wxID_ANY,wxT(""));
@@ -52,9 +50,9 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 		m_file->SetEditable(false);
 
 
-		m_list->InsertColumn(0, wxString("File"));
-		m_list->InsertColumn(1, wxString("Type"));
-		m_list->InsertColumn(2, wxString("Status"));
+		m_list->InsertColumn(0, wxString( wxT(_("File"))));
+		m_list->InsertColumn(1, wxString( wxT(_("Type"))));
+		m_list->InsertColumn(2, wxString( wxT(_("Status"))));
 		m_list->SetColumnWidth(0, 250);
 
         virbtnsSzr->Add(remove,0,wxALL|wxALIGN_CENTER_VERTICAL,5);
@@ -64,13 +62,13 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
         virctrlSzr->Add(m_list,1,wxEXPAND|wxALL,5);
         virctrlSzr->Add(virbtnsSzr,0,wxALL|wxALIGN_CENTER_VERTICAL,5);
 
-		prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT("Progress: ")));
+		prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT(_("Progress: "))));
 		prgrsSizer->Add(m_bar,0,wxEXPAND);
-		prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT("Scanning Path: ")));
+		prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT(_("Scanning Path: "))));
 		prgrsSizer->Add(m_path,0,wxEXPAND);
-		prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT("Current Folder: ")));
+		prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT(_("Current Folder: "))));
 		prgrsSizer->Add(m_fold,0,wxEXPAND);
-        prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT("Current File: ")));
+        prgrsSizer->Add( new wxStaticText(this,wxID_ANY,wxT(_("Current File: "))));
 		prgrsSizer->Add(m_file,0,wxEXPAND);
 
 		ctrlSizer->Add(m_start,0,wxALIGN_CENTER_HORIZONTAL|wxFIXED_MINSIZE|wxBOTTOM|wxALL,5);
@@ -82,8 +80,11 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 		sizer->Add(ctrlSizer,0,wxALIGN_CENTER_HORIZONTAL);
 
 		this->SetSizer(sizer);
-		this->SetDropTarget(this);
 
+		/*
+		 * Disabled since it causes segfault on program exit
+		 */
+		//this->SetDropTarget(this);
   }
 
   void AvPanel::OnStart(wxCommandEvent &evt)
@@ -109,12 +110,12 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
                     if(!claminst->isDbLoaded())
                     {
-                        ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("Loading database - WhiteHawkClamAv"));
+                        ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("Loading database - WhiteHawkClamAv")));
                         this->Update();
                         claminst->loadDatabase();
                     }
 
-                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("Starting scan - WhiteHawkClamAv"));
+                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("Starting scan - WhiteHawkClamAv")));
                     scanner->removeListener(this);
                     scanner->addListener(this);
                     scanner->startScan();
@@ -125,7 +126,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
                     ex.print();
 
                     err << ex.getMessage() << wxT("\n:") << ex.getMethod();
-                    wxMessageBox(err,wxT("Error scanning files"),wxICON_ERROR);
+                    wxMessageBox(err,wxT(_("Error scanning files")),wxICON_ERROR);
 			}
   }
 
@@ -134,8 +135,8 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
   {
      try
      {
-         WhiteHawkClamav::ClamavInstance::getScanner()->terminateThread();
-        ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("WhiteHawkClamAv"));
+        WhiteHawkClamav::ClamavInstance::getScanner()->terminateThread();
+        ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("WhiteHawkClamAv")));
   	    m_start->Enable();
 		m_stop->Disable();
 		m_bar->SetValue(0);
@@ -155,15 +156,15 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
 		    if( !evt.GetText().IsEmpty() )
 		    {
-                    context->Append(ID_VIR_MOV, wxT("Move to Quarantine"),wxT("Moves to the quarantine folder.") , wxITEM_CHECK);
+                    context->Append(ID_VIR_MOV, wxT(_("Move to Quarantine")),wxT(_("Moves to the quarantine folder.")) , wxITEM_CHECK);
                     context->AppendSeparator();
-                    context->Append(wxID_DELETE, wxT("Delete"),wxT("Delets the file."), wxITEM_NORMAL);
+                    context->Append(wxID_DELETE, wxT(_("Delete")),wxT(_("Delets the file.")), wxITEM_NORMAL);
 		    }
 		    else
 		    {
-                   context->Append(ID_VIR_MOV, wxT("Move all to Quarantine"),wxT("") , wxITEM_CHECK);
+                   context->Append(ID_VIR_MOV, wxT(_("Move all to Quarantine")),wxT("") , wxITEM_CHECK);
                    context->AppendSeparator();
-                   context->Append(wxID_DELETE, wxT("Deletes everything"),wxT(""), wxITEM_NORMAL);
+                   context->Append(wxID_DELETE, wxT(_("Deletes everything")),wxT(""), wxITEM_NORMAL);
             }
             PopupMenu(context);
 
@@ -177,7 +178,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
         //TODO: complete this
         void AvPanel::onMove(wxCommandEvent &evt)
         {
-            wxMessageBox(wxT("Not implemented yet.\n"),wxT("Error"),wxICON_ERROR);
+            wxMessageBox(wxT(_("Not implemented yet.\n")),wxT(_("Error")),wxICON_ERROR);
         }
 
 
@@ -187,7 +188,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
           int iter=0;
           int  selected = m_list->GetSelectedItemCount();
 
-            if( wxMessageDialog(this,wxT("Are you sure to delete the selected files?"), wxT("Virus removal"), wxYES_NO).ShowModal() == wxID_YES)
+            if( wxMessageDialog(this,wxT(_("Are you sure to delete the selected files?")), wxT(_("Virus removal")), wxYES_NO).ShowModal() == wxID_YES)
                 while (iter < selected)
                 {
                     item = m_list->GetNextItem(item,wxLIST_NEXT_ALL,wxLIST_STATE_SELECTED);
@@ -198,11 +199,11 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
                         if( file.exist())
                         {
                             if( file.Remove() )
-                                m_list->SetItem(item, 2, wxT("Removed"));
+                                m_list->SetItem(item, 2, wxT(_("Removed")));
                             else
                             {
-                                m_list->SetItem(item, 2, wxT("Error"));
-                                wxMessageBox(wxT("There was an error trying to remove file.\nDo you have permissions?"),wxT("Error"),wxICON_ERROR);
+                                m_list->SetItem(item, 2, wxT(_("Error")));
+                                wxMessageBox(wxT(_("There was an error trying to remove file.\nDo you have permissions?")),wxT(_("Error")),wxICON_ERROR);
                             }
                         }
 
@@ -250,7 +251,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
             wxMutexGuiEnter();
 			m_list->InsertItem(0,str); //todo include All files here
 			m_list->SetItem(0, 1, str2);
-			m_list->SetItem(0, 2, wxT("Infected"));
+			m_list->SetItem(0, 2, wxT(_("Infected")));
 			wxMutexGuiLeave();
     }
 
@@ -260,7 +261,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
       WhiteHawkClamav::ClamavInstance *claminst;
       WhiteHawkClamav::ClamavScanner  *scanner;
       size_t nFiles = filenames.GetCount();
-      wxString msg = wxT("Scan finished ");
+      wxString msg = wxT(_("Scan finished "));
       wxString str;
 
 
@@ -281,12 +282,12 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
                     if(!claminst->isDbLoaded())
                     {
-                            ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("Loading database - WhiteHawkClamAv"));
+                            ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("Loading database - WhiteHawkClamAv")));
                             this->Update();
                             claminst->loadDatabase();
                     }
 
-                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("Starting scan - WhiteHawkClamAv"));
+                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("Starting scan - WhiteHawkClamAv")));
 
                     for ( size_t n = 0; n < nFiles; n++ )
                     {
@@ -305,22 +306,22 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
                                 m_list->InsertItem(0,str); //todo include All files here
                                 m_list->SetItem(0, 1, str2);
-                                m_list->SetItem(0, 2, wxT("Infected"));
+                                m_list->SetItem(0, 2, wxT(_("Infected")));
                         }
 
                     }
 
                     if( m_list->GetItemCount() == 0)
-                        msg.Append(wxT("no "));
-
-                    msg.Append(wxT("virus found."));
+                       str = wxT(_("no virus found"));
+                    else
+                      str = wxT(_("virus found."));
 
                     m_start->Enable();
                     m_stop->Disable();
                     m_bar->SetValue(0);
                     m_path->Enable();
                     ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("WhiteHawkClamAv"));
-                    wxMessageBox(msg,wxT("Scan finished"),wxICON_INFORMATION);
+                    wxMessageBox(msg,wxT(_("Scan finished")),wxICON_INFORMATION);
 			}
 			catch(WhiteHawkSystem::Exception ex)
 			{
@@ -328,7 +329,7 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
                     ex.print();
 
                     err << ex.getMessage() << wxT("\n:") << ex.getMethod();
-                    wxMessageBox(err,wxT("Error scanning files"),wxICON_ERROR);
+                    wxMessageBox(err,wxT(_("Error scanning files")),wxICON_ERROR);
 			}
         return true;
     }
@@ -342,13 +343,13 @@ AvPanel::AvPanel(wxWindow *parent, wxAnimationCtrl *anim) : wxPanel(parent,wxID_
 
     void AvPanel::onFinish()
 	{
-	  wxString title = wxT("Scan Finished ");
+	  wxString title = wxT(_("Scan Finished "));
 
 
               if( m_list->GetItemCount() == 0)
-                  title.Append("No virus found - ");
+                  title.Append(_("No virus found"));
 
-              title.Append("WhiteHawkClamAv");
+              title.Append(" - WhiteHawkClamAv");
               wxMutexGuiEnter();
               ((wxFrame*)  GetParent()->GetParent())->SetTitle(title);
 			  m_start->Enable();

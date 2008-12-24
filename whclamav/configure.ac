@@ -1,20 +1,20 @@
-AC_INIT(whitehawkAv, 1.0, darkhawk665@yahoo.com)
+AC_INIT(whitehawkAv, 0.4,darkhawk665@yahoo.com)
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_SRCDIR(src)
 AC_CONFIG_MACRO_DIR([m4])
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE(whiteHawkav, 0.7)
+AM_INIT_AUTOMAKE(whitehawkAv,0.4)
 
 AC_PROG_CC
 AC_PROG_CXX
 AC_PROG_INSTALL
 AC_LIBTOOL_DLOPEN
+AC_GNU_SOURCE
+AM_GNU_GETTEXT([external])
+
 AM_PROG_LEX
 AC_PROG_LIBTOOL
 AC_STDC_HEADERS
-
-
-
 
 abs_srcdir="`cd $srcdir && pwd`"
 CPPFLAGS=" $CPPFLAGS -I$abs_srcdir/include "
@@ -135,4 +135,4 @@ WH_LIBS="`$WH_CONFIG libwhsystem-1.0 --libs`"
 AC_SUBST(WX_LIBS)
 AC_SUBST(WH_LIBS)
 AC_SUBST(CLAM_LIBS)
-AC_OUTPUT(Makefile src/Makefile data/Makefile)
+AC_OUTPUT(Makefile src/Makefile data/Makefile po/Makefile.in)

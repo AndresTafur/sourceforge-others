@@ -53,8 +53,6 @@
 		<Unit filename="../src/ClamLayer/WhiteHawkClamav.hh" />
 		<Unit filename="../src/GUI/AvFrame.cpp" />
 		<Unit filename="../src/GUI/AvFrame.hh" />
-		<Unit filename="../src/GUI/AvNotebook.cpp" />
-		<Unit filename="../src/GUI/AvNotebook.h" />
 		<Unit filename="../src/GUI/AvPanel.cpp" />
 		<Unit filename="../src/GUI/AvPanel.hh" />
 		<Unit filename="../src/GUI/FileSelectionDialog.cpp" />
@@ -66,6 +64,7 @@
 		<Unit filename="../src/GUI/UpdateDlg.cpp" />
 		<Unit filename="../src/GUI/UpdateDlg.hh" />
 		<Unit filename="../src/GUI/rcids.h" />
+		<Unit filename="../src/config.h" />
 		<Unit filename="../src/whitehawkav.cpp" />
 		<Extensions>
 			<code_completion />

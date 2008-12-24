@@ -1,10 +1,9 @@
-
 #include "UpdateDlg.hh"
+#include <errno.h>
 
 
 
-
-UpdateDlg::UpdateDlg(wxWindow *parent) : wxDialog(parent,wxID_ANY,wxT("Update"))
+UpdateDlg::UpdateDlg(wxWindow *parent) : wxDialog(parent,wxID_ANY,wxT(_("Update")))
 {
 
   wxBoxSizer *box = new wxBoxSizer(wxVERTICAL);
@@ -14,8 +13,8 @@ UpdateDlg::UpdateDlg(wxWindow *parent) : wxDialog(parent,wxID_ANY,wxT("Update"))
 
     m_msg->SetEditable(false);
 
-    ctr->Add( new wxButton(this,wxID_UP,wxT("&Update")),0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
-    ctr->Add( new wxButton(this,wxID_CLEAR,wxT("&Clear")),0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
+    ctr->Add( new wxButton(this,wxID_UP,wxT(_("&Update"))),0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
+    ctr->Add( new wxButton(this,wxID_CLEAR,wxT(_("&Clear"))),0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
 
     box->Add(m_msg,1,wxEXPAND|wxALL,5);
     box->Add(ctr,0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
@@ -31,34 +30,47 @@ void UpdateDlg::run()
 {
 FILE *fl;
 char c;
+int fd;
+int result;
 wxString str;
+fd_set readset;
 
         fl = popen("freshclam 2>&1","r");
-        this->SetTitle( wxT("Updating please wait"));
+        fd = fileno(fl);
+        this->SetTitle( wxT(_("Updating please wait")));
+
 
         do
         {
-           c = fgetc(fl);
-            //todo select or poll
-           if( c != EOF)
-            str << c;
-        }while( !feof(fl));
+            FD_ZERO(&readset);
+            FD_SET(fd, &readset);
+            result = select(fd+1, &readset, NULL, NULL, NULL);
+
+            if(result > 0)
+            {
+                while( fscanf(fl,"%c",&c) != EOF)
+                    str << c;
+
+                wxMutexGuiEnter();
+                m_msg->SetValue( str);
+                m_msg->Update();
+                this->Update();
+                wxMutexGuiLeave();
+            }
+
+        } while (result == -1 && errno == EINTR);
+
+        this->SetTitle( wxT(_("Update completed")));
 
         pclose(fl);
-        m_msg->SetValue( m_msg->GetValue() + str);
-
-
 }
 
 
 void UpdateDlg::onStartUpdate(wxCommandEvent &evt)
 {
-
         m_msg->Clear();
-        this->SetTitle( wxT("Updating please wait"));
+        this->SetTitle( wxT(_("Updating please wait")));
         this->startThread();
-
-
 }
 
 
@@ -70,7 +82,7 @@ void UpdateDlg::onClear(wxCommandEvent &evt)
 void UpdateDlg::onTerminate()
 {
     wxMutexGuiEnter();
-    this->SetTitle( wxT("Updated"));
+    this->SetTitle( wxT(_("Updated")));
     wxMutexGuiLeave();
 }
 

@@ -18,8 +18,12 @@
 #include <wx/wx.h>
 #include <wx/taskbar.h>
 #include <wx/aboutdlg.h>
+#include <wx/aui/auibook.h>
+
+#include "../config.h"
+#include "StatusPanel.hh"
+#include "AvPanel.hh"
 #include "rcids.h"
-#include "AvNotebook.h"
 
 
 #ifndef _AVFRAME_H_
@@ -31,7 +35,7 @@ class AvFrame : public wxFrame
 public:
 
 
-    AvFrame(wxString path);
+    AvFrame(wxString path, wxIcon appIcon);
 
 
     void createMenu();
@@ -41,7 +45,6 @@ public:
     void onTaskClick(wxTaskBarIconEvent &evt);
 
     void onTaskLClick(wxTaskBarIconEvent &evt);
-
 
     void onUpdate(wxCommandEvent &evt);
 
@@ -57,13 +60,9 @@ public:
 
 
 protected:
-wxBoxSizer  *m_sizer;
-wxPanel	    *m_current;
-AvNotebook  *m_note;
-StatusPanel *m_status;
-wxTaskBarIcon *m_trayIcon;
+wxBoxSizer    *m_sizer;
+wxAuiNotebook *m_note;
 DECLARE_EVENT_TABLE()
-
 };
 
 #endif

@@ -14,15 +14,13 @@
  *   You should have received a copy of the GNU General Public License
  *   along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
-
+#ifndef _STATUSPANEL_HH_
+#define _STATUSPANEL_HH_
 
 
 #include <wx/wx.h>
 
-
-#ifndef _STATUSPANEL_HH_
-#define _STATUSPANEL_HH_
-
+#include "../config.h"
 
 
 class StatusPanel : public wxPanel

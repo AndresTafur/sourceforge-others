@@ -21,8 +21,8 @@
 
 	StatusPanel::StatusPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL)
 	{
-      wxBoxSizer  *summary   = new wxStaticBoxSizer(wxVERTICAL,this,wxT("Summary"));
-      wxBoxSizer  *versions  = new wxStaticBoxSizer(wxVERTICAL,this,wxT("Versions"));
+      wxBoxSizer  *summary   = new wxStaticBoxSizer(wxVERTICAL,this,wxT(_("Summary")));
+      wxBoxSizer  *versions  = new wxStaticBoxSizer(wxVERTICAL,this,wxT(_("Versions")));
 	  wxBoxSizer  *sizer     = new wxBoxSizer(wxVERTICAL);
 	  wxGridSizer *grid      = new wxGridSizer(2,3);
 	  wxGridSizer *grid2     = new wxGridSizer(2,3);
@@ -61,18 +61,18 @@
 	    function->SetEditable(false);
 	    database->SetEditable(false);
 
-		grid->Add( new wxStaticText(this,wxID_ANY,wxT("Database age:")));
+		grid->Add( new wxStaticText(this,wxID_ANY,wxT(_("Database age:"))));
 		grid->Add( age,1);
-		grid->Add( new wxStaticText(this,wxID_ANY,wxT("Quarentine:")));
+		grid->Add( new wxStaticText(this,wxID_ANY,wxT(_("Quarentine:"))));
 		grid->Add( quar,1);
-		grid->Add( new wxStaticText(this,wxID_ANY,wxT("Last scan:")));
+		grid->Add( new wxStaticText(this,wxID_ANY,wxT(_("Last scan:"))));
 		grid->Add( lastscan,1);
 
-		grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav version:")));
+		grid2->Add( new wxStaticText(this,wxID_ANY,wxT(_("Clamav version:"))));
 		grid2->Add( version,1);
-        grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav functionality level:")));
+        grid2->Add( new wxStaticText(this,wxID_ANY,wxT(_("Clamav functionality level:"))));
 		grid2->Add( function,1);
-		grid2->Add( new wxStaticText(this,wxID_ANY,wxT("Clamav database:")));
+		grid2->Add( new wxStaticText(this,wxID_ANY,wxT(_("Clamav database:"))));
 		grid2->Add( database,1);
 
 
