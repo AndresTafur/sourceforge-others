@@ -1,1 +1,4 @@
+===== Dec 23 2008 =====
 
+* Added SystemPath destructor.
+* Removed Zip, Tar from whsystems.

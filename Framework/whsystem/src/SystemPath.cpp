@@ -215,3 +215,10 @@
 
         return 0;
        }
+
+
+       WhiteHawkSystem::SystemPath::~SystemPath()
+       {
+            if(red)
+             free(red);
+       }
