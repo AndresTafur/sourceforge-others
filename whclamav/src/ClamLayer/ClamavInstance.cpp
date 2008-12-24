@@ -26,7 +26,7 @@ WhiteHawkClamav::ClamavScanner  *WhiteHawkClamav::ClamavInstance::sm_scanner = N
 
     WhiteHawkClamav::ClamavInstance::ClamavInstance()
     {
-            m_loaded = false;
+           m_engine = NULL;
     }
 
 
@@ -49,23 +49,21 @@ WhiteHawkClamav::ClamavScanner  *WhiteHawkClamav::ClamavInstance::sm_scanner = N
 	{
 	   int ret;
 	   unsigned int sigs = 0;
-	   const char *dir = cl_retdbdir();
 
+            m_dbdir    = cl_retdbdir();
 		    m_engine = NULL;
 			memset(&m_dbstat, 0, sizeof(struct cl_stat));
 
 
-            cl_statinidir(dir,&m_dbstat);
-			cl_load(dir,&m_engine, &sigs, CL_DB_STDOPT);
+            cl_statinidir(m_dbdir,&m_dbstat);
+			cl_load(m_dbdir,&m_engine, &sigs, CL_DB_STDOPT);
 
 			if((ret = cl_build(m_engine)))
 			{
-			    printf("cl_build() error: %s\n", cl_strerror(ret));
 			    cl_free(m_engine);
-			    throw( new WhiteHawkSystem::Exception(cl_strerror(ret)));
+			    m_engine = NULL;
+			    throw WhiteHawkSystem::Exception(cl_strerror(ret));
 			}
-
-			m_loaded = true;
 	}
 
 
@@ -73,25 +71,22 @@ WhiteHawkClamav::ClamavScanner  *WhiteHawkClamav::ClamavInstance::sm_scanner = N
     {
 	   int ret;
 	   unsigned int sigs = 0;
-       const char *dir;
 
             if(cl_statchkdir(&m_dbstat) == 1)
             {
-                dir = cl_retdbdir();
+                m_dbdir = cl_retdbdir();
                 cl_free(m_engine);
                 m_engine = NULL;
 
-                cl_load(dir,&m_engine, &sigs, CL_DB_STDOPT);
+                cl_load(m_dbdir,&m_engine, &sigs, CL_DB_STDOPT);
 
                 if((ret = cl_build(m_engine)))
                 {
-                    printf("cl_build() error: %s\n", cl_strerror(ret));
                     cl_free(m_engine);
-                    throw( new WhiteHawkSystem::Exception(cl_strerror(ret)));
+                    m_engine = NULL;
+                    throw WhiteHawkSystem::Exception(cl_strerror(ret));
                 }
-
-                cl_statinidir(dir, &m_dbstat);
-                m_loaded = true;
+                cl_statinidir(m_dbdir, &m_dbstat);
             }
 
     }
@@ -110,15 +105,25 @@ WhiteHawkClamav::ClamavScanner  *WhiteHawkClamav::ClamavInstance::sm_scanner = N
 
     bool WhiteHawkClamav::ClamavInstance::isDbLoaded()
     {
-        return m_loaded;
+        return NULL != m_engine;
     }
 
-	void WhiteHawkClamav::ClamavInstance::destroy()
-	{
-	  cl_free(m_engine);
-	}
+    void WhiteHawkClamav::ClamavInstance::destroy()
+    {
+        if( sm_instance )
+            delete sm_instance;
+    }
+
 
     WhiteHawkClamav::ClamavInstance::~ClamavInstance()
     {
-        this->destroy();
+        if( NULL != m_engine)
+        {
+            cl_free(m_engine);
+            m_engine = NULL;
+        }
+
+
+        if( sm_scanner != NULL)
+            delete sm_scanner;
     }

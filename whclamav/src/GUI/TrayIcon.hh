@@ -4,6 +4,9 @@
 #include <wx/wx.h>
 #include <wx/taskbar.h>
 
+#include "../config.h"
+#include "ClamLayer/ClamavInstance.hh"
+
 class MyTaskBarIcon: public wxTaskBarIcon
 {
 public:

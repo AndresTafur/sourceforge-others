@@ -27,11 +27,11 @@
       wxMenu *menu = new wxMenu;
 
         if(dialog->IsShown())
-            menu->Append( wxID_PREVIEW, wxT("&Hide window"));
+            menu->Append( wxID_PREVIEW, wxT(_("&Hide window")));
         else
-            menu->Append( wxID_PREVIEW, wxT("&Show window"));
+            menu->Append( wxID_PREVIEW, wxT( _("&Show window")));
         menu->AppendSeparator();
-        menu->Append(wxID_EXIT,wxT("&Close"));
+        menu->Append(wxID_EXIT,wxT( _("&Close")));
 
       return menu;
     }

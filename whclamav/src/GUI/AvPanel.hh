@@ -21,6 +21,7 @@
 #include <wx/animate.h>
 #include <wx/filepicker.h>
 
+#include "../config.h"
 #include "rcids.h"
 #include "ClamLayer/ClamavEvtListener.hh"
 #include "ClamLayer/ClamavInstance.hh"
@@ -37,8 +38,7 @@ class AvPanel : public wxPanel, public WhiteHawkClamav::ClamavEvtListener, publi
 {
 public:
 
-
-        AvPanel(wxWindow *parent, wxAnimationCtrl *anim);
+        AvPanel(wxWindow *parent);
 
 		void OnStart(wxCommandEvent &evt);
 
@@ -74,6 +74,7 @@ wxTextCtrl      *m_fold;
 wxListCtrl      *m_list;
 wxButton        *m_start;
 wxButton        *m_stop;
+AvPanel         *m_avpanel;
 unsigned long m_total;
 
 

@@ -70,10 +70,7 @@ public:
 
     struct cl_engine* getHandler();
 
-	/**
-	 *  This method frees all memory used by libclamav
-	 */
-	void destroy();
+    static void destroy();
 
 
     ~ClamavInstance();
@@ -103,6 +100,5 @@ struct cl_stat m_dbstat;
 static ClamavInstance *sm_instance;
 static ClamavScanner  *sm_scanner;
 friend class ClamavScanner;
-
 };
 #endif

@@ -21,6 +21,8 @@
 #include <wx/wx.h>
 #include <Thread.hh>
 
+#include "../config.h"
+
 class UpdateDlg : public wxDialog, public WhiteHawkSystem::Thread
 {
 public:

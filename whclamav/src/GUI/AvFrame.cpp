@@ -22,32 +22,32 @@
 
 
 
-AvFrame::AvFrame(wxString path) : wxFrame(NULL,-1,wxT("WhiteHawkClamAv"),wxDefaultPosition,wxSize(640,450),wxMINIMIZE_BOX|wxCLOSE_BOX)
+AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,_("WhiteHawkClamAv"),wxDefaultPosition,wxSize(640,450),wxMINIMIZE_BOX|wxCLOSE_BOX)
 {
-    wxBoxSizer  *imgSzr = new wxBoxSizer(wxVERTICAL);
-    wxGridSizer *princ  = new wxGridSizer(1,6);
-    wxBoxSizer  *vert   = new wxBoxSizer(wxVERTICAL);
-    wxButton    *home  = new wxButton(this,ID_HOME,wxT("&Status"));
-    wxButton    *ssca  = new wxButton(this,ID_SCANF,wxT("Sc&an Files"));
-    wxButton    *qar   = new wxButton(this,102,wxT("&Quarantine"));
-    wxButton    *upd   = new wxButton(this,ID_UPDAT,wxT("&Update"));
-    wxButton    *hlp   = new wxButton(this,104,wxT("&Help"));
+    wxBoxSizer    *imgSzr = new wxBoxSizer(wxVERTICAL);
+    wxGridSizer   *princ  = new wxGridSizer(1,6);
+    wxBoxSizer    *vert   = new wxBoxSizer(wxVERTICAL);
+    wxButton      *home   = new wxButton(this,ID_HOME,_("&Status"));
+    wxButton      *ssca   = new wxButton(this,ID_SCANF,_("Sc&an Files"));
+    wxButton      *qar    = new wxButton(this,102,_("&Quarantine"));
+    wxButton      *upd    = new wxButton(this,ID_UPDAT,_("&Update"));
+    wxButton      *hlp    = new wxButton(this,104,_("&Help"));
 
-    wxAnimationCtrl  *load = NULL;
-    wxAnimation anim1;
-    wxIcon appIcon(DATA_DIR"/whclicon.png", wxBITMAP_TYPE_ANY);
+    StatusPanel   *stat;
+    AvPanel       *avp;
 
 
-        m_trayIcon = new MyTaskBarIcon(this);
         SetIcon( appIcon);
 
-        if (!m_trayIcon->SetIcon(appIcon,wxT("whiteHawkClamav")))
-            wxMessageBox(wxT("Could not set icon."));
-
         m_sizer = new wxBoxSizer(wxHORIZONTAL);
+        m_note  = new wxAuiNotebook(this,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxAUI_NB_TOP|wxAUI_NB_TAB_MOVE|wxAUI_NB_WINDOWLIST_BUTTON);
+        stat    = new StatusPanel(m_note);
+        avp     = new AvPanel(m_note);
 
-        m_note = new AvNotebook(this,load,wxID_ANY);
-        m_current = m_status;
+        m_note->AddPage(stat, wxT(_("Status")));
+        m_note->AddPage(avp, wxT(_("Scan Files")), true);
+
+
 
         princ->Add(home,0,wxEXPAND|wxBOTTOM,5);
         princ->Add(ssca,0,wxEXPAND|wxBOTTOM,5);
@@ -81,24 +81,24 @@ void AvFrame::createMenu()
     wxMenu      *help   = new wxMenu;
 
 
-        bar->Append(file,   wxT("&File"));
-        bar->Append(config, wxT("&Configuration"));
-        bar->Append(help,   wxT("&Help"));
+        bar->Append(file,   _("&File"));
+        bar->Append(config, _("&Configuration"));
+        bar->Append(help,   _("&Help"));
 
 
-        file->Append(wxID_OPEN,wxT("&Scan File"), wxT("Scan a selected File"));
+        file->Append(wxID_OPEN, _("&Scan File"), _("Scan a selected File"));
         file->AppendSeparator();
-        file->Append(wxID_EXIT,wxT("&Quit"), wxT("Sale de este programa"));
+        file->Append(wxID_EXIT, _("&Quit"), _("Quits this program"));
 
 
-        config->Append(wxID_DOWN,wxT("&Scan"), wxT("Configures the actions taken about files and folders"));
-        config->Append(wxID_CLEAR,wxT("&Quarantine"),      wxT("Configures Quarantine"));
+        config->Append(wxID_DOWN, _("&Scan"), _("Configures the actions taken about files and folders"));
+        config->Append(wxID_CLEAR, _("&Quarantine"), _("Configures Quarantine"));
         config->AppendSeparator();
-        config->Append(wxID_APPLY,wxT("&Updater"),        wxT("Configures the updates"));
-        config->Append(wxID_ADD,wxT("&Scheduler"),      wxT("Configures autoscaning and autoupdating"));
+        config->Append(wxID_APPLY, _("&Updater"), _("Configures the updates"));
+        config->Append(wxID_ADD, _("&Scheduler"), _("Configures autoscaning and autoupdating"));
 
-        help->Append(wxID_HELP,wxT("&Help"),wxT("This program help"));
-        help->Append(wxID_ABOUT,wxT("&About"), wxT("About this program"));
+        help->Append(wxID_HELP, _("&Help"), _("This program help"));
+        help->Append(wxID_ABOUT, _("&About"), _("About this program"));
 
         this->SetMenuBar(bar);
 }
@@ -113,18 +113,18 @@ void AvFrame::onUpdate(wxCommandEvent &evt)
 
 void AvFrame::onHome(wxCommandEvent &evt)
 {
-    m_note->showStatusPanel();
+    m_note->SetSelection(0);
 }
 
 void AvFrame::onScan( wxCommandEvent &evt)
 {
-    m_note->showScanPanel();
+    m_note->SetSelection(1);
 }
 
 
 void AvFrame::onQuit(wxCommandEvent &evt)
 {
-    this->Show(false);
+    this->Destroy();
 }
 
 void AvFrame::onClose(wxCloseEvent &evt)
@@ -138,16 +138,16 @@ void AvFrame::onAbout(wxCommandEvent &evt)
     wxAboutDialogInfo info;
     wxString desc;
 
-        desc << wxT("\n\nWelcome to WhiteHawk System antivirus."
+        desc << _("\n\nWelcome to WhiteHawk System antivirus."
                     "\nwhClamav is a frontend of the clamav antivirus \nideal for your WhiteHawk Desktop.\n\n");
 
-        info.SetName(wxT("WhitehawkAv"));
-        info.SetVersion(wxT("0.0.1"));
+        info.SetName( _("WhitehawkAv"));
+        info.SetVersion( _("0.0.1"));
         info.SetDescription(desc);
-        info.SetWebSite(wxT("http://whsystems.sf.net"));
-        info.SetCopyright(wxT("Copyright (C) 2007 Jorge Andres Tafur."));
-        info.AddDeveloper(wxT("Jorge Andres Tafur"));
-        info.SetLicence(wxT
+        info.SetWebSite( _("http://whsystems.sf.net"));
+        info.SetCopyright( _("Copyright (C) 2007 Jorge Andres Tafur."));
+        info.AddDeveloper( _("Jorge Andres Tafur"));
+        info.SetLicence( wxT
 
         ("\tWhiteHawkAntivirus an antivirus based on top of clamav.\n"
                   "\t\t\tCopyright (C) 2007  Jorge andres tafur\n\n\n"

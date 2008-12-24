@@ -21,8 +21,13 @@
 #include <wx/splash.h>
 #include <X11/Xlib.h>
 
+#include <Exception.hh>
+
+#include "config.h"
+
 #include "GUI/AvFrame.hh"
-#include "ClamLayer/ClamavInstance.hh"
+#include "GUI/TrayIcon.hh"
+
 
 class MyApp: public wxApp
 {
@@ -31,7 +36,9 @@ class MyApp: public wxApp
     {
      wxString str = DATA_DIR"/splash.png";
      wxBitmap bitmap(str);
-     wxSplashScreen* splash;
+     wxSplashScreen *splash;
+     wxTaskBarIcon *trayIcon;
+     wxIcon appIcon;
 
       ::wxInitAllImageHandlers();
 
@@ -45,11 +52,23 @@ class MyApp: public wxApp
       str << this->argv[0];
 
       str   = str.BeforeLast( '/');
-      m_frame = new AvFrame( str);
+      appIcon.LoadFile(DATA_DIR"/whclicon.png", wxBITMAP_TYPE_ANY);
+      m_frame = new AvFrame(str,appIcon);
+
+
+      trayIcon = new MyTaskBarIcon(m_frame);
+      trayIcon->SetIcon(appIcon);
+
+      if (!trayIcon->SetIcon(appIcon,_("whiteHawkClamav")))
+            wxMessageBox(_("Could not set icon."));
+
 
       WhiteHawkClamav::ClamavInstance::getInstance()->loadDatabase();
+
+
       m_frame->Show(TRUE);
       this->SetTopWindow(m_frame);
+
 
       if( splash)
         splash->Destroy();
@@ -73,10 +92,19 @@ int main(int argc, char *argv[])
 {
    int ret_val;
 
-	XInitThreads();
-	ret_val = wxEntry(argc, argv);
 
-    WhiteHawkClamav::ClamavInstance::getInstance()->destroy();
-    wxEntryCleanup();
+        setlocale (LC_CTYPE, "");
+        setlocale (LC_MESSAGES, "");
+
+        bindtextdomain (PACKAGE, LOCALEDIR);
+        textdomain (PACKAGE);
+
+        XInitThreads();
+        ret_val = wxEntry(argc, argv);
+
+        wxEntryCleanup();
+
+        WhiteHawkClamav::ClamavInstance::destroy();
+
 	return ret_val;
 }

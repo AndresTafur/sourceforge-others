@@ -35,6 +35,4 @@ static CL_DEFAULT;
 static CL_PHISHING;
 static CL_PHISHURL;
 static CL_PUNWANTED;
-protected:
-
 };

@@ -1763,3 +1763,296 @@
 	<string.h>
 	<Exception.hh>
 
+1229746090 source:/mnt/otros/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamFile.cpp
+	"ClamFile.hh"
+
+1229746090 /mnt/otros/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamFile.hh
+	<WhiteHawkSystem.hh>
+	"WhiteHawkClamav.hh"
+	<AbstractFile.hh>
+	<SystemPath.hh>
+
+1229933562 /usr/include/whiteHawk/system//WhiteHawkSystem.hh
+
+1229746090 /mnt/otros/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/WhiteHawkClamav.hh
+
+1229933562 /usr/include/whiteHawk/system//AbstractFile.hh
+	"WhiteHawkSystem.hh"
+	"FileInfo.hh"
+	<unistd.h>
+
+1229933562 /usr/include/whiteHawk/system//FileInfo.hh
+	<sys/stat.h>
+	<sys/types.h>
+	<utime.h>
+	"Time.hh"
+
+1223884157 /usr/include/sys/stat.h
+	<features.h>
+	<bits/types.h>
+	<time.h>
+	<bits/stat.h>
+
+1223884084 /usr/include/features.h
+	<sys/cdefs.h>
+	<gnu/stubs.h>
+
+1223884159 /usr/include/sys/cdefs.h
+	<features.h>
+
+1223884208 /usr/include/gnu/stubs.h
+
+1223884155 /usr/include/bits/types.h
+	<features.h>
+	<bits/wordsize.h>
+	<stddef.h>
+	<bits/typesizes.h>
+
+1223884139 /usr/include/bits/wordsize.h
+
+1223884155 /usr/include/bits/typesizes.h
+
+1223884153 /usr/include/time.h
+	<features.h>
+	<stddef.h>
+	<bits/time.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<bits/types.h>
+	<xlocale.h>
+
+1223884153 /usr/include/bits/time.h
+	<bits/types.h>
+	<bits/types.h>
+
+1223884098 /usr/include/xlocale.h
+
+1223884157 /usr/include/bits/stat.h
+
+1223884155 /usr/include/sys/types.h
+	<features.h>
+	<bits/types.h>
+	<time.h>
+	<stddef.h>
+	<endian.h>
+	<sys/select.h>
+	<sys/sysmacros.h>
+	<bits/pthreadtypes.h>
+
+1223884146 /usr/include/endian.h
+	<features.h>
+	<bits/endian.h>
+
+1223884146 /usr/include/bits/endian.h
+
+1223884160 /usr/include/sys/select.h
+	<features.h>
+	<bits/types.h>
+	<bits/select.h>
+	<bits/sigset.h>
+	<time.h>
+	<bits/time.h>
+
+1223884160 /usr/include/bits/select.h
+
+1223884137 /usr/include/bits/sigset.h
+
+1223884156 /usr/include/sys/sysmacros.h
+	<features.h>
+
+1223884155 /usr/include/bits/pthreadtypes.h
+	<bits/wordsize.h>
+
+1223884157 /usr/include/utime.h
+	<features.h>
+	<bits/types.h>
+	<time.h>
+
+1229933562 /usr/include/whiteHawk/system//Time.hh
+	<time.h>
+	<string>
+	"WhiteHawkSystem.hh"
+
+1223884155 /usr/include/unistd.h
+	<features.h>
+	<bits/posix_opt.h>
+	<bits/environments.h>
+	<bits/types.h>
+	<stddef.h>
+	<bits/confname.h>
+	<getopt.h>
+
+1223884155 /usr/include/bits/posix_opt.h
+
+1223884155 /usr/include/bits/environments.h
+	<bits/wordsize.h>
+
+1223884155 /usr/include/bits/confname.h
+
+1223884155 /usr/include/getopt.h
+	<ctype.h>
+
+1223884125 /usr/include/ctype.h
+	<features.h>
+	<bits/types.h>
+	<endian.h>
+	<xlocale.h>
+
+1229933562 /usr/include/whiteHawk/system//SystemPath.hh
+	<string>
+	<list>
+	<dirent.h>
+	"WhiteHawkSystem.hh"
+	"AbstractFile.hh"
+	"SystemPathCount.hh"
+
+1223884153 /usr/include/dirent.h
+	<features.h>
+	<bits/types.h>
+	<bits/dirent.h>
+	<bits/types.h>
+	<bits/posix1_lim.h>
+	<stddef.h>
+
+1223884153 /usr/include/bits/dirent.h
+
+1223884155 /usr/include/bits/posix1_lim.h
+	<bits/local_lim.h>
+
+1223884155 /usr/include/bits/local_lim.h
+	<linux/limits.h>
+
+1158723726 /usr/include/linux/limits.h
+
+1229933562 /usr/include/whiteHawk/system//SystemPathCount.hh
+	"WhiteHawkSystem.hh"
+	"AbstractFile.hh"
+
+1229933689 source:/mnt/otros/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamavScanner.cpp
+	"ClamavScanner.hh"
+	<SystemPath.hh>
+	<string.h>
+	<Exception.hh>
+
+1230017002 /mnt/otros/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamavScanner.hh
+	"WhiteHawkClamav.hh"
+	"ClamavInstance.hh"
+	<Thread.hh>
+
+1230016994 /mnt/otros/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamavInstance.hh
+	<clamav.h>
+	"WhiteHawkClamav.hh"
+	"ClamavEvtListener.hh"
+	"ClamavScanner.hh"
+
+1229920820 /usr/include/clamav.h
+	<sys/types.h>
+	<sys/stat.h>
+
+1229922455 /mnt/otros/part7/whiteHawk/realsvn/whclamav/src/ClamLayer/ClamavEvtListener.hh
+	"WhiteHawkClamav.hh"
+	"ClamFile.hh"
+
+1229933562 /usr/include/whiteHawk/system//Thread.hh
+	<pthread.h>
+	<unistd.h>
+	"WhiteHawkSystem.hh"
+	"Runnable.hh"
+
+1223884174 /usr/include/pthread.h
+	<features.h>
+	<sched.h>
+	<time.h>
+	<signal.h>
+	<bits/pthreadtypes.h>
+	<bits/setjmp.h>
+	<bits/wordsize.h>
+
+1223884155 /usr/include/sched.h
+	<features.h>
+	<bits/types.h>
+	<time.h>
+	<bits/sched.h>
+
+1223884155 /usr/include/bits/sched.h
+
+1223884137 /usr/include/signal.h
+	<features.h>
+	<bits/sigset.h>
+	<bits/types.h>
+	<bits/signum.h>
+	<time.h>
+	<bits/siginfo.h>
+	<bits/sigaction.h>
+	<bits/sigcontext.h>
+	<bits/sigstack.h>
+	<sys/ucontext.h>
+	<bits/pthreadtypes.h>
+	<bits/sigthread.h>
+
+1223884137 /usr/include/bits/signum.h
+
+1223884137 /usr/include/bits/siginfo.h
+	<bits/wordsize.h>
+
+1223884137 /usr/include/bits/sigaction.h
+
+1223884137 /usr/include/bits/sigcontext.h
+	<bits/wordsize.h>
+
+1223884137 /usr/include/bits/sigstack.h
+
+1223884139 /usr/include/sys/ucontext.h
+	<features.h>
+	<signal.h>
+	<bits/wordsize.h>
+	<bits/sigcontext.h>
+
+1223884137 /usr/include/bits/sigthread.h
+
+1223884136 /usr/include/bits/setjmp.h
+	<bits/wordsize.h>
+
+1229933562 /usr/include/whiteHawk/system//Runnable.hh
+
+1223884146 /usr/include/string.h
+	<features.h>
+	<stddef.h>
+	<xlocale.h>
+	<bits/string.h>
+	<bits/string2.h>
+	<bits/string3.h>
+
+1223884146 /usr/include/bits/string.h
+
+1223884146 /usr/include/bits/string2.h
+	<endian.h>
+	<bits/types.h>
+	<stdlib.h>
+
+1223884139 /usr/include/stdlib.h
+	<features.h>
+	<stddef.h>
+	<bits/waitflags.h>
+	<bits/waitstatus.h>
+	<xlocale.h>
+	<sys/types.h>
+	<alloca.h>
+
+1223884155 /usr/include/bits/waitflags.h
+
+1223884155 /usr/include/bits/waitstatus.h
+	<endian.h>
+
+1223884139 /usr/include/alloca.h
+	<features.h>
+	<stddef.h>
+
+1223884146 /usr/include/bits/string3.h
+
+1229933562 /usr/include/whiteHawk/system//Exception.hh
+	<string>
+	<exception>
+	"WhiteHawkSystem.hh"
+

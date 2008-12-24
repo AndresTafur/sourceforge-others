@@ -15,11 +15,15 @@
  *   along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#ifndef _FILESELECTIONDIALOG_HH_
+#define _FILESELECTIONDIALOG_HH_
+
+
 #include <wx/wx.h>
 #include <wx/dirctrl.h>
 
-#ifndef _FILESELECTIONDIALOG_HH_
-#define _FILESELECTIONDIALOG_HH_
+#include "../config.h"
+
 
 
 class FileSelectionDialog : public wxDialog

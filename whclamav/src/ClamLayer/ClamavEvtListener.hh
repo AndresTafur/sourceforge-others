@@ -56,7 +56,7 @@ public:
 	virtual void onFinish() = 0;
 
 
-
+    inline virtual ~ClamavEvtListener() { };
 
 };
 #endif
