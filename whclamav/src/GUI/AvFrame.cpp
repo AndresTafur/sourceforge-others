@@ -124,7 +124,7 @@ void AvFrame::onScan( wxCommandEvent &evt)
 
 void AvFrame::onQuit(wxCommandEvent &evt)
 {
-    this->Destroy();
+    this->Show(false);
 }
 
 void AvFrame::onClose(wxCloseEvent &evt)
