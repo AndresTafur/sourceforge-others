@@ -20,7 +20,7 @@
 
 
 
-AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL|wxMAXIMIZE_BOX)
+AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL|wxMAXIMIZE_BOX)
   {
 	wxBoxSizer   *sizer      = new wxBoxSizer(wxVERTICAL);
 	wxGridSizer	 *prgrsSizer = new wxGridSizer(2,3);
@@ -33,14 +33,16 @@ AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,w
     wxButton     *quaran  = new wxButton(this,ID_VIR_MOV, wxT(_("Q&uarantine")));
     wxButton     *select  = new wxButton(this,ID_SELECT_ALL, wxT(_("&Select All")));
 
+
+        m_frame = top;
+
 		m_start = new wxButton(this,ID_AVSTART, wxT(_("Start")));
 		m_stop  = new wxButton(this,ID_AVSTOP, wxT(_("Stop")));
 
-        m_path = new wxDirPickerCtrl(this,ID_DIALOG);
-		m_bar  = new wxGauge(this,wxID_ANY,100);
-		m_file = new wxTextCtrl(this, wxID_ANY,wxT(""));
-		m_fold = new wxTextCtrl(this, wxID_ANY,wxT(""));
-
+        m_path  = new wxDirPickerCtrl(this,ID_DIALOG);
+		m_bar   = new wxGauge(this,wxID_ANY,100);
+		m_file  = new wxTextCtrl(this, wxID_ANY,wxT(""));
+		m_fold  = new wxTextCtrl(this, wxID_ANY,wxT(""));
 
 		m_list  = new wxListCtrl(this,ID_LISTCTRL,wxDefaultPosition,wxDefaultSize,wxLC_REPORT|wxLC_VRULES);
 
@@ -91,7 +93,7 @@ AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,w
   {
     WhiteHawkClamav::ClamavInstance *claminst;
     WhiteHawkClamav::ClamavScanner  *scanner;
-
+    WhiteHawkSystem::AbstractFile path(m_path->GetPath().ToAscii());
 
             m_file->ChangeValue(wxT(""));
             m_fold->ChangeValue(wxT(""));
@@ -103,19 +105,24 @@ AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,w
 
 			try
 			{
-                    scanner =  WhiteHawkClamav::ClamavInstance::getScanner();
-                    claminst = WhiteHawkClamav::ClamavInstance::getInstance();
+                    m_total   = 0;
+                    m_current = 0;
+                    scanner   = WhiteHawkClamav::ClamavInstance::getScanner();
+                    claminst  = WhiteHawkClamav::ClamavInstance::getInstance();
 
                     scanner->setPath(m_path->GetPath().ToAscii());
 
                     if(!claminst->isDbLoaded())
                     {
-                        ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("Loading database - WhiteHawkClamAv")));
+                        m_frame->SetTitle(wxT(_("Loading database - WhiteHawkClamAv")));
                         this->Update();
                         claminst->loadDatabase();
                     }
 
-                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("Starting scan - WhiteHawkClamAv")));
+                    m_frame->SetTitle(wxT(_("Starting scan - WhiteHawkClamAv")));
+
+                    m_total = WhiteHawkSystem::SystemPath::getCount(path).getFilesCount();
+
                     scanner->removeListener(this);
                     scanner->addListener(this);
                     scanner->startScan();
@@ -136,7 +143,7 @@ AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,w
      try
      {
         WhiteHawkClamav::ClamavInstance::getScanner()->terminateThread();
-        ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("WhiteHawkClamAv")));
+        m_frame->SetTitle(wxT(_("WhiteHawkClamAv")));
   	    m_start->Enable();
 		m_stop->Disable();
 		m_bar->SetValue(0);
@@ -221,24 +228,21 @@ AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,w
 
 
 
-	void AvPanel::onScan(WhiteHawkClamav::ClamFile &file, long long totalFiles)
+	void AvPanel::onScan(WhiteHawkClamav::ClamFile &file)
 	{
-        if( file.getId() != 0)
-        {
          wxString str, str2;
-         unsigned long percent = (file.getId()+1)*100/totalFiles;
+         unsigned long percent = (++m_current)*100/m_total;
 
 
-            str << file.getPath().c_str();
-            str2 << percent << wxT("% - WhiteHawkClamAv");
+                str << file.getPath().c_str();
+                str2 << percent << wxT("% - WhiteHawkClamAv");
 
                 wxMutexGuiEnter();
-                ((wxFrame*)  GetParent()->GetParent())->SetTitle(str2);
+                m_frame->SetTitle(str2);
                 m_bar->SetValue(percent);
                 m_file->ChangeValue(str.AfterLast('/'));
                 m_fold->ChangeValue(str.BeforeLast('/'));
                 wxMutexGuiLeave();
-        }
     }
 
 	void AvPanel::onVirus(WhiteHawkClamav::ClamFile &file)
@@ -282,12 +286,12 @@ AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,w
 
                     if(!claminst->isDbLoaded())
                     {
-                            ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("Loading database - WhiteHawkClamAv")));
+                            m_frame->SetTitle(wxT(_("Loading database - WhiteHawkClamAv")));
                             this->Update();
                             claminst->loadDatabase();
                     }
 
-                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT(_("Starting scan - WhiteHawkClamAv")));
+                    m_frame->SetTitle(wxT(_("Starting scan - WhiteHawkClamAv")));
 
                     for ( size_t n = 0; n < nFiles; n++ )
                     {
@@ -320,7 +324,7 @@ AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,w
                     m_stop->Disable();
                     m_bar->SetValue(0);
                     m_path->Enable();
-                    ((wxFrame*)  GetParent()->GetParent())->SetTitle(wxT("WhiteHawkClamAv"));
+                    m_frame->SetTitle(wxT("WhiteHawkClamAv"));
                     wxMessageBox(msg,wxT(_("Scan finished")),wxICON_INFORMATION);
 			}
 			catch(WhiteHawkSystem::Exception ex)
@@ -351,7 +355,8 @@ AvPanel::AvPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,w
 
               title.Append(" - WhiteHawkClamAv");
               wxMutexGuiEnter();
-              ((wxFrame*)  GetParent()->GetParent())->SetTitle(title);
+              m_frame->SetTitle(title);
+              m_frame->RequestUserAttention(wxUSER_ATTENTION_ERROR);
 			  m_start->Enable();
 			  m_stop->Disable();
 			  m_bar->SetValue(0);

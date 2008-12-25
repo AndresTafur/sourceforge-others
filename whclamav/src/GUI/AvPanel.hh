@@ -16,6 +16,10 @@
 */
 
 
+
+#ifndef _AVPANEL_H_
+#define _AVPANEL_H_
+
 #include <wx/wx.h>
 #include <wx/dnd.h>
 #include <wx/animate.h>
@@ -26,19 +30,19 @@
 #include "ClamLayer/ClamavEvtListener.hh"
 #include "ClamLayer/ClamavInstance.hh"
 #include "ClamLayer/ClamFile.hh"
-
-
-#ifndef _AVPANEL_H_
-#define _AVPANEL_H_
-
-#include "../Scanner.hh"
 #include "ClamLayer/WhiteHawkClamav.hh"
+
+#include "TrayIcon.hh"
+
+
+
+
 
 class AvPanel : public wxPanel, public WhiteHawkClamav::ClamavEvtListener, public wxFileDropTarget
 {
 public:
 
-        AvPanel(wxWindow *parent);
+        AvPanel(wxWindow *parent, wxTopLevelWindow *top);
 
 		void OnStart(wxCommandEvent &evt);
 
@@ -54,7 +58,7 @@ public:
 
         void onSwitchDir(wxFileDirPickerEvent &evt);
 
-        void onScan(WhiteHawkClamav::ClamFile &file, long long totalFiles);
+        void onScan(WhiteHawkClamav::ClamFile &file);
 
         void onVirus(WhiteHawkClamav::ClamFile &file);
 
@@ -67,15 +71,20 @@ public:
 
 
 protected:
-wxGauge         *m_bar;
-wxDirPickerCtrl *m_path;
-wxTextCtrl      *m_file;
-wxTextCtrl      *m_fold;
-wxListCtrl      *m_list;
-wxButton        *m_start;
-wxButton        *m_stop;
-AvPanel         *m_avpanel;
+wxGauge          *m_bar;
+wxDirPickerCtrl  *m_path;
+wxTextCtrl       *m_file;
+wxTextCtrl       *m_fold;
+wxListCtrl       *m_list;
+wxButton         *m_start;
+wxButton         *m_stop;
+wxTopLevelWindow *m_frame;
+AvPanel          *m_avpanel;
+
+
+
 unsigned long m_total;
+unsigned long m_current;
 
 
 DECLARE_EVENT_TABLE()

@@ -53,11 +53,6 @@ public:
 
 
 	/**
-	 *  Sets the id of this element
-         */
-	void setId(int id);
-
-	/**
 	 *  Tests if the file is infected
 	 *  @return true if is infected, false otherwise.
 	 */
@@ -69,21 +64,12 @@ public:
 	 */
 	std::string getVirName();
 
-	/**
-	 *  Gets the id of this element
-         */
-	int getId();
 
 protected:
 /**
  *   virus name
  */
 std::string m_virname;
-
-/**
- *   id of the element
- */
-int m_id;
 
 /**
  * true if is infected, false otherwise

@@ -37,7 +37,6 @@ public:
 
     AvFrame(wxString path, wxIcon appIcon);
 
-
     void createMenu();
 
     void createTrayIcon();

@@ -1,24 +1,39 @@
 #include "TrayIcon.hh"
 
 
-    MyTaskBarIcon::MyTaskBarIcon(wxWindow *dialog)
+    MyTaskBarIcon::MyTaskBarIcon(wxWindow *dialog, wxIcon icon)
     {
-        this->dialog = dialog;
+        m_dialog = dialog;
+        m_icon   = icon;
+        m_value  = wxT("WhiteHawkAv");
+        this->SetIcon(icon,m_value);
     }
+
+    wxString MyTaskBarIcon::getValue()
+    {
+        return m_value;
+    }
+
+    void MyTaskBarIcon::setValue(wxString str)
+    {
+        m_value  = str;
+        this->SetIcon(m_icon,m_value);
+    }
+
 
     void MyTaskBarIcon::OnLeftButtonDClick(wxTaskBarIconEvent &evt)
     {
-        dialog->Show( !dialog->IsShown());
+        m_dialog->Show(!m_dialog->IsShown());
     }
 
     void MyTaskBarIcon::OnMenuRestore(wxCommandEvent &evt)
     {
-       dialog->Show( !dialog->IsShown());
+       m_dialog->Show( !m_dialog->IsShown());
     }
 
     void MyTaskBarIcon::OnMenuExit(wxCommandEvent &evt)
     {
-        dialog->Destroy();
+        m_dialog->Destroy();
         this->RemoveIcon();
     }
 
@@ -26,7 +41,7 @@
     {
       wxMenu *menu = new wxMenu;
 
-        if(dialog->IsShown())
+        if(m_dialog->IsShown())
             menu->Append( wxID_PREVIEW, wxT(_("&Hide window")));
         else
             menu->Append( wxID_PREVIEW, wxT( _("&Show window")));

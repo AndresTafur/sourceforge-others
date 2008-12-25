@@ -24,14 +24,15 @@
 
 AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,_("WhiteHawkClamAv"),wxDefaultPosition,wxSize(640,450),wxMINIMIZE_BOX|wxCLOSE_BOX)
 {
-    wxBoxSizer    *imgSzr = new wxBoxSizer(wxVERTICAL);
-    wxGridSizer   *princ  = new wxGridSizer(1,6);
-    wxBoxSizer    *vert   = new wxBoxSizer(wxVERTICAL);
-    wxButton      *home   = new wxButton(this,ID_HOME,_("&Status"));
-    wxButton      *ssca   = new wxButton(this,ID_SCANF,_("Sc&an Files"));
-    wxButton      *qar    = new wxButton(this,102,_("&Quarantine"));
-    wxButton      *upd    = new wxButton(this,ID_UPDAT,_("&Update"));
-    wxButton      *hlp    = new wxButton(this,104,_("&Help"));
+    wxBoxSizer    *imgSzr   = new wxBoxSizer(wxVERTICAL);
+    wxGridSizer   *princ    = new wxGridSizer(1,6);
+    wxBoxSizer    *vert     = new wxBoxSizer(wxVERTICAL);
+    wxButton      *home     = new wxButton(this,ID_HOME,_("&Status"));
+    wxButton      *ssca     = new wxButton(this,ID_SCANF,_("Sc&an Files"));
+    wxButton      *qar      = new wxButton(this,102,_("&Quarantine"));
+    wxButton      *upd      = new wxButton(this,ID_UPDAT,_("&Update"));
+    wxButton      *hlp      = new wxButton(this,104,_("&Help"));
+    MyTaskBarIcon *trayIcon = new MyTaskBarIcon(this,appIcon);
 
     StatusPanel   *stat;
     AvPanel       *avp;
@@ -39,15 +40,17 @@ AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,_("WhiteHawkCl
 
         SetIcon( appIcon);
 
+        if (!trayIcon->SetIcon(appIcon,_("whiteHawkClamav")))
+            wxMessageBox(_("Could not set icon."));
+
+
         m_sizer = new wxBoxSizer(wxHORIZONTAL);
         m_note  = new wxAuiNotebook(this,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxAUI_NB_TOP|wxAUI_NB_TAB_MOVE|wxAUI_NB_WINDOWLIST_BUTTON);
         stat    = new StatusPanel(m_note);
-        avp     = new AvPanel(m_note);
+        avp     = new AvPanel(m_note,this);
 
         m_note->AddPage(stat, wxT(_("Status")));
         m_note->AddPage(avp, wxT(_("Scan Files")), true);
-
-
 
         princ->Add(home,0,wxEXPAND|wxBOTTOM,5);
         princ->Add(ssca,0,wxEXPAND|wxBOTTOM,5);
@@ -57,7 +60,6 @@ AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,_("WhiteHawkCl
 
         imgSzr->AddSpacer(50);
         imgSzr->Add(princ,0,wxALL,10);
-
 
         m_sizer->Add(imgSzr);
         m_sizer->Add(m_note,1,wxEXPAND|wxLEFT,10);
@@ -76,29 +78,30 @@ void AvFrame::createMenu()
 {
     wxMenuBar   *bar    = new wxMenuBar;
 
-    wxMenu      *file   = new wxMenu;
-    wxMenu      *config = new wxMenu;
-    wxMenu      *help   = new wxMenu;
+    wxMenu      file  ;
+    wxMenu      config;
+    wxMenu      help  ;
 
 
-        bar->Append(file,   _("&File"));
-        bar->Append(config, _("&Configuration"));
-        bar->Append(help,   _("&Help"));
+        file.Append(wxID_OPEN, _("&Scan File"), _("Scan a selected File"));
+        file.AppendSeparator();
+        file.Append(wxID_EXIT, _("&Quit"), _("Quits this program"));
 
 
-        file->Append(wxID_OPEN, _("&Scan File"), _("Scan a selected File"));
-        file->AppendSeparator();
-        file->Append(wxID_EXIT, _("&Quit"), _("Quits this program"));
+        config.Append(wxID_NEW, _("&Environment"), _("Configures the whclamav environment"));
+        config.Append(wxID_FIND, _("&Scan"), _("Configures the actions taken about files and folders"));
+        config.Append(wxID_CLEAR, _("&Quarantine"), _("Configures Quarantine"));
+        config.AppendSeparator();
+        config.Append(wxID_APPLY, _("&Updater"), _("Configures the updates"));
+        config.Append(wxID_ADD, _("&Scheduler"), _("Configures autoscaning and autoupdating"));
 
+        help.Append(wxID_HELP, _("&Help"), _("This program help"));
+        help.Append(wxID_ABOUT, _("&About"), _("About this program"));
 
-        config->Append(wxID_DOWN, _("&Scan"), _("Configures the actions taken about files and folders"));
-        config->Append(wxID_CLEAR, _("&Quarantine"), _("Configures Quarantine"));
-        config->AppendSeparator();
-        config->Append(wxID_APPLY, _("&Updater"), _("Configures the updates"));
-        config->Append(wxID_ADD, _("&Scheduler"), _("Configures autoscaning and autoupdating"));
+        bar->Append(&file,   _("&File"));
+        bar->Append(&config, _("&Configuration"));
+        bar->Append(&help,   _("&Help"));
 
-        help->Append(wxID_HELP, _("&Help"), _("This program help"));
-        help->Append(wxID_ABOUT, _("&About"), _("About this program"));
 
         this->SetMenuBar(bar);
 }
