@@ -35,7 +35,7 @@ public:
 	 *  This method is called for the Clamav-instance when a file is starting to be scanned
 	 *  @param file	File being scanned.
 	 */
-	virtual void onScan(ClamFile &file, long long total) = 0;
+	virtual void onScan(ClamFile &file) = 0;
 
 	/**
 	 *  This method is called for the Clamav-instance when a virus is found

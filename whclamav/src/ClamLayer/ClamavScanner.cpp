@@ -22,8 +22,6 @@
 
     WhiteHawkClamav::ClamavScanner::ClamavScanner(struct cl_engine *engine): WhiteHawkSystem::Thread()
     {
-            m_curr   = 0;
-            m_total  = 0;
             m_engine = engine;
     }
 
@@ -50,49 +48,40 @@
             DIR *buff;
 
             if( !objDir.isDirectory())
-            {
-                objDir.setId(m_curr);
                 this->scanFile(objDir);
-                m_curr++;
-                return;
+            else
+            {
+
+                if( objDir.getPath().at( objDir.getPath().length()-1) != '/')
+                    objDir.setPath(objDir.getPath() + "/");
+
+                buff = opendir(objDir.getPath().c_str());
+
+                if( buff)
+                {
+                    while( NULL != (red = readdir(buff)) )
+                    {
+                        ClamFile tmp( objDir.getPath() + red->d_name);
+
+                            if(tmp.isDirectory())
+                            {
+                                if( strcmp(red->d_name,".") != 0 && strcmp(red->d_name,"..") != 0  )
+                                    scanSubFolder(tmp);
+                            }
+                            else if( tmp.isFile())
+                            {
+                                for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
+                                    (*beg)->onScan(tmp);
+
+                                if( this->scanFile(tmp) )
+                                    for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
+                                        (*beg)->onVirus(tmp);
+                            }
+
+                    }
+                    closedir(buff);
+                }
             }
-
-            if( objDir.getPath().at( objDir.getPath().length()-1) != '/')
-                objDir.setPath(objDir.getPath() + "/");
-
-            buff = opendir(objDir.getPath().c_str());
-
-            if( !buff)
-                return;
-
-            while( NULL != (red = readdir(buff)) )
-	        {
-               ClamFile tmp( objDir.getPath() + red->d_name);
-
-                    if(tmp.isDirectory())
-                    {
-                        if( strcmp(red->d_name,".") != 0 && strcmp(red->d_name,"..") != 0  )
-                                scanSubFolder(tmp);
-                    }
-                    else if( tmp.isFile())
-                    {
-                        tmp.setId(m_curr);
-
-
-                        for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
-                                    (*beg)->onScan(tmp,m_total);
-
-                        if( this->scanFile(tmp) )
-                        {
-                            for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
-                                    (*beg)->onVirus(tmp);
-
-                        }
-                        m_curr++;
-                    }
-
-             }
-             closedir(buff);
         }
 
 
@@ -135,14 +124,9 @@
 
       try
       {
-
-            WhiteHawkClamav::ClamavInstance::getInstance()->updateEngine();
-
             if( m_path.empty())
                 return;
 
-            count   = WhiteHawkSystem::SystemPath::getCount(file);
-            m_total = count.getFilesCount();
 
             ClamFile tmp(m_path);
 
@@ -167,15 +151,7 @@
 
 	void WhiteHawkClamav::ClamavScanner::startScan()
 	{
-	        m_total = 0;
-	        m_curr  = 0;
             startThread(0);
-	}
-
-
-	long long WhiteHawkClamav::ClamavScanner::getTotalFiles()
-	{
-            return m_total;
 	}
 
 

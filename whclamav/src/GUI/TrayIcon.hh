@@ -11,7 +11,11 @@ class MyTaskBarIcon: public wxTaskBarIcon
 {
 public:
 
-    MyTaskBarIcon(wxWindow *dialog);
+    MyTaskBarIcon(wxWindow *dialog, wxIcon icon);
+
+    wxString getValue();
+
+    void setValue(wxString str);
 
     void OnLeftButtonDClick(wxTaskBarIconEvent&);
 
@@ -23,7 +27,9 @@ public:
 
 
 protected:
-wxWindow *dialog;
+wxWindow *m_dialog;
+wxIcon    m_icon;
+wxString  m_value;
 DECLARE_EVENT_TABLE()
 };
 #endif

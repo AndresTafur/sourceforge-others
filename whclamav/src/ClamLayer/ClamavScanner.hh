@@ -62,13 +62,6 @@ public:
      */
 	bool scanFile(ClamFile &file);
 
-	/**
-	 *  This method returns the total amount of files which will be scanned
-	 *  @return Files in the list to be processed
-     */
-	long long getTotalFiles();
-
-
 
 	/**
 	 *  This method returns the age (in days of the database)
@@ -114,11 +107,6 @@ std::string m_path;
  */
 std::list<ClamavEvtListener*> m_listeners;
 
-/**
- *  Amount of files to be scanned
- */
-long long m_total;
-int       m_curr;
 friend class ClamavInstance;
 };
 #endif

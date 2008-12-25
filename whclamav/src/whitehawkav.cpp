@@ -37,7 +37,6 @@ class MyApp: public wxApp
      wxString str = DATA_DIR"/splash.png";
      wxBitmap bitmap(str);
      wxSplashScreen *splash;
-     wxTaskBarIcon *trayIcon;
      wxIcon appIcon;
 
       ::wxInitAllImageHandlers();
@@ -55,16 +54,7 @@ class MyApp: public wxApp
       appIcon.LoadFile(DATA_DIR"/whclicon.png", wxBITMAP_TYPE_ANY);
       m_frame = new AvFrame(str,appIcon);
 
-
-      trayIcon = new MyTaskBarIcon(m_frame);
-      trayIcon->SetIcon(appIcon);
-
-      if (!trayIcon->SetIcon(appIcon,_("whiteHawkClamav")))
-            wxMessageBox(_("Could not set icon."));
-
-
       WhiteHawkClamav::ClamavInstance::getInstance()->loadDatabase();
-
 
       m_frame->Show(TRUE);
       this->SetTopWindow(m_frame);

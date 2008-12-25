@@ -33,11 +33,6 @@
 	}
 
 
-	void WhiteHawkClamav::ClamFile::setId( int id)
-	{
-		this->m_id = id;
-	}
-
 	bool WhiteHawkClamav::ClamFile::isInfected()
 	{
 	   return m_status;
@@ -49,8 +44,4 @@
 	  return m_virname;
 	}
 
-	int WhiteHawkClamav::ClamFile::getId()
-	{
-		return m_id;
-	}
 
