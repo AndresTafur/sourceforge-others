@@ -23,6 +23,7 @@
 					<Add option="`pkg-config --cflags libwhsystem-1.0`" />
 					<Add directory="/usr/local/include/whiteHawk/whclamav" />
 					<Add directory="/usr/local/include/whiteHawk/system" />
+					<Add directory="../src" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -38,6 +39,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-g" />
+			<Add directory="/mnt/otros/part7/whiteHawk/realsvn/whclamav/src" />
 		</Compiler>
 		<Linker>
 			<Add option="-lzzip" />

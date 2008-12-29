@@ -38,7 +38,7 @@
 
 
 
-class AvPanel : public wxPanel, public WhiteHawkClamav::ClamavEvtListener, public wxFileDropTarget
+class AvPanel : public wxPanel, public WhiteHawkClamav::ClamavEvtListener, public wxFileDropTarget, WhiteHawkSystem::Thread
 {
 public:
 
@@ -64,7 +64,11 @@ public:
 
         void onError(WhiteHawkClamav::ClamFile &file,std::string errtype );
 
+        void run();
+
         void onFinish();
+
+        void onTerminate();
 
         bool OnDropFiles(wxCoord x, wxCoord y, const wxArrayString& filenames);
 

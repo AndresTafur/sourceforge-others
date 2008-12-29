@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 0.4\n"
 "Report-Msgid-Bugs-To: darkhawk665@users.sourceforge.net\n"
-"POT-Creation-Date: 2008-12-24 20:09-0500\n"
+"POT-Creation-Date: 2008-12-29 11:13-0500\n"
 "PO-Revision-Date: 2008-12-23 20:40\n"
 "Last-Translator: Jorge Andres Tafur\n"
 "Language-Team: Spanish <ES@li.org>\n"
@@ -28,7 +28,7 @@ msgstr "&Estado"
 msgid "Sc&an Files"
 msgstr "Esc&anear Archivos"
 
-#: src/GUI/AvFrame.cpp:32 src/GUI/AvFrame.cpp:95 src/GUI/AvFrame.cpp:98
+#: src/GUI/AvFrame.cpp:32 src/GUI/AvFrame.cpp:91
 msgid "&Quarantine"
 msgstr "&Cuarentena"
 
@@ -36,84 +36,83 @@ msgstr "&Cuarentena"
 msgid "&Update"
 msgstr "Act&ualizar"
 
-#: src/GUI/AvFrame.cpp:34 src/GUI/AvFrame.cpp:86 src/GUI/AvFrame.cpp:100
-#: src/GUI/AvFrame.cpp:88 src/GUI/AvFrame.cpp:103
+#: src/GUI/AvFrame.cpp:34 src/GUI/AvFrame.cpp:95 src/GUI/AvFrame.cpp:100
 msgid "&Help"
 msgstr "&Ayuda"
 
-#: src/GUI/AvFrame.cpp:47 src/GUI/AvPanel.cpp:57 src/GUI/AvFrame.cpp:52
+#: src/GUI/AvFrame.cpp:43
+msgid "whiteHawkClamav"
+msgstr "whiteHawkClamav"
+
+#: src/GUI/AvFrame.cpp:44
+msgid "Could not set icon."
+msgstr "No se pudo establecer icono"
+
+#: src/GUI/AvFrame.cpp:52 src/GUI/AvPanel.cpp:57
 msgid "Status"
 msgstr "Estado"
 
-#: src/GUI/AvFrame.cpp:48 src/GUI/AvFrame.cpp:53
+#: src/GUI/AvFrame.cpp:53
 msgid "Scan Files"
 msgstr "Escanear Archivos"
 
-#: src/GUI/AvFrame.cpp:84 src/GUI/AvFrame.cpp:86
-msgid "&File"
-msgstr "&Archivo"
-
-#: src/GUI/AvFrame.cpp:85 src/GUI/AvFrame.cpp:87
-msgid "&Configuration"
-msgstr "&Configuracion"
-
-#: src/GUI/AvFrame.cpp:89 src/GUI/AvFrame.cpp:91
+#: src/GUI/AvFrame.cpp:86
 msgid "&Scan File"
 msgstr "E&scanear Archivo"
 
-#: src/GUI/AvFrame.cpp:89 src/GUI/AvFrame.cpp:91
+#: src/GUI/AvFrame.cpp:86
 msgid "Scan a selected File"
 msgstr "Escanea un archivo seleccionado"
 
-#: src/GUI/AvFrame.cpp:91 src/GUI/AvFrame.cpp:93
+#: src/GUI/AvFrame.cpp:88
 msgid "&Quit"
 msgstr "S&alir"
 
-#: src/GUI/AvFrame.cpp:91 src/GUI/AvFrame.cpp:93
+#: src/GUI/AvFrame.cpp:88
 msgid "Quits this program"
 msgstr "Sale de este programa"
 
-#: src/GUI/AvFrame.cpp:94 src/GUI/AvFrame.cpp:97
-msgid "&Scan"
-msgstr "E&scaneo"
+#: src/GUI/AvFrame.cpp:90
+msgid "&Environment"
+msgstr "Entorno"
 
-#: src/GUI/AvFrame.cpp:94 src/GUI/AvFrame.cpp:97
-msgid "Configures the actions taken about files and folders"
-msgstr "Configura las acciones tomadas sobre archivos y carpetas"
+#: src/GUI/AvFrame.cpp:90
+msgid "Configures the whclamav environment"
+msgstr "Configura el entorno de whclamav"
 
-#: src/GUI/AvFrame.cpp:95 src/GUI/AvFrame.cpp:98
+#: src/GUI/AvFrame.cpp:91
 msgid "Configures Quarantine"
 msgstr "Configura la cuarentena"
 
-#: src/GUI/AvFrame.cpp:97 src/GUI/AvFrame.cpp:100
+#: src/GUI/AvFrame.cpp:93
 msgid "&Updater"
 msgstr "Act&ualizador"
 
-#: src/GUI/AvFrame.cpp:97 src/GUI/AvFrame.cpp:100
+#: src/GUI/AvFrame.cpp:93
 msgid "Configures the updates"
 msgstr "Configura las actualizaciones"
 
-#: src/GUI/AvFrame.cpp:98 src/GUI/AvFrame.cpp:101
-msgid "&Scheduler"
-msgstr "&Programador"
-
-#: src/GUI/AvFrame.cpp:98 src/GUI/AvFrame.cpp:101
-msgid "Configures autoscaning and autoupdating"
-msgstr "Configura el autoescaneo y autoactualizacion"
-
-#: src/GUI/AvFrame.cpp:100 src/GUI/AvFrame.cpp:103
+#: src/GUI/AvFrame.cpp:95
 msgid "This program help"
 msgstr "Ayuda de este programa"
 
-#: src/GUI/AvFrame.cpp:101 src/GUI/AvFrame.cpp:104
+#: src/GUI/AvFrame.cpp:96
 msgid "&About"
 msgstr "Acerca &de"
 
-#: src/GUI/AvFrame.cpp:101 src/GUI/AvFrame.cpp:104
+#: src/GUI/AvFrame.cpp:96
 msgid "About this program"
 msgstr "Acerca de esta programa"
 
-#: src/GUI/AvFrame.cpp:141 src/GUI/AvFrame.cpp:144
+#: src/GUI/AvFrame.cpp:98
+msgid "&File"
+msgstr "&Archivo"
+
+#: src/GUI/AvFrame.cpp:99
+msgid "&Configuration"
+msgstr "&Configuracion"
+
+#: src/GUI/AvFrame.cpp:141
 msgid ""
 "\n"
 "\n"
@@ -129,23 +128,23 @@ msgstr ""
 "ideal para su escritorio WhiteHawk.\n"
 "\n"
 
-#: src/GUI/AvFrame.cpp:144 src/GUI/AvFrame.cpp:147
+#: src/GUI/AvFrame.cpp:144
 msgid "WhitehawkAv"
 msgstr "WhiteHawkAv"
 
-#: src/GUI/AvFrame.cpp:145 src/GUI/AvFrame.cpp:148
+#: src/GUI/AvFrame.cpp:145
 msgid "0.0.1"
 msgstr "0.0.1"
 
-#: src/GUI/AvFrame.cpp:147 src/GUI/AvFrame.cpp:150
+#: src/GUI/AvFrame.cpp:147
 msgid "http://whsystems.sf.net"
 msgstr "http://whsystems.sf.net"
 
-#: src/GUI/AvFrame.cpp:148 src/GUI/AvFrame.cpp:151
+#: src/GUI/AvFrame.cpp:148
 msgid "Copyright (C) 2007 Jorge Andres Tafur."
 msgstr "Copyright (C) 2007 Jorge Andres Tafur."
 
-#: src/GUI/AvFrame.cpp:149 src/GUI/AvFrame.cpp:152
+#: src/GUI/AvFrame.cpp:149
 msgid "Jorge Andres Tafur"
 msgstr "Jorge Andres Tafur"
 
@@ -317,15 +316,15 @@ msgstr "Nivel de funcinalidad de clamav:"
 msgid "Clamav database:"
 msgstr "Base de datos de clamav:"
 
-#: src/GUI/TrayIcon.cpp:30 src/GUI/TrayIcon.cpp:45
+#: src/GUI/TrayIcon.cpp:45
 msgid "&Hide window"
 msgstr "&Ocultar Ventana"
 
-#: src/GUI/TrayIcon.cpp:32 src/GUI/TrayIcon.cpp:47
+#: src/GUI/TrayIcon.cpp:47
 msgid "&Show window"
 msgstr "&Mostrar Ventana"
 
-#: src/GUI/TrayIcon.cpp:34 src/GUI/TrayIcon.cpp:49
+#: src/GUI/TrayIcon.cpp:49
 msgid "&Close"
 msgstr "&Cerrar"
 
@@ -349,24 +348,3 @@ msgstr "Actualizacion completada"
 #: src/GUI/UpdateDlg.cpp:85
 msgid "Updated"
 msgstr "Act&ualizado"
-
-#: src/GUI/AvFrame.cpp:43
-msgid "whiteHawkClamav"
-msgstr "whiteHawkClamav"
-
-#: src/GUI/AvFrame.cpp:44
-msgid "Could not set icon."
-msgstr "No se pudo establecer icono"
-
-#: src/GUI/AvFrame.cpp:96
-#, fuzzy
-msgid "&SEnvironment"
-msgstr "Entorno"
-
-#: src/GUI/AvFrame.cpp:96
-msgid "Configures the whclamav environment"
-msgstr "Configura el entorno de whclamav"
-
-#: src/GUI/AvFrame.cpp:96
-msgid "&Environment"
-msgstr "Entorno"

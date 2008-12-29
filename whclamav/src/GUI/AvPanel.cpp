@@ -36,6 +36,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 
         m_frame = top;
 
+
 		m_start = new wxButton(this,ID_AVSTART, wxT(_("Start")));
 		m_stop  = new wxButton(this,ID_AVSTOP, wxT(_("Stop")));
 
@@ -93,7 +94,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
   {
     WhiteHawkClamav::ClamavInstance *claminst;
     WhiteHawkClamav::ClamavScanner  *scanner;
-    WhiteHawkSystem::AbstractFile path(m_path->GetPath().ToAscii());
+
 
             m_file->ChangeValue(wxT(""));
             m_fold->ChangeValue(wxT(""));
@@ -102,39 +103,36 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 			m_stop->Enable();
 			m_bar->SetValue(0);
 			m_path->Disable();
+            m_current = 0;
+            m_total   = -1;
 
-			try
-			{
-                    m_total   = 0;
-                    m_current = 0;
-                    scanner   = WhiteHawkClamav::ClamavInstance::getScanner();
-                    claminst  = WhiteHawkClamav::ClamavInstance::getInstance();
+            scanner   = WhiteHawkClamav::ClamavInstance::getScanner();
+            claminst  = WhiteHawkClamav::ClamavInstance::getInstance();
 
-                    scanner->setPath(m_path->GetPath().ToAscii());
 
-                    if(!claminst->isDbLoaded())
-                    {
-                        m_frame->SetTitle(wxT(_("Loading database - WhiteHawkClamAv")));
-                        this->Update();
-                        claminst->loadDatabase();
-                    }
+			if(!this->isRunning() )
+                this->startThread();
 
-                    m_frame->SetTitle(wxT(_("Starting scan - WhiteHawkClamAv")));
+            scanner->setPath(m_path->GetPath().ToAscii());
 
-                    m_total = WhiteHawkSystem::SystemPath::getCount(path).getFilesCount();
+            if(!claminst->isDbLoaded())
+            {
+                m_frame->SetTitle(wxT(_("Loading database - WhiteHawkClamAv")));
+                claminst->loadDatabase();
+            }
 
-                    scanner->removeListener(this);
-                    scanner->addListener(this);
-                    scanner->startScan();
-			}
-			catch(WhiteHawkSystem::Exception ex)
-			{
-              wxString err;
-                    ex.print();
+            scanner->removeListener(this);
+            scanner->addListener(this);
+            scanner->startScan();
+  }
 
-                    err << ex.getMessage() << wxT("\n:") << ex.getMethod();
-                    wxMessageBox(err,wxT(_("Error scanning files")),wxICON_ERROR);
-			}
+
+  void AvPanel::run()
+  {
+
+    WhiteHawkSystem::AbstractFile path(m_path->GetPath().ToAscii());
+
+        m_total = WhiteHawkSystem::SystemPath::getCount(path).getFilesCount();
   }
 
 
@@ -142,17 +140,21 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
   {
      try
      {
-        WhiteHawkClamav::ClamavInstance::getScanner()->terminateThread();
+        if( WhiteHawkClamav::ClamavInstance::getScanner()->isRunning())
+            WhiteHawkClamav::ClamavInstance::getScanner()->terminateThread();
+
         m_frame->SetTitle(wxT(_("WhiteHawkClamAv")));
-  	    m_start->Enable();
-		m_stop->Disable();
-		m_bar->SetValue(0);
-		m_path->Enable();
+        m_start->Enable();
+        m_stop->Disable();
+        m_bar->SetValue(0);
+        m_path->Enable();
+
      }
      catch(WhiteHawkSystem::Exception e)
      {
             e.print();
      }
+
   }
 
 
@@ -230,18 +232,19 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 
 	void AvPanel::onScan(WhiteHawkClamav::ClamFile &file)
 	{
-         wxString str, str2;
-         unsigned long percent = (++m_current)*100/m_total;
+         wxString str1, str2;
+         unsigned long percent;
 
+                percent = (++m_current)*100/m_total;
 
-                str << file.getPath().c_str();
+                str1 << file.getPath().c_str();
                 str2 << percent << wxT("% - WhiteHawkClamAv");
 
                 wxMutexGuiEnter();
                 m_frame->SetTitle(str2);
                 m_bar->SetValue(percent);
-                m_file->ChangeValue(str.AfterLast('/'));
-                m_fold->ChangeValue(str.BeforeLast('/'));
+                m_file->ChangeValue(str1.AfterLast('/'));
+                m_fold->ChangeValue(str1.BeforeLast('/'));
                 wxMutexGuiLeave();
     }
 
@@ -364,6 +367,8 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 			  wxMutexGuiLeave();
     }
 
+
+    void AvPanel::onTerminate() { }
 
 
 
