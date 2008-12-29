@@ -27,6 +27,7 @@ WhiteHawkSystem::Thread::Thread()
         pthread_attr_init(&m_attr);
         pthread_mutex_init(&m_mux, NULL);
         pthread_cond_init(&m_cond, NULL);
+	m_runObj->setRunning(false);
 }
 
 WhiteHawkSystem::Thread::Thread(Runnable *obj)
@@ -35,6 +36,7 @@ WhiteHawkSystem::Thread::Thread(Runnable *obj)
         pthread_attr_init(&m_attr);
         pthread_mutex_init(&m_mux, NULL);
         pthread_cond_init(&m_cond, NULL);
+	m_runObj->setRunning(false);
 }
 
 
@@ -48,6 +50,7 @@ void WhiteHawkSystem::Thread::startThread(unsigned long stack_size)
 
         if(pthread_create(&m_handler, &m_attr, (void *(*)(void*))&threadfunc, m_runObj))
                 WhiteHawkSystem::Exception("Failed to create posix thread","WhiteHawkSystem::Thread::Start");
+	m_runObj->setRunning(true);
 }
 
 pthread_t WhiteHawkSystem::Thread::getThreadHandler()
@@ -75,15 +78,17 @@ void WhiteHawkSystem::Thread::sleep(unsigned long millisecs)
 void WhiteHawkSystem::Thread::terminateThread()
 {
 	 if( pthread_cancel(m_handler) != 0)
-         throw WhiteHawkSystem::Exception("Can't cancel thread with pthread_cancel","WhiteHawkSystem::Thread::SafePoint");
+         	throw WhiteHawkSystem::Exception("Can't cancel thread with pthread_cancel","WhiteHawkSystem::Thread::SafePoint");
+	 m_runObj->setRunning(false);
 }
 
 
 void WhiteHawkSystem::Thread::threadfunc(Runnable *runObj)
 {
         runObj->run();
+	runObj->onTerminate();
+	runObj->setRunning(false);
         pthread_exit(NULL);
-        runObj->onTerminate();
 }
 
 WhiteHawkSystem::Thread::~Thread()
