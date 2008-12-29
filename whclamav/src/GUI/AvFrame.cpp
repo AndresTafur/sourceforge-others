@@ -78,29 +78,26 @@ void AvFrame::createMenu()
 {
     wxMenuBar   *bar    = new wxMenuBar;
 
-    wxMenu      file  ;
-    wxMenu      config;
-    wxMenu      help  ;
+    wxMenu      *file   = new wxMenu;
+    wxMenu      *config = new wxMenu;
+    wxMenu      *help   = new wxMenu;
 
 
-        file.Append(wxID_OPEN, _("&Scan File"), _("Scan a selected File"));
-        file.AppendSeparator();
-        file.Append(wxID_EXIT, _("&Quit"), _("Quits this program"));
+        file->Append(wxID_OPEN, _("&Scan File"), _("Scan a selected File"));
+        file->AppendSeparator();
+        file->Append(wxID_EXIT, _("&Quit"), _("Quits this program"));
 
+        config->Append(wxID_NEW, _("&Environment"), _("Configures the whclamav environment"));
+        config->Append(wxID_CLEAR, _("&Quarantine"), _("Configures Quarantine"));
+        config->AppendSeparator();
+        config->Append(wxID_APPLY, _("&Updater"), _("Configures the updates"));
 
-        config.Append(wxID_NEW, _("&Environment"), _("Configures the whclamav environment"));
-        config.Append(wxID_FIND, _("&Scan"), _("Configures the actions taken about files and folders"));
-        config.Append(wxID_CLEAR, _("&Quarantine"), _("Configures Quarantine"));
-        config.AppendSeparator();
-        config.Append(wxID_APPLY, _("&Updater"), _("Configures the updates"));
-        config.Append(wxID_ADD, _("&Scheduler"), _("Configures autoscaning and autoupdating"));
+        help->Append(wxID_HELP, _("&Help"), _("This program help"));
+        help->Append(wxID_ABOUT, _("&About"), _("About this program"));
 
-        help.Append(wxID_HELP, _("&Help"), _("This program help"));
-        help.Append(wxID_ABOUT, _("&About"), _("About this program"));
-
-        bar->Append(&file,   _("&File"));
-        bar->Append(&config, _("&Configuration"));
-        bar->Append(&help,   _("&Help"));
+        bar->Append(file,   _("&File"));
+        bar->Append(config, _("&Configuration"));
+        bar->Append(help,   _("&Help"));
 
 
         this->SetMenuBar(bar);
