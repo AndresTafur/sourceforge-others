@@ -26,6 +26,9 @@ public:
          */
         virtual void run() = 0;
 
+	inline bool isRunning() { return m_running;}
+
+	inline void setRunning(bool stat) { m_running = stat;}
 
         /**
          * Function called within the thread at the end of the
@@ -34,7 +37,8 @@ public:
         virtual void onTerminate() = 0;
 
         inline virtual ~Runnable() {};
-
+protected:
+bool m_running;
 };
 
 
