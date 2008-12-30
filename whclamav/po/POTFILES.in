@@ -5,9 +5,4 @@ src/GUI/FileSelectionDialog.cpp
 src/GUI/StatusPanel.cpp
 src/GUI/TrayIcon.cpp
 src/GUI/UpdateDlg.cpp
-
-
-
-
-
-
+src/GUI/ConfigDialog.cpp

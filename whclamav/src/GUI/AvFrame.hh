@@ -21,6 +21,7 @@
 #include <wx/aui/auibook.h>
 
 #include "../config.h"
+#include "ConfigDialog.hh"
 #include "StatusPanel.hh"
 #include "AvPanel.hh"
 #include "rcids.h"
@@ -40,6 +41,8 @@ public:
     void createMenu();
 
     void createTrayIcon();
+
+    void onConfig(wxCommandEvent &evt);
 
     void onTaskClick(wxTaskBarIconEvent &evt);
 
@@ -61,6 +64,7 @@ public:
 protected:
 wxBoxSizer    *m_sizer;
 wxAuiNotebook *m_note;
+AvPanel       *m_avpn;
 DECLARE_EVENT_TABLE()
 };
 

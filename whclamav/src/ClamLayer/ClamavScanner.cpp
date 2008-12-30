@@ -47,41 +47,60 @@
             struct dirent *red;
             DIR *buff;
 
-            if( !objDir.isDirectory())
-                this->scanFile(objDir);
-            else
-            {
-
-                if( objDir.getPath().at( objDir.getPath().length()-1) != '/')
-                    objDir.setPath(objDir.getPath() + "/");
-
-                buff = opendir(objDir.getPath().c_str());
-
-                if( buff)
+                try
                 {
-                    while( NULL != (red = readdir(buff)) )
+
+                    if( !objDir.isDirectory())
+                        this->scanFile(objDir);
+                    else
                     {
-                        ClamFile tmp( objDir.getPath() + red->d_name);
 
-                            if(tmp.isDirectory())
+                        if( objDir.getPath().at( objDir.getPath().length()-1) != '/')
+                            objDir.setPath(objDir.getPath() + "/");
+
+                        buff = opendir(objDir.getPath().c_str());
+
+                        if( buff)
+                        {
+                            while( NULL != (red = readdir(buff)) )
                             {
-                                if( strcmp(red->d_name,".") != 0 && strcmp(red->d_name,"..") != 0  )
-                                    scanSubFolder(tmp);
-                            }
-                            else if( tmp.isFile())
-                            {
-                                for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
-                                    (*beg)->onScan(tmp);
+                              ClamFile tmp( objDir.getPath() + red->d_name);
 
-                                if( this->scanFile(tmp) )
-                                    for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
-                                        (*beg)->onVirus(tmp);
-                            }
+                                /*
+                                 * Temporal fix, if a file fails continue with the next
+                                 * in the folder instead of leave the entire folder.
+                                 */
 
+                                try
+                                {
+                                    if(tmp.isDirectory())
+                                    {
+                                        if( strcmp(red->d_name,".") != 0 && strcmp(red->d_name,"..") != 0  )
+                                            scanSubFolder(tmp);
+                                    }
+                                    else if( tmp.isFile())
+                                    {
+                                        for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
+                                            (*beg)->onScan(tmp);
+
+                                        if( this->scanFile(tmp) )
+                                            for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
+                                                (*beg)->onVirus(tmp);
+                                    }
+                                }
+                                catch(WhiteHawkSystem::Exception e)
+                                {
+                                    e.print();
+                                }
+                            }
+                            closedir(buff);
+                        }
                     }
-                    closedir(buff);
                 }
-            }
+                catch(WhiteHawkSystem::Exception e)
+                {
+                    e.print();
+                }
         }
 
 
@@ -122,8 +141,7 @@
 	  WhiteHawkSystem::SystemPathCount count;
       WhiteHawkSystem::AbstractFile file(m_path);
 
-      try
-      {
+
             if( m_path.empty())
                 return;
 
@@ -140,13 +158,6 @@
 
 			for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
                 (*beg)->onFinish();
-      }
-      catch(WhiteHawkSystem::Exception ex)
-      {
-         ex.print();
-         for( std::list<ClamavEvtListener*>::iterator beg = m_listeners.begin(); beg != m_listeners.end(); beg++)
-                (*beg)->onFinish();
-      }
 	}
 
 	void WhiteHawkClamav::ClamavScanner::startScan()

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: darkhawk665@users.sourceforge.net\n"
-"POT-Creation-Date: 2008-12-29 11:13-0500\n"
+"POT-Creation-Date: 2008-12-29 15:35-0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,7 +48,7 @@ msgstr ""
 msgid "Could not set icon."
 msgstr ""
 
-#: src/GUI/AvFrame.cpp:52 src/GUI/AvPanel.cpp:57
+#: src/GUI/AvFrame.cpp:52 src/GUI/AvPanel.cpp:58
 msgid "Status"
 msgstr ""
 
@@ -112,7 +112,7 @@ msgstr ""
 msgid "&Configuration"
 msgstr ""
 
-#: src/GUI/AvFrame.cpp:141
+#: src/GUI/AvFrame.cpp:150
 msgid ""
 "\n"
 "\n"
@@ -122,23 +122,23 @@ msgid ""
 "\n"
 msgstr ""
 
-#: src/GUI/AvFrame.cpp:144
+#: src/GUI/AvFrame.cpp:153
 msgid "WhitehawkAv"
 msgstr ""
 
-#: src/GUI/AvFrame.cpp:145
+#: src/GUI/AvFrame.cpp:154
 msgid "0.0.1"
 msgstr ""
 
-#: src/GUI/AvFrame.cpp:147
+#: src/GUI/AvFrame.cpp:156
 msgid "http://whsystems.sf.net"
 msgstr ""
 
-#: src/GUI/AvFrame.cpp:148
+#: src/GUI/AvFrame.cpp:157
 msgid "Copyright (C) 2007 Jorge Andres Tafur."
 msgstr ""
 
-#: src/GUI/AvFrame.cpp:149
+#: src/GUI/AvFrame.cpp:158
 msgid "Jorge Andres Tafur"
 msgstr ""
 
@@ -154,125 +154,125 @@ msgstr ""
 msgid "&Select All"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:39
+#: src/GUI/AvPanel.cpp:40
 msgid "Start"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:40
+#: src/GUI/AvPanel.cpp:41
 msgid "Stop"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:55
+#: src/GUI/AvPanel.cpp:56
 msgid "File"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:56
+#: src/GUI/AvPanel.cpp:57
 msgid "Type"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:67
+#: src/GUI/AvPanel.cpp:68
 msgid "Progress: "
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:69
+#: src/GUI/AvPanel.cpp:70
 msgid "Scanning Path: "
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:71
+#: src/GUI/AvPanel.cpp:72
 msgid "Current Folder: "
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:73
+#: src/GUI/AvPanel.cpp:74
 msgid "Current File: "
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:117 src/GUI/AvPanel.cpp:289
+#: src/GUI/AvPanel.cpp:120 src/GUI/AvPanel.cpp:292
 msgid "Loading database - WhiteHawkClamAv"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:122 src/GUI/AvPanel.cpp:294
-msgid "Starting scan - WhiteHawkClamAv"
-msgstr ""
-
-#: src/GUI/AvPanel.cpp:136 src/GUI/AvPanel.cpp:336
-msgid "Error scanning files"
-msgstr ""
-
-#: src/GUI/AvPanel.cpp:166
+#: src/GUI/AvPanel.cpp:168
 msgid "Move to Quarantine"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:166
+#: src/GUI/AvPanel.cpp:168
 msgid "Moves to the quarantine folder."
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:168
+#: src/GUI/AvPanel.cpp:170
 msgid "Delete"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:168
+#: src/GUI/AvPanel.cpp:170
 msgid "Delets the file."
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:172
+#: src/GUI/AvPanel.cpp:174
 msgid "Move all to Quarantine"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:174
+#: src/GUI/AvPanel.cpp:176
 msgid "Deletes everything"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:188
+#: src/GUI/AvPanel.cpp:190
 msgid "Not implemented yet.\n"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:188 src/GUI/AvPanel.cpp:212 src/GUI/AvPanel.cpp:213
+#: src/GUI/AvPanel.cpp:190 src/GUI/AvPanel.cpp:214 src/GUI/AvPanel.cpp:215
 msgid "Error"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:198
+#: src/GUI/AvPanel.cpp:200
 msgid "Are you sure to delete the selected files?"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:198
+#: src/GUI/AvPanel.cpp:200
 msgid "Virus removal"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:209
+#: src/GUI/AvPanel.cpp:211
 msgid "Removed"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:213
+#: src/GUI/AvPanel.cpp:215
 msgid ""
 "There was an error trying to remove file.\n"
 "Do you have permissions?"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:258 src/GUI/AvPanel.cpp:313
+#: src/GUI/AvPanel.cpp:261 src/GUI/AvPanel.cpp:316
 msgid "Infected"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:268
+#: src/GUI/AvPanel.cpp:271
 msgid "Scan finished "
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:319
+#: src/GUI/AvPanel.cpp:297
+msgid "Starting scan - WhiteHawkClamAv"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:322
 msgid "no virus found"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:321
+#: src/GUI/AvPanel.cpp:324
 msgid "virus found."
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:328
+#: src/GUI/AvPanel.cpp:331
 msgid "Scan finished"
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:350
+#: src/GUI/AvPanel.cpp:339
+msgid "Error scanning files"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:353
 msgid "Scan Finished "
 msgstr ""
 
-#: src/GUI/AvPanel.cpp:354
+#: src/GUI/AvPanel.cpp:357
 msgid "No virus found"
 msgstr ""
 
@@ -338,4 +338,20 @@ msgstr ""
 
 #: src/GUI/UpdateDlg.cpp:85
 msgid "Updated"
+msgstr ""
+
+#: src/GUI/ConfigDialog.cpp:4
+msgid "Configuration"
+msgstr ""
+
+#: src/GUI/ConfigDialog.cpp:7
+msgid "Visuals"
+msgstr ""
+
+#: src/GUI/ConfigDialog.cpp:10
+msgid "Show progress"
+msgstr ""
+
+#: src/GUI/ConfigDialog.cpp:11
+msgid "Show tray icon"
 msgstr ""

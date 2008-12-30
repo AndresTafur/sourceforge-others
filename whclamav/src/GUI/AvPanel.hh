@@ -38,11 +38,13 @@
 
 
 
-class AvPanel : public wxPanel, public WhiteHawkClamav::ClamavEvtListener, public wxFileDropTarget, WhiteHawkSystem::Thread
+class AvPanel : public wxPanel, public WhiteHawkClamav::ClamavEvtListener, public wxFileDropTarget, public WhiteHawkSystem::Thread
 {
 public:
 
         AvPanel(wxWindow *parent, wxTopLevelWindow *top);
+
+        void startScanning(wxString str);
 
 		void OnStart(wxCommandEvent &evt);
 

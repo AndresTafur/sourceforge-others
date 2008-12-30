@@ -40,13 +40,12 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 		m_start = new wxButton(this,ID_AVSTART, wxT(_("Start")));
 		m_stop  = new wxButton(this,ID_AVSTOP, wxT(_("Stop")));
 
-        m_path  = new wxDirPickerCtrl(this,ID_DIALOG);
+        m_path  = new wxDirPickerCtrl(this,ID_DIALOG,wxT("/"));
 		m_bar   = new wxGauge(this,wxID_ANY,100);
 		m_file  = new wxTextCtrl(this, wxID_ANY,wxT(""));
 		m_fold  = new wxTextCtrl(this, wxID_ANY,wxT(""));
 
 		m_list  = new wxListCtrl(this,ID_LISTCTRL,wxDefaultPosition,wxDefaultSize,wxLC_REPORT|wxLC_VRULES);
-
 
 		m_stop->Disable();
 		m_fold->SetEditable(false);
@@ -90,12 +89,12 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 		//this->SetDropTarget(this);
   }
 
-  void AvPanel::OnStart(wxCommandEvent &evt)
+  void AvPanel::startScanning(wxString str)
   {
     WhiteHawkClamav::ClamavInstance *claminst;
     WhiteHawkClamav::ClamavScanner  *scanner;
 
-
+            m_path->SetPath(str);
             m_file->ChangeValue(wxT(""));
             m_fold->ChangeValue(wxT(""));
 			m_list->DeleteAllItems();
@@ -110,8 +109,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
             claminst  = WhiteHawkClamav::ClamavInstance::getInstance();
 
 
-			if(!this->isRunning() )
-                this->startThread();
+            this->startThread();
 
             scanner->setPath(m_path->GetPath().ToAscii());
 
@@ -124,6 +122,13 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
             scanner->removeListener(this);
             scanner->addListener(this);
             scanner->startScan();
+
+  }
+
+
+  void AvPanel::OnStart(wxCommandEvent &evt)
+  {
+        startScanning(m_path->GetPath());
   }
 
 
