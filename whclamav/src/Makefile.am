@@ -7,6 +7,7 @@ whclamav_SOURCES = Scanner.cpp whitehawkav.cpp \
 		   GUI/AvPanel.cpp \
 		   GUI/StatusPanel.cpp \
 		   GUI/UpdateDlg.cpp \
+		   GUI/ConfigDialog.cpp \
 		   ClamLayer/ClamavInstance.cpp \
 		   ClamLayer/ClamFile.cpp \
 		   ClamLayer/ClamavScanner.cpp

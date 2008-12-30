@@ -35,8 +35,6 @@ AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,_("WhiteHawkCl
     MyTaskBarIcon *trayIcon = new MyTaskBarIcon(this,appIcon);
 
     StatusPanel   *stat;
-    AvPanel       *avp;
-
 
         SetIcon( appIcon);
 
@@ -47,10 +45,10 @@ AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,_("WhiteHawkCl
         m_sizer = new wxBoxSizer(wxHORIZONTAL);
         m_note  = new wxAuiNotebook(this,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxAUI_NB_TOP|wxAUI_NB_TAB_MOVE|wxAUI_NB_WINDOWLIST_BUTTON);
         stat    = new StatusPanel(m_note);
-        avp     = new AvPanel(m_note,this);
+        m_avpn  = new AvPanel(m_note,this);
 
         m_note->AddPage(stat, wxT(_("Status")));
-        m_note->AddPage(avp, wxT(_("Scan Files")), true);
+        m_note->AddPage(m_avpn, wxT(_("Scan Files")), true);
 
         princ->Add(home,0,wxEXPAND|wxBOTTOM,5);
         princ->Add(ssca,0,wxEXPAND|wxBOTTOM,5);
@@ -104,6 +102,15 @@ void AvFrame::createMenu()
 }
 
 
+void AvFrame::onConfig(wxCommandEvent &evt)
+{
+  ConfigDialog dlg(this);
+
+        dlg.ShowModal();
+}
+
+
+
 void AvFrame::onUpdate(wxCommandEvent &evt)
 {
  UpdateDlg dlg(this);
@@ -118,7 +125,13 @@ void AvFrame::onHome(wxCommandEvent &evt)
 
 void AvFrame::onScan( wxCommandEvent &evt)
 {
-    m_note->SetSelection(1);
+    wxDirDialog dlg(this);
+
+        if( !WhiteHawkClamav::ClamavInstance::getScanner()->isRunning() )
+            if( dlg.ShowModal() == wxID_OK)
+                m_avpn->startScanning( dlg.GetPath() );
+
+        m_note->SetSelection(1);
 }
 
 
@@ -174,6 +187,7 @@ BEGIN_EVENT_TABLE(AvFrame,wxFrame)
     EVT_BUTTON(ID_HOME ,AvFrame::onHome)
     EVT_BUTTON(ID_SCANF ,AvFrame::onScan)
     EVT_BUTTON(ID_UPDAT ,AvFrame::onUpdate)
+    EVT_MENU(wxID_NEW,AvFrame::onConfig)
     EVT_MENU(wxID_EXIT, AvFrame::onQuit)
     EVT_MENU(wxID_ABOUT, AvFrame::onAbout)
     EVT_MENU(wxID_OPEN, AvFrame::onScan)

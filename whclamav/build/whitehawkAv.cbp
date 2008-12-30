@@ -57,6 +57,7 @@
 		<Unit filename="../src/GUI/AvFrame.hh" />
 		<Unit filename="../src/GUI/AvPanel.cpp" />
 		<Unit filename="../src/GUI/AvPanel.hh" />
+		<Unit filename="../src/GUI/ConfigDialog.cpp" />
 		<Unit filename="../src/GUI/FileSelectionDialog.cpp" />
 		<Unit filename="../src/GUI/FileSelectionDialog.hh" />
 		<Unit filename="../src/GUI/StatusPanel.cpp" />

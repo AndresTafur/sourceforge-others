@@ -19,7 +19,7 @@
 	<File name="../src/ClamLayer/ClamavInstance.hh" open="0" top="0" tabpos="3">
 		<Cursor position="1718" topLine="28" />
 	</File>
-	<File name="../src/ClamLayer/ClamavScanner.cpp" open="1" top="0" tabpos="1">
+	<File name="../src/ClamLayer/ClamavScanner.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="5082" topLine="149" />
 	</File>
 	<File name="../src/ClamLayer/ClamavScanner.hh" open="0" top="0" tabpos="4">
@@ -29,22 +29,25 @@
 		<Cursor position="733" topLine="0" />
 	</File>
 	<File name="../src/GUI/AvFrame.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2928" topLine="13" />
+		<Cursor position="4182" topLine="116" />
 	</File>
 	<File name="../src/GUI/AvFrame.hh" open="0" top="0" tabpos="1">
-		<Cursor position="1112" topLine="43" />
+		<Cursor position="1646" topLine="3" />
 	</File>
-	<File name="../src/GUI/AvPanel.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="4913" topLine="133" />
+	<File name="../src/GUI/AvPanel.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="4129" topLine="240" />
 	</File>
 	<File name="../src/GUI/AvPanel.hh" open="0" top="0" tabpos="2">
-		<Cursor position="1732" topLine="44" />
+		<Cursor position="1012" topLine="15" />
 	</File>
-	<File name="../src/GUI/FileSelectionDialog.cpp" open="1" top="0" tabpos="3">
+	<File name="../src/GUI/ConfigDialog.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="679" topLine="0" />
+	</File>
+	<File name="../src/GUI/FileSelectionDialog.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="792" topLine="0" />
 	</File>
 	<File name="../src/GUI/FileSelectionDialog.hh" open="0" top="0" tabpos="0">
-		<Cursor position="919" topLine="6" />
+		<Cursor position="1030" topLine="18" />
 	</File>
 	<File name="../src/GUI/StatusPanel.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="3362" topLine="3" />
@@ -56,10 +59,10 @@
 		<Cursor position="305" topLine="3" />
 	</File>
 	<File name="../src/GUI/TrayIcon.hh" open="0" top="0" tabpos="0">
-		<Cursor position="555" topLine="11" />
+		<Cursor position="555" topLine="10" />
 	</File>
-	<File name="../src/GUI/UpdateDlg.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="1809" topLine="67" />
+	<File name="../src/GUI/UpdateDlg.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="1809" topLine="34" />
 	</File>
 	<File name="../src/GUI/UpdateDlg.hh" open="0" top="0" tabpos="0">
 		<Cursor position="895" topLine="18" />
