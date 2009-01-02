@@ -111,9 +111,9 @@ dnl
 dnl whitehawk
 dnl
 
-WH_CONFIGS="pkg-config libwhsystem-1.0"
-AC_MSG_CHECKING([libwhsystem version])
-WH_CONFIG="pkg-config libwhsystem-1.0"
+WH_CONFIGS="pkg-config whutil-1.0"
+AC_MSG_CHECKING([libwhutil version])
+WH_CONFIG="pkg-config whutil-1.0"
 for VALUE in $WH_CONFIGS ; do
 	if WH_VERSION=`$VALUE --version 2>&1` ; then
 		WH_CONFIG=$VALUE
@@ -124,12 +124,12 @@ if test $WH_CONFIG ; then
 	AC_MSG_RESULT([$WH_VERSION])
 else
 	AC_MSG_RESULT([not found])
-	AC_MSG_ERROR([libwhsystem is required.])
+	AC_MSG_ERROR([libwhutil is required.])
 fi
 
-CPPFLAGS="$CPPFLAGS `$WH_CONFIG libwhsystem-1.0 --cflags`"
-CXXFLAGS="$CXXFLAGS `$WH_CONFIG libwhsystem-1.0 --cflags`"
-WH_LIBS="`$WH_CONFIG libwhsystem-1.0 --libs`"
+CPPFLAGS="$CPPFLAGS `$WH_CONFIG whutil-1.0 --cflags`"
+CXXFLAGS="$CXXFLAGS `$WH_CONFIG whutil-1.0 --cflags`"
+WH_LIBS="`$WH_CONFIG whutil-1.0 --libs`"
 
 
 AC_SUBST(WX_LIBS)
