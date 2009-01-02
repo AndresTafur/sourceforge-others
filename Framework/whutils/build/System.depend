@@ -1,0 +1,145 @@
+# depslib dependency file v1.0
+1196194538 source:/mnt/hda7/whiteHawk/Framework/System/FileInfo.cpp
+	"FileInfo.hh"
+
+1195710754 /mnt/hda7/whiteHawk/Framework/System/FileInfo.hh
+	<sys/stat.h>
+	"Time.hh"
+
+1194816944 /mnt/hda7/whiteHawk/Framework/System/Time.hh
+	<time.h>
+	<string>
+	"WhiteHawkSystem.hh"
+
+1196209674 /mnt/hda7/whiteHawk/Framework/System/WhiteHawkSystem.hh
+
+1196196395 source:/mnt/hda7/whiteHawk/Framework/System/FileStream.cpp
+	"FileInfo.hh"
+	"FileStream.hh"
+
+1196197006 /mnt/hda7/whiteHawk/Framework/System/FileStream.hh
+	"WhiteHawkSystem.hh"
+	"FileInfo.hh"
+	<fstream>
+	<unistd.h>
+
+1194816384 source:/mnt/hda7/whiteHawk/Framework/System/Time.cpp
+	"Time.hh"
+
+1195671795 source:/mnt/hda7/whiteHawk/Framework/System/Thread.cpp
+	"Thread.hh"
+	<unistd.h>
+
+1194825176 /mnt/hda7/whiteHawk/Framework/System/Thread.hh
+	<pthread.h>
+	<unistd.h>
+	"WhiteHawkSystem.hh"
+
+1196299005 source:/mnt/hda7/whiteHawk/Framework/System/ListNode.cpp
+	"ListNode.hh"
+	<stdio.h>
+	<stdlib.h>
+
+1196299581 /mnt/hda7/whiteHawk/Framework/System/ListNode.hh
+	"WhiteHawkSystem.hh"
+
+1196210092 source:/mnt/hda7/whiteHawk/Framework/System/FileListNode.cpp
+	"FileListNode.hh"
+
+1196211041 /mnt/hda7/whiteHawk/Framework/System/FileListNode.hh
+	"WhiteHawkSystem.hh"
+	"FileInfo.hh"
+	"ListNode.hh"
+
+1196298677 source:/mnt/hda7/whiteHawk/Framework/System/SystemPath.cpp
+	"SystemPath.hh"
+
+1196212234 /mnt/hda7/whiteHawk/Framework/System/SystemPath.hh
+	"WhiteHawkSystem.hh"
+	"FileListNode.hh"
+	<string>
+	<dirent.h>
+
+1229746315 source:/mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/AbstractFile.cpp
+	"FileInfo.hh"
+	"AbstractFile.hh"
+
+1230822564 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/FileInfo.hh
+	<sys/stat.h>
+	<sys/types.h>
+	<utime.h>
+	"Time.hh"
+
+1229746315 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/Time.hh
+	<time.h>
+	<string>
+	"WhiteHawkSystem.hh"
+
+1230824891 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/WhiteHawkSystem.hh
+
+1229746315 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/AbstractFile.hh
+	"WhiteHawkSystem.hh"
+	"FileInfo.hh"
+	<unistd.h>
+
+1229746315 source:/mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/DynamicLibrary.cpp
+	"DynamicLibrary.hh"
+	"Exception.hh"
+	<unistd.h>
+
+1229746315 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/DynamicLibrary.hh
+	<string>
+	<dlfcn.h>
+	"WhiteHawkSystem.hh"
+
+1230051808 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/Exception.hh
+	<string>
+	<exception>
+	"WhiteHawkSystem.hh"
+
+1229746315 source:/mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/Exception.cpp
+	"Exception.hh"
+
+1230822682 source:/mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/FileInfo.cpp
+	"FileInfo.hh"
+	"Exception.hh"
+
+1230075036 source:/mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/SystemPath.cpp
+	<errno.h>
+	<string.h>
+	<stdlib.h>
+	<sys/param.h>
+	"SystemPath.hh"
+	"Exception.hh"
+
+1230074896 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/SystemPath.hh
+	<string>
+	<list>
+	<dirent.h>
+	"WhiteHawkSystem.hh"
+	"AbstractFile.hh"
+	"SystemPathCount.hh"
+
+1229746315 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/SystemPathCount.hh
+	"WhiteHawkSystem.hh"
+	"AbstractFile.hh"
+
+1229746315 source:/mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/SystemPathCount.cpp
+	"SystemPathCount.hh"
+
+1230825699 source:/mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/Thread.cpp
+	"Thread.hh"
+	"Exception.hh"
+	<unistd.h>
+
+1230825633 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/Thread.hh
+	<pthread.h>
+	<unistd.h>
+	"WhiteHawkSystem.hh"
+	"Runnable.hh"
+
+1230824289 /mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/Runnable.hh
+
+1229746315 source:/mnt/otros/part7/whiteHawk/realsvn/Framework/whsystem/src/Time.cpp
+	"Time.hh"
+

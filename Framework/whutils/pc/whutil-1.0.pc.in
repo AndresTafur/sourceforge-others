@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+
+Name: libwhutil
+Description: whitehawk utils library
+Requires: 
+Version: @VERSION@
+Libs: -L${libdir} -lpthread -lwhutil -ldl
+Cflags: -I${includedir}/whiteHawk/util/
+

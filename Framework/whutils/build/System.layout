@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="../src/AbstractFile.hh" open="0" top="0" tabpos="0">
+		<Cursor position="760" topLine="0" />
+	</File>
+	<File name="../src/FileInfo.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1053" topLine="18" />
+	</File>
+	<File name="../src/FileInfo.hh" open="0" top="0" tabpos="0">
+		<Cursor position="5826" topLine="35" />
+	</File>
+	<File name="../src/Inotifier.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="5496" topLine="98" />
+	</File>
+	<File name="../src/Inotifier.hh" open="1" top="0" tabpos="2">
+		<Cursor position="650" topLine="16" />
+	</File>
+	<File name="../src/InotifierEvtListener.hh" open="1" top="1" tabpos="3">
+		<Cursor position="600" topLine="4" />
+	</File>
+	<File name="../src/Runnable.hh" open="0" top="0" tabpos="0">
+		<Cursor position="1212" topLine="20" />
+	</File>
+	<File name="../src/SystemPath.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="4160" topLine="123" />
+	</File>
+	<File name="../src/Thread.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2603" topLine="64" />
+	</File>
+	<File name="../src/Thread.hh" open="0" top="0" tabpos="0">
+		<Cursor position="1159" topLine="31" />
+	</File>
+	<File name="../src/WhiteHawkSystem.hh" open="0" top="0" tabpos="0">
+		<Cursor position="873" topLine="6" />
+	</File>
+</CodeBlocks_layout_file>
