@@ -20,7 +20,7 @@
 		<Cursor position="1718" topLine="28" />
 	</File>
 	<File name="../src/ClamLayer/ClamavScanner.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="5082" topLine="149" />
+		<Cursor position="2462" topLine="160" />
 	</File>
 	<File name="../src/ClamLayer/ClamavScanner.hh" open="0" top="0" tabpos="4">
 		<Cursor position="1661" topLine="83" />
@@ -34,13 +34,13 @@
 	<File name="../src/GUI/AvFrame.hh" open="0" top="0" tabpos="1">
 		<Cursor position="1646" topLine="3" />
 	</File>
-	<File name="../src/GUI/AvPanel.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="4129" topLine="240" />
+	<File name="../src/GUI/AvPanel.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="12164" topLine="357" />
 	</File>
 	<File name="../src/GUI/AvPanel.hh" open="0" top="0" tabpos="2">
 		<Cursor position="1012" topLine="15" />
 	</File>
-	<File name="../src/GUI/ConfigDialog.cpp" open="1" top="1" tabpos="1">
+	<File name="../src/GUI/ConfigDialog.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="679" topLine="0" />
 	</File>
 	<File name="../src/GUI/FileSelectionDialog.cpp" open="0" top="0" tabpos="3">
