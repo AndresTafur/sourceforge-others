@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="../src/ClamLayer/ClamFile.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1195" topLine="23" />
+	</File>
+	<File name="../src/ClamLayer/ClamFile.hh" open="0" top="0" tabpos="0">
+		<Cursor position="708" topLine="4" />
+	</File>
+	<File name="../src/ClamLayer/ClamavEngine.hh" open="0" top="0" tabpos="0">
+		<Cursor position="971" topLine="12" />
+	</File>
+	<File name="../src/ClamLayer/ClamavEvtListener.hh" open="0" top="0" tabpos="0">
+		<Cursor position="1702" topLine="38" />
+	</File>
+	<File name="../src/ClamLayer/ClamavInstance.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="3293" topLine="26" />
+	</File>
+	<File name="../src/ClamLayer/ClamavInstance.hh" open="0" top="0" tabpos="3">
+		<Cursor position="1718" topLine="28" />
+	</File>
+	<File name="../src/ClamLayer/ClamavScanner.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="2462" topLine="160" />
+	</File>
+	<File name="../src/ClamLayer/ClamavScanner.hh" open="0" top="0" tabpos="4">
+		<Cursor position="1661" topLine="83" />
+	</File>
+	<File name="../src/ClamLayer/WhiteHawkClamav.hh" open="0" top="0" tabpos="0">
+		<Cursor position="733" topLine="0" />
+	</File>
+	<File name="../src/GUI/AvFrame.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="4182" topLine="116" />
+	</File>
+	<File name="../src/GUI/AvFrame.hh" open="0" top="0" tabpos="1">
+		<Cursor position="1646" topLine="3" />
+	</File>
+	<File name="../src/GUI/AvPanel.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="12420" topLine="99" />
+	</File>
+	<File name="../src/GUI/AvPanel.hh" open="0" top="0" tabpos="2">
+		<Cursor position="1012" topLine="15" />
+	</File>
+	<File name="../src/GUI/ConfigDialog.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="679" topLine="0" />
+	</File>
+	<File name="../src/GUI/FileSelectionDialog.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="792" topLine="0" />
+	</File>
+	<File name="../src/GUI/FileSelectionDialog.hh" open="0" top="0" tabpos="0">
+		<Cursor position="1030" topLine="18" />
+	</File>
+	<File name="../src/GUI/StatusPanel.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="3362" topLine="3" />
+	</File>
+	<File name="../src/GUI/StatusPanel.hh" open="0" top="0" tabpos="0">
+		<Cursor position="878" topLine="0" />
+	</File>
+	<File name="../src/GUI/TrayIcon.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="305" topLine="3" />
+	</File>
+	<File name="../src/GUI/TrayIcon.hh" open="0" top="0" tabpos="0">
+		<Cursor position="555" topLine="10" />
+	</File>
+	<File name="../src/GUI/UpdateDlg.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="1809" topLine="34" />
+	</File>
+	<File name="../src/GUI/UpdateDlg.hh" open="0" top="0" tabpos="0">
+		<Cursor position="895" topLine="18" />
+	</File>
+	<File name="../src/GUI/rcids.h" open="0" top="0" tabpos="1">
+		<Cursor position="1038" topLine="12" />
+	</File>
+	<File name="../src/config.h" open="0" top="0" tabpos="2">
+		<Cursor position="133" topLine="0" />
+	</File>
+	<File name="../src/whitehawkav.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="1056" topLine="75" />
+	</File>
+</CodeBlocks_layout_file>

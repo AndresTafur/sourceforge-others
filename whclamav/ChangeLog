@@ -1,0 +1,42 @@
+2009-01-01  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* m4/gettext.m4: New file, from gettext-0.16.1.
+	* m4/iconv.m4: New file, from gettext-0.16.1.
+	* m4/lib-ld.m4: New file, from gettext-0.16.1.
+	* m4/lib-link.m4: New file, from gettext-0.16.1.
+	* m4/lib-prefix.m4: New file, from gettext-0.16.1.
+	* m4/nls.m4: New file, from gettext-0.16.1.
+	* m4/po.m4: New file, from gettext-0.16.1.
+	* m4/progtest.m4: New file, from gettext-0.16.1.
+	* Makefile.am (EXTRA_DIST): Add config/config.rpath.
+
+2008-12-23  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* m4/gettext.m4: New file, from gettext-0.16.1.
+	* m4/iconv.m4: New file, from gettext-0.16.1.
+	* m4/lib-ld.m4: New file, from gettext-0.16.1.
+	* m4/lib-link.m4: New file, from gettext-0.16.1.
+	* m4/lib-prefix.m4: New file, from gettext-0.16.1.
+	* m4/nls.m4: New file, from gettext-0.16.1.
+	* m4/po.m4: New file, from gettext-0.16.1.
+	* m4/progtest.m4: New file, from gettext-0.16.1.
+	* Makefile.am (EXTRA_DIST): Add config/config.rpath.
+	* configure.ac (AC_OUTPUT): Add po/Makefile.in.
+
+
+============ October 21, 2008 ============
+- Added reload database in runtime.
+- Fixed disclaimer.
+- Fixed some memory leaks.
+
+============ September 29, 2008 ============
+- Fixed some issues of SystemPath.
+- Added tray.
+- Added splash.
+
+============ September 26, 2008 ============
+- Released first beta (0.03)
+- Removed animation (it looks bad).
+- Added exception catching.
+- Updated Thread Class.
+
