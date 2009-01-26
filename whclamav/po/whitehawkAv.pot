@@ -1,0 +1,357 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR WhiteHawk project.
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: darkhawk665@users.sourceforge.net\n"
+"POT-Creation-Date: 2008-12-29 15:35-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/GUI/AvFrame.cpp:25 src/GUI/AvPanel.cpp:146
+msgid "WhiteHawkClamAv"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:30
+msgid "&Status"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:31
+msgid "Sc&an Files"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:32 src/GUI/AvFrame.cpp:91
+msgid "&Quarantine"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:33 src/GUI/UpdateDlg.cpp:16
+msgid "&Update"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:34 src/GUI/AvFrame.cpp:95 src/GUI/AvFrame.cpp:100
+msgid "&Help"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:43
+msgid "whiteHawkClamav"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:44
+msgid "Could not set icon."
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:52 src/GUI/AvPanel.cpp:58
+msgid "Status"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:53
+msgid "Scan Files"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:86
+msgid "&Scan File"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:86
+msgid "Scan a selected File"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:88
+msgid "&Quit"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:88
+msgid "Quits this program"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:90
+msgid "&Environment"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:90
+msgid "Configures the whclamav environment"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:91
+msgid "Configures Quarantine"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:93
+msgid "&Updater"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:93
+msgid "Configures the updates"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:95
+msgid "This program help"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:96
+msgid "&About"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:96
+msgid "About this program"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:98
+msgid "&File"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:99
+msgid "&Configuration"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:150
+msgid ""
+"\n"
+"\n"
+"Welcome to WhiteHawk System antivirus.\n"
+"whClamav is a frontend of the clamav antivirus \n"
+"ideal for your WhiteHawk Desktop.\n"
+"\n"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:153
+msgid "WhitehawkAv"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:154
+msgid "0.0.1"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:156
+msgid "http://whsystems.sf.net"
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:157
+msgid "Copyright (C) 2007 Jorge Andres Tafur."
+msgstr ""
+
+#: src/GUI/AvFrame.cpp:158
+msgid "Jorge Andres Tafur"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:32
+msgid "&Remove"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:33
+msgid "Q&uarantine"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:34
+msgid "&Select All"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:40
+msgid "Start"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:41
+msgid "Stop"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:56
+msgid "File"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:57
+msgid "Type"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:68
+msgid "Progress: "
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:70
+msgid "Scanning Path: "
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:72
+msgid "Current Folder: "
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:74
+msgid "Current File: "
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:120 src/GUI/AvPanel.cpp:292
+msgid "Loading database - WhiteHawkClamAv"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:168
+msgid "Move to Quarantine"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:168
+msgid "Moves to the quarantine folder."
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:170
+msgid "Delete"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:170
+msgid "Delets the file."
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:174
+msgid "Move all to Quarantine"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:176
+msgid "Deletes everything"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:190
+msgid "Not implemented yet.\n"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:190 src/GUI/AvPanel.cpp:214 src/GUI/AvPanel.cpp:215
+msgid "Error"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:200
+msgid "Are you sure to delete the selected files?"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:200
+msgid "Virus removal"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:211
+msgid "Removed"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:215
+msgid ""
+"There was an error trying to remove file.\n"
+"Do you have permissions?"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:261 src/GUI/AvPanel.cpp:316
+msgid "Infected"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:271
+msgid "Scan finished "
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:297
+msgid "Starting scan - WhiteHawkClamAv"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:322
+msgid "no virus found"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:324
+msgid "virus found."
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:331
+msgid "Scan finished"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:339
+msgid "Error scanning files"
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:353
+msgid "Scan Finished "
+msgstr ""
+
+#: src/GUI/AvPanel.cpp:357
+msgid "No virus found"
+msgstr ""
+
+#: src/GUI/StatusPanel.cpp:24
+msgid "Summary"
+msgstr ""
+
+#: src/GUI/StatusPanel.cpp:25
+msgid "Versions"
+msgstr ""
+
+#: src/GUI/StatusPanel.cpp:64
+msgid "Database age:"
+msgstr ""
+
+#: src/GUI/StatusPanel.cpp:66
+msgid "Quarentine:"
+msgstr ""
+
+#: src/GUI/StatusPanel.cpp:68
+msgid "Last scan:"
+msgstr ""
+
+#: src/GUI/StatusPanel.cpp:71
+msgid "Clamav version:"
+msgstr ""
+
+#: src/GUI/StatusPanel.cpp:73
+msgid "Clamav functionality level:"
+msgstr ""
+
+#: src/GUI/StatusPanel.cpp:75
+msgid "Clamav database:"
+msgstr ""
+
+#: src/GUI/TrayIcon.cpp:45
+msgid "&Hide window"
+msgstr ""
+
+#: src/GUI/TrayIcon.cpp:47
+msgid "&Show window"
+msgstr ""
+
+#: src/GUI/TrayIcon.cpp:49
+msgid "&Close"
+msgstr ""
+
+#: src/GUI/UpdateDlg.cpp:6
+msgid "Update"
+msgstr ""
+
+#: src/GUI/UpdateDlg.cpp:17
+msgid "&Clear"
+msgstr ""
+
+#: src/GUI/UpdateDlg.cpp:40 src/GUI/UpdateDlg.cpp:72
+msgid "Updating please wait"
+msgstr ""
+
+#: src/GUI/UpdateDlg.cpp:63
+msgid "Update completed"
+msgstr ""
+
+#: src/GUI/UpdateDlg.cpp:85
+msgid "Updated"
+msgstr ""
+
+#: src/GUI/ConfigDialog.cpp:4
+msgid "Configuration"
+msgstr ""
+
+#: src/GUI/ConfigDialog.cpp:7
+msgid "Visuals"
+msgstr ""
+
+#: src/GUI/ConfigDialog.cpp:10
+msgid "Show progress"
+msgstr ""
+
+#: src/GUI/ConfigDialog.cpp:11
+msgid "Show tray icon"
+msgstr ""
