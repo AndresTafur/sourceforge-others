@@ -17,7 +17,7 @@
 #ifndef _RUNNABLE_
 #define _RUNNABLE_
 
-class WhiteHawkSystem::Runnable
+class WhiteHawkUtil::Runnable
 {
 public:
 

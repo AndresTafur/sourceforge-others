@@ -18,14 +18,14 @@
 #ifndef _SYSTEMPATH_COUNT_
 #define _SYSTEMPATH_COUNT_
 
-#include "WhiteHawkSystem.hh"
+#include "WhiteHawkUtil.hh"
 #include "AbstractFile.hh"
 
 /**
  *  This class encapsulates two counted data from a SystemPath.
  */
 
-class WhiteHawkSystem::SystemPathCount
+class WhiteHawkUtil::SystemPathCount
 {
 public:
             /**
@@ -129,14 +129,14 @@ public:
              */
             unsigned long long getTotalCount();
 
-            void operator += (WhiteHawkSystem::FileInfo obj);
+            void operator += (WhiteHawkUtil::FileInfo obj);
 
-            void operator -= (WhiteHawkSystem::FileInfo obj);
+            void operator -= (WhiteHawkUtil::FileInfo obj);
 
 
-            void operator += (WhiteHawkSystem::SystemPathCount obj);
+            void operator += (WhiteHawkUtil::SystemPathCount obj);
 
-            void operator -= (WhiteHawkSystem::SystemPathCount obj);
+            void operator -= (WhiteHawkUtil::SystemPathCount obj);
 
 protected:
 

@@ -18,7 +18,7 @@
 #ifndef _WH_FILE_STREAM_
 #define _WH_FILE_STREAM_
 
-#include "WhiteHawkSystem.hh"
+#include "WhiteHawkUtil.hh"
 #include "FileInfo.hh"
 #include <unistd.h>
 
@@ -26,7 +26,7 @@
  *	A file data stream. This class represents a file stream based in the std::fstream
  */
 
-class WhiteHawkSystem::AbstractFile : public  WhiteHawkSystem::FileInfo
+class WhiteHawkUtil::AbstractFile : public  WhiteHawkUtil::FileInfo
 {
 public:
 
@@ -101,7 +101,7 @@ public:
 	 *  @param  obj th other object to be compared.
 	 *	@return true if equals, false otherwise.
 	 */
-    bool operator != (WhiteHawkSystem::AbstractFile obj);
+    bool operator != (WhiteHawkUtil::AbstractFile obj);
 
 
 public:

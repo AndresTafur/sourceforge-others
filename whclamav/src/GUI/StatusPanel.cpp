@@ -19,6 +19,10 @@
 #include "../ClamLayer/ClamavInstance.hh"
 
 
+#undef wxT
+#define wxT(data) wxString::FromAscii(data)
+
+
 	StatusPanel::StatusPanel(wxWindow *parent) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL)
 	{
       wxBoxSizer  *summary   = new wxStaticBoxSizer(wxVERTICAL,this,wxT(_("Summary")));
@@ -47,11 +51,11 @@
         function->SetValue(str);
 
         str = wxT("");
-        str << cl_retver();
+        str << wxT(cl_retver());
         version->SetValue(str);
 
         str = wxT("");
-        str << cl_retdbdir();
+        str << wxT(cl_retdbdir());
 	    database->SetValue(str);
 
         age->SetEditable(false);

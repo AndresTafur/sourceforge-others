@@ -1,9 +1,9 @@
 #include "Inotifier.hh"
 
-int WhiteHawkSystem::Inotifier::m_infd = -1;
+int WhiteHawkUtil::Inotifier::m_infd = -1;
 
 
-        WhiteHawkSystem::Inotifier::Inotifier(AbstractFile &file, int fd)
+        WhiteHawkUtil::Inotifier::Inotifier(AbstractFile &file, int fd)
         {
             m_fd   = fd;
             m_file = file;
@@ -11,7 +11,7 @@ int WhiteHawkSystem::Inotifier::m_infd = -1;
 
 
 
-        WhiteHawkSystem::Inotifier* WhiteHawkSystem::Inotifier::createNotifier(AbstractFile &file)
+        WhiteHawkUtil::Inotifier* WhiteHawkUtil::Inotifier::createNotifier(AbstractFile &file)
         {
             if( m_infd < 0)
                 m_infd = inotify_init();
@@ -20,7 +20,7 @@ int WhiteHawkSystem::Inotifier::m_infd = -1;
         }
 
 
-        void  WhiteHawkSystem::Inotifier::run()
+        void  WhiteHawkUtil::Inotifier::run()
         {
           int size  = sizeof (struct inotify_event);
           int bsize =  1024 * (size + 32);
@@ -53,7 +53,9 @@ int WhiteHawkSystem::Inotifier::m_infd = -1;
                         else if(event->mask & IN_ATTRIB)
                            for(std::list<InotifierEvtListener*>::iterator iter = m_lstners.begin(); iter != m_lstners.end(); iter++)
                                  (*iter)->onAttrib(event);
-
+                        else if(event->mask & IN_CREATE)
+                           for(std::list<InotifierEvtListener*>::iterator iter = m_lstners.begin(); iter != m_lstners.end(); iter++)
+                                 (*iter)->onCreate(event);
                         else if(event->mask & IN_CLOSE)
                            for(std::list<InotifierEvtListener*>::iterator iter = m_lstners.begin(); iter != m_lstners.end(); iter++)
                                  (*iter)->onClose(event);
@@ -91,42 +93,42 @@ int WhiteHawkSystem::Inotifier::m_infd = -1;
         }
 
 
-        void WhiteHawkSystem::Inotifier::addListener( InotifierEvtListener *obj)
+        void WhiteHawkUtil::Inotifier::addListener( InotifierEvtListener *obj)
         {
             m_lstners.push_back(obj);
         }
 
-        void WhiteHawkSystem::Inotifier::removeListener( InotifierEvtListener *obj)
+        void WhiteHawkUtil::Inotifier::removeListener( InotifierEvtListener *obj)
         {
            m_lstners.remove (obj);
         }
 
 
-        void WhiteHawkSystem::Inotifier::startWatching(int mask)
+        void WhiteHawkUtil::Inotifier::startWatching(int mask)
         {
             m_wd = inotify_add_watch (m_fd, m_file.getFullName().c_str(), mask);
 
 
             if( m_wd < 0)
-                throw (Exception("Failed adding watch","WhiteHawkSystem::Inotifier::startWatching()"));
+                throw (Exception("Failed adding watch","WhiteHawkUtil::Inotifier::startWatching()"));
 
             m_watch = true;
 
             this->startThread();
         }
 
-        void WhiteHawkSystem::Inotifier::stopWatching()
+        void WhiteHawkUtil::Inotifier::stopWatching()
         {
             m_watch = false;
 
             if( inotify_rm_watch (m_fd, m_wd) )
-              throw (Exception("Failed stopping watch","WhiteHawkSystem::Inotifier::stopWatching()"));
+              throw (Exception("Failed stopping watch","WhiteHawkUtil::Inotifier::stopWatching()"));
 
         }
 
 
-        void WhiteHawkSystem::Inotifier::closeInotify()
+        void WhiteHawkUtil::Inotifier::closeInotify()
         {
             if( close ( m_infd ) )
-                 throw (Exception("Failed stopping inotify fd","WhiteHawkSystem::Inotifier::Destroy()"));
+                 throw (Exception("Failed stopping inotify fd","WhiteHawkUtil::Inotifier::Destroy()"));
         }

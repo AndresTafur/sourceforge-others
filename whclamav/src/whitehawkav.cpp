@@ -28,13 +28,16 @@
 #include "GUI/AvFrame.hh"
 #include "GUI/TrayIcon.hh"
 
+#undef wxT
+#define wxT(data) wxString::FromAscii(data)
+
 
 class MyApp: public wxApp
 {
 
    bool OnInit()
     {
-     wxString str = DATA_DIR"/splash.png";
+     wxString str = wxT(DATA_DIR"/splash.png");
      wxBitmap bitmap(str);
      wxSplashScreen *splash;
      wxIcon appIcon;
@@ -51,7 +54,7 @@ class MyApp: public wxApp
       str << this->argv[0];
 
       str   = str.BeforeLast( '/');
-      appIcon.LoadFile(DATA_DIR"/whclicon.png", wxBITMAP_TYPE_ANY);
+      appIcon.LoadFile(wxT(DATA_DIR"/whclicon.png"), wxBITMAP_TYPE_ANY);
       m_frame = new AvFrame(str,appIcon);
 
       WhiteHawkClamav::ClamavInstance::getInstance()->loadDatabase();

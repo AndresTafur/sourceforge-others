@@ -21,7 +21,7 @@
 #include <unistd.h>
 #endif
 
-WhiteHawkSystem::Thread::Thread()
+WhiteHawkUtil::Thread::Thread()
 {
         m_runObj = this;
         pthread_attr_init(&m_attr);
@@ -30,7 +30,7 @@ WhiteHawkSystem::Thread::Thread()
 	m_runObj->setRunning(false);
 }
 
-WhiteHawkSystem::Thread::Thread(Runnable *obj)
+WhiteHawkUtil::Thread::Thread(Runnable *obj)
 {
         m_runObj = obj;
         pthread_attr_init(&m_attr);
@@ -40,26 +40,26 @@ WhiteHawkSystem::Thread::Thread(Runnable *obj)
 }
 
 
-void WhiteHawkSystem::Thread::startThread(unsigned long stack_size)
+void WhiteHawkUtil::Thread::startThread(unsigned long stack_size)
 {
         pthread_attr_init(&m_attr);
 
         if( stack_size != 0)
             if( pthread_attr_setstacksize(&m_attr, stack_size) != 0)
-                WhiteHawkSystem::Exception("Failed assigning thread stack size","WhiteHawkSystem::Thread::Start");
+                WhiteHawkUtil::Exception("Failed assigning thread stack size","WhiteHawkUtil::Thread::Start");
 
         if(pthread_create(&m_handler, &m_attr, (void *(*)(void*))&threadfunc, m_runObj))
-                WhiteHawkSystem::Exception("Failed to create posix thread","WhiteHawkSystem::Thread::Start");
+                WhiteHawkUtil::Exception("Failed to create posix thread","WhiteHawkUtil::Thread::Start");
 	m_runObj->setRunning(true);
 }
 
-pthread_t WhiteHawkSystem::Thread::getThreadHandler()
+pthread_t WhiteHawkUtil::Thread::getThreadHandler()
 {
         return m_handler;
 }
 
 
-bool WhiteHawkSystem::Thread::join()
+bool WhiteHawkUtil::Thread::join()
 {
       if( pthread_join(m_handler, NULL) == 0)
         return true;
@@ -67,7 +67,7 @@ bool WhiteHawkSystem::Thread::join()
 }
 
 
-void WhiteHawkSystem::Thread::sleep(unsigned long millisecs)
+void WhiteHawkUtil::Thread::sleep(unsigned long millisecs)
 {
 	#ifdef WIN32
          Sleep(millisecs);
@@ -75,15 +75,15 @@ void WhiteHawkSystem::Thread::sleep(unsigned long millisecs)
 	 usleep(millisecs*1000);
 }
 
-void WhiteHawkSystem::Thread::terminateThread()
+void WhiteHawkUtil::Thread::terminateThread()
 {
 	 if( pthread_cancel(m_handler) != 0)
-         	throw WhiteHawkSystem::Exception("Can't cancel thread with pthread_cancel","WhiteHawkSystem::Thread::SafePoint");
+         	throw WhiteHawkUtil::Exception("Can't cancel thread with pthread_cancel","WhiteHawkUtil::Thread::SafePoint");
 	 m_runObj->setRunning(false);
 }
 
 
-void WhiteHawkSystem::Thread::threadfunc(Runnable *runObj)
+void WhiteHawkUtil::Thread::threadfunc(Runnable *runObj)
 {
         runObj->run();
         runObj->onTerminate();
@@ -92,7 +92,7 @@ void WhiteHawkSystem::Thread::threadfunc(Runnable *runObj)
 }
 
 
-WhiteHawkSystem::Thread::~Thread()
+WhiteHawkUtil::Thread::~Thread()
 {
 
 }

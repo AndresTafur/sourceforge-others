@@ -29,7 +29,7 @@
  * TODO: File permissions.
  */
 
-class WhiteHawkSystem::FileInfo
+class WhiteHawkUtil::FileInfo
 {
 public:
 
@@ -47,10 +47,10 @@ public:
 
 
 	/**
-	 *	Sets the path to a FileInfo object.
-	 *	@param	path	path to the file in the system.
+	 *	Sets the path and name to a FileInfo object.
+	 *	@param	path	path and name to the file in the system.
 	 */
-	void setPath(std::string path);
+	void setFullName(std::string path);
 
 
 	/**
@@ -59,7 +59,7 @@ public:
 	 *	@return	 true if sucessfull false other wise
 	 * 	@see	 Time
 	 */
-	bool setLastAccess(WhiteHawkSystem::Time &time);
+	bool setLastAccess(WhiteHawkUtil::Time &time);
 
 
 	/**
@@ -68,7 +68,7 @@ public:
 	 *	@return	 true if sucessfull false other wise
 	 * 	@see	 Time
 	 */
-	bool setLastModification(WhiteHawkSystem::Time &time);
+	bool setLastModification(WhiteHawkUtil::Time &time);
 
 
 	/**
@@ -128,7 +128,7 @@ public:
 	 *	@return	 time of the last acess.
 	 * 	@see	 Time
 	 */
-	WhiteHawkSystem::Time getLastAccess();
+	WhiteHawkUtil::Time getLastAccess();
 
 
 	/**
@@ -137,7 +137,7 @@ public:
 	 * 	@see	 Time
 	 */
 
-	WhiteHawkSystem::Time getLastModification();
+	WhiteHawkUtil::Time getLastModification();
 
 	/**
 	 *	Tests if the file exists
@@ -245,6 +245,11 @@ protected:
 std::string m_path;
 
 /**
+ * Path of the file.
+ */
+std::string m_fullName;
+
+/**
  * Name of the file.
  */
 std::string m_name;
@@ -258,12 +263,12 @@ struct stat fileStatus;
  * Access Time.
  * @see Time
  */
-WhiteHawkSystem::Time  accTime;
+WhiteHawkUtil::Time  accTime;
 
 /**
  * Modification Time.
  * @see Time
  */
-WhiteHawkSystem::Time  modTime;
+WhiteHawkUtil::Time  modTime;
 };
 #endif

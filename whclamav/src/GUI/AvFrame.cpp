@@ -19,27 +19,28 @@
 #include "UpdateDlg.hh"
 #include "TrayIcon.hh"
 
+#undef wxT
+#define wxT(data) wxString::FromAscii(data)
 
 
-
-AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,_("WhiteHawkClamAv"),wxDefaultPosition,wxSize(640,450),wxMINIMIZE_BOX|wxCLOSE_BOX)
+AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,wxT(_("WhiteHawkClamAv")),wxDefaultPosition,wxSize(640,450),wxMINIMIZE_BOX|wxCLOSE_BOX)
 {
     wxBoxSizer    *imgSzr   = new wxBoxSizer(wxVERTICAL);
     wxGridSizer   *princ    = new wxGridSizer(1,6);
     wxBoxSizer    *vert     = new wxBoxSizer(wxVERTICAL);
-    wxButton      *home     = new wxButton(this,ID_HOME,_("&Status"));
-    wxButton      *ssca     = new wxButton(this,ID_SCANF,_("Sc&an Files"));
-    wxButton      *qar      = new wxButton(this,102,_("&Quarantine"));
-    wxButton      *upd      = new wxButton(this,ID_UPDAT,_("&Update"));
-    wxButton      *hlp      = new wxButton(this,104,_("&Help"));
+    wxButton      *home     = new wxButton(this,ID_HOME,wxT(_("&Status")));
+    wxButton      *ssca     = new wxButton(this,ID_SCANF,wxT(_("Sc&an Files")));
+    wxButton      *qar      = new wxButton(this,102,wxT(_("&Quarantine")));
+    wxButton      *upd      = new wxButton(this,ID_UPDAT,wxT(_("&Update")));
+    wxButton      *hlp      = new wxButton(this,104,wxT(_("&Help")));
     MyTaskBarIcon *trayIcon = new MyTaskBarIcon(this,appIcon);
 
     StatusPanel   *stat;
 
         SetIcon( appIcon);
 
-        if (!trayIcon->SetIcon(appIcon,_("whiteHawkClamav")))
-            wxMessageBox(_("Could not set icon."));
+        if (!trayIcon->SetIcon(appIcon,wxT(_("whiteHawkClamav"))))
+            wxMessageBox(wxT(_("Could not set icon.")));
 
 
         m_sizer = new wxBoxSizer(wxHORIZONTAL);
@@ -81,21 +82,21 @@ void AvFrame::createMenu()
     wxMenu      *help   = new wxMenu;
 
 
-        file->Append(wxID_OPEN, _("&Scan File"), _("Scan a selected File"));
+        file->Append(wxID_OPEN, wxT(_("&Scan File")), wxT(_("Scan a selected File")));
         file->AppendSeparator();
-        file->Append(wxID_EXIT, _("&Quit"), _("Quits this program"));
+        file->Append(wxID_EXIT, wxT(_("&Quit")), wxT(_("Quits this program")));
 
-        config->Append(wxID_NEW, _("&Environment"), _("Configures the whclamav environment"));
-        config->Append(wxID_CLEAR, _("&Quarantine"), _("Configures Quarantine"));
+        config->Append(wxID_NEW, wxT(_("&Environment")),wxT(_("Configures the whclamav environment")));
+        config->Append(wxID_CLEAR, wxT(_("&Quarantine")), wxT(_("Configures Quarantine")));
         config->AppendSeparator();
-        config->Append(wxID_APPLY, _("&Updater"), _("Configures the updates"));
+        config->Append(wxID_APPLY, wxT(_("&Updater")), wxT(_("Configures the updates")));
 
-        help->Append(wxID_HELP, _("&Help"), _("This program help"));
-        help->Append(wxID_ABOUT, _("&About"), _("About this program"));
+        help->Append(wxID_HELP, wxT(_("&Help")), wxT(_("This program help")));
+        help->Append(wxID_ABOUT,wxT(_("&About")), wxT(_("About this program")));
 
-        bar->Append(file,   _("&File"));
-        bar->Append(config, _("&Configuration"));
-        bar->Append(help,   _("&Help"));
+        bar->Append(file,   wxT(_("&File")));
+        bar->Append(config, wxT(_("&Configuration")));
+        bar->Append(help,   wxT(_("&Help")));
 
 
         this->SetMenuBar(bar);
@@ -151,15 +152,15 @@ void AvFrame::onAbout(wxCommandEvent &evt)
     wxAboutDialogInfo info;
     wxString desc;
 
-        desc << _("\n\nWelcome to WhiteHawk System antivirus."
-                    "\nwhClamav is a frontend of the clamav antivirus \nideal for your WhiteHawk Desktop.\n\n");
+        desc << wxT(_("\n\nWelcome to WhiteHawk System antivirus."
+                    "\nwhClamav is a frontend of the clamav antivirus \nideal for your WhiteHawk Desktop.\n\n"));
 
-        info.SetName( _("WhitehawkAv"));
-        info.SetVersion( _("0.0.1"));
+        info.SetName( wxT(_("WhitehawkAv")));
+        info.SetVersion( wxT(_("0.0.1")));
         info.SetDescription(desc);
-        info.SetWebSite( _("http://whsystems.sf.net"));
-        info.SetCopyright( _("Copyright (C) 2007 Jorge Andres Tafur."));
-        info.AddDeveloper( _("Jorge Andres Tafur"));
+        info.SetWebSite( wxT(_("http://whsystems.sf.net")));
+        info.SetCopyright( wxT(_("Copyright (C) 2007 Jorge Andres Tafur.")));
+        info.AddDeveloper( wxT(_("Jorge Andres Tafur")));
         info.SetLicence( wxT
 
         ("\tWhiteHawkAntivirus an antivirus based on top of clamav.\n"

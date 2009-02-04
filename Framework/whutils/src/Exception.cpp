@@ -17,13 +17,13 @@
 #include "Exception.hh"
 
 
-	WhiteHawkSystem::Exception::Exception(std::string msg,std::string method)
+	WhiteHawkUtil::Exception::Exception(std::string msg,std::string method)
 	{
 	  m_msg = msg;
 	  m_met = method;
 	}
 
-	void WhiteHawkSystem::Exception::print()
+	void WhiteHawkUtil::Exception::print()
 	{
 	  std::string buff;
 
@@ -33,19 +33,19 @@
 	}
 
 
-    std::string WhiteHawkSystem::Exception::getMessage()
+    std::string WhiteHawkUtil::Exception::getMessage()
     {
         return m_msg;
     }
 
 
-    std::string WhiteHawkSystem::Exception::getMethod()
+    std::string WhiteHawkUtil::Exception::getMethod()
     {
         return m_met;
     }
 
 
-    const char*  WhiteHawkSystem::Exception::what()
+    const char*  WhiteHawkUtil::Exception::what()
     const throw ()
     {
         return m_msg.c_str();
@@ -53,7 +53,7 @@
 
 
 
-   WhiteHawkSystem::Exception::~Exception()
+   WhiteHawkUtil::Exception::~Exception()
    throw ()
    {
 

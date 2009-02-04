@@ -1,7 +1,8 @@
 #include "UpdateDlg.hh"
 #include <errno.h>
 
-
+#undef wxT
+#define wxT(data) wxString::FromAscii(data)
 
 UpdateDlg::UpdateDlg(wxWindow *parent) : wxDialog(parent,wxID_ANY,wxT(_("Update")))
 {

@@ -17,36 +17,40 @@
 #include "FileInfo.hh"
 #include "Exception.hh"
 
-	WhiteHawkSystem::FileInfo::FileInfo()
+	WhiteHawkUtil::FileInfo::FileInfo()
 	{
-		setPath(".");
+		setFullName(".");
 	}
 
-	WhiteHawkSystem::FileInfo::FileInfo(std::string path)
+	WhiteHawkUtil::FileInfo::FileInfo(std::string path)
 	{
-	  setPath(path);
+	  setFullName(path);
 	}
 
 
 
-	void WhiteHawkSystem::FileInfo::setPath(std::string path)
+	void WhiteHawkUtil::FileInfo::setFullName(std::string path)
 	{
 	  int index;
 
- 	    index = path.find_last_of ('/');
+        m_fullName = path;
+ 	    index      = path.find_last_of ('/');
+
+        if( index == path.size()-1)
+            index = path.find_last_of ('/',index-1);
 
  	    m_path = path.substr(0,index+1);
  	    m_name = path.substr(index+1);
 	}
 
 
-    bool WhiteHawkSystem::FileInfo::setPermission(mode_t mode)
+    bool WhiteHawkUtil::FileInfo::setPermission(mode_t mode)
     {
           return  chmod(m_path.c_str(),mode) == 0;
     }
 
 
-	bool WhiteHawkSystem::FileInfo::setLastAccess(WhiteHawkSystem::Time &time)
+	bool WhiteHawkUtil::FileInfo::setLastAccess(WhiteHawkUtil::Time &time)
 	{
         struct utimbuf times;
 
@@ -63,7 +67,7 @@
 	}
 
 
-	bool WhiteHawkSystem::FileInfo::setLastModification(WhiteHawkSystem::Time &time)
+	bool WhiteHawkUtil::FileInfo::setLastModification(WhiteHawkUtil::Time &time)
 	{
       struct utimbuf times;
 
@@ -80,156 +84,156 @@
 	}
 
 
-    bool WhiteHawkSystem::FileInfo::setOwner(uid_t id)
+    bool WhiteHawkUtil::FileInfo::setOwner(uid_t id)
     {
           return  lchown(m_path.c_str(), id, -1) == 0;
     }
 
 
-    bool WhiteHawkSystem::FileInfo::setGroup(gid_t id)
+    bool WhiteHawkUtil::FileInfo::setGroup(gid_t id)
     {
           return lchown(m_path.c_str(),-1, id) == 0;
     }
 
 
-	std::string WhiteHawkSystem::FileInfo::getPath()
+	std::string WhiteHawkUtil::FileInfo::getPath()
 	{
 	  return m_path;
 	}
 
-	std::string WhiteHawkSystem::FileInfo::getName()
+	std::string WhiteHawkUtil::FileInfo::getName()
 	{
 
 	  return m_name;
 	}
 
-    std::string WhiteHawkSystem::FileInfo::getFullName()
+    std::string WhiteHawkUtil::FileInfo::getFullName()
     {
-        return m_path + m_name;
+        return m_fullName;
     }
 
 
-	int WhiteHawkSystem::FileInfo::getSize()
+	int WhiteHawkUtil::FileInfo::getSize()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::getSize");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::getSize");
 
 	  return fileStatus.st_size;
 	}
 
 
-	WhiteHawkSystem::Time WhiteHawkSystem::FileInfo::getLastAccess()
+	WhiteHawkUtil::Time WhiteHawkUtil::FileInfo::getLastAccess()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0 )
-            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::getLastAccess");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0 )
+            throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::getLastAccess");
 
         accTime.setTime( fileStatus.st_atime  );
         return accTime;
 	}
 
-	WhiteHawkSystem::Time WhiteHawkSystem::FileInfo::getLastModification()
+	WhiteHawkUtil::Time WhiteHawkUtil::FileInfo::getLastModification()
 	{
-	  if( lstat(m_path.c_str(), &fileStatus) != 0 )
-           throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::getLastModification");
+	  if( lstat(getFullName().c_str(), &fileStatus) != 0 )
+           throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::getLastModification");
 
 	    modTime.setTime( fileStatus.st_atime  );
         return modTime;
 	}
 
 
-    bool WhiteHawkSystem::FileInfo::exist()
+    bool WhiteHawkUtil::FileInfo::exist()
     {
-        return access(m_path.c_str(), F_OK) == 0;
+        return access(getFullName().c_str(), F_OK) == 0;
     }
 
 
-	bool WhiteHawkSystem::FileInfo::isFile()
+	bool WhiteHawkUtil::FileInfo::isFile()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-	        throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isFile");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0)
+	        throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isFile");
 
 		return S_ISREG(fileStatus.st_mode);
 	}
 
-	bool WhiteHawkSystem::FileInfo::isUserReadable()
+	bool WhiteHawkUtil::FileInfo::isUserReadable()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isUserReadable");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isUserReadable");
         return access(m_path.c_str(),R_OK) == 0;
     }
 
-	bool WhiteHawkSystem::FileInfo::isUserWritable()
+	bool WhiteHawkUtil::FileInfo::isUserWritable()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isUserWritable");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isUserWritable");
         return access(m_path.c_str(),W_OK) == 0;
     }
 
-    bool WhiteHawkSystem::FileInfo::isUserExecutable()
+    bool WhiteHawkUtil::FileInfo::isUserExecutable()
     {
-        if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isUserExecutable");
+        if( lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isUserExecutable");
         return access(m_path.c_str(),X_OK) == 0;
     }
 
-    bool WhiteHawkSystem::FileInfo::isUserRWX()
+    bool WhiteHawkUtil::FileInfo::isUserRWX()
     {
         return isUserReadable() && isUserWritable() && isUserExecutable();
     }
 
-	bool WhiteHawkSystem::FileInfo::isLink()
+	bool WhiteHawkUtil::FileInfo::isLink()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isLink");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isLink");
 		return S_ISLNK(fileStatus.st_mode);
 	}
 
-	bool WhiteHawkSystem::FileInfo::isDirectory()
+	bool WhiteHawkUtil::FileInfo::isDirectory()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isDirectory");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isDirectory");
 		return S_ISDIR(fileStatus.st_mode);
 	}
 
-	bool WhiteHawkSystem::FileInfo::isCharDevice()
+	bool WhiteHawkUtil::FileInfo::isCharDevice()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception("Warning: "+m_path +" lstat failed","WhiteHawkSystem::FileInfo::isCharDevice");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception("Warning: "+getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isCharDevice");
 		return S_ISCHR(fileStatus.st_mode);
 	}
 
-	bool WhiteHawkSystem::FileInfo::isBlockDevice()
+	bool WhiteHawkUtil::FileInfo::isBlockDevice()
 	{
-	    if(lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception(m_path +" lstat failed","WhiteHawkSystem::FileInfo::isBlockDevice");
+	    if(lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception(getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isBlockDevice");
 		return S_ISBLK(fileStatus.st_mode);
 	}
 
-	bool WhiteHawkSystem::FileInfo::isFIFO()
+	bool WhiteHawkUtil::FileInfo::isFIFO()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception(m_path +" lstat failed","WhiteHawkSystem::FileInfo::isFIFO");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception(getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isFIFO");
 		return S_ISFIFO(fileStatus.st_mode);
 	}
 
-	bool WhiteHawkSystem::FileInfo::isSocket()
+	bool WhiteHawkUtil::FileInfo::isSocket()
 	{
-	    if( lstat(m_path.c_str(), &fileStatus) != 0)
-            throw Exception(m_path +" lstat failed","WhiteHawkSystem::FileInfo::isSocket");
+	    if( lstat(getFullName().c_str(), &fileStatus) != 0)
+            throw Exception(getFullName() +" lstat failed","WhiteHawkUtil::FileInfo::isSocket");
 		return S_ISSOCK(fileStatus.st_mode);
 	}
 
-	bool WhiteHawkSystem::FileInfo::isDevice()
+	bool WhiteHawkUtil::FileInfo::isDevice()
 	{
 	   return (isCharDevice() || isBlockDevice());
 	}
 
-	bool WhiteHawkSystem::FileInfo::operator == (std::string path)
+	bool WhiteHawkUtil::FileInfo::operator == (std::string path)
 	{
-            return this->m_path == path;
+            return this->getFullName() == path;
     }
 
-	bool WhiteHawkSystem::FileInfo::operator != (std::string path)
+	bool WhiteHawkUtil::FileInfo::operator != (std::string path)
 	{
-            return !(this->m_path == path);
+            return !(this->getFullName() == path);
     }

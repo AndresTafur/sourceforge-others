@@ -24,10 +24,10 @@
 #endif
 
 
-#include "WhiteHawkSystem.hh"
+#include "WhiteHawkUtil.hh"
 #include "Runnable.hh"
 
-class WhiteHawkSystem::Thread : public WhiteHawkSystem::Runnable
+class WhiteHawkUtil::Thread : public WhiteHawkUtil::Runnable
 {
 public:
 
