@@ -19,12 +19,12 @@
 
 #include <string>
 #include <exception>
-#include "WhiteHawkSystem.hh"
+#include "WhiteHawkUtil.hh"
 
 /**
  *	Exception manager. This class manage any exception.
  */
-class WhiteHawkSystem::Exception : public std::exception
+class WhiteHawkUtil::Exception : public std::exception
 {
 public:
 

@@ -18,6 +18,8 @@
 #include "AvPanel.hh"
 #include "Exception.hh"
 
+#undef wxT
+#define wxT(data) wxString::FromAscii(data)
 
 
 AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL|wxMAXIMIZE_BOX)
@@ -111,7 +113,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 
             this->startThread();
 
-            scanner->setPath(m_path->GetPath().ToAscii());
+            scanner->setPath(m_path->GetPath().ToAscii().data());
 
             if(!claminst->isDbLoaded())
             {
@@ -135,7 +137,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
   void AvPanel::run()
   {
 
-    WhiteHawkUtil::AbstractFile path(m_path->GetPath().ToAscii());
+    WhiteHawkUtil::AbstractFile path(m_path->GetPath().ToAscii().data());
 
         m_total = WhiteHawkUtil::SystemPath::getCount(path).getFilesCount();
   }
@@ -209,7 +211,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 
                     if( item != -1)
                     {
-                        WhiteHawkUtil::AbstractFile file(m_list->GetItemText(item).ToAscii());
+                        WhiteHawkUtil::AbstractFile file(m_list->GetItemText(item).ToAscii().data());
                         if( file.exist())
                         {
                             if( file.Remove() )
@@ -242,14 +244,13 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 
                 percent = (++m_current)*100/m_total;
 
-                str1 << file.getPath().c_str();
                 str2 << percent << wxT("% - WhiteHawkClamAv");
 
                 wxMutexGuiEnter();
                 m_frame->SetTitle(str2);
                 m_bar->SetValue(percent);
-                m_file->ChangeValue(file.getName());
-                m_fold->ChangeValue(str1);
+                m_file->ChangeValue(wxT(file.getName().c_str()));
+                m_fold->ChangeValue(wxT(file.getPath().c_str()));
                 wxMutexGuiLeave();
     }
 
@@ -257,8 +258,8 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 	 {
 		  wxString str, str2;
 
-			str << file.getPath().c_str();
-			str2 << file.getVirName().c_str();
+			str << wxT(file.getPath().c_str());
+			str2 << wxT(file.getVirName().c_str());
 
             wxMutexGuiEnter();
 			m_list->InsertItem(0,str); //todo include All files here
@@ -304,7 +305,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
                     for ( size_t n = 0; n < nFiles; n++ )
                     {
                        str = filenames[n];
-                       WhiteHawkClamav::ClamFile file(str.ToAscii());
+                       WhiteHawkClamav::ClamFile file(str.ToAscii().data());
 
                         m_file->ChangeValue( str.AfterLast('/') );
                         m_fold->ChangeValue( str.BeforeLast('/') );
@@ -313,8 +314,8 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
                         {
                             wxString str, str2;
 
-                                str << file.getPath().c_str();
-                                str2 << file.getVirName().c_str();
+                                str << wxT(file.getPath().c_str());
+                                str2 << wxT(file.getVirName().c_str());
 
                                 m_list->InsertItem(0,str); //todo include All files here
                                 m_list->SetItem(0, 1, str2);
@@ -340,7 +341,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
               wxString err;
                     ex.print();
 
-                    err << ex.getMessage() << wxT("\n:") << ex.getMethod();
+                    err << wxT(ex.getMessage().c_str()) << wxT("\n:") << wxT(ex.getMethod().c_str());
                     wxMessageBox(err,wxT(_("Error scanning files")),wxICON_ERROR);
 			}
         return true;
@@ -359,9 +360,9 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 
 
               if( m_list->GetItemCount() == 0)
-                  title.Append(_("No virus found"));
+                  title.Append(wxT(_("No virus found")));
 
-              title.Append(" - WhiteHawkClamAv");
+              title.Append(wxT(" - WhiteHawkClamAv"));
               wxMutexGuiEnter();
               m_frame->SetTitle(title);
               m_frame->RequestUserAttention(wxUSER_ATTENTION_ERROR);

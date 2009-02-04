@@ -1,5 +1,8 @@
 #include "TrayIcon.hh"
 
+#undef wxT
+#define wxT(data) wxString::FromAscii(data)
+
 
     MyTaskBarIcon::MyTaskBarIcon(wxWindow *dialog, wxIcon icon)
     {

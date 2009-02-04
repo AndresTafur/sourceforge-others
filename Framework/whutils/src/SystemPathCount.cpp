@@ -18,7 +18,7 @@
 
 
 
-WhiteHawkSystem::SystemPathCount::SystemPathCount(unsigned long long files, unsigned long long folders, unsigned long long links, unsigned long long fifo, unsigned long long blkdev, unsigned long long chardev)
+WhiteHawkUtil::SystemPathCount::SystemPathCount(unsigned long long files, unsigned long long folders, unsigned long long links, unsigned long long fifo, unsigned long long blkdev, unsigned long long chardev)
 {
     this->m_files   = files;
     this->m_folders = folders;
@@ -28,82 +28,82 @@ WhiteHawkSystem::SystemPathCount::SystemPathCount(unsigned long long files, unsi
     this->m_fifo    = fifo;
 }
 
-void WhiteHawkSystem::SystemPathCount::setFilesCount(unsigned long long count)
+void WhiteHawkUtil::SystemPathCount::setFilesCount(unsigned long long count)
 {
     m_files = count;
 
 }
 
-void WhiteHawkSystem::SystemPathCount::setFoldersCount(unsigned long long count)
+void WhiteHawkUtil::SystemPathCount::setFoldersCount(unsigned long long count)
 {
     m_files = count;
 }
 
 
-void WhiteHawkSystem::SystemPathCount::setLinksCount(unsigned long long count)
+void WhiteHawkUtil::SystemPathCount::setLinksCount(unsigned long long count)
 {
     m_link = count;
 }
 
 
-void WhiteHawkSystem::SystemPathCount::setFIFOCount(unsigned long long count)
+void WhiteHawkUtil::SystemPathCount::setFIFOCount(unsigned long long count)
 {
     m_fifo = count;
 }
 
-void WhiteHawkSystem::SystemPathCount::setCharDevicesCount(unsigned long long count)
+void WhiteHawkUtil::SystemPathCount::setCharDevicesCount(unsigned long long count)
 {
     m_chardev = count;
 }
 
-void WhiteHawkSystem::SystemPathCount::setBlockDevicesCount(unsigned long long count)
+void WhiteHawkUtil::SystemPathCount::setBlockDevicesCount(unsigned long long count)
 {
     m_blkdev = count;
 }
 
-unsigned long long WhiteHawkSystem::SystemPathCount::getFilesCount()
+unsigned long long WhiteHawkUtil::SystemPathCount::getFilesCount()
 {
     return m_files;
 }
 
-unsigned long long WhiteHawkSystem::SystemPathCount::getFoldersCount()
+unsigned long long WhiteHawkUtil::SystemPathCount::getFoldersCount()
 {
     return m_folders;
 }
 
 
-unsigned long long WhiteHawkSystem::SystemPathCount::getLinksCount()
+unsigned long long WhiteHawkUtil::SystemPathCount::getLinksCount()
 {
     return m_link;
 }
 
-unsigned long long WhiteHawkSystem::SystemPathCount::getFIFOCount()
+unsigned long long WhiteHawkUtil::SystemPathCount::getFIFOCount()
 {
     return m_fifo;
 }
 
-unsigned long long WhiteHawkSystem::SystemPathCount::getCharDevicesCount()
+unsigned long long WhiteHawkUtil::SystemPathCount::getCharDevicesCount()
 {
     return m_chardev;
 }
 
-unsigned long long WhiteHawkSystem::SystemPathCount::getBlockDevicesCount()
+unsigned long long WhiteHawkUtil::SystemPathCount::getBlockDevicesCount()
 {
     return m_blkdev;
 }
 
 
-unsigned long long WhiteHawkSystem::SystemPathCount::getDevicesCount()
+unsigned long long WhiteHawkUtil::SystemPathCount::getDevicesCount()
 {
     return m_chardev + m_blkdev;
 }
 
-unsigned long long WhiteHawkSystem::SystemPathCount::getTotalCount()
+unsigned long long WhiteHawkUtil::SystemPathCount::getTotalCount()
 {
     return m_files + m_folders + m_link + m_chardev + m_blkdev + m_fifo;
 }
 
-void WhiteHawkSystem::SystemPathCount::operator += (WhiteHawkSystem::FileInfo obj)
+void WhiteHawkUtil::SystemPathCount::operator += (WhiteHawkUtil::FileInfo obj)
 {
     if( obj.isLink())
         m_link++;
@@ -120,7 +120,7 @@ void WhiteHawkSystem::SystemPathCount::operator += (WhiteHawkSystem::FileInfo ob
 }
 
 
-void WhiteHawkSystem::SystemPathCount::operator -= (WhiteHawkSystem::FileInfo obj)
+void WhiteHawkUtil::SystemPathCount::operator -= (WhiteHawkUtil::FileInfo obj)
 {
     if( obj.isLink())
         m_link--;
@@ -138,7 +138,7 @@ void WhiteHawkSystem::SystemPathCount::operator -= (WhiteHawkSystem::FileInfo ob
 
 
 
-void WhiteHawkSystem::SystemPathCount::operator += (WhiteHawkSystem::SystemPathCount obj)
+void WhiteHawkUtil::SystemPathCount::operator += (WhiteHawkUtil::SystemPathCount obj)
 {
     this->m_files   += obj.getFilesCount();
     this->m_folders += obj.getFoldersCount();
@@ -149,7 +149,7 @@ void WhiteHawkSystem::SystemPathCount::operator += (WhiteHawkSystem::SystemPathC
 }
 
 
-void WhiteHawkSystem::SystemPathCount::operator -= (WhiteHawkSystem::SystemPathCount obj)
+void WhiteHawkUtil::SystemPathCount::operator -= (WhiteHawkUtil::SystemPathCount obj)
 {
     this->m_files   -= obj.getFilesCount();
     this->m_folders -= obj.getFoldersCount();

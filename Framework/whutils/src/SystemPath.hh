@@ -21,7 +21,7 @@
 #include <list>
 #include <dirent.h>
 
-#include "WhiteHawkSystem.hh"
+#include "WhiteHawkUtil.hh"
 #include "AbstractFile.hh"
 #include "SystemPathCount.hh"
 
@@ -29,7 +29,7 @@
  *  This class controls the access to a path (folders and subfolders)
  */
 
-class WhiteHawkSystem::SystemPath
+class WhiteHawkUtil::SystemPath
 {
 public:
 
@@ -74,7 +74,7 @@ public:
          *   a statical way.
          *   @return An abstract file representing the CWD (it's a directory).
          */
-        static WhiteHawkSystem::AbstractFile getCurrentWDir();
+        static WhiteHawkUtil::AbstractFile getCurrentWDir();
 
 
         /**
@@ -83,7 +83,7 @@ public:
          *   @param dir AbstractFile object to be set as a cwd (must be a directory).
          *   @return true if the CWD has been changed, false otherwise.
          */
-        static bool setCurrentWDir(WhiteHawkSystem::AbstractFile dir);
+        static bool setCurrentWDir(WhiteHawkUtil::AbstractFile dir);
 
         /**
          *   Sets the system dependent current directory, should be accessed in
@@ -105,14 +105,14 @@ public:
          *  @param  name File name to be searched.
          *  @return An abstract file representing the file found, an Abstract Empty file otherwise
          */
-        WhiteHawkSystem::AbstractFile find(std::string name);
+        WhiteHawkUtil::AbstractFile find(std::string name);
 
         /**
          *  Get's the next file in the path, and increments the offset, if there is no file
          *  it will return a file with an empty path.
          *  @return An abstract file representing the next file, it excludes '.' and '..'.
          */
-        WhiteHawkSystem::AbstractFile getNextFile();
+        WhiteHawkUtil::AbstractFile getNextFile();
 
         /**
          *  Make's a dir hierarchy based on the path

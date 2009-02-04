@@ -18,30 +18,30 @@
 
 
 
-	 WhiteHawkSystem::Time::Time()
+	 WhiteHawkUtil::Time::Time()
 	 {
 		setTime( time(NULL) );
 	 }
 
-	 WhiteHawkSystem::Time::Time(time_t desc)
+	 WhiteHawkUtil::Time::Time(time_t desc)
 	 {
 		setTime(desc);
 	 }
 
 
-	void WhiteHawkSystem::Time::setTime(time_t desc)
+	void WhiteHawkUtil::Time::setTime(time_t desc)
 	{
 		handler   = desc;
 		localTime = localtime(&handler);
 	}
 
 
-	float WhiteHawkSystem::Time::difference(Time &obj)
+	float WhiteHawkUtil::Time::difference(Time &obj)
 	{
 	  return difftime(handler, obj.getHandler());
 	}
 
-	std::string WhiteHawkSystem::Time::toString(std::string format)
+	std::string WhiteHawkUtil::Time::toString(std::string format)
 	{
 	  char cad[100];
 
@@ -50,54 +50,54 @@
 	}
 
 
-	time_t WhiteHawkSystem::Time::getHandler()
+	time_t WhiteHawkUtil::Time::getHandler()
 	{
 	  return handler;
 	}
 
 
-	int WhiteHawkSystem::Time::getYear()
+	int WhiteHawkUtil::Time::getYear()
 	{
 	  return localTime->tm_year + 1900;
 	}
 
 
-	int WhiteHawkSystem::Time::getMonth()
+	int WhiteHawkUtil::Time::getMonth()
 	{
 	  return localTime->tm_mon+1;
 	}
 
-	int WhiteHawkSystem::Time::getDay()
+	int WhiteHawkUtil::Time::getDay()
 	{
 	  return localTime->tm_mday;
 	}
 
-	int WhiteHawkSystem::Time::getDayOfWeek()
+	int WhiteHawkUtil::Time::getDayOfWeek()
 	{
 	  return localTime->tm_wday+1;
 	}
 
-	int WhiteHawkSystem::Time::getDayOfYear()
+	int WhiteHawkUtil::Time::getDayOfYear()
 	{
 	  return localTime->tm_yday+1;
 	}
 
-	int WhiteHawkSystem::Time::getHour()
+	int WhiteHawkUtil::Time::getHour()
 	{
 	  return localTime->tm_hour;
 	}
 
-	int WhiteHawkSystem::Time::getMinute()
+	int WhiteHawkUtil::Time::getMinute()
 	{
 	  return localTime->tm_min+1;
 	}
 
-	int WhiteHawkSystem::Time::getSecond()
+	int WhiteHawkUtil::Time::getSecond()
 	{
 	  return localTime->tm_sec;
 	}
 
-    WhiteHawkSystem::Time::~Time()
+    WhiteHawkUtil::Time::~Time()
     {
 
     }

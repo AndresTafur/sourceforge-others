@@ -19,12 +19,12 @@
 
 #include <time.h>
 #include <string>
-#include "WhiteHawkSystem.hh"
+#include "WhiteHawkUtil.hh"
 
 /**
  *	just time. This class represents Time ( year, month, week, day, hour, minute, second ).
  */
-class WhiteHawkSystem::Time
+class WhiteHawkUtil::Time
 {
 public:
 

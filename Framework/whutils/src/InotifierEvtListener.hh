@@ -2,9 +2,11 @@
 #define _INOTIFIER_LISTENER_HH_
 
 
-class WhiteHawkSystem::InotifierEvtListener
+class WhiteHawkUtil::InotifierEvtListener
 {
 public:
+
+    inline virtual void onCreate(struct inotify_event *evt){};
 
     inline virtual void onAcess(struct inotify_event *evt){};
 

@@ -19,9 +19,9 @@
 
 #include <string>
 #include <dlfcn.h>
-#include "WhiteHawkSystem.hh"
+#include "WhiteHawkUtil.hh"
 
-class WhiteHawkSystem::DynamicLibrary
+class WhiteHawkUtil::DynamicLibrary
 {
 public:
 

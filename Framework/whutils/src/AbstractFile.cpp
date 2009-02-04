@@ -17,19 +17,19 @@
 #include "FileInfo.hh"
 #include "AbstractFile.hh"
 
-    WhiteHawkSystem::AbstractFile::AbstractFile() : WhiteHawkSystem::FileInfo("")
+    WhiteHawkUtil::AbstractFile::AbstractFile() : WhiteHawkUtil::FileInfo("")
 	{
 
 	}
 
 
-	WhiteHawkSystem::AbstractFile::AbstractFile(std::string path) : WhiteHawkSystem::FileInfo(path)
+	WhiteHawkUtil::AbstractFile::AbstractFile(std::string path) : WhiteHawkUtil::FileInfo(path)
 	{
 
 	}
 
 
-	bool WhiteHawkSystem::AbstractFile::CreateSymLink(std::string path)
+	bool WhiteHawkUtil::AbstractFile::CreateSymLink(std::string path)
 	{
 	   if(symlink(this->m_path.c_str(), path.c_str()) == 0)
             return true;
@@ -37,7 +37,7 @@
 	}
 
 
-    bool WhiteHawkSystem::AbstractFile::Rename(std::string name)
+    bool WhiteHawkUtil::AbstractFile::Rename(std::string name)
 	{
 	    if( rename(this->m_path.c_str(), name.c_str()) == 0)
             return true;
@@ -45,7 +45,7 @@
 	}
 
 
-	bool WhiteHawkSystem::AbstractFile::Chown(uid_t user, gid_t group)
+	bool WhiteHawkUtil::AbstractFile::Chown(uid_t user, gid_t group)
 	{
 	    if( chown(m_path.c_str(),user, group) == 0)
             return true;
@@ -53,21 +53,21 @@
 	}
 
 
-    bool WhiteHawkSystem::AbstractFile::Chmod(mode_t mode)
+    bool WhiteHawkUtil::AbstractFile::Chmod(mode_t mode)
     {
        if( chmod(m_path.c_str(),mode) == 0)
             return true;
         return false;
     }
 
-    bool WhiteHawkSystem::AbstractFile::Move(std::string path)
+    bool WhiteHawkUtil::AbstractFile::Move(std::string path)
 	{
 	    return Rename(path);
 	}
 
 
 
-    bool WhiteHawkSystem::AbstractFile::Remove()
+    bool WhiteHawkUtil::AbstractFile::Remove()
     {
         if( remove(m_path.c_str()) == 0)
             return true;
@@ -75,11 +75,11 @@
     }
 
 
-	 bool WhiteHawkSystem::AbstractFile::operator == (short type)
+	 bool WhiteHawkUtil::AbstractFile::operator == (short type)
 	 {
-            if( type == WhiteHawkSystem::AbstractFile::ABS_DIR)
+            if( type == WhiteHawkUtil::AbstractFile::ABS_DIR)
                 return isDirectory();
-            if( type == WhiteHawkSystem::AbstractFile::ABS_FILE)
+            if( type == WhiteHawkUtil::AbstractFile::ABS_FILE)
                 return isFile();
 
         return isDevice();
@@ -88,7 +88,7 @@
 
 
 
-     bool WhiteHawkSystem::AbstractFile::operator != (WhiteHawkSystem::AbstractFile obj)
+     bool WhiteHawkUtil::AbstractFile::operator != (WhiteHawkUtil::AbstractFile obj)
 	 {
             return  (m_path.compare(obj.getPath()));
      }

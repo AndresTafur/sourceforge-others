@@ -17,14 +17,14 @@
 #ifndef _WH_SPATH_TREE_
 #define _WH_SPATH_TREE_
 
-#include "WhiteHawkSystem.hh"
+#include "WhiteHawkUtil.hh"
 #include "AbstractFile.hh"
 
-class WhiteHawkSystem::SystemPathTree
+class WhiteHawkUtil::SystemPathTree
 {
 public:
 
-          virtual int onFile( WhiteHawkSystem::AbstractFile file ) = 0;
+          virtual int onFile( WhiteHawkUtil::AbstractFile file ) = 0;
 
 
 };

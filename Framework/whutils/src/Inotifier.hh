@@ -11,7 +11,7 @@
 #ifndef _INOTIFIER_HH_
 #define _INOTIFIER_HH_
 
-class WhiteHawkSystem::Inotifier : public WhiteHawkSystem::Thread
+class WhiteHawkUtil::Inotifier : public WhiteHawkUtil::Thread
 {
 private:
 
