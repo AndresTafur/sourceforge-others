@@ -14,7 +14,7 @@
     along with WhiteHawkClamav.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-namespace WhiteHawkSystem
+namespace WhiteHawkUtil
 {
    class AbstractFile;
    class DynamicLibrary;
