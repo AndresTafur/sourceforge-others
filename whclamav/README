@@ -1,11 +1,15 @@
-libwhsystem -- The System Framework for C++
+whclamav -- The System Framework for C++
+
+
+ALERT: This release requires wxWidgets unicode release, if it is not installed the
+       compilation process will fail.
+	
 
 
 General information:
 
-   libwhsystem implements an easy to use interface for common sysetem 
-   functions including time, threads, compression, Exceptions, path and 
-   files manipulations for standard C++. It use a common class interface
+   whclamav implements an easy to use interface for clamav antivirus 
+   It use a common class interface among other whitehawk software
    that's why it has a low learning curve.
 
    Further information about the major release 1.0 is available on the
