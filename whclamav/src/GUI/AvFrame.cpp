@@ -161,7 +161,7 @@ void AvFrame::onAbout(wxCommandEvent &evt)
         info.SetVersion( wxT(_("0.0.1")));
         info.SetDescription(desc);
         info.SetWebSite( wxT(_("http://whsystems.sf.net")));
-        info.SetCopyright( wxT(_("Copyright (C) 2007 Jorge Andres Tafur.")));
+        info.SetCopyright( wxT(_("Copyright (C) 2007 WhiteHawk project.")));
         info.AddDeveloper( wxT(_("Jorge Andres Tafur")));
         info.SetLicence( wxT
 

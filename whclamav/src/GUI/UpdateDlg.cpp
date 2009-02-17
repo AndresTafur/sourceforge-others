@@ -50,19 +50,14 @@ fd_set readset;
 
 
             if(result > 0)
-            {
                 while( fscanf(fl,"%c",&c) != EOF)
-                    str.Append( wxString::FromAscii(c));
-
-
-                wxMutexGuiEnter();
-                m_msg->SetValue( str);
-                m_msg->Update();
-                this->Update();
-                wxMutexGuiLeave();
-            }
-
-        } while (result == -1 && errno == EINTR);
+                {
+                    wxMutexGuiEnter();
+                    m_msg->SetValue( m_msg->GetValue()+wxString::FromAscii(c));
+                    m_msg->Update();
+                    wxMutexGuiLeave();
+                }
+        }while (result == -1 && errno == EINTR);
 
         this->SetTitle( wxT(_("Update completed")));
 
