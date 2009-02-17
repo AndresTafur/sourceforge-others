@@ -17,6 +17,10 @@
 #ifndef _RUNNABLE_
 #define _RUNNABLE_
 
+/**
+ * Interface to an object wich will be running in a thread
+ */
+
 class WhiteHawkUtil::Runnable
 {
 public:
@@ -26,8 +30,16 @@ public:
          */
         virtual void run() = 0;
 
+        /**
+         * Tests if the thread is running.
+         *  @return True if is running, false otherwise.
+         */
         inline bool isRunning() { return m_running;}
 
+        /**
+         * Change the running status flag (should'n be called directly)
+         *  @param stat true if is running, false otherwise.
+         */
         inline void setRunning(bool stat) { m_running = stat;}
 
         /**
@@ -36,9 +48,15 @@ public:
          */
         virtual void onTerminate() {};
 
+        /**
+         * Default virtual destructor
+         */
         inline virtual ~Runnable() {};
 
 protected:
+/**
+ * flag if the object is running in a thread.
+ */
 bool m_running;
 };
 

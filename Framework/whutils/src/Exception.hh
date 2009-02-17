@@ -63,6 +63,9 @@ public:
 	  const char*  what() const throw ();
 
 
+    /**
+     *  Default destructor.
+     */
     ~Exception() throw ();
 
 protected:
@@ -70,7 +73,14 @@ protected:
  * Message. Exception message.
  */
 std::string  m_msg;
+/**
+ * method who throws the exception
+ */
 std::string  m_met;
+
+/**
+ * Line which throws the exception.
+ */
 std::string  m_lin;
 
 };

@@ -129,13 +129,32 @@ public:
              */
             unsigned long long getTotalCount();
 
+
+            /**
+             * Adds a file to the amount by testing its type.
+             * @param obj file to be added
+             */
+
             void operator += (WhiteHawkUtil::FileInfo obj);
 
+            /**
+             * Removes a file to the amount by testing its type.
+             * @param obj file to be removed
+             */
             void operator -= (WhiteHawkUtil::FileInfo obj);
 
 
+            /**
+             * Adds another filecount to the amount.
+             * @param obj Count to be added
+             */
             void operator += (WhiteHawkUtil::SystemPathCount obj);
 
+
+            /**
+             * Removes another filecount to the amount.
+             * @param obj Count to be removed
+             */
             void operator -= (WhiteHawkUtil::SystemPathCount obj);
 
 protected:
