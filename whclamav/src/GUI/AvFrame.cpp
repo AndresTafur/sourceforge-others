@@ -48,6 +48,8 @@ AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,wxT(_("WhiteHa
         stat    = new StatusPanel(m_note);
         m_avpn  = new AvPanel(m_note,this);
 
+        qar->Disable();
+
         m_note->AddPage(stat, wxT(_("Status")));
         m_note->AddPage(m_avpn, wxT(_("Scan Files")), true);
 
