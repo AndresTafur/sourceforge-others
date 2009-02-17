@@ -1,3 +1,9 @@
+==== Jan, 2008 ====
+
+* Added Runnable methods
+* Fixed systemPathCount
+* Added Inotify support
+
 ===== Dec 23 2008 =====
 
 * Added SystemPath destructor.
