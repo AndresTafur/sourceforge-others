@@ -258,7 +258,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 	 {
 		  wxString str, str2;
 
-			str << wxT(file.getPath().c_str());
+			str << wxT(file.getFullName().c_str());
 			str2 << wxT(file.getVirName().c_str());
 
             wxMutexGuiEnter();
