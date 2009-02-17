@@ -177,7 +177,7 @@
 
 	void WhiteHawkClamav::ClamavScanner::startScan()
 	{
-            startThread(0);
+            startThread();
 	}
 
 

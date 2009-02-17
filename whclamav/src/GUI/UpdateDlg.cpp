@@ -36,6 +36,8 @@ int result;
 wxString str;
 fd_set readset;
 
+        FD_ZERO(&readset);
+
         fl = popen("freshclam 2>&1","r");
         fd = fileno(fl);
         this->SetTitle( wxT(_("Updating please wait")));
@@ -43,14 +45,15 @@ fd_set readset;
 
         do
         {
-            FD_ZERO(&readset);
             FD_SET(fd, &readset);
             result = select(fd+1, &readset, NULL, NULL, NULL);
+
 
             if(result > 0)
             {
                 while( fscanf(fl,"%c",&c) != EOF)
-                    str << c;
+                    str.Append( wxString::FromAscii(c));
+
 
                 wxMutexGuiEnter();
                 m_msg->SetValue( str);

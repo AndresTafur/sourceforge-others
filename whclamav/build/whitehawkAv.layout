@@ -34,14 +34,11 @@
 	<File name="../src/GUI/AvFrame.hh" open="0" top="0" tabpos="1">
 		<Cursor position="1646" topLine="3" />
 	</File>
-	<File name="../src/GUI/AvPanel.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="12420" topLine="99" />
+	<File name="../src/GUI/AvPanel.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="8514" topLine="193" />
 	</File>
 	<File name="../src/GUI/AvPanel.hh" open="0" top="0" tabpos="2">
 		<Cursor position="1012" topLine="15" />
-	</File>
-	<File name="../src/GUI/ConfigDialog.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="679" topLine="0" />
 	</File>
 	<File name="../src/GUI/FileSelectionDialog.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="792" topLine="0" />
