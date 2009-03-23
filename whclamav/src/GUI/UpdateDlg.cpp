@@ -11,11 +11,12 @@ UpdateDlg::UpdateDlg(wxWindow *parent) : wxDialog(parent,wxID_ANY,wxT(_("Update"
   wxBoxSizer *ctr = new wxBoxSizer(wxHORIZONTAL);
 
     m_msg = new wxTextCtrl(this, wxID_ANY,wxT(""), wxDefaultPosition,wxDefaultSize,wxTE_MULTILINE);
+    m_upd = new wxButton(this,wxID_UP,wxT(_("&Update")));
 
     m_msg->SetEditable(false);
 
-    ctr->Add( new wxButton(this,wxID_UP,wxT(_("&Update"))),0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
-    ctr->Add( new wxButton(this,wxID_CLEAR,wxT(_("&Clear"))),0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
+    ctr->Add( m_upd ,0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
+    ctr->Add( new wxButton(this,wxID_CLEAR,wxT(_("&Clear"))) ,0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
 
     box->Add(m_msg,1,wxEXPAND|wxALL,5);
     box->Add(ctr,0,wxALIGN_CENTER_HORIZONTAL|wxALL,5);
@@ -41,7 +42,7 @@ fd_set readset;
         fl = popen("freshclam 2>&1","r");
         fd = fileno(fl);
         this->SetTitle( wxT(_("Updating please wait")));
-
+        m_upd->Disable();
 
         do
         {
@@ -54,13 +55,18 @@ fd_set readset;
                 {
                     wxMutexGuiEnter();
                     m_msg->SetValue( m_msg->GetValue()+wxString::FromAscii(c));
+                    m_msg->SetInsertionPointEnd();
                     m_msg->Update();
                     wxMutexGuiLeave();
                 }
         }while (result == -1 && errno == EINTR);
 
         this->SetTitle( wxT(_("Update completed")));
-
+        wxMutexGuiEnter();
+        m_msg->SetValue( m_msg->GetValue()+wxString::FromAscii("\nUpdate Completed..."));
+        m_msg->Update();
+        m_upd->Enable();
+        wxMutexGuiLeave();
         pclose(fl);
 }
 

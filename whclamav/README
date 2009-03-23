@@ -1,4 +1,8 @@
+<<<<<<< .mine
+whclamav -- The antivirus front end for Whitehawk desktop environment 
+=======
 whclamav -- The System Framework for C++
+>>>>>>> .r77
 
 
 ALERT: This release requires wxWidgets unicode release, if it is not installed the
@@ -8,9 +12,14 @@ ALERT: This release requires wxWidgets unicode release, if it is not installed t
 
 General information:
 
+<<<<<<< .mine
+   WhClamav is a front-end for the clamav antivirus giving an easy to use
+   interface with lots of features.
+=======
    whclamav implements an easy to use interface for clamav antivirus 
    It use a common class interface among other whitehawk software
    that's why it has a low learning curve.
+>>>>>>> .r77
 
    Further information about the major release 1.0 is available on the
    WhiteHawk project home page: http://whsystems.sourceforge.net/
@@ -18,7 +27,7 @@ General information:
 
 License information:
 
-   Distribution of library and components is under the GNU Lesser GPL as listed in the
+   Distribution of application and components is under the GNU GPL as listed in the
    file COPYING. Examples and tests are Public Domain.
 
 
@@ -32,8 +41,8 @@ Contact information:
 
 Overview of the distribution:
 
-   docs/                             documentation 
-   
-   src/                           source for library
+   src/                 Source for main application
+   src/ClamLayer	Interface to libclamav
+   src/GUI		wxWidgets controls
 
 
