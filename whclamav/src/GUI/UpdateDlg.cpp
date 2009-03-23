@@ -39,7 +39,7 @@ fd_set readset;
 
         FD_ZERO(&readset);
 
-        fl = popen("freshclam 2>&1","r");
+        fl = popen("gksu freshclam 2>&1","r");
         fd = fileno(fl);
         this->SetTitle( wxT(_("Updating please wait")));
         m_upd->Disable();
