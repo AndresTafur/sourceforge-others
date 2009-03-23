@@ -1,3 +1,4 @@
+
 2009-01-01  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* m4/gettext.m4: New file, from gettext-0.16.1.
@@ -23,6 +24,9 @@
 	* Makefile.am (EXTRA_DIST): Add config/config.rpath.
 	* configure.ac (AC_OUTPUT): Add po/Makefile.in.
 
+=========== February 16, 2008 ============
+- Added updates
+- Added Threaded SystemPathCount
 
 ============ October 21, 2008 ============
 - Added reload database in runtime.

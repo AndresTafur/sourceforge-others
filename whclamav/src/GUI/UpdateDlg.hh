@@ -39,6 +39,7 @@ public:
 
 protected:
 wxTextCtrl *m_msg;
+wxButton   *m_upd;
 DECLARE_EVENT_TABLE()
 };
 

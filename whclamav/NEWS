@@ -1,11 +1,5 @@
-===============================
-Sat, August 23, 2008
+===== February 17, 2008 ======
 
-- Fixed Thread cancelation (terminateThread() function).
-- Fixed SystemPathCount bad count.
+Minor release 0.65 with a lot of new features
 
-TODO:
-- Add filesize count into SystemPathCount.
-- Add bzip2 support.
-- Add gzip support.
-- Add 7z support.
+
