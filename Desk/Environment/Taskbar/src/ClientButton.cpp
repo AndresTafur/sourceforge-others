@@ -39,7 +39,7 @@
 
     void ClientButton::updateName()
     {
-        this->SetLabel( WindowController::getInstance()->getWindowName(m_xwindow) );
+        this->SetLabel( wxString::FromAscii(WindowController::getInstance()->getWindowName(m_xwindow) ));
     }
 
 
