@@ -25,20 +25,17 @@ WindowEventManager *WindowEventManager::sm_instance = NULL;
        Window root = WindowManager::getInstance()->getRoot();
        Display *dsp = WindowManager::getInstance()->getDisplay();
 
-			XSelectInput(dsp,root,StructureNotifyMask|PropertyChangeMask|SubstructureNotifyMask);
+			XSelectInput(dsp,root,PropertyChangeMask);
             XFlush(dsp);
 
 
 
             while(m_run)
             {
-                usleep(20);
+                WhiteHawkUtil::Thread::sleep(20);
                 while (XPending(dsp))
                 {
                     XNextEvent(dsp,&evt);
-
-                    fprintf(stderr,"[Event reached]\n");
-
                     if (evt.type ==  PropertyNotify)
                             onEvent(evt.xany.window,evt.xproperty.atom);
                  }
@@ -63,16 +60,6 @@ WindowEventManager *WindowEventManager::sm_instance = NULL;
 
         for( iter = m_listeners.begin(); iter != m_listeners.end(); iter++)
                 (*iter)->onEvent(window,atom);
-
-
-            if (atom == XA_WM_NAME ) //TODO: Makes this fu.... thing works
-            {
-
-             /*
-                  wxMutexGuiEnter();
-                 // m_list->updateWindows();
-                  wxMutexGuiLeave();*/
-            }/*
 
           /*else if (atom == XA_WM_HINTS)
             {

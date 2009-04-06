@@ -61,6 +61,7 @@ DeskController* DeskController::sm_instance = NULL;
 		void DeskController::showDesktop(bool val)
 		{
             WindowManager::getInstance()->sendToManager(m_showDeskA,val,0,0,0);
+
 		}
 
         bool DeskController::isVisible()

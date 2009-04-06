@@ -84,7 +84,6 @@ WindowManager *WindowManager::sm_instance = NULL;
 		}
 
 
-
     Atom WindowManager::getAtom(std::string atName)
     {
        return XInternAtom(m_display, atName.c_str(),false);

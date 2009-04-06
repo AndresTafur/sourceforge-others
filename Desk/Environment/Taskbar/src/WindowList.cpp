@@ -43,6 +43,8 @@
                                 addWindow(*iter, true);
                             else
                                 addWindow(*iter, false);
+
+                                XSelectInput(WindowManager::getInstance()->getDisplay(),*iter,PropertyChangeMask);
                         }
                         else
                             button->setMark(false);
@@ -64,7 +66,20 @@
             this->Update();
             wxMutexGuiLeave();
         }
-        else if(wnd == WindowManager::getInstance()->getRoot() )
+        else if( atom == WindowManager::getInstance()->getAtom("_NET_WM_NAME"))
+        {
+          ClientButton *button = windowToClient(wnd);
+
+            if( NULL !=  button)
+            {
+                  wxMutexGuiEnter();
+                  button->updateName();
+                  this->Layout();
+                  this->Update();
+                  wxMutexGuiLeave();
+            }
+        }
+       else if(wnd == WindowManager::getInstance()->getRoot() )
                if(atom == WindowManager::getInstance()->getAtom("_NET_CLIENT_LIST"))
                {
                   wxMutexGuiEnter();
