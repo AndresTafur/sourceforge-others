@@ -176,8 +176,6 @@ WhiteHawkMenu::WhiteHawkMenu(wxMenu *parent,int id, const wxString text, const w
 		apagar = new WhiteHawkMenu(menu,idle,_T("&Apagar"), _("apaga el PC"), str + wxT("/data/pix/exit.png"));
 
 
-
-
 		menu->Append(program);
 		menu->Append(docum);
 		menu->Append(config);

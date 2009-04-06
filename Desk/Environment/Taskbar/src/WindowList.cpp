@@ -182,8 +182,55 @@
 		}
 	}
 
+    void WindowList::showOptions(wxMouseEvent &evt)
+    {
+      wxMenu menu;
+
+            menu.Append(wxID_PREFERENCES, wxT("Propiedades"), wxT("Propiedades"), wxITEM_NORMAL);
+            menu.Append(wxID_HELP, wxT("Ayuda"), wxT("Ayuda"), wxITEM_NORMAL);
+            menu.AppendSeparator();
+            menu.Append(wxID_ABOUT, wxT("Acerca de"), wxT("Acerca de"), wxITEM_NORMAL);
+            PopupMenu(&menu);
+    }
+
+
+
+    void WindowList::about(wxCommandEvent &evt)
+    {
+      wxAboutDialogInfo info;
+
+        info.SetName( wxT("WhitehawkPanel"));
+        info.SetVersion( wxT("0.1.0"));
+        info.SetDescription(wxT("\n\nWelcome to WhiteHawk Desk panel."));
+        info.SetWebSite( wxT("http://whsystems.sf.net"));
+        info.SetCopyright( wxT("Copyright (C) 2007 WhiteHawk project."));
+        info.AddDeveloper( wxT("Jorge Andres Tafur"));
+        info.SetLicence( wxT
+
+        ("\tWhiteHawkDeskPanel a toolbar based on top of X11.\n"
+                  "\t\t\tCopyright (C) 2007  Jorge andres tafur\n\n\n"
+
+        "This program is free software: you can redistribute it and/or modify\n"
+        "it under the terms of the GNU General Public License as published by\n"
+        "the Free Software Foundation, either version 3 of the License, or\n"
+        "any later version.\n\n"
+
+        "This program is distributed in the hope that it will be useful,\n"
+        "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+        "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n"
+        "GNU General Public License for more details.\n\n"
+
+        "You should have received a copy of the GNU General Public License\n"
+        "along with this program.  If not, see http://www.gnu.org/licenses/.")
+    );
+
+    wxAboutBox(info);
+
+    }
 
 
 BEGIN_EVENT_TABLE(WindowList,wxPanel)
 EVT_TOGGLEBUTTON(100,WindowList::onClick)
+EVT_RIGHT_UP(WindowList::showOptions)
+EVT_MENU(wxID_ABOUT,WindowList::about)
 END_EVENT_TABLE()

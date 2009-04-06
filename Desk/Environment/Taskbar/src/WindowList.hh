@@ -3,6 +3,7 @@
 #define _WINDOW_LIST_
 
 #include <wx/wx.h>
+#include <wx/aboutdlg.h>
 #include <list>
 #include "WindowController.hh"
 #include "ClientButton.hh"
@@ -15,7 +16,6 @@ public:
 
 	WindowList(wxWindow *parent,wxWindowID id);
 
-
 	void updateWindows();
 
     void onEvent(Window wnd, Atom atom);
@@ -24,13 +24,15 @@ public:
 
     void updateWindow(Window window);
 
-
-
     void removeAllMarked();
 
     void markAllClients();
 
 	void onClick(wxCommandEvent &evt);
+
+	void about(wxCommandEvent &evt);
+
+    void showOptions(wxMouseEvent &evt);
 
 	ClientButton* windowToClient(Window window);
 

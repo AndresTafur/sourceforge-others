@@ -23,7 +23,7 @@ public:
         void showDesktop(wxCommandEvent &evt);
 
 protected:
-DeskController *m_dskctr;
+
 wxMenu *m_menu;
 int m_deskNum;
 DECLARE_EVENT_TABLE();

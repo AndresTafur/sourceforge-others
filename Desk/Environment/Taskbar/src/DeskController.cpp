@@ -15,7 +15,7 @@ DeskController* DeskController::sm_instance = NULL;
 
         DeskController* DeskController::getInstance()
         {
-                if( ! sm_instance)
+                if( !sm_instance)
                     sm_instance = new DeskController();
             return sm_instance;
         }
