@@ -32,7 +32,7 @@ WindowEventManager *WindowEventManager::sm_instance = NULL;
 
             while(m_run)
             {
-                WhiteHawkUtil::Thread::sleep(20);
+                WhiteHawkUtil::Thread::sleep(10);
                 while (XPending(dsp))
                 {
                     XNextEvent(dsp,&evt);

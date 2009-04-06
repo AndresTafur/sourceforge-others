@@ -84,6 +84,8 @@
                {
                   wxMutexGuiEnter();
                   this->updateWindows();
+                  this->Layout();
+                  this->Update();
                   wxMutexGuiLeave();
                }
     }

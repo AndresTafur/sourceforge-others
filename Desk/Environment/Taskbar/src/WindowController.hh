@@ -29,6 +29,7 @@ public:
 
 		void setActiveWindow(Window window);
 
+        void setWndDesktop(Window window, int desk);
 
 		bool isNormalWnd(Window window);
 

@@ -93,6 +93,16 @@ WindowController* WindowController::sm_instance = NULL;
 		}
 
 
+        void WindowController::setWndDesktop(Window window, int desk)
+		{
+			int *states;
+            Atom netdeskA = WindowManager::getInstance()->getAtom("_NET_WM_DESKTOP");
+
+				WindowManager::getInstance()->sendToManager(window,netdeskA,desk);
+		}
+
+
+
 		int WindowController::getWndDesktop(Window window)
 		{
 			int *states;
@@ -104,6 +114,7 @@ WindowController* WindowController::sm_instance = NULL;
 
 		  return num;
 		}
+
 
 
 
