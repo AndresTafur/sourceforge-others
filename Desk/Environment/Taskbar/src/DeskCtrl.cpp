@@ -1,8 +1,8 @@
 #include "DeskCtrl.hh"
-#include "DeskController.hh"
-#include "WindowEventManager.hh"
 
-        DeskCtrl::DeskCtrl(wxWindow *parent) : wxButton(parent,wxID_OK,_T(""),wxDefaultPosition,wxDefaultSize,wxNO_BORDER,wxDefaultValidator,_T(""))
+
+
+        DeskCtrl::DeskCtrl(wxWindow *parent) : wxButton(parent,wxID_OK,wxT(""),wxDefaultPosition,wxDefaultSize,wxNO_BORDER)
         {
           wxMenuItem **items;
           int desks;
@@ -10,7 +10,7 @@
 
 
                 desks  = DeskController::getInstance()->getDesktops();
-                items  = (wxMenuItem**) malloc( sizeof(wxMenuItem)*desks);
+                items  = (wxMenuItem**) new wxMenuItem[desks];
                 m_menu = new wxMenu;
 
 
@@ -20,9 +20,10 @@
                     items[i] = new wxMenuItem( m_menu,i,deskBuff,wxT(""),wxITEM_RADIO);
                     m_menu->Append(items[i]);
                     Connect(i,wxEVT_COMMAND_MENU_SELECTED,wxCommandEventHandler(DeskCtrl::changeDesktop));
+                    deskBuff = wxT("");
                 }
 
-                deskBuff << wxT("") <<  wxString::FromAscii(char(49+DeskController::getInstance()->getCurrentDesk()));
+                deskBuff << wxT("") <<  DeskController::getInstance()->getCurrentDesk()+1;
                 this->SetLabel(deskBuff);
                 this->SetBackgroundColour( wxT("LIGHT STEEL BLUE"));
                 this->SetSize(20,25);
@@ -30,6 +31,8 @@
                 this->SetToolTip(wxT("Cambia el escritorio actual"));
 
                 WindowEventManager::getInstance()->addListener(this);
+                m_dskctr =  DeskController::getInstance();
+
         }
 
 
@@ -64,8 +67,8 @@
 
         void DeskCtrl::showDesktop(wxCommandEvent &evt)
         {
-          DeskController *inst =  DeskController::getInstance();
-                inst->showDesktop(  !inst->isVisible() );
+
+                m_dskctr->showDesktop(  !m_dskctr->isVisible() );
         }
 
 

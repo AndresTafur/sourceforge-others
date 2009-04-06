@@ -5,6 +5,8 @@
 #include <wx/tglbtn.h>
 
 #include "WMEventListener.hh"
+#include "DeskController.hh"
+#include "WindowEventManager.hh"
 
 class DeskCtrl : public wxButton, public WMEventListener
 {
@@ -21,6 +23,7 @@ public:
         void showDesktop(wxCommandEvent &evt);
 
 protected:
+DeskController *m_dskctr;
 wxMenu *m_menu;
 int m_deskNum;
 DECLARE_EVENT_TABLE();
