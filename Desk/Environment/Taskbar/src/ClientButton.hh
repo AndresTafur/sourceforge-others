@@ -8,6 +8,17 @@
 #include "WindowController.hh"
 #include "DeskController.hh"
 
+
+enum
+{
+    MINIMIZE,
+    MAXIMIZE,
+    START_MOVING,
+    START_RESIZING,
+    DESKTOP_1,
+};
+
+
 class ClientButton : public wxToggleButton
 {
 public:
@@ -32,6 +43,7 @@ public:
 	void onRightClick(wxMouseEvent &evt);
 
 	void onDeskChange(wxCommandEvent &evt);
+
 
 	void Maximize(wxCommandEvent &evt);
 

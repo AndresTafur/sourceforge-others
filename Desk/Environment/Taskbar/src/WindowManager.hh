@@ -22,9 +22,9 @@ public:
 
 		unsigned long queryManager(Window &window,Atom &property, Atom type, void* data );
 
-		void sendToManager(Atom &property,int data1, int data2, int data3, int data4);
+		void sendToManager(Atom &property,int data1, int data2 = 0, int data3 = 0, int data4 = 0);
 
-		void sendToManager(Window window, Atom property,int data1, int data2, int data3, int data4);
+		void sendToManager(Window window, Atom property,int data1, int data2 = 0, int data3 = 0, int data4 = 0);
 
 		unsigned long screenWidth();
 
