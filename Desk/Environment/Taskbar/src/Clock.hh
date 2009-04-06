@@ -7,7 +7,7 @@
 
 
 
-class TaskTime : public WhiteHawkSystem::Thread
+class TaskTime : public WhiteHawkUtil::Thread
 {
 public:
 

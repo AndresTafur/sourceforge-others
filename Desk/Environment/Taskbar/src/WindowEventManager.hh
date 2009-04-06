@@ -8,7 +8,7 @@
 #include "TaskBar.hh"
 
 
-class WindowEventManager : public WhiteHawkSystem::Thread
+class WindowEventManager : public WhiteHawkUtil::Thread
 {
 protected:
 

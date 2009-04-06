@@ -15,7 +15,7 @@
             wxMutexGuiEnter();
 		  	txt->SetLabel(getTime() );
 		  	wxMutexGuiLeave();
-			this->sleep(600);
+			WhiteHawkUtil::Thread::sleep(600);
 		}
 	}
 
@@ -34,8 +34,8 @@
 		  current = time(NULL);
 		  tmPtr = localtime(&current);
 	  	  strftime( cad, 80, "%I:%M", tmPtr );
-		  str << cad;
-	  return cad;
+		  str << wxString::FromAscii(cad);
+	  return wxString::FromAscii(cad);
 	}
 
 
@@ -49,7 +49,7 @@
 		  current = time(NULL);
 		  tmPtr = localtime(&current);
 	  	  strftime( cad, 80, "%A, %d de %B", tmPtr );
-		  str << cad;
+		  str << wxString::FromAscii(cad);
 	  return str;
 	}
 

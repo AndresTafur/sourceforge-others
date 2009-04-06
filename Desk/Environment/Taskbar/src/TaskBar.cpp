@@ -42,7 +42,7 @@
 
 
 
-		btn->SetToolTip("Haga click aqui para iniciar");
+		btn->SetToolTip( wxT("Haga click aqui para iniciar") );
 
 
 		sizer->Add(btn,0,wxFIXED_MINSIZE);

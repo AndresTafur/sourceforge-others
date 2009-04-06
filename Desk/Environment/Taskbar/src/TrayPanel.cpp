@@ -30,7 +30,7 @@
 
 
       if (XGetSelectionOwner(GDK_DISPLAY(), sel_name) != GDK_WINDOW_XWINDOW(this->GetHandle()->window))
-         wxMessageBox("No pude iniciar el tray.","Error",wxICON_ERROR);
+         wxMessageBox( wxT("No pude iniciar el tray."),wxT("Error"),wxICON_ERROR);
 
     }
 

@@ -79,7 +79,7 @@
             if(WindowController::getInstance()->isNormalWnd(window) )
             {
 
-              ClientButton *item = new ClientButton(this,100,window,WindowController::getInstance()->getWindowName(window));
+              ClientButton *item = new ClientButton(this,100,window,wxString::FromAscii(WindowController::getInstance()->getWindowName(window)));
 
                 item->SetValue(stat);
                 clients.push_back(item);
@@ -121,7 +121,6 @@
                         if( (*i)->isMarked())
                         {
                             clients.erase(i);
-                            sizer->Remove(*i);
                             (*i)->Destroy();
                             i=clients.begin();
                         }

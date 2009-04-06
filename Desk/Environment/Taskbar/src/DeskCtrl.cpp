@@ -6,6 +6,7 @@
         {
           wxMenuItem **items;
           int desks;
+          wxString deskBuff;
 
 
                 desks  = DeskController::getInstance()->getDesktops();
@@ -15,16 +16,18 @@
 
                 for(int i=0; i < desks; i++)
                 {
-                    items[i] = new wxMenuItem(m_menu,i,(wxString("Desk ")) << (char)(49+i),wxT(""),wxITEM_RADIO);
+                    deskBuff << wxT("Desk ") << wxString::FromAscii(char(49+i));
+                    items[i] = new wxMenuItem( m_menu,i,deskBuff,wxT(""),wxITEM_RADIO);
                     m_menu->Append(items[i]);
                     Connect(i,wxEVT_COMMAND_MENU_SELECTED,wxCommandEventHandler(DeskCtrl::changeDesktop));
                 }
 
-                this->SetLabel(  (wxString("")) << (char)(49+DeskController::getInstance()->getCurrentDesk()) );
-                this->SetBackgroundColour("LIGHT STEEL BLUE");
+                deskBuff << wxT("") <<  wxString::FromAscii(char(49+DeskController::getInstance()->getCurrentDesk()));
+                this->SetLabel(deskBuff);
+                this->SetBackgroundColour( wxT("LIGHT STEEL BLUE"));
                 this->SetSize(20,25);
-                this->SetFont( wxFont(8,wxFONTFAMILY_DEFAULT,0,wxFONTWEIGHT_BOLD,false,"",wxFONTENCODING_DEFAULT));
-                this->SetToolTip("Cambia el escritorio actual");
+                this->SetFont( wxFont(8,wxFONTFAMILY_DEFAULT,0,wxFONTWEIGHT_BOLD,false,wxT(""),wxFONTENCODING_DEFAULT));
+                this->SetToolTip(wxT("Cambia el escritorio actual"));
 
                 WindowEventManager::getInstance()->addListener(this);
         }
@@ -35,7 +38,7 @@
               if(wnd == WindowManager::getInstance()->getRoot() && atom == WindowManager::getInstance()->getAtom("_NET_CURRENT_DESKTOP"))
                 {
                   unsigned short curdesk = DeskController::getInstance()->getCurrentDesk() + 1;
-                  wxString str("");
+                  wxString str(wxT(""));
 
                     str << curdesk;
                     wxMutexGuiEnter();
