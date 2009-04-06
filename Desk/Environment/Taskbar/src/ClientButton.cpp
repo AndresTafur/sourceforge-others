@@ -2,7 +2,7 @@
 #include <wx/tooltip.h>
 #include <wx/wx.h>
 
-   ClientButton::ClientButton(wxWindow* parent,wxWindowID id, Window window,wxString label) : wxToggleButton(parent, id, label.SubString(0,16), wxDefaultPosition, wxDefaultSize,wxBU_EXACTFIT|wxBU_TOP)
+   ClientButton::ClientButton(wxWindow* parent,wxWindowID id, Window window,wxString label) : wxToggleButton(parent, id, label.SubString(0,16), wxDefaultPosition, wxSize(150,27),wxBU_EXACTFIT|wxBU_TOP)
 	{
 	  this->m_xwindow  = window;
 	  this->m_label    = label;

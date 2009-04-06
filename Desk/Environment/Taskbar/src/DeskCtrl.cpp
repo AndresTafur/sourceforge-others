@@ -31,8 +31,6 @@
                 this->SetToolTip(wxT("Cambia el escritorio actual"));
 
                 WindowEventManager::getInstance()->addListener(this);
-                m_dskctr =  DeskController::getInstance();
-
         }
 
 
@@ -67,8 +65,9 @@
 
         void DeskCtrl::showDesktop(wxCommandEvent &evt)
         {
+            DeskController *dskctr =  DeskController::getInstance();
 
-                m_dskctr->showDesktop(  !m_dskctr->isVisible() );
+                DeskController::getInstance()->showDesktop(  !dskctr->isVisible() );
         }
 
 
