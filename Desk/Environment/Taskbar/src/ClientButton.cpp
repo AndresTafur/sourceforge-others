@@ -8,6 +8,14 @@
 	  this->m_label    = label;
       this->m_marked = false;
 
+
+        if( m_label.IsEmpty() )
+        {
+            m_label = wxT("Ventana sin titulo");
+            this->SetLabel(m_label);
+        }
+
+
        m_menu = new wxMenu();
        m_desk = new wxMenu();
 
