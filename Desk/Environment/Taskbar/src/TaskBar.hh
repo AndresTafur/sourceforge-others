@@ -6,7 +6,7 @@
 #include "DockPanel.hh"
 #include "WhiteHawkMenuFrame.hh"
 #include "WindowList.hh"
-#include "TrayPanel.hh"
+#include "tray/TrayPanel.hh"
 #include "Clock.hh"
 
 enum
@@ -27,6 +27,7 @@ public:
 
 	 WindowList* getWndListPanel();
 
+    TrayPanel* getTray();
 
 
 protected:

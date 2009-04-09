@@ -34,7 +34,9 @@ protected:
 
        void onEvent(Window,Atom atom);
 
-protected:
+       void onRawEvent(XEvent &evt);
+
+private:
 
 std::list<WMEventListener*> m_listeners;
 static WindowEventManager *sm_instance;
