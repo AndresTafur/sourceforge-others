@@ -20,7 +20,10 @@
 
 #include "WhiteHawkUtil.hh"
 #include "FileInfo.hh"
+#include <fstream>
+#include <string.h>
 #include <unistd.h>
+#include <errno.h>
 
 /**
  *	A file data stream. This class represents a file stream based in the std::fstream
@@ -124,3 +127,4 @@ static const short ABS_DEVICE = 102;
 };
 
 #endif
+

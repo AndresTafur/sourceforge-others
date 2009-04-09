@@ -51,7 +51,7 @@
 		<Unit filename="../src/Thread.hh" />
 		<Unit filename="../src/Time.cpp" />
 		<Unit filename="../src/Time.hh" />
-		<Unit filename="../src/WhiteHawkSystem.hh" />
+		<Unit filename="../src/WhiteHawkUtil.hh" />
 		<Extensions>
 			<code_completion />
 			<debugger />

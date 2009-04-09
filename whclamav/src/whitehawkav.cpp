@@ -66,6 +66,7 @@ class MyApp: public wxApp
       if( splash)
         splash->Destroy();
 
+      m_frame->createTrayIcon();
 
      return TRUE;
    }

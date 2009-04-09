@@ -31,32 +31,40 @@
 
 	bool WhiteHawkUtil::AbstractFile::CreateSymLink(std::string path)
 	{
-	   if(symlink(this->m_path.c_str(), path.c_str()) == 0)
+	   if(symlink(getFullName().c_str(), path.c_str()) == 0)
             return true;
+
+       fprintf(stderr,"%s",strerror(errno));
       return false;
 	}
 
 
     bool WhiteHawkUtil::AbstractFile::Rename(std::string name)
 	{
-	    if( rename(this->m_path.c_str(), name.c_str()) == 0)
+	    if( rename(getFullName().c_str(), name.c_str()) == 0)
             return true;
+
+       fprintf(stderr,"%s",strerror(errno));
         return false;
 	}
 
 
 	bool WhiteHawkUtil::AbstractFile::Chown(uid_t user, gid_t group)
 	{
-	    if( chown(m_path.c_str(),user, group) == 0)
+	    if( chown(getFullName().c_str(),user, group) == 0)
             return true;
+
+       fprintf(stderr,"%s",strerror(errno));
         return false;
 	}
 
 
     bool WhiteHawkUtil::AbstractFile::Chmod(mode_t mode)
     {
-       if( chmod(m_path.c_str(),mode) == 0)
+       if( chmod(getFullName().c_str(),mode) == 0)
             return true;
+
+       fprintf(stderr,"%s",strerror(errno));
         return false;
     }
 
@@ -69,8 +77,10 @@
 
     bool WhiteHawkUtil::AbstractFile::Remove()
     {
-        if( remove(m_path.c_str()) == 0)
+        if( remove(getFullName().c_str()) == 0)
             return true;
+
+        fprintf(stderr,"%s",strerror(errno));
       return false;
     }
 
@@ -90,6 +100,6 @@
 
      bool WhiteHawkUtil::AbstractFile::operator != (WhiteHawkUtil::AbstractFile obj)
 	 {
-            return  (m_path.compare(obj.getPath()));
+            return  (getFullName().compare(obj.getFullName()));
      }
 

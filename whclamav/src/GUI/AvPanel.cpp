@@ -220,6 +220,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
                             {
                                 m_list->SetItem(item, 2, wxT(_("Error")));
                                 wxMessageBox(wxT(_("There was an error trying to remove file.\nDo you have permissions?")),wxT(_("Error")),wxICON_ERROR);
+                                break;
                             }
                         }
 
