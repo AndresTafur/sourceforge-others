@@ -54,16 +54,32 @@ WhiteHawkClamav::ClamavScanner  *WhiteHawkClamav::ClamavInstance::sm_scanner = N
 		    m_engine = NULL;
 			memset(&m_dbstat, 0, sizeof(struct cl_stat));
 
-
+#ifdef cl_build
             cl_statinidir(m_dbdir,&m_dbstat);
 			cl_load(m_dbdir,&m_engine, &sigs, CL_DB_STDOPT);
-
 			if((ret = cl_build(m_engine)))
+#else
+        if((ret = cl_init(0)) != CL_SUCCESS)
+             throw WhiteHawkUtil::Exception(cl_strerror(ret));
+        if(!(m_engine = cl_engine_new()))
+            throw WhiteHawkUtil::Exception("Failed to create new engine");
+		if(  (ret = cl_load(m_dbdir,m_engine, &sigs, CL_DB_STDOPT))   )
+#endif
+
 			{
-			    cl_free(m_engine);
+
+			    cl_engine_free(m_engine);
 			    m_engine = NULL;
 			    throw WhiteHawkUtil::Exception(cl_strerror(ret));
 			}
+#ifndef cl_build
+			if((ret = cl_engine_compile(m_engine)) != CL_SUCCESS)
+			{
+                printf("cl_engine_compile() error: %s\n", cl_strerror(ret));
+                cl_engine_free(m_engine);
+                throw WhiteHawkUtil::Exception("Failed to compile engine");
+			}
+#endif
 	}
 
 
@@ -75,14 +91,17 @@ WhiteHawkClamav::ClamavScanner  *WhiteHawkClamav::ClamavInstance::sm_scanner = N
             if(cl_statchkdir(&m_dbstat) == 1)
             {
                 m_dbdir = cl_retdbdir();
-                cl_free(m_engine);
+		        cl_engine_free(m_engine);
                 m_engine = NULL;
 
-                cl_load(m_dbdir,&m_engine, &sigs, CL_DB_STDOPT);
-
-                if((ret = cl_build(m_engine)))
+#ifdef cl_build
+			cl_load(m_dbdir,&m_engine, &sigs, CL_DB_STDOPT);
+			if((ret = cl_build(m_engine)))
+#else
+			if((ret = cl_load(m_dbdir,m_engine, &sigs, CL_DB_STDOPT)))
+#endif
                 {
-                    cl_free(m_engine);
+                    cl_engine_free(m_engine);
                     m_engine = NULL;
                     throw WhiteHawkUtil::Exception(cl_strerror(ret));
                 }
@@ -119,7 +138,7 @@ WhiteHawkClamav::ClamavScanner  *WhiteHawkClamav::ClamavInstance::sm_scanner = N
     {
         if( NULL != m_engine)
         {
-            cl_free(m_engine);
+            cl_engine_free(m_engine);
             m_engine = NULL;
         }
 

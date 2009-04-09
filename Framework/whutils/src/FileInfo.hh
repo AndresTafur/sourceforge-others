@@ -237,7 +237,7 @@ public:
 	 */
     bool operator != (std::string path);
 
-protected:
+private:
 
 /**
  * Path of the file.

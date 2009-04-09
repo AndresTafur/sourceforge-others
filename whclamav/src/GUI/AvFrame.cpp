@@ -33,14 +33,11 @@ AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,wxT(_("WhiteHa
     wxButton      *qar      = new wxButton(this,102,wxT(_("&Quarantine")));
     wxButton      *upd      = new wxButton(this,ID_UPDAT,wxT(_("&Update")));
     wxButton      *hlp      = new wxButton(this,104,wxT(_("&Help")));
-    MyTaskBarIcon *trayIcon = new MyTaskBarIcon(this,appIcon);
-
     StatusPanel   *stat;
 
         SetIcon( appIcon);
 
-        if (!trayIcon->SetIcon(appIcon,wxT(_("whiteHawkClamav"))))
-            wxMessageBox(wxT(_("Could not set icon.")));
+
 
 
         m_sizer = new wxBoxSizer(wxHORIZONTAL);
@@ -72,7 +69,14 @@ AvFrame::AvFrame(wxString path, wxIcon appIcon) : wxFrame(NULL,-1,wxT(_("WhiteHa
         this->Centre();
 }
 
+void AvFrame::createTrayIcon()
+{
+  MyTaskBarIcon *trayIcon = new MyTaskBarIcon(this,this->GetIcon());
 
+   if (!trayIcon->SetIcon(this->GetIcon(),wxT(_("whiteHawkClamav"))))
+            wxMessageBox(wxT(_("Could not set icon.")));
+
+}
 
 
 void AvFrame::createMenu()

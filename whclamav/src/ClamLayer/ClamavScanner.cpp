@@ -121,21 +121,23 @@
 
     bool WhiteHawkClamav::ClamavScanner::scanFile(ClamFile &file)
 	{
-   	 struct cl_limits limits;
 	 const char *name;
 	 int status;
 
         this->sleep(10);
-		memset(&limits, 0, sizeof(struct cl_limits));
+        file.setInfected(false);
+
+    #ifdef cl_limits
+        struct cl_limits limits;
+        memset(&limits, 0, sizeof(struct cl_limits));
 		limits.maxfiles    = 1000;
 		limits.maxfilesize = 10 * 1048576;
 		limits.maxreclevel = 16;
 		limits.maxscansize = 100 * 1048576;
-
-        file.setInfected(false);
-
-
 		status = cl_scanfile( file.getFullName().c_str(), &name, NULL, m_engine,&limits, CL_SCAN_STDOPT);
+    #else
+		status = cl_scanfile( file.getFullName().c_str(), &name, NULL, m_engine, CL_SCAN_STDOPT);
+    #endif
 
 		if( status == CL_VIRUS)
 		{

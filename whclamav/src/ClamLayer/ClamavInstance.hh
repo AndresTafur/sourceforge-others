@@ -23,6 +23,11 @@
 #include "ClamavEvtListener.hh"
 #include "ClamavScanner.hh"
 
+#ifndef cl_engine_free
+    #ifdef cl_free
+        #define cl_engine_free cl_free
+    #endif
+#endif
 
 /**
  *  This class is the lowlevel operation, it's used to comunicate with libclamav

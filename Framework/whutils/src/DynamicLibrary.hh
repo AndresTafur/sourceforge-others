@@ -21,6 +21,9 @@
 #include <dlfcn.h>
 #include "WhiteHawkUtil.hh"
 
+/**
+ * Class that manages dynamic shared object loading, execution and unloading
+ */
 class WhiteHawkUtil::DynamicLibrary
 {
 public:
@@ -58,6 +61,10 @@ public:
         ~DynamicLibrary();
 
 protected:
+
+/**
+ * Shared object handler
+ */
 void *m_handler;
 
 };
