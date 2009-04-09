@@ -10,6 +10,7 @@ public:
 
         virtual void onEvent(Window wnd, Atom atom) = 0;
 
+        virtual void onRawEvent(XEvent &evt) {};
 
 };
 #endif

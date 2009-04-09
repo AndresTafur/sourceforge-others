@@ -1,6 +1,6 @@
 
 #include "Clock.hh"
-#include "TrayPanel.hh"
+#include "tray/TrayPanel.hh"
 #include "WindowList.hh"
 
 #include "wxCircleToggleButton.hh"
@@ -21,29 +21,23 @@
 	   int num;
 
 
-		path    = str;
-		sizer   = new wxBoxSizer(wxHORIZONTAL);
-		btn     = new wxCircleToggleButton(this,wxID_OK,bmp,bmp2);
-		frame   = new WhiteHawkMenuFrame(str,btn);
-		line    = new wxStaticLine(this, wxID_ANY,wxDefaultPosition,wxDefaultSize,wxLI_VERTICAL,wxT(""));
-		line2   = new wxStaticLine(this, wxID_ANY,wxDefaultPosition,wxDefaultSize,wxLI_VERTICAL,wxT(""));
-		list    = new WindowList(this, wxID_ANY);
-		date    = new Clock(this, wxID_ANY);
-		tray    = new TrayPanel(this);
-        deskBtn = new DeskCtrl(this);
+        path     = str;
+		sizer    = new wxBoxSizer(wxHORIZONTAL);
+		btn      = new wxCircleToggleButton(this,wxID_OK,bmp,bmp2);
+		frame    = new WhiteHawkMenuFrame(str,btn);
+		line     = new wxStaticLine(this, wxID_ANY,wxDefaultPosition,wxDefaultSize,wxLI_VERTICAL,wxT(""));
+		line2    = new wxStaticLine(this, wxID_ANY,wxDefaultPosition,wxDefaultSize,wxLI_VERTICAL,wxT(""));
+		list     = new WindowList(this, wxID_ANY);
+		date     = new Clock(this, wxID_ANY);
+		tray     = new TrayPanel(this);
+        deskBtn  = new DeskCtrl(this);
+        m_menu   = new wxMenu;
+		m_coordy = WindowManager::getInstance()->screenHeight()-33;
 
 
-        m_menu     = new wxMenu;
-		m_coordy   = WindowManager::getInstance()->screenHeight()-33;
-
-
-      //  tray->getSelection();
         this->setDockable();
 
-
-
 		btn->SetToolTip( wxT("Haga click aqui para iniciar") );
-
 
 		sizer->Add(btn,0,wxFIXED_MINSIZE);
 		sizer->Add(list,1,wxEXPAND|wxCENTER|wxTOP,0);
@@ -54,9 +48,6 @@
 		sizer->Add(line2,0,wxSHAPED|wxLEFT|wxRIGHT,1);
 		sizer->Add(tray,0,wxCENTER);
 		sizer->Add(date,0,wxFIXED_MINSIZE|wxCENTER);
-
-
-
 
 		this->SetSizer(sizer);
         this->Layout();
@@ -75,7 +66,10 @@
 		  frame->runMenu(m_coordy);
 	}
 
-
+    TrayPanel* TaskBar::getTray()
+    {
+        return tray;
+    }
 
 
 BEGIN_EVENT_TABLE(TaskBar,wxFrame)

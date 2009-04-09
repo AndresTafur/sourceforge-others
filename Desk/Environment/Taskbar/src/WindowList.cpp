@@ -112,15 +112,14 @@
         {
            ClientButton *button = windowToClient(window);
 
-
                 if( NULL != button )
                 {
-
                     for( std::list<ClientButton*>::iterator i=clients.begin(); i != clients.end(); ++i)
                     {
                             if( NULL != (*i) )
                              (*i)->SetValue(false);
                     }
+
                     button->SetValue(true);
                     this->Update();
                     this->Layout();

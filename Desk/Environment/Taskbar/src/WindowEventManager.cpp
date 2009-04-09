@@ -25,7 +25,8 @@ WindowEventManager *WindowEventManager::sm_instance = NULL;
        Window root = WindowManager::getInstance()->getRoot();
        Display *dsp = WindowManager::getInstance()->getDisplay();
 
-			XSelectInput(dsp,root,PropertyChangeMask);
+
+            XSelectInput(dsp, root, PropertyChangeMask|SubstructureNotifyMask);
             XFlush(dsp);
 
 
@@ -38,6 +39,8 @@ WindowEventManager *WindowEventManager::sm_instance = NULL;
                     XNextEvent(dsp,&evt);
                     if (evt.type ==  PropertyNotify)
                             onEvent(evt.xany.window,evt.xproperty.atom);
+                    else
+                            onRawEvent(evt);
                  }
 
             }
@@ -57,15 +60,16 @@ WindowEventManager *WindowEventManager::sm_instance = NULL;
     {
       std::list<WMEventListener*>::iterator iter;
 
-
         for( iter = m_listeners.begin(); iter != m_listeners.end(); iter++)
                 (*iter)->onEvent(window,atom);
+    }
 
-          /*else if (atom == XA_WM_HINTS)
-            {
-                //TODO: Icon Loading
+    void WindowEventManager::onRawEvent(XEvent &evt)
+    {
+      std::list<WMEventListener*>::iterator iter;
 
-            }*/
+        for( iter = m_listeners.begin(); iter != m_listeners.end(); iter++)
+                (*iter)->onRawEvent(evt);
     }
 
 

@@ -14,9 +14,6 @@ bool WhiteHawkBar::OnInit()
 	  TaskBar *taskbar;
 
 
-
-        XInitThreads();
-
             ::wxInitAllImageHandlers();
 	    str << this->argv[0];
 	    str = str.BeforeLast( '/');
@@ -26,6 +23,8 @@ bool WhiteHawkBar::OnInit()
         this->SetTopWindow(taskbar);
         taskbar->Show(true);
         taskbar->setAsTaskbar();
+
+         taskbar->getTray()->getSelection();
 
         WindowEventManager::getInstance()->startThread();
 

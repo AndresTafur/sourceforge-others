@@ -15,7 +15,7 @@ DeskController* DeskController::sm_instance = NULL;
 
         DeskController* DeskController::getInstance()
         {
-                if( !sm_instance)
+            if( !sm_instance)
                     sm_instance = new DeskController();
             return sm_instance;
         }
@@ -43,12 +43,12 @@ DeskController* DeskController::sm_instance = NULL;
 
 	 		 WindowManager::getInstance()->queryManager(m_curdeskA,XA_CARDINAL,&desktop);
 
-			   currDesk = (*desktop);
+			 currDesk = (*desktop);
 
-			if(desktop != NULL)
+			 if(desktop != NULL)
                 XFree(desktop);
 
-		return currDesk;
+		  return currDesk;
 		}
 
 
@@ -61,7 +61,6 @@ DeskController* DeskController::sm_instance = NULL;
 		void DeskController::showDesktop(bool val)
 		{
             WindowManager::getInstance()->sendToManager(m_showDeskA,val,0,0,0);
-
 		}
 
         bool DeskController::isVisible()
@@ -71,11 +70,10 @@ DeskController* DeskController::sm_instance = NULL;
 
 	 		 WindowManager::getInstance()->queryManager(m_showDeskA,XA_CARDINAL,&desktop);
 
-			   currDesk = (*desktop);
+			 currDesk = (*desktop);
 
-			if(desktop != NULL)
+			 if(desktop != NULL)
                 XFree(desktop);
 
-		return currDesk;
-
+  		  return currDesk;
         }
