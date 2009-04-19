@@ -50,6 +50,14 @@ WhiteHawkClamav::ClamavScanner  *WhiteHawkClamav::ClamavInstance::sm_scanner = N
 	   int ret;
 	   unsigned int sigs = 0;
 
+
+#ifndef cl_build
+            if( m_engine )
+                cl_engine_free(m_engine);
+#endif
+
+            fprintf(stderr,"Loading database...");
+
             m_dbdir    = cl_retdbdir();
 		    m_engine = NULL;
 			memset(&m_dbstat, 0, sizeof(struct cl_stat));
@@ -80,35 +88,10 @@ WhiteHawkClamav::ClamavScanner  *WhiteHawkClamav::ClamavInstance::sm_scanner = N
                 throw WhiteHawkUtil::Exception("Failed to compile engine");
 			}
 #endif
+
+   fprintf(stderr,"done\n");
+
 	}
-
-
-    void WhiteHawkClamav::ClamavInstance::updateEngine()
-    {
-	   int ret;
-	   unsigned int sigs = 0;
-
-            if(cl_statchkdir(&m_dbstat) == 1)
-            {
-                m_dbdir = cl_retdbdir();
-		        cl_engine_free(m_engine);
-                m_engine = NULL;
-
-#ifdef cl_build
-			cl_load(m_dbdir,&m_engine, &sigs, CL_DB_STDOPT);
-			if((ret = cl_build(m_engine)))
-#else
-			if((ret = cl_load(m_dbdir,m_engine, &sigs, CL_DB_STDOPT)))
-#endif
-                {
-                    cl_engine_free(m_engine);
-                    m_engine = NULL;
-                    throw WhiteHawkUtil::Exception(cl_strerror(ret));
-                }
-                cl_statinidir(m_dbdir, &m_dbstat);
-            }
-
-    }
 
 
    	int WhiteHawkClamav::ClamavInstance::getDatabaseAge()
