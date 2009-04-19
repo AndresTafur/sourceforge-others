@@ -1,5 +1,6 @@
 #include "UpdateDlg.hh"
 #include <errno.h>
+#include "ClamLayer/ClamavInstance.hh"
 
 #undef wxT
 #define wxT(data) wxString::FromAscii(data)
@@ -63,11 +64,13 @@ fd_set readset;
 
         this->SetTitle( wxT(_("Update completed")));
         wxMutexGuiEnter();
+        WhiteHawkClamav::ClamavInstance::getInstance()->loadDatabase();
         m_msg->SetValue( m_msg->GetValue()+wxString::FromAscii("\nUpdate Completed..."));
         m_msg->SetInsertionPointEnd();
         m_msg->Update();
         wxMutexGuiLeave();
         pclose(fl);
+
 }
 
 
