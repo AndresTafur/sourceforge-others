@@ -66,8 +66,18 @@
             this->Update();
             wxMutexGuiLeave();
         }
-        else if( atom == WindowManager::getInstance()->getAtom("_NET_WM_NAME"))
-        {
+
+       else if(wnd == WindowManager::getInstance()->getRoot() )
+               if(atom == WindowManager::getInstance()->getAtom("_NET_CLIENT_LIST"))
+               {
+                  wxMutexGuiEnter();
+                  this->updateWindows();
+                  this->Layout();
+                  this->Update();
+                  wxMutexGuiLeave();
+               }
+       else if( atom == WindowManager::getInstance()->getAtom("_NET_WM_NAME"))
+       {
           ClientButton *button = windowToClient(wnd);
 
             if( NULL !=  button)
@@ -78,16 +88,7 @@
                   this->Update();
                   wxMutexGuiLeave();
             }
-        }
-       else if(wnd == WindowManager::getInstance()->getRoot() )
-               if(atom == WindowManager::getInstance()->getAtom("_NET_CLIENT_LIST"))
-               {
-                  wxMutexGuiEnter();
-                  this->updateWindows();
-                  this->Layout();
-                  this->Update();
-                  wxMutexGuiLeave();
-               }
+       }
     }
 
 	void WindowList::addWindow(Window window, bool stat)
@@ -96,7 +97,7 @@
             if(WindowController::getInstance()->isNormalWnd(window) )
             {
 
-              ClientButton *item = new ClientButton(this,100,window,wxString::FromAscii(WindowController::getInstance()->getWindowName(window)));
+              ClientButton *item = new ClientButton(this,100,window);
 
                 item->SetValue(stat);
                 clients.push_back(item);

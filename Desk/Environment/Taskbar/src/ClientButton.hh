@@ -4,9 +4,13 @@
 
 
 #include <wx/tglbtn.h>
+#include <wx/dnd.h>
 #include <X11/Xlib.h>
+#include <wx/timer.h>
+
 #include "WindowController.hh"
 #include "DeskController.hh"
+
 
 
 enum
@@ -19,14 +23,29 @@ enum
 };
 
 
+class DragController : public wxTimer, public wxDropTarget
+{
+public:
+        void Notify();
+
+        void setWindow(Window wnd){ m_wnd = wnd;}
+
+        bool OnDropFiles(wxCoord x, wxCoord y, const wxArrayString&);
+
+        wxDragResult OnDragOver(wxCoord x, wxCoord y, wxDragResult def);
+
+        void OnLeave();
+
+private:
+Window m_wnd;
+};
+
+
 class ClientButton : public wxToggleButton
 {
 public:
 
-    ClientButton(wxWindow* parent,wxWindowID id, Window window, wxString label);
-
-
-	void AddToTaskbar();
+    ClientButton(wxWindow* parent,wxWindowID id, Window window);
 
     void setMark(bool mark);
 
@@ -36,16 +55,10 @@ public:
 
 	Window GetXWindow();
 
+
     void CloseXWindow();
 
-    bool isMarked();
-
-	void onRightClick(wxMouseEvent &evt);
-
-	void onDeskChange(wxCommandEvent &evt);
-
-
-	void Maximize(wxCommandEvent &evt);
+    void Maximize(wxCommandEvent &evt);
 
 	void Minimize(wxCommandEvent &evt);
 
@@ -56,11 +69,21 @@ public:
     void StartResizing(wxCommandEvent &evt);
 
 
-protected:
+
+    bool isMarked();
+
+	void onRightClick(wxMouseEvent &evt);
+
+	void onDeskChange(wxCommandEvent &evt);
+
+
+
+private:
 wxMenu *m_menu;
 wxMenu *m_desk;
 wxString m_label;
 Window   m_xwindow;
+DragController *m_ctrl;
 bool m_marked;
 DECLARE_EVENT_TABLE()
 };
