@@ -42,8 +42,8 @@
 
 
 
-    void TrayPanel::getSelection()
-    {
+  void TrayPanel::getSelection()
+  {
      int scr;
      int  orient = 1;
      int width,height,x,y;
@@ -68,12 +68,10 @@
         m_wnd = XCreateSimpleWindow(m_display,m_panelW, x, y+3, width, height, 0,0, WhitePixel(m_display,0));
         XMapRaised(m_display, m_wnd);
 
-        /* Save old selection owner*/
         oldOwner = XGetSelectionOwner(m_display, m_selection);
-
-        /* Acquire selection*/
         XSetSelectionOwner(m_display,m_selection, m_wnd, CurrentTime);
-        /* Check if we have really got the selection*/
+
+
         if (XGetSelectionOwner(m_display, m_selection) != m_wnd)
             fprintf(stderr,"could not set selection owner.\nMay be another (greedy) tray running?\n");
         else
@@ -104,8 +102,7 @@
         XSelectInput(m_display, m_root, PropertyChangeMask|SubstructureNotifyMask);
 
         WindowEventManager::getInstance()->addListener(this);
-}
-
+  }
 
 
   void TrayPanel::onRawEvent(XEvent &ev)
