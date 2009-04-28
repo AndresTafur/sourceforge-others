@@ -1,9 +1,9 @@
-AC_INIT(whitehawkAv, 0.4,darkhawk665@yahoo.com)
+AC_INIT(whitehawkAv, 0.6.7,darkhawk665@yahoo.com)
 AC_CONFIG_AUX_DIR(config)
 AC_CONFIG_SRCDIR(src)
 AC_CONFIG_MACRO_DIR([m4])
 AC_CANONICAL_SYSTEM
-AM_INIT_AUTOMAKE(whitehawkAv,0.4)
+AM_INIT_AUTOMAKE(whitehawkAv,0.6.7)
 
 AC_PROG_CC
 AC_PROG_CXX
