@@ -162,7 +162,7 @@ void AvFrame::onAbout(wxCommandEvent &evt)
                     "\nwhClamav is a frontend of the clamav antivirus \nideal for your WhiteHawk Desktop.\n\n"));
 
         info.SetName( wxT(_("WhitehawkAv")));
-        info.SetVersion( wxT(_("0.65.0")));
+        info.SetVersion( wxT(_("0.65.7")));
         info.SetDescription(desc);
         info.SetWebSite( wxT(_("http://whsystems.sf.net")));
         info.SetCopyright( wxT(_("Copyright (C) 2007 WhiteHawk project.")));

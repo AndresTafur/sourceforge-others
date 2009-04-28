@@ -58,6 +58,14 @@ else
 	AC_MSG_RESULT([not found])
 	AC_MSG_ERROR([Clamav is required. Try --with-clamav-config.])
 fi
+case $CLAM_VERSION in
+    [0.95.[1-9]])
+     ;;
+    *)
+        AC_MSG_ERROR([clamav >= 0.95.1 required, found version $CLAM_VERSION])
+        ;;
+esac
+
 
 CPPFLAGS="$CPPFLAGS `$CLAM_CONFIG --cflags`"
 CXXFLAGS="$CXXFLAGS `$CLAM_CONFIG --cflags | sed -e 's/-fno-exceptions//'`"
@@ -126,6 +134,15 @@ else
 	AC_MSG_RESULT([not found])
 	AC_MSG_ERROR([libwhutil is required.])
 fi
+
+case $WH_VERSION in
+    [0.22])
+     ;;
+    *)
+        AC_MSG_ERROR([whutil >= 0.22 required, found version $WH_VERSION])
+        ;;
+esac
+
 
 CPPFLAGS="$CPPFLAGS `$WH_CONFIG whutil-1.0 --cflags`"
 CXXFLAGS="$CXXFLAGS `$WH_CONFIG whutil-1.0 --cflags`"
