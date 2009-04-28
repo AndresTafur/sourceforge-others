@@ -1,4 +1,3 @@
-
 2009-01-01  gettextize  <bug-gnu-gettext@gnu.org>
 
 	* m4/gettext.m4: New file, from gettext-0.16.1.
@@ -23,6 +22,18 @@
 	* m4/progtest.m4: New file, from gettext-0.16.1.
 	* Makefile.am (EXTRA_DIST): Add config/config.rpath.
 	* configure.ac (AC_OUTPUT): Add po/Makefile.in.
+
+
+=========== April 27, 2009 ========
+- Added Unicode support
+- Added compatibility to clamav 0.95
+
+
+=========== Undefined ======
+
+- Fixed tray issues
+- Database reloading after update
+- Fixed memory leaks.
 
 =========== February 16, 2008 ============
 - Added updates

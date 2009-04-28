@@ -22,6 +22,8 @@
 #define wxT(data) wxString::FromAscii(data)
 
 
+
+
 AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_ANY,wxDefaultPosition,wxDefaultSize,wxTAB_TRAVERSAL|wxMAXIMIZE_BOX)
   {
 	wxBoxSizer   *sizer      = new wxBoxSizer(wxVERTICAL);
@@ -113,7 +115,11 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 
             this->startThread();
 
+            #ifdef wxCharArray
             scanner->setPath(m_path->GetPath().ToAscii().data());
+            #else
+            scanner->setPath(m_path->GetPath().ToAscii());
+            #endif
 
             if(!claminst->isDbLoaded())
             {
@@ -136,8 +142,11 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 
   void AvPanel::run()
   {
-
+    #ifdef wxCharArray
     WhiteHawkUtil::AbstractFile path(m_path->GetPath().ToAscii().data());
+    #else
+    WhiteHawkUtil::AbstractFile path(m_path->GetPath().ToAscii());
+    #endif
 
         m_total = WhiteHawkUtil::SystemPath::getCount(path).getFilesCount();
   }
@@ -211,7 +220,12 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 
                     if( item != -1)
                     {
+                        #ifdef wxCharArray
                         WhiteHawkUtil::AbstractFile file(m_list->GetItemText(item).ToAscii().data());
+                        #else
+                        WhiteHawkUtil::AbstractFile file(m_list->GetItemText(item).ToAscii());
+                        #endif
+
                         if( file.exist())
                         {
                             if( file.Remove() )
@@ -306,7 +320,11 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
                     for ( size_t n = 0; n < nFiles; n++ )
                     {
                        str = filenames[n];
+                       #ifdef wxCharArray
                        WhiteHawkClamav::ClamFile file(str.ToAscii().data());
+                       #else
+                       WhiteHawkClamav::ClamFile file(str.ToAscii());
+                       #endif
 
                         m_file->ChangeValue( str.AfterLast('/') );
                         m_fold->ChangeValue( str.BeforeLast('/') );
