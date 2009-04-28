@@ -54,6 +54,7 @@ AvPanel::AvPanel(wxWindow *parent,wxTopLevelWindow *top) : wxPanel(parent,wxID_A
 		m_stop->Disable();
 		m_fold->SetEditable(false);
 		m_file->SetEditable(false);
+		m_path->SetPath(wxT("/"));
 
 
 		m_list->InsertColumn(0, wxString( wxT(_("File"))));
