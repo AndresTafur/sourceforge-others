@@ -33,11 +33,18 @@
             XMoveResizeWindow(m_display,m_wnd, x,y, 32*size, 32);
         */
 
+         XMapWindow(m_display, m_wnd);
+
+
+
             for(short i=0; iter != m_icons.end(); iter++, i++)
             {
                 if( (*iter) != wnd)
                     XMoveResizeWindow(m_display, (*iter), 32*i,0, 24, 24);
             }
+
+            XSetWindowBackgroundPixmap(m_display,m_wnd,CopyFromParent);
+            XClearArea(m_display, m_wnd, m_x, m_y+3, m_width, m_height, false);
     }
 
 
@@ -46,14 +53,14 @@
   {
      int scr;
      int  orient = 1;
-     int width,height,x,y;
      XEvent xev;
      Window oldOwner;
      Atom   orientation;
      Atom xa_xembed;
+     XSetWindowAttributes attrib;
 
-        this->GetSize(&width, &height);
-        this->GetPosition(&x, &y);
+        this->GetSize(&m_width, &m_height);
+        this->GetPosition(&m_x, &m_y);
 
         m_display = WindowManager::getInstance()->getDisplay();
         scr = WindowManager::getInstance()->getScreenNum();
@@ -65,7 +72,11 @@
         m_data      = WindowManager::getInstance()->getAtom("_NET_SYSTEM_TRAY_MESSAGE_DATA");
 
 
-        m_wnd = XCreateSimpleWindow(m_display,m_panelW, x, y+3, width, height, 0,0, WhitePixel(m_display,0));
+        m_wnd = XCreateSimpleWindow(m_display,m_panelW, m_x, m_y+3, m_width, m_height, 0,0, WhitePixel(m_display,scr));
+
+
+        XSetWindowBackgroundPixmap(m_display,m_wnd,CopyFromParent);
+
         XMapRaised(m_display, m_wnd);
 
         oldOwner = XGetSelectionOwner(m_display, m_selection);
@@ -138,7 +149,9 @@
                 {
                     fprintf(stderr,"undockin requested by %li\n", ev.xunmap.window);
                     m_icons.remove(ev.xunmap.window);
+                    XClearArea(m_display, m_wnd, m_x, m_y+3, m_width, m_height, false);
                     this->layout(ev.xunmap.window);
+                    this->Update();
                 }
             }
     }

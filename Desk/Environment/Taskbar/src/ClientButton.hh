@@ -5,10 +5,16 @@
 
 #include <wx/tglbtn.h>
 #include <wx/dnd.h>
-#include <X11/Xlib.h>
+#include <wx/tooltip.h>
+#include <wx/wx.h>
 #include <wx/timer.h>
 
+#include <X11/Xlib.h>
+#include <gtk/gtk.h>
+#include <gdk/gdkx.h>
+
 #include "WindowController.hh"
+#include "WindowManager.hh"
 #include "DeskController.hh"
 
 
@@ -89,3 +95,4 @@ DECLARE_EVENT_TABLE()
 };
 
 #endif
+

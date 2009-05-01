@@ -43,6 +43,9 @@ Atom m_embedInfo;
 Window m_wnd;
 Window m_panelW;
 Window m_root;
+int m_x;
+int m_y;
+int m_width, m_height;
 
 };
 
