@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
-	<File name="../../ClientButton.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="505" topLine="105" />
+	<File name="../../ClientButton.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="518" topLine="0" />
 	</File>
-	<File name="../../ClientButton.hh" open="0" top="0" tabpos="5">
-		<Cursor position="889" topLine="38" />
+	<File name="../../ClientButton.hh" open="1" top="0" tabpos="2">
+		<Cursor position="362" topLine="11" />
 	</File>
 	<File name="../../Clock.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1104" topLine="0" />
 	</File>
 	<File name="../../Clock.hh" open="1" top="0" tabpos="2">
-		<Cursor position="122" topLine="10" />
+		<Cursor position="122" topLine="6" />
 	</File>
 	<File name="../../DeskController.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="646" topLine="45" />
@@ -70,8 +70,8 @@
 	<File name="../../WindowEventManager.hh" open="0" top="0" tabpos="1">
 		<Cursor position="658" topLine="12" />
 	</File>
-	<File name="../../WindowList.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="4663" topLine="147" />
+	<File name="../../WindowList.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="2729" topLine="11" />
 	</File>
 	<File name="../../WindowList.hh" open="0" top="0" tabpos="2">
 		<Cursor position="106" topLine="12" />
@@ -82,11 +82,11 @@
 	<File name="../../WindowManager.hh" open="0" top="0" tabpos="8">
 		<Cursor position="249" topLine="0" />
 	</File>
-	<File name="../../tray/TrayPanel.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="3272" topLine="111" />
+	<File name="../../tray/TrayPanel.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1170" topLine="30" />
 	</File>
-	<File name="../../tray/TrayPanel.hh" open="0" top="0" tabpos="2">
-		<Cursor position="294" topLine="0" />
+	<File name="../../tray/TrayPanel.hh" open="1" top="1" tabpos="4">
+		<Cursor position="535" topLine="7" />
 	</File>
 	<File name="../../wxCircleButton.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="1024" topLine="33" />

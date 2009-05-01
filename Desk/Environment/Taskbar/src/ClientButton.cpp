@@ -1,7 +1,6 @@
 #include "ClientButton.hh"
 
-#include <wx/tooltip.h>
-#include <wx/wx.h>
+
 
 
 
@@ -28,8 +27,9 @@
 
 
 
-   ClientButton::ClientButton(wxWindow* parent,wxWindowID id, Window window) : wxToggleButton(parent, id,wxT(""), wxDefaultPosition, wxSize(150,27),wxBU_EXACTFIT|wxBU_TOP)
+   ClientButton::ClientButton(wxWindow* parent,wxWindowID id, Window window) : wxToggleButton(parent, id,wxT(""), wxDefaultPosition, wxSize(160,27),wxBU_EXACTFIT|wxBU_TOP)
 	{
+	  XWMHints *hints;
 	  this->m_xwindow  = window;
       this->m_marked = false;
 
@@ -55,6 +55,31 @@
 	   m_menu->AppendSeparator();
 	   m_menu->Append(wxID_CLOSE, wxT("&Cerrar"),wxT("Cierra la ventana"), wxITEM_NORMAL);
 
+       hints =  XGetWMHints(WindowManager::getInstance()->getDisplay(), window);
+
+       if(hints && hints->icon_pixmap != 0)
+       {
+            GdkPixmap *px  =   gdk_pixmap_foreign_new (hints->icon_pixmap);
+            GdkPixmap *px2 =   gdk_pixmap_foreign_new (hints->icon_mask);
+            GtkWidget  *img;
+                if(px)
+                {
+                     img = gtk_image_new_from_pixmap(px,px2);
+                       gtk_widget_set_size_request(img,16,16);
+
+                     gtk_button_set_image (GTK_BUTTON( this->GetHandle()),img);
+                     gtk_button_set_image_position(GTK_BUTTON( this->GetHandle()), GTK_POS_LEFT);
+
+                }
+
+       }
+
+      //  fprintf(stderr,"%s",hints->icon_pixmap);
+
+
+
+
+
 
 
  	  this->SetToolTip(m_label);
@@ -74,8 +99,8 @@
         if(m_xwindow)
         {
             m_label = wxString::FromAscii(WindowController::getInstance()->getWindowName(m_xwindow));
-            m_label =m_label.Length() > 20 ? (m_label.substr(0,19)+wxT("...")) :m_label;
-            this->SetLabel(m_label);
+            m_label =m_label.Length() > 15 ? (m_label.substr(0,14)+wxT("...")) :m_label;
+            gtk_button_set_label (GTK_BUTTON( this->GetHandle()), m_label.ToAscii()  );
         }
     }
 
