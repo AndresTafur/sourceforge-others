@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Release" />
+	<File name="src/ApplicationFrameListener.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1045" topLine="2" />
+	</File>
+	<File name="src/ApplicationFrameListener.h" open="0" top="0" tabpos="0">
+		<Cursor position="286" topLine="0" />
+	</File>
+	<File name="src/Main.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2577" topLine="96" />
+	</File>
+	<File name="src/Main.h" open="0" top="0" tabpos="0">
+		<Cursor position="214" topLine="0" />
+	</File>
+	<File name="src/MainListener.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1483" topLine="30" />
+	</File>
+	<File name="src/Truck.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="841" topLine="30" />
+	</File>
+	<File name="src/Truck.h" open="0" top="0" tabpos="0">
+		<Cursor position="871" topLine="15" />
+	</File>
+	<File name="src/player/PlayerTruck.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="2208" topLine="50" />
+	</File>
+	<File name="src/player/PlayerTruck.h" open="0" top="0" tabpos="0">
+		<Cursor position="116" topLine="0" />
+	</File>
+	<File name="src/track.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="342" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>

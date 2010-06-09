@@ -1,0 +1,55 @@
+<ogreode>
+	<!-- Create the vehicle using the supplied name and body mesh, make it 1.5 units heavy
+		 e.g. tonnes and offset the center of gravity by half (a metre) to make it more stable
+		 This puts the CoG somewhere around the wheel hubs, which is probably reasonably
+		 realistic for a sports-car -->
+    <vehicle name="Truck">
+
+        <body mesh="Truck1.mesh">
+		  <mass value="3" x="-1" y="-3" z="1" />
+        </body>
+
+        <wheel mesh="jeep_wheell.mesh" x="2.1" y="-2.5" z="5.6" mass="0.06">
+            <steer factor="1" force="9.0" speed="4.0" limit="0.75" />
+            <brake factor="0.75" />
+            <power factor="3.0" />
+            <contact bouncyness="0.3" friction="1.5" fds="0.04" />
+        </wheel>
+        <wheel mesh="jeep_wheelr.mesh" x="-2.1" y="-2.5" z="5.6" mass="0.06">
+            <steer factor="1" force="9.0" speed="4.0" limit="0.75" />
+            <brake factor="0.75" />
+            <power factor="3.0" />
+            <contact bouncyness="0.3" friction="1.5" fds="0.04" />
+        </wheel>
+        <wheel mesh="jeep_wheell.mesh" x="2" y="-2.5" z="-4" mass="0.06">
+            <brake factor="0.125" />
+            <power factor="2.0" />
+            <contact bouncyness="0.3" friction="1.5" fds="0.004" />
+        </wheel>
+        <wheel mesh="jeep_wheelr.mesh" x="-2" y="-2.5" z="-4" mass="0.06">
+            <brake factor="0.125" />
+            <power factor="2.0" />
+            <contact bouncyness="0.3" friction="1.5" fds="0.004" />
+        </wheel>
+
+	<wheel mesh="jeep_wheell.mesh" x="2" y="-2.5" z="-6" mass="0.06">
+            <brake factor="0.125" />
+            <power factor="2.0" />
+            <contact bouncyness="0.3" friction="1.5" fds="0.004" />
+        </wheel>
+        <wheel mesh="jeep_wheelr.mesh" x="-2" y="-2.5" z="-6" mass="0.06">
+            <brake factor="0.125" />
+            <power factor="2.0" />
+            <contact bouncyness="0.3" friction="1.5" fds="0.004" />
+        </wheel>
+
+	<suspension spring="100" damping="2.0" step="0.01" />
+	<engine redline="60.0" brake="20.0">
+            <torquecurve value="0.7" />
+            <torquecurve value="1.1" />
+            <torquecurve value="1.5" />
+            <torquecurve value="2.5" />
+        </engine>
+    </vehicle>
+</ogreode>
+

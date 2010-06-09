@@ -1,0 +1,102 @@
+material HardMaterial
+{
+
+
+	fragment_program programita cg
+	{
+		source orangeshader.cg
+		entry_point main_fp
+		profiles ps_1_1 arbfp1
+	}
+
+
+
+	technique
+	{
+		pass
+		{
+         		specular 1 1 1 1 12
+
+			fragment_program_ref programita
+			{
+				source orangeshader.cg
+				entry_point main_fp
+				profiles ps_1_1 arbfp1
+			}
+
+
+
+
+			texture_unit
+			{			
+				texture truck1.jpg
+			}
+		}
+
+	
+	}
+}
+
+
+material Ac3d/Jeep_WheelR/Mat001_Tex01
+{
+    receive_shadows off
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture jeep_wheel.jpg
+			}
+		}
+	}
+}
+material Ac3d/Jeep_WheelR/Mat002_Tex01
+{
+    receive_shadows off
+	technique
+	{
+		pass
+		{
+			specular 1 1 1 1 10
+			texture_unit
+			{
+				texture jeep_wheel.jpg
+			}
+		}
+	}
+}
+
+
+
+
+material Ac3d/Jeep_WheelL/Mat001_Tex01
+{
+    receive_shadows off
+	technique
+	{
+		pass
+		{
+			texture_unit
+			{
+				texture jeep_wheel.jpg
+			}
+		}
+	}
+}
+material Ac3d/Jeep_WheelL/Mat002_Tex01
+{
+    receive_shadows off
+	technique
+	{
+		pass
+		{
+			specular 1 1 1 1 10
+			texture_unit
+			{
+				texture jeep_wheel.jpg
+			}
+		}
+	}
+}
