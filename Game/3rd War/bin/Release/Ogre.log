@@ -1,0 +1,54 @@
+10:33:15: Creating resource group General
+10:33:15: Creating resource group Internal
+10:33:15: Creating resource group Autodetect
+10:33:15: SceneManagerFactory for type 'DefaultSceneManager' registered.
+10:33:15: Registering ResourceManager for type Material
+10:33:15: Registering ResourceManager for type Mesh
+10:33:15: Registering ResourceManager for type Skeleton
+10:33:15: MovableObjectFactory for type 'ParticleSystem' registered.
+10:33:15: OverlayElementFactory for type Panel registered.
+10:33:15: OverlayElementFactory for type BorderPanel registered.
+10:33:15: OverlayElementFactory for type TextArea registered.
+10:33:15: Registering ResourceManager for type Font
+10:33:15: ArchiveFactory for archive type FileSystem registered.
+10:33:15: DDS codec registering
+10:33:15: Registering ResourceManager for type HighLevelGpuProgram
+10:33:15: Registering ResourceManager for type Compositor
+10:33:15: MovableObjectFactory for type 'Entity' registered.
+10:33:15: MovableObjectFactory for type 'Light' registered.
+10:33:15: MovableObjectFactory for type 'BillboardSet' registered.
+10:33:15: MovableObjectFactory for type 'ManualObject' registered.
+10:33:15: MovableObjectFactory for type 'BillboardChain' registered.
+10:33:15: MovableObjectFactory for type 'RibbonTrail' registered.
+10:33:15: Loading library /usr/lib/OGRE/RenderSystem_GL
+10:33:16: Installing plugin: GL RenderSystem
+10:33:16: OpenGL Rendering Subsystem created.
+10:33:16: Plugin successfully installed
+10:33:16: Loading library /usr/lib/OGRE/Plugin_ParticleFX
+10:33:16: Installing plugin: ParticleFX
+10:33:16: Particle Emitter Type 'Point' registered
+10:33:16: Particle Emitter Type 'Box' registered
+10:33:16: Particle Emitter Type 'Ellipsoid' registered
+10:33:16: Particle Emitter Type 'Cylinder' registered
+10:33:16: Particle Emitter Type 'Ring' registered
+10:33:16: Particle Emitter Type 'HollowEllipsoid' registered
+10:33:16: Particle Affector Type 'LinearForce' registered
+10:33:16: Particle Affector Type 'ColourFader' registered
+10:33:16: Particle Affector Type 'ColourFader2' registered
+10:33:16: Particle Affector Type 'ColourImage' registered
+10:33:16: Particle Affector Type 'ColourInterpolator' registered
+10:33:16: Particle Affector Type 'Scaler' registered
+10:33:16: Particle Affector Type 'Rotator' registered
+10:33:16: Particle Affector Type 'DirectionRandomiser' registered
+10:33:16: Particle Affector Type 'DeflectorPlane' registered
+10:33:16: Plugin successfully installed
+10:33:16: Loading library /usr/lib/OGRE/Plugin_CgProgramManager
+10:33:16: Installing plugin: Cg Program Manager
+10:33:16: Plugin successfully installed
+10:33:16: Loading library /usr/lib/OGRE/Plugin_OctreeSceneManager
+10:33:17: Installing plugin: Octree & Terrain Scene Manager
+10:33:17: Plugin successfully installed
+10:33:17: *-*-* OGRE Initialising
+10:33:17: *-*-* Version 1.7.1 (Cthugha)
+10:33:17: Creating resource group Bootstrap
+10:33:17: OGRE EXCEPTION(5:ItemIdentityException): Cannot find an archive factory to deal with archive of type Zip in ArchiveManager::load at /home/darkhawk665/Desktop/ogre_src_v1-7-1/OgreMain/src/OgreArchiveManager.cpp (line 67)
