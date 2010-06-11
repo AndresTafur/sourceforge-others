@@ -4,7 +4,7 @@
 	<Project>
 		<Option title="3rdWar" />
 		<Option compiler="gcc" />
-		<Option virtualFolders="OgreSamp/;" />
+		<Option virtualFolders="Sources/OgreBase/;" />
 		<Build>
 			<Target title="Release">
 				<Option platforms="Unix;" />
@@ -17,7 +17,6 @@
 					<Add option="-pg" />
 					<Add option="-g" />
 					<Add option="`pkg-config --cflags MYGUI`" />
-					<Add option="`pkg-config --cflags whutil-1.0`" />
 					<Add option="`pkg-config --cflags OgreOde_Core`" />
 					<Add option="`pkg-config --cflags OgreOde_Loader`" />
 					<Add option="`pkg-config --cflags OgreOde_Prefab`" />
@@ -27,8 +26,10 @@
 					<Add option="`pkg-config --libs OgreOde_Core`" />
 					<Add option="`pkg-config --libs OgreOde_Loader`" />
 					<Add option="`pkg-config --libs OgreOde_Prefab`" />
+					<Add option="`pkg-config --libs MYGUI`" />
 					<Add library="OgreMain" />
 					<Add library="OIS" />
+					<Add library="/usr/lib/libMyGUI.OgrePlatform.a" />
 					<Add directory="/usr/local/lib/" />
 				</Linker>
 			</Target>
@@ -48,28 +49,21 @@
 			<Add option="-pg" />
 			<Add directory="/usr/lib/OGRE" />
 		</Linker>
-		<Unit filename="src/Application.cpp">
-			<Option virtualFolder="OgreSamp/" />
-		</Unit>
-		<Unit filename="src/Application.h">
-			<Option virtualFolder="OgreSamp/" />
-		</Unit>
-		<Unit filename="src/ApplicationFrameListener.cpp">
-			<Option virtualFolder="OgreSamp/" />
-		</Unit>
-		<Unit filename="src/ApplicationFrameListener.h">
-			<Option virtualFolder="OgreSamp/" />
-		</Unit>
+		<Unit filename="src/Application.cpp" />
+		<Unit filename="src/Application.h" />
+		<Unit filename="src/ApplicationFrameListener.cpp" />
+		<Unit filename="src/ApplicationFrameListener.h" />
 		<Unit filename="src/GameObject.cpp" />
 		<Unit filename="src/GameObject.h" />
 		<Unit filename="src/GameStaticPhysicObject.cpp" />
 		<Unit filename="src/GameStaticPhysicObject.h" />
-		<Unit filename="src/Main.cpp">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="src/Main.h" />
-		<Unit filename="src/MainListener.cpp" />
-		<Unit filename="src/MainListener.h" />
+		<Unit filename="src/Gui/GUI.cpp" />
+		<Unit filename="src/Gui/Gui.h" />
+		<Unit filename="src/Scenes/LoginListener.cpp" />
+		<Unit filename="src/Scenes/LoginListener.h" />
+		<Unit filename="src/Scenes/LoginScene.cpp" />
+		<Unit filename="src/Scenes/LoginScene.h" />
+		<Unit filename="src/Scenes/SceneBase.h" />
 		<Unit filename="src/Tree.cpp" />
 		<Unit filename="src/Tree.h" />
 		<Unit filename="src/Truck.cpp" />

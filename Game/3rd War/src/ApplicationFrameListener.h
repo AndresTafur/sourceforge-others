@@ -12,6 +12,9 @@
 
 #include <OIS/OIS.h>
 
+#include "Gui/Gui.h"
+
+
 using namespace Ogre;
 using namespace OgreOde;
 using namespace OgreOde_Prefab;

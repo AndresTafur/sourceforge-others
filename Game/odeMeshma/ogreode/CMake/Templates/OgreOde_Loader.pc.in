@@ -1,0 +1,10 @@
+prefix=@OGREODE_PREFIX_PATH@
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: OgreOde_Loader
+Description: Loader for OgreOde_Core
+Version: @OGREODE_VERSION@
+Libs: -L${libdir} -lOgreOde_Loader@OGREODE_PKGLIB_SUFFIX@
+Cflags: -I${includedir}/OgreOde_Loader

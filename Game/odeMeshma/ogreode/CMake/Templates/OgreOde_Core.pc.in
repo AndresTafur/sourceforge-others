@@ -1,0 +1,11 @@
+prefix=@OGREODE_PREFIX_PATH@
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: OgreOde_Core
+Description: ODE wrapper for OGRE
+Version: @OGREODE_VERSION@
+Libs: -L${libdir} -lOgreOde_Core@OGREODE_PKGLIB_SUFFIX@
+Cflags: -I${includedir}/OgreOde_Core
+

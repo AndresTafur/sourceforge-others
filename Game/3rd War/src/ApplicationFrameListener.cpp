@@ -9,6 +9,7 @@
 		size_t windowHnd = 0;
 		std::ostringstream windowHndStr;
 
+
                 LogManager::getSingletonPtr()->logMessage("\n\n\n=================== Initializing OIS ===================\n");
 
                 win->getCustomAttribute("WINDOW", &windowHnd);
@@ -18,6 +19,13 @@
                 mInputManager = OIS::InputManager::createInputSystem( pl );
                 mKeyboard = static_cast<OIS::Keyboard*>(mInputManager->createInputObject( OIS::OISKeyboard, false ));
                 mMouse = static_cast<OIS::Mouse*>(mInputManager->createInputObject( OIS::OISMouse,true));
+                const OIS::MouseState &mouseState = mMouse->getMouseState(); // mMouse is type of OIS::Mouse*
+
+
+                mouseState.width = 800; // your rendering area width
+                mouseState.height = 600; // your rendering area height
+
+                mMouse->setEventCallback(ThirdWar::GUI::getInstancePtr());
                 mKeyboard->setBuffered(true);
 
                 WindowEventUtilities::addWindowEventListener(mWindow, this);
@@ -67,6 +75,8 @@
 
 	ApplicationFrameListener::~ApplicationFrameListener()
 	{
+
+
 		WindowEventUtilities::removeWindowEventListener(mWindow, this);
 		windowClosed(mWindow);
 	}
