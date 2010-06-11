@@ -49,6 +49,7 @@
 			<Add option="-pg" />
 			<Add directory="/usr/lib/OGRE" />
 		</Linker>
+		<Unit filename="src/3rdWar.cpp" />
 		<Unit filename="src/Application.cpp" />
 		<Unit filename="src/Application.h" />
 		<Unit filename="src/ApplicationFrameListener.cpp" />
@@ -64,15 +65,7 @@
 		<Unit filename="src/Scenes/LoginScene.cpp" />
 		<Unit filename="src/Scenes/LoginScene.h" />
 		<Unit filename="src/Scenes/SceneBase.h" />
-		<Unit filename="src/Tree.cpp" />
-		<Unit filename="src/Tree.h" />
-		<Unit filename="src/Truck.cpp" />
-		<Unit filename="src/Truck.h" />
-		<Unit filename="src/player/PlayerFlag.cpp" />
-		<Unit filename="src/player/PlayerFlag.h" />
-		<Unit filename="src/player/PlayerTruck.cpp" />
-		<Unit filename="src/player/PlayerTruck.h" />
-		<Unit filename="src/track.cpp" />
+		<Unit filename="src/WeatherManager.h" />
 		<Extensions>
 			<code_completion />
 			<debugger />

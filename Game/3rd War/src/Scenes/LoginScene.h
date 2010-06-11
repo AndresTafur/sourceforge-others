@@ -10,32 +10,95 @@
 #include "LoginListener.h"
 
 
-
+/**
+ * Login Scene. Manages everything about the login scene.
+ * @see SceneBase
+ */
 class LoginScene : public SceneBase
 {
  public:
 
+    /**
+     * Default constructor. Starts initial objects,Called by Application before everything.
+     * @param wnd render window.
+     * @see Application.
+     */
+
     LoginScene(Ogre::RenderWindow *wnd);
 
+    /**
+     * Creates the LoginListener. Create the loginlistener called by Application.
+     * @see Application.
+     */
+
     void createFrameListener();
+
+    /**
+     * Initializes Mygui. Starts mygui and load the the fault layout, called by Application.
+     * @see Application.
+     * @see Gui
+     */
+
     void createGui();
+
+    /**
+     * Create camera. Create the camera and locate it within the world.
+     * @see Application.
+     */
+
     void createCamera();
+
+    /**
+     * Default constructor. Starts initial objects,Called by Application.
+     * @see Application.
+     */
+
     void createViewports();
 
 
+    /**
+     * Create the scene manager. Starts initial Octree scenario, called by Application.
+     * @see Application.
+     */
+
     void createSceneManager();
+
+    /**
+     * Create the scene. load every mesh and start physics, called by Application.
+     * @see Application.
+     */
+
     void createScene();
+
+    /**
+     * Frees every resource used. Called by Application when finished.
+     * @see Application.
+     */
+
     void destroyScene();
 
  private:
-  Light* m_l;
+
+
+  /**
+   * Terrain object.
+   */
   GameObject *m_ground;
+
+  /**
+   * Physics world.
+   */
   OgreOde::World *m_world;
+
+  /**
+   * Collision detector (of m_ground).
+   */
   OgreOde::TriangleMeshGeometry *m_track;
+
+  /**
+   * Physics world timing.
+   */
   Real m_time_step;
-  MyGUI::Gui * mGUI;
 
 };
-
-
 #endif

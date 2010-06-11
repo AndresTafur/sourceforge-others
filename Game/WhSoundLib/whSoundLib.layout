@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="GameSound.cpp" open="1" top="1" tabpos="6">
+		<Cursor position="4699" topLine="214" />
+	</File>
+	<File name="GameSound.h" open="1" top="0" tabpos="1">
+		<Cursor position="1922" topLine="74" />
+	</File>
+	<File name="GameSoundListener.h" open="1" top="0" tabpos="4">
+		<Cursor position="92" topLine="0" />
+	</File>
+	<File name="Thread.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="537" topLine="0" />
+	</File>
+	<File name="Thread.h" open="1" top="0" tabpos="2">
+		<Cursor position="121" topLine="0" />
+	</File>
+	<File name="test.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="204" topLine="0" />
+	</File>
+	<File name="whSoundLib.h" open="0" top="0" tabpos="0">
+		<Cursor position="147" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
