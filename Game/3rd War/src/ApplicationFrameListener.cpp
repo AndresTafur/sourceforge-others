@@ -26,6 +26,7 @@
                 mouseState.height = 600; // your rendering area height
 
                 mMouse->setEventCallback(ThirdWar::GUI::getInstancePtr());
+                mKeyboard->setEventCallback(ThirdWar::GUI::getInstancePtr());
                 mKeyboard->setBuffered(true);
 
                 WindowEventUtilities::addWindowEventListener(mWindow, this);

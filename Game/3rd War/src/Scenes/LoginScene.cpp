@@ -54,12 +54,14 @@
     void LoginScene::createScene()
     {
      OgreOde::EntityInformer ei;
+     ColourValue fadeColour(0.1, 0.1, 0.1);
 
 
-            mSceneMgr->setAmbientLight(ColourValue(1, 1, 1));
+  //          mWindow->getViewport(0)->setBackgroundColour(fadeColour);
+ //           mSceneMgr->setFog(FOG_LINEAR, fadeColour, 0.0, 10, 250);
+            mSceneMgr->setAmbientLight(ColourValue(0.3, 0.3, 0.3));
             mSceneMgr->setShadowTechnique(SHADOWTYPE_STENCIL_MODULATIVE);
             mSceneMgr->setShadowColour(ColourValue(0.5,0.5,0.5));
-            mSceneMgr->setSkyDome(true,"Examples/CloudySky");
 
 
             m_world = new OgreOde::World(mSceneMgr);

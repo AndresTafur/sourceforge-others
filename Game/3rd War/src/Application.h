@@ -22,7 +22,9 @@ std::string macBundlePath();
 #endif
 
 
-
+/**
+ * Main application. Reads configuration files,load needed plugins and virtual file systems.
+ */
 class Application
 {
 public:
@@ -39,10 +41,16 @@ public:
 
 protected:
     // These internal methods package up the stages in the startup process
-    /** Sets up the application - returns false if the user chooses to abandon configuration. */
+    /**
+     * Sets up the application - returns false if the user chooses to abandon configuration.
+     * @return true if sucess.
+     */
     virtual bool setup(void);
 
-    /** Configures the application - returns false if the user chooses to abandon configuration. */
+    /**
+     * Configures the application - returns false if the user chooses to abandon configuration.
+     * @return true on sucess.
+     */
     virtual bool configure(void);
 
 

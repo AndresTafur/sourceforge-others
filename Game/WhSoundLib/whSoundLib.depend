@@ -1,0 +1,32 @@
+# depslib dependency file v1.0
+1276234586 source:/thing/svn/WhSoundLib/GameSound.cpp
+	"GameSound.h"
+
+1276233215 /thing/svn/WhSoundLib/GameSound.h
+	<string>
+	<list>
+	<AL/al.h>
+	<AL/alut.h>
+	<ogg/ogg.h>
+	<vorbis/codec.h>
+	<vorbis/vorbisenc.h>
+	<vorbis/vorbisfile.h>
+	"GameSoundListener.h"
+	"Thread.h"
+
+1276230748 /thing/svn/WhSoundLib/GameSoundListener.h
+	"whSoundLib.h"
+
+1276230333 /thing/svn/WhSoundLib/whSoundLib.h
+
+1276230769 /thing/svn/WhSoundLib/Thread.h
+	<boost/thread.hpp>
+	"whSoundLib.h"
+
+1276231965 source:/thing/svn/WhSoundLib/Thread.cpp
+	"Thread.h"
+
+1276232954 source:/thing/svn/WhSoundLib/test.cpp
+	<stdio.h>
+	"GameSound.h"
+

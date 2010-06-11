@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="whSoundLib" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/whSoundLib" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/whSoundLib" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="`pkg-config --cflags openal`" />
+			<Add option="`pkg-config --cflags vorbis`" />
+			<Add option="`pkg-config --cflags vorbisfile`" />
+		</Compiler>
+		<Linker>
+			<Add option="`pkg-config --libs openal`" />
+			<Add option="`pkg-config --libs vorbis`" />
+			<Add option="`pkg-config --libs vorbisfile`" />
+			<Add library="boost_thread" />
+			<Add library="alut" />
+		</Linker>
+		<Unit filename="GameSound.cpp" />
+		<Unit filename="GameSound.h" />
+		<Unit filename="GameSoundListener.h" />
+		<Unit filename="Thread.cpp" />
+		<Unit filename="Thread.h" />
+		<Unit filename="test.cpp" />
+		<Unit filename="whSoundLib.cbp" />
+		<Unit filename="whSoundLib.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

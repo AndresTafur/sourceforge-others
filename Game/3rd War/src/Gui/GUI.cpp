@@ -48,10 +48,10 @@ ThirdWar::GUI* ThirdWar::GUI::sm_instance = 0;
         }
 
 
-    void ThirdWar::GUI::buttonClicked(MyGUI::WidgetPtr _widget)
-    {
+        void ThirdWar::GUI::buttonClicked(MyGUI::WidgetPtr _widget)
+        {
 
-    }
+        }
 
         MyGUI::WidgetPtr ThirdWar::GUI::getWindow(std::string str)
         {
@@ -74,17 +74,26 @@ ThirdWar::GUI* ThirdWar::GUI::sm_instance = 0;
         bool ThirdWar::GUI::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
         {
            mGUI->injectMousePress(evt.state.X.abs, evt.state.Y.abs, MyGUI::MouseButton::Enum(id));
-       return true;
-
+           return true;
         }
 
         bool ThirdWar::GUI::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID id)
         {
            mGUI->injectMouseRelease(evt.state.X.abs, evt.state.Y.abs, MyGUI::MouseButton::Enum(id));
-
-                return true;
+           return true;
         }
 
+        bool ThirdWar::GUI::keyPressed( const OIS::KeyEvent &arg )
+        {
+            mGUI->injectKeyPress(MyGUI::KeyCode::Enum(arg.key), arg.text);
+            return true;
+        }
+
+        bool ThirdWar::GUI::keyReleased( const OIS::KeyEvent &arg )
+        {
+            mGUI->injectKeyRelease(MyGUI::KeyCode::Enum(arg.key));
+            return true;
+        }
 
         bool ThirdWar::GUI::frameStarted(const Ogre::FrameEvent &evt)
         {
