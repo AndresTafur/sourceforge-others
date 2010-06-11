@@ -1,0 +1,10 @@
+prefix=@OGREODE_PREFIX_PATH@
+exec_prefix=${prefix}
+libdir=${prefix}/lib
+includedir=${prefix}/include
+
+Name: OgreOde_Prefab
+Description: Prefab for OgreOde_Core
+Version: @OGREODE_VERSION@
+Libs: -L${libdir} -lOgreOde_Prefab@OGREODE_PKGLIB_SUFFIX@
+Cflags: -I${includedir}/OgreOde_Prefab

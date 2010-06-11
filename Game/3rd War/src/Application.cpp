@@ -1,32 +1,34 @@
 #include "Application.h"
 
-#if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
-std::string macBundlePath()
-{
-    char path[1024];
-    CFBundleRef mainBundle = CFBundleGetMainBundle();
-    assert(mainBundle);
 
-    CFURLRef mainBundleURL = CFBundleCopyBundleURL(mainBundle);
-    assert(mainBundleURL);
 
-    CFStringRef cfStringRef = CFURLCopyFileSystemPath( mainBundleURL, kCFURLPOSIXPathStyle);
-    assert(cfStringRef);
+    #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
+    std::string macBundlePath()
+    {
+      char path[1024];
 
-    CFStringGetCString(cfStringRef, path, 1024, kCFStringEncodingASCII);
+                CFBundleRef mainBundle = CFBundleGetMainBundle();
+                assert(mainBundle);
 
-    CFRelease(mainBundleURL);
-    CFRelease(cfStringRef);
+                CFURLRef mainBundleURL = CFBundleCopyBundleURL(mainBundle);
+                assert(mainBundleURL);
 
-    return std::string(path);
-}
-#endif
+                CFStringRef cfStringRef = CFURLCopyFileSystemPath( mainBundleURL, kCFURLPOSIXPathStyle);
+                assert(cfStringRef);
+
+                CFStringGetCString(cfStringRef, path, 1024, kCFStringEncodingASCII);
+
+                CFRelease(mainBundleURL);
+                CFRelease(cfStringRef);
+
+            return std::string(path);
+    }
+    #endif
 
 
 
     Application::Application()
     {
-        mFrameListener = 0;
         mRoot = 0;
         #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
             mResourcePath = macBundlePath() + "/Contents/Resources/";
@@ -34,10 +36,8 @@ std::string macBundlePath()
             mResourcePath = "";
         #endif
     }
-    /// Standard destructor
-    Application::~Application()
-    {
-    }
+
+
 
     void Application::startApplication()
     {
@@ -47,66 +47,64 @@ std::string macBundlePath()
         LogManager::getSingletonPtr()->logMessage("\n\n\n=================== Starting Ogre rendering system ===================\n");
         mRoot->startRendering();
         mRoot->queueEndRendering();
-        destroyScene();
+        m_scenes[0]->destroyScene();
     }
+
+
+    /** Configures the application - returns false if the user chooses to abandon configuration. */
+    bool Application::configure()
+    {
+        if(!mRoot->restoreConfig())
+           if( !mRoot->showConfigDialog())
+                return false;
+
+        mWindow = mRoot->initialise(true,"3rd War");
+        return true;
+    }
+
+
+
+
 
     // These internal methods package up the stages in the startup process
     /** Sets up the application - returns false if the user chooses to abandon configuration. */
     bool Application::setup()
     {
-
 		String pluginsPath;
-		// only use plugins.cfg if not static
-#ifndef OGRE_STATIC_LIB
-		pluginsPath = mResourcePath + "plugins.cfg";
-#endif
+		bool carryOn;
 
+                #ifndef OGRE_STATIC_LIB
+                    pluginsPath = mResourcePath + "plugins.cfg";
+                #endif
 
-        mRoot = OGRE_NEW Root(pluginsPath, mResourcePath + "ogre.cfg", mResourcePath + "Ogre.log");
+                mRoot = OGRE_NEW Root(pluginsPath, mResourcePath + "ogre.cfg", mResourcePath + "Ogre.log");
 
-        setupResources();
+                setupResources();
 
-        bool carryOn = configure();
-        if (!carryOn) return false;
+                carryOn = configure();
 
-        chooseSceneManager();
-        createCamera();
-        createViewports();
-        createGui();
+                if (!carryOn)
+                    return false;
 
-        // Set default mipmap level (NB some APIs ignore this)
-        TextureManager::getSingleton().setDefaultNumMipmaps(5);
+                m_scenes.push_back( new LoginScene(mWindow) );
 
-		// Create any resource listeners (for loading screens)
-		createResourceListener();
-		loadResources();
-        createScene();
-        createFrameListener();
+                m_scenes[0]->createSceneManager();
+                m_scenes[0]->createCamera();
+                m_scenes[0]->createViewports();
+                m_scenes[0]->createGui();
 
-        return true;
-    }
-    /** Configures the application - returns false if the user chooses to abandon configuration. */
-    bool Application::configure()
-    {
-        mRoot->loadPlugin("Plugin_CgProgramManager");
-        if(!mRoot->restoreConfig())
-           if( !mRoot->showConfigDialog())
-                return false;
+                // Set default mipmap level (NB some APIs ignore this)
+                TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
-        mWindow = mRoot->initialise(true,"King of the road");
-        return true;
+                // Create any resource listeners (for loading screens)
+                createResourceListener();
+                loadResources();
+                m_scenes[0]->createScene();
+                m_scenes[0]->createFrameListener();
+
+                return true;
     }
 
-
-
-    void Application::createViewports()
-    {
-        Viewport* vp = mWindow->addViewport(mCamera);
-
-            vp->setOverlaysEnabled(true);
-            vp->setBackgroundColour(ColourValue(0,0,0));
-            mCamera->setAspectRatio(Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
-    }
 
     void Application::setupResources()
     {
@@ -127,11 +125,9 @@ std::string macBundlePath()
                 archName = i->second;
 
                 #if OGRE_PLATFORM == OGRE_PLATFORM_APPLE
-                ResourceGroupManager::getSingleton().addResourceLocation(
-                    String(macBundlePath() + "/" + archName), typeName, secName);
+                ResourceGroupManager::getSingleton().addResourceLocation(String(macBundlePath() + "/" + archName), typeName, secName);
                 #else
-                ResourceGroupManager::getSingleton().addResourceLocation(
-                    archName, typeName, secName);
+                ResourceGroupManager::getSingleton().addResourceLocation(archName, typeName, secName);
                 #endif
             }
         }
@@ -142,3 +138,21 @@ std::string macBundlePath()
 		ResourceGroupManager::getSingleton().initialiseAllResourceGroups();
 	}
 
+    /// Standard destructor
+    Application::~Application()
+    {
+      Ogre::Root::PluginInstanceList list;
+
+        if(mWindow)
+            mRoot->detachRenderTarget(mWindow);
+
+        mRoot->getRenderSystem()->unregisterThread();
+        mRoot->setRenderSystem(NULL);
+
+        list = mRoot->getInstalledPlugins ();
+        for(unsigned int i= 0; i < list.size();i++)
+            mRoot->uninstallPlugin (list[i]);
+
+        fprintf(stderr," ================= Deleting last object, expecting segfault (OGRE issue) =================\n\n");
+        delete mRoot;
+    }
