@@ -1,29 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <MyGUI type="Layout">
-    <Widget type="Widget" skin="Panel" position="408 184 224 360" layer="Back">
-        <Property key="Widget_Visible" value="true"/>
-        <Property key="Widget_Alpha" value="100"/>
-        <Widget type="Button" skin="Button" position="64 312 96 24">
-            <Property key="Widget_Caption" value="Login"/>
-        </Widget>
-        <Widget type="StaticText" skin="StaticText" position="88 40 48 16">
-            <Property key="Widget_Caption" value="User:"/>
-        </Widget>
-        <Widget type="StaticText" skin="StaticText" position="88 104 72 16">
-            <Property key="Widget_Caption" value="Password:"/>
-        </Widget>
-        <Widget type="Edit" skin="Edit" position="56 72 128 24"/>
-        <Widget type="Edit" skin="Edit" position="56 144 128 24">
-            <Property key="Edit_Password" value="true"/>
-        </Widget>
-        <Widget type="StaticText" skin="StaticText" position="88 176 56 16">
-            <Property key="Widget_Caption" value="Server:"/>
-        </Widget>
-        <Widget type="Edit" skin="Edit" position="56 216 128 24"/>
-        <Widget type="Button" skin="CheckBox" position="24 264 168 24">
-            <Property key="Widget_Caption" value="Remember settings"/>
-        </Widget>
-    </Widget>
     <Widget type="Button" skin="Button" position="808 672 104 24" layer="Back">
         <Property key="Widget_Caption" value="Credits"/>
     </Widget>
@@ -41,11 +17,27 @@
     <Widget type="Button" skin="Button" position="808 640 104 24" layer="Back">
         <Property key="Widget_Caption" value="Terms"/>
     </Widget>
-    <Widget type="StaticImage" skin="StaticImage" position="216 -8 600 96" layer="Back">
+    <Widget type="StaticImage" skin="StaticImage" position="392 -8 272 208" layer="Back">
         <Property key="Image_Texture" value="logo.png"/>
         <UserString key="" value=""/>
     </Widget>
     <Widget type="StaticImage" skin="StaticImage" position="0 736 120 32" layer="Back">
         <Property key="Image_Texture" value="logoWh.png"/>
+    </Widget>
+    <Widget type="StaticText" skin="StaticText" position="608 304 96 24" layer="Back">
+        <Property key="Widget_Caption" value="User:"/>
+    </Widget>
+    <Widget type="Edit" skin="Edit" position="544 352 184 24" layer="Back"/>
+    <Widget type="StaticText" skin="StaticText" position="592 408 96 24" layer="Back">
+        <Property key="Widget_Caption" value="Password:"/>
+    </Widget>
+    <Widget type="Edit" skin="Edit" position="544 448 184 24" layer="Back"/>
+    <Widget type="StaticText" skin="StaticText" position="608 504 96 24" layer="Back">
+        <Property key="Widget_Caption" value="Server:"/>
+    </Widget>
+    <Widget type="Edit" skin="Edit" position="544 536 184 24" layer="Back"/>
+    <Widget type="Button" skin="Button" position="584 592 88 24" layer="Back">
+        <Property key="Widget_Caption" value="Login"/>
+        <Property key="Widget_Enabled" value="false"/>
     </Widget>
 </MyGUI>

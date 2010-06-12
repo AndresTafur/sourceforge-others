@@ -3,8 +3,6 @@
 
 #include <OgreOde_Prefab.h>
 #include "ApplicationFrameListener.h"
-#include "player/PlayerTruck.h"
-#include "Truck.h"
 #include <list>
 
 

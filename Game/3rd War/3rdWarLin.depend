@@ -2365,18 +2365,17 @@
 	<Ogre.h>
 	"../ApplicationFrameListener.h"
 
-1276237339 /thing/svn/3rd War/src/Scenes/LoginScene.h
+1276278463 /thing/svn/3rd War/src/Scenes/LoginScene.h
 	<Ogre.h>
 	<MyGUI.h>
 	<MyGUI_OgrePlatform.h>
+	"GameObject.h"
 	"SceneBase.h"
 	"LoginListener.h"
 
-1276236622 /thing/svn/3rd War/src/Scenes/LoginListener.h
+1276278440 /thing/svn/3rd War/src/Scenes/LoginListener.h
 	<OgreOde_Prefab.h>
 	"ApplicationFrameListener.h"
-	"player/PlayerTruck.h"
-	"Truck.h"
 	<list>
 
 1276095572 /thing/svn/3rd War/src/player/PlayerTruck.h
@@ -2414,10 +2413,10 @@
 1276092857 source:/thing/svn/3rd War/src/GameStaticPhysicObject.cpp
 	"GameStaticPhysicObject.h"
 
-1276221185 source:/thing/svn/3rd War/src/Gui/GUI.cpp
+1276279077 source:/thing/svn/3rd War/src/Gui/GUI.cpp
 	"Gui.h"
 
-1276225409 source:/thing/svn/3rd War/src/Scenes/LoginScene.cpp
+1276281728 source:/thing/svn/3rd War/src/Scenes/LoginScene.cpp
 	"LoginScene.h"
 
 1250992040 source:/thing/svn/3rd War/src/Tree.cpp
@@ -2442,4 +2441,7 @@
 
 1276221049 source:/thing/svn/3rd War/src/Scenes/LoginListener.cpp
 	"LoginListener.h"
+
+1276204136 source:/thing/svn/3rd War/src/3rdWar.cpp
+	"Application.h"
 

@@ -6,6 +6,7 @@
 #include <MyGUI_OgrePlatform.h>
 
 
+#include "GameObject.h"
 #include "SceneBase.h"
 #include "LoginListener.h"
 

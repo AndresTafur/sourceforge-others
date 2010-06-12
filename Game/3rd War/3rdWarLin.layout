@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Release" />
-	<File name="src/3rdWar.cpp" open="1" top="1" tabpos="0">
+	<File name="src/3rdWar.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="src/Application.cpp" open="0" top="0" tabpos="0">
@@ -25,8 +25,8 @@
 	<File name="src/GameStaticPhysicObject.h" open="0" top="0" tabpos="0">
 		<Cursor position="1006" topLine="5" />
 	</File>
-	<File name="src/Gui/GUI.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1431" topLine="85" />
+	<File name="src/Gui/GUI.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="1155" topLine="12" />
 	</File>
 	<File name="src/Gui/Gui.h" open="0" top="0" tabpos="0">
 		<Cursor position="3967" topLine="120" />
@@ -34,14 +34,14 @@
 	<File name="src/Scenes/LoginListener.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1074" topLine="16" />
 	</File>
-	<File name="src/Scenes/LoginListener.h" open="0" top="0" tabpos="0">
-		<Cursor position="1664" topLine="10" />
+	<File name="src/Scenes/LoginListener.h" open="1" top="0" tabpos="3">
+		<Cursor position="115" topLine="0" />
 	</File>
-	<File name="src/Scenes/LoginScene.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2198" topLine="42" />
+	<File name="src/Scenes/LoginScene.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="1642" topLine="35" />
 	</File>
-	<File name="src/Scenes/LoginScene.h" open="0" top="0" tabpos="0">
-		<Cursor position="1754" topLine="68" />
+	<File name="src/Scenes/LoginScene.h" open="1" top="0" tabpos="4">
+		<Cursor position="334" topLine="0" />
 	</File>
 	<File name="src/Scenes/SceneBase.h" open="0" top="0" tabpos="0">
 		<Cursor position="1384" topLine="0" />
