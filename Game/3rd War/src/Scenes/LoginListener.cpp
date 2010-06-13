@@ -16,7 +16,7 @@ LoginListener::LoginListener(RenderWindow* win, Camera* cam, Real time_step, Ogr
             Root::getSingleton().setFrameSmoothingPeriod(5.0f);
 
 
-            m_points.push_back( Vector3(10,7,10) );
+            m_points.push_back( Vector3(60,7,20) );
             //m_points.push_back( Vector3(0,30,0) );
 
 
@@ -54,7 +54,7 @@ Vector3 toCam;
         toCam = toCam*m_factor;
 
         m_cam->move(toCam);
-        mCamera->lookAt( Ogre::Vector3(0,7,0));
+        mCamera->lookAt( Ogre::Vector3(70,7,0));
 
         return true;
 }
