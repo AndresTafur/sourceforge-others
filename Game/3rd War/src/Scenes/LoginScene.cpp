@@ -29,8 +29,8 @@
     {
         mCamera = mSceneMgr->createCamera("LoginSceneCamera");
 
-        mCamera->setPosition(Vector3(100,100,100));
-        mCamera->lookAt( Ogre::Vector3(0,30,0));
+        mCamera->setPosition(Vector3(400,7,400));
+        mCamera->lookAt( Ogre::Vector3(0,7,0));
         mCamera->setNearClipDistance( 1 );
         mCamera->setFarClipDistance( 500 );
     }
@@ -77,10 +77,15 @@
             m_track = OgreOde::EntityInformer(m_ground->getEntity()).createStaticTriangleMesh(m_world, m_world->getDefaultSpace());
 
 
-             barricada[0]  = new   GameStaticPhysicObject(m_world,"Sack.mesh", "Sack0");
-             barricada[0]->getNode()->setPosition(Vector3(0,50,0));
-             barricada[1]  = new   GameStaticPhysicObject(m_world,"Sack.mesh", "Sack1");
-             barricada[1]->getNode()->setPosition(Vector3(0,100,0));
+             barricada[0]  = new   GameStaticPhysicObject(m_world,"Costal.mesh", "Sack0");
+             barricada[0]->setPosition(Vector3(0,5,0));
+             barricada[1]  = new   GameStaticPhysicObject(m_world,"Costal.mesh", "Sack1");
+             barricada[1]->setPosition(Vector3(-40,50,0));
+             barricada[2]  = new   GameStaticPhysicObject(m_world,"Costal.mesh", "Sack2");
+             barricada[2]->setPosition(Vector3(-20,5,0));
+             barricada[3]  = new   GameStaticPhysicObject(m_world,"Costal.mesh", "Sack3");
+             barricada[3]->setPosition(Vector3(-40,5,0));
+
 
 
     }
@@ -89,8 +94,6 @@
 
     void LoginScene::destroyScene()
     {
-
-
         mSceneMgr->destroyAllLights();
         if( mCamera) mSceneMgr->destroyAllCameras();
         if( mFrameListener)OGRE_DELETE mFrameListener; mFrameListener = 0;

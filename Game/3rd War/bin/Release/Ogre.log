@@ -1,235 +1,237 @@
-23:50:08: Creating resource group General
-23:50:08: Creating resource group Internal
-23:50:08: Creating resource group Autodetect
-23:50:08: SceneManagerFactory for type 'DefaultSceneManager' registered.
-23:50:08: Registering ResourceManager for type Material
-23:50:08: Registering ResourceManager for type Mesh
-23:50:08: Registering ResourceManager for type Skeleton
-23:50:08: MovableObjectFactory for type 'ParticleSystem' registered.
-23:50:08: OverlayElementFactory for type Panel registered.
-23:50:08: OverlayElementFactory for type BorderPanel registered.
-23:50:08: OverlayElementFactory for type TextArea registered.
-23:50:08: Registering ResourceManager for type Font
-23:50:08: ArchiveFactory for archive type FileSystem registered.
-23:50:08: ArchiveFactory for archive type Zip registered.
-23:50:08: DDS codec registering
-23:50:08: FreeImage version: 3.10.0
-23:50:08: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
-23:50:08: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2
-23:50:08: Registering ResourceManager for type HighLevelGpuProgram
-23:50:08: Registering ResourceManager for type Compositor
-23:50:08: MovableObjectFactory for type 'Entity' registered.
-23:50:08: MovableObjectFactory for type 'Light' registered.
-23:50:08: MovableObjectFactory for type 'BillboardSet' registered.
-23:50:08: MovableObjectFactory for type 'ManualObject' registered.
-23:50:08: MovableObjectFactory for type 'BillboardChain' registered.
-23:50:08: MovableObjectFactory for type 'RibbonTrail' registered.
-23:50:08: Loading library /usr/lib/OGRE/RenderSystem_GL
-23:50:09: Installing plugin: GL RenderSystem
-23:50:09: OpenGL Rendering Subsystem created.
-23:50:09: Plugin successfully installed
-23:50:09: Loading library /usr/lib/OGRE/Plugin_ParticleFX
-23:50:09: Installing plugin: ParticleFX
-23:50:09: Particle Emitter Type 'Point' registered
-23:50:09: Particle Emitter Type 'Box' registered
-23:50:09: Particle Emitter Type 'Ellipsoid' registered
-23:50:09: Particle Emitter Type 'Cylinder' registered
-23:50:09: Particle Emitter Type 'Ring' registered
-23:50:09: Particle Emitter Type 'HollowEllipsoid' registered
-23:50:09: Particle Affector Type 'LinearForce' registered
-23:50:09: Particle Affector Type 'ColourFader' registered
-23:50:09: Particle Affector Type 'ColourFader2' registered
-23:50:09: Particle Affector Type 'ColourImage' registered
-23:50:09: Particle Affector Type 'ColourInterpolator' registered
-23:50:09: Particle Affector Type 'Scaler' registered
-23:50:09: Particle Affector Type 'Rotator' registered
-23:50:09: Particle Affector Type 'DirectionRandomiser' registered
-23:50:09: Particle Affector Type 'DeflectorPlane' registered
-23:50:09: Plugin successfully installed
-23:50:09: Loading library /usr/lib/OGRE/Plugin_CgProgramManager
-23:50:09: Installing plugin: Cg Program Manager
-23:50:09: Plugin successfully installed
-23:50:09: Loading library /usr/lib/OGRE/Plugin_OctreeSceneManager
-23:50:09: Installing plugin: Octree & Terrain Scene Manager
-23:50:09: Plugin successfully installed
-23:50:09: *-*-* OGRE Initialising
-23:50:09: *-*-* Version 1.7.1 (Cthugha)
-23:50:09: Creating resource group Bootstrap
-23:50:09: Added resource location '../../Media/packs/OgreCore.zip' of type 'Zip' to resource group 'Bootstrap'
-23:50:09: Added resource location '../../Media' of type 'FileSystem' to resource group 'General'
-23:50:09: Added resource location '../../Media/models/' of type 'FileSystem' to resource group 'General'
-23:50:09: Added resource location '../../Media/models/Login/' of type 'FileSystem' to resource group 'General'
-23:50:09: Added resource location '../../Media/models/textures/' of type 'FileSystem' to resource group 'General'
-23:50:09: Added resource location '../../Media/particles/' of type 'FileSystem' to resource group 'General'
-23:50:09: Added resource location '../../Media/shaders/' of type 'FileSystem' to resource group 'General'
-23:50:09: Added resource location '../../Media/gui/' of type 'FileSystem' to resource group 'General'
-23:50:09: Added resource location '../../Media/gui/core' of type 'FileSystem' to resource group 'General'
-23:50:09: Added resource location '../../Media/sounds' of type 'FileSystem' to resource group 'General'
-23:50:09: Added resource location '../../Media/packs/skybox.zip' of type 'Zip' to resource group 'General'
-23:50:09: CPU Identifier & Features
-23:50:09: -------------------------
-23:50:09:  *   CPU ID: AuthenticAMD: AMD Athlon(tm) 64 X2 Dual Core Processor 4200+
-23:50:09:  *      SSE: yes
-23:50:09:  *     SSE2: yes
-23:50:09:  *     SSE3: yes
-23:50:09:  *      MMX: yes
-23:50:09:  *   MMXEXT: yes
-23:50:09:  *    3DNOW: yes
-23:50:09:  * 3DNOWEXT: yes
-23:50:09:  *     CMOV: yes
-23:50:09:  *      TSC: yes
-23:50:09:  *      FPU: yes
-23:50:09:  *      PRO: yes
-23:50:09:  *       HT: no
-23:50:09: -------------------------
-23:50:09: ******************************
+02:04:15: Creating resource group General
+02:04:15: Creating resource group Internal
+02:04:15: Creating resource group Autodetect
+02:04:15: SceneManagerFactory for type 'DefaultSceneManager' registered.
+02:04:15: Registering ResourceManager for type Material
+02:04:15: Registering ResourceManager for type Mesh
+02:04:15: Registering ResourceManager for type Skeleton
+02:04:15: MovableObjectFactory for type 'ParticleSystem' registered.
+02:04:15: OverlayElementFactory for type Panel registered.
+02:04:15: OverlayElementFactory for type BorderPanel registered.
+02:04:15: OverlayElementFactory for type TextArea registered.
+02:04:15: Registering ResourceManager for type Font
+02:04:15: ArchiveFactory for archive type FileSystem registered.
+02:04:15: ArchiveFactory for archive type Zip registered.
+02:04:15: DDS codec registering
+02:04:15: FreeImage version: 3.10.0
+02:04:15: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+02:04:15: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2
+02:04:15: Registering ResourceManager for type HighLevelGpuProgram
+02:04:15: Registering ResourceManager for type Compositor
+02:04:15: MovableObjectFactory for type 'Entity' registered.
+02:04:15: MovableObjectFactory for type 'Light' registered.
+02:04:15: MovableObjectFactory for type 'BillboardSet' registered.
+02:04:15: MovableObjectFactory for type 'ManualObject' registered.
+02:04:15: MovableObjectFactory for type 'BillboardChain' registered.
+02:04:15: MovableObjectFactory for type 'RibbonTrail' registered.
+02:04:15: Loading library /usr/lib/OGRE/RenderSystem_GL
+02:04:15: Installing plugin: GL RenderSystem
+02:04:15: OpenGL Rendering Subsystem created.
+02:04:15: Plugin successfully installed
+02:04:15: Loading library /usr/lib/OGRE/Plugin_ParticleFX
+02:04:15: Installing plugin: ParticleFX
+02:04:15: Particle Emitter Type 'Point' registered
+02:04:15: Particle Emitter Type 'Box' registered
+02:04:15: Particle Emitter Type 'Ellipsoid' registered
+02:04:15: Particle Emitter Type 'Cylinder' registered
+02:04:15: Particle Emitter Type 'Ring' registered
+02:04:15: Particle Emitter Type 'HollowEllipsoid' registered
+02:04:15: Particle Affector Type 'LinearForce' registered
+02:04:15: Particle Affector Type 'ColourFader' registered
+02:04:15: Particle Affector Type 'ColourFader2' registered
+02:04:15: Particle Affector Type 'ColourImage' registered
+02:04:15: Particle Affector Type 'ColourInterpolator' registered
+02:04:15: Particle Affector Type 'Scaler' registered
+02:04:15: Particle Affector Type 'Rotator' registered
+02:04:15: Particle Affector Type 'DirectionRandomiser' registered
+02:04:15: Particle Affector Type 'DeflectorPlane' registered
+02:04:15: Plugin successfully installed
+02:04:15: Loading library /usr/lib/OGRE/Plugin_CgProgramManager
+02:04:15: Installing plugin: Cg Program Manager
+02:04:15: Plugin successfully installed
+02:04:15: Loading library /usr/lib/OGRE/Plugin_OctreeSceneManager
+02:04:16: Installing plugin: Octree & Terrain Scene Manager
+02:04:16: Plugin successfully installed
+02:04:16: *-*-* OGRE Initialising
+02:04:16: *-*-* Version 1.7.1 (Cthugha)
+02:04:16: Creating resource group Bootstrap
+02:04:16: Added resource location '../../Media/packs/OgreCore.zip' of type 'Zip' to resource group 'Bootstrap'
+02:04:16: Added resource location '../../Media' of type 'FileSystem' to resource group 'General'
+02:04:16: Added resource location '../../Media/models/' of type 'FileSystem' to resource group 'General'
+02:04:16: Added resource location '../../Media/models/Login/' of type 'FileSystem' to resource group 'General'
+02:04:16: Added resource location '../../Media/models/textures/' of type 'FileSystem' to resource group 'General'
+02:04:16: Added resource location '../../Media/particles/' of type 'FileSystem' to resource group 'General'
+02:04:16: Added resource location '../../Media/shaders/' of type 'FileSystem' to resource group 'General'
+02:04:16: Added resource location '../../Media/gui/' of type 'FileSystem' to resource group 'General'
+02:04:16: Added resource location '../../Media/gui/core' of type 'FileSystem' to resource group 'General'
+02:04:16: Added resource location '../../Media/sounds' of type 'FileSystem' to resource group 'General'
+02:04:16: Added resource location '../../Media/packs/skybox.zip' of type 'Zip' to resource group 'General'
+02:04:16: CPU Identifier & Features
+02:04:16: -------------------------
+02:04:16:  *   CPU ID: AuthenticAMD: AMD Athlon(tm) 64 X2 Dual Core Processor 4200+
+02:04:16:  *      SSE: yes
+02:04:16:  *     SSE2: yes
+02:04:16:  *     SSE3: yes
+02:04:16:  *      MMX: yes
+02:04:16:  *   MMXEXT: yes
+02:04:16:  *    3DNOW: yes
+02:04:16:  * 3DNOWEXT: yes
+02:04:16:  *     CMOV: yes
+02:04:16:  *      TSC: yes
+02:04:16:  *      FPU: yes
+02:04:16:  *      PRO: yes
+02:04:16:  *       HT: no
+02:04:16: -------------------------
+02:04:16: ******************************
 *** Starting GLX Subsystem ***
 ******************************
-23:50:09: GLRenderSystem::_createRenderWindow "3rd War", 1024x768 windowed  miscParams: FSAA= displayFrequency=60 MHz gamma=No vsync=No 
-23:50:09: GLXWindow::create used FBConfigID = 35
-23:50:09: GL_VERSION = 1.3 Mesa 7.0.4
-23:50:09: GL_VENDOR = Tungsten Graphics, Inc.
-23:50:09: GL_RENDERER = Mesa DRI Radeon 20061018 AGP 4x NO-TCL
-23:50:10: GL_EXTENSIONS = GL_ARB_imaging GL_ARB_multisample GL_ARB_multitexture GL_ARB_texture_border_clamp GL_ARB_texture_compression GL_ARB_texture_cube_map GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_crossbar GL_ARB_texture_env_dot3 GL_ARB_texture_mirrored_repeat GL_ARB_texture_rectangle GL_ARB_transpose_matrix GL_ARB_vertex_buffer_object GL_ARB_window_pos GL_EXT_abgr GL_EXT_bgra GL_EXT_blend_color GL_EXT_blend_logic_op GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_clip_volume_hint GL_EXT_compiled_vertex_array GL_EXT_convolution GL_EXT_copy_texture GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_histogram GL_EXT_packed_pixels GL_EXT_polygon_offset GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_specular_color GL_EXT_stencil_wrap GL_EXT_subtexture GL_EXT_texture GL_EXT_texture3D GL_EXT_texture_edge_clamp GL_EXT_texture_env_add GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_filter_anisotropic GL_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_rectangle GL_EXT_vertex_array GL_APPLE_packed_pixels GL_ATI_texture_env_combine3 GL_ATI_texture_mirror_once GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_MESA_ycbcr_texture GL_MESA_window_pos GL_NV_blend_square GL_NV_light_max_exponent GL_NV_texture_rectangle GL_NV_texgen_reflection GL_OES_read_format GL_SGI_color_matrix GL_SGI_color_table GL_SGIS_generate_mipmap GL_SGIS_texture_border_clamp GL_SGIS_texture_edge_clamp GL_SGIS_texture_lod
-23:50:10: Supported GLX extensions: GLX_ARB_get_proc_address GLX_ARB_multisample GLX_EXT_import_context GLX_EXT_visual_info GLX_EXT_visual_rating GLX_MESA_copy_sub_buffer GLX_MESA_swap_control GLX_MESA_swap_frame_usage GLX_OML_swap_method GLX_SGI_make_current_read GLX_SGI_swap_control GLX_SGI_video_sync GLX_SGIS_multisample GLX_SGIX_fbconfig GLX_SGIX_visual_select_group 
-23:50:10: ***************************
-23:50:10: *** GL Renderer Started ***
-23:50:10: ***************************
-23:50:10: Registering ResourceManager for type GpuProgram
-23:50:10: GL: Using framebuffer copy for rendering to textures (worst)
-23:50:10: GL: Warning: RenderTexture size is restricted to size of framebuffer. If you are on Linux, consider using GLX instead of SDL.
-23:50:10: RenderSystem capabilities
-23:50:10: -------------------------
-23:50:10: RenderSystem Name: OpenGL Rendering Subsystem
-23:50:10: GPU Vendor: unknown
-23:50:10: Device Name: Mesa DRI Radeon 20061018 AGP 4x NO-TCL
-23:50:10: Driver Version: 1.3.0.0
-23:50:10:  * Fixed function pipeline: yes
-23:50:10:  * Hardware generation of mipmaps: yes
-23:50:10:  * Texture blending: yes
-23:50:10:  * Anisotropic texture filtering: yes
-23:50:10:  * Dot product texture operation: yes
-23:50:10:  * Cube mapping: yes
-23:50:10:  * Hardware stencil buffer: yes
-23:50:10:    - Stencil depth: 8
-23:50:10:    - Two sided stencil support: no
-23:50:10:    - Wrap stencil values: yes
-23:50:10:  * Hardware vertex / index buffers: yes
-23:50:10:  * Vertex programs: no
-23:50:10:  * Number of floating-point constants for vertex programs: 0
-23:50:10:  * Number of integer constants for vertex programs: 0
-23:50:10:  * Number of boolean constants for vertex programs: 0
-23:50:10:  * Fragment programs: no
-23:50:10:  * Number of floating-point constants for fragment programs: 0
-23:50:10:  * Number of integer constants for fragment programs: 0
-23:50:10:  * Number of boolean constants for fragment programs: 0
-23:50:10:  * Geometry programs: no
-23:50:10:  * Number of floating-point constants for geometry programs: 0
-23:50:10:  * Number of integer constants for geometry programs: 0
-23:50:10:  * Number of boolean constants for geometry programs: 0
-23:50:10:  * Supported Shader Profiles:
-23:50:10:  * Texture Compression: yes
-23:50:10:    - DXT: no
-23:50:10:    - VTC: no
-23:50:10:    - PVRTC: no
-23:50:10:  * Scissor Rectangle: yes
-23:50:10:  * Hardware Occlusion Query: no
-23:50:10:  * User clip planes: yes
-23:50:10:  * VET_UBYTE4 vertex element type: yes
-23:50:10:  * Infinite far plane projection: yes
-23:50:10:  * Hardware render-to-texture: no
-23:50:10:  * Floating point textures: no
-23:50:10:  * Non-power-of-two textures: no
-23:50:10:  * Volume textures: yes
-23:50:10:  * Multiple Render Targets: 1
-23:50:10:    - With different bit depths: no
-23:50:10:  * Point Sprites: no
-23:50:10:  * Extended point parameters: no
-23:50:10:  * Max Point Size: 1
-23:50:10:  * Vertex texture fetch: no
-23:50:10:  * Number of world matrices: 0
-23:50:10:  * Number of texture units: 3
-23:50:10:  * Stencil buffer depth: 8
-23:50:10:  * Number of vertex blend matrices: 0
-23:50:10:  * Render to Vertex Buffer : no
-23:50:10:  * GL 1.5 without VBO workaround: no
-23:50:10:  * Frame Buffer objects: no
-23:50:10:  * Frame Buffer objects (ARB extension): no
-23:50:10:  * Frame Buffer objects (ATI extension): no
-23:50:10:  * PBuffer support: no
-23:50:10:  * GL 1.5 without HW-occlusion workaround: no
-23:50:10: Registering ResourceManager for type Texture
-23:50:10: DefaultWorkQueue('Root') initialising on thread 0x643850.
-23:50:10: DefaultWorkQueue('Root')::WorkerFunc - thread 0x7d4c30 starting.
-23:50:10: DefaultWorkQueue('Root')::WorkerFunc - thread 0x7d4f10 starting.
-23:50:10: Particle Renderer Type 'billboard' registered
-23:50:10: SceneManagerFactory for type 'OctreeSceneManager' registered.
-23:50:10: SceneManagerFactory for type 'TerrainSceneManager' registered.
-23:50:10: 
+02:04:16: GLRenderSystem::_createRenderWindow "3rd War", 1440x900 fullscreen  miscParams: FSAA= displayFrequency=60 MHz gamma=No vsync=No 
+02:04:16: GLXWindow::create used FBConfigID = 35
+02:04:16: GL_VERSION = 1.3 Mesa 7.0.4
+02:04:16: GL_VENDOR = Tungsten Graphics, Inc.
+02:04:16: GL_RENDERER = Mesa DRI Radeon 20061018 AGP 4x NO-TCL
+02:04:16: GL_EXTENSIONS = GL_ARB_imaging GL_ARB_multisample GL_ARB_multitexture GL_ARB_texture_border_clamp GL_ARB_texture_compression GL_ARB_texture_cube_map GL_ARB_texture_env_add GL_ARB_texture_env_combine GL_ARB_texture_env_crossbar GL_ARB_texture_env_dot3 GL_ARB_texture_mirrored_repeat GL_ARB_texture_rectangle GL_ARB_transpose_matrix GL_ARB_vertex_buffer_object GL_ARB_window_pos GL_EXT_abgr GL_EXT_bgra GL_EXT_blend_color GL_EXT_blend_logic_op GL_EXT_blend_minmax GL_EXT_blend_subtract GL_EXT_clip_volume_hint GL_EXT_compiled_vertex_array GL_EXT_convolution GL_EXT_copy_texture GL_EXT_draw_range_elements GL_EXT_fog_coord GL_EXT_histogram GL_EXT_packed_pixels GL_EXT_polygon_offset GL_EXT_rescale_normal GL_EXT_secondary_color GL_EXT_separate_specular_color GL_EXT_stencil_wrap GL_EXT_subtexture GL_EXT_texture GL_EXT_texture3D GL_EXT_texture_edge_clamp GL_EXT_texture_env_add GL_EXT_texture_env_combine GL_EXT_texture_env_dot3 GL_EXT_texture_filter_anisotropic GL_EXT_texture_lod_bias GL_EXT_texture_mirror_clamp GL_EXT_texture_object GL_EXT_texture_rectangle GL_EXT_vertex_array GL_APPLE_packed_pixels GL_ATI_texture_env_combine3 GL_ATI_texture_mirror_once GL_IBM_rasterpos_clip GL_IBM_texture_mirrored_repeat GL_MESA_ycbcr_texture GL_MESA_window_pos GL_NV_blend_square GL_NV_light_max_exponent GL_NV_texture_rectangle GL_NV_texgen_reflection GL_OES_read_format GL_SGI_color_matrix GL_SGI_color_table GL_SGIS_generate_mipmap GL_SGIS_texture_border_clamp GL_SGIS_texture_edge_clamp GL_SGIS_texture_lod
+02:04:16: Supported GLX extensions: GLX_ARB_get_proc_address GLX_ARB_multisample GLX_EXT_import_context GLX_EXT_visual_info GLX_EXT_visual_rating GLX_MESA_copy_sub_buffer GLX_MESA_swap_control GLX_MESA_swap_frame_usage GLX_OML_swap_method GLX_SGI_make_current_read GLX_SGI_swap_control GLX_SGI_video_sync GLX_SGIS_multisample GLX_SGIX_fbconfig GLX_SGIX_visual_select_group 
+02:04:16: ***************************
+02:04:16: *** GL Renderer Started ***
+02:04:16: ***************************
+02:04:16: Registering ResourceManager for type GpuProgram
+02:04:16: GL: Using framebuffer copy for rendering to textures (worst)
+02:04:16: GL: Warning: RenderTexture size is restricted to size of framebuffer. If you are on Linux, consider using GLX instead of SDL.
+02:04:16: RenderSystem capabilities
+02:04:16: -------------------------
+02:04:16: RenderSystem Name: OpenGL Rendering Subsystem
+02:04:16: GPU Vendor: unknown
+02:04:16: Device Name: Mesa DRI Radeon 20061018 AGP 4x NO-TCL
+02:04:16: Driver Version: 1.3.0.0
+02:04:16:  * Fixed function pipeline: yes
+02:04:16:  * Hardware generation of mipmaps: yes
+02:04:16:  * Texture blending: yes
+02:04:16:  * Anisotropic texture filtering: yes
+02:04:16:  * Dot product texture operation: yes
+02:04:16:  * Cube mapping: yes
+02:04:16:  * Hardware stencil buffer: yes
+02:04:16:    - Stencil depth: 8
+02:04:16:    - Two sided stencil support: no
+02:04:16:    - Wrap stencil values: yes
+02:04:16:  * Hardware vertex / index buffers: yes
+02:04:16:  * Vertex programs: no
+02:04:16:  * Number of floating-point constants for vertex programs: 0
+02:04:16:  * Number of integer constants for vertex programs: 0
+02:04:16:  * Number of boolean constants for vertex programs: 0
+02:04:16:  * Fragment programs: no
+02:04:16:  * Number of floating-point constants for fragment programs: 0
+02:04:16:  * Number of integer constants for fragment programs: 0
+02:04:16:  * Number of boolean constants for fragment programs: 0
+02:04:16:  * Geometry programs: no
+02:04:16:  * Number of floating-point constants for geometry programs: 0
+02:04:16:  * Number of integer constants for geometry programs: 0
+02:04:16:  * Number of boolean constants for geometry programs: 0
+02:04:16:  * Supported Shader Profiles:
+02:04:16:  * Texture Compression: yes
+02:04:16:    - DXT: no
+02:04:16:    - VTC: no
+02:04:16:    - PVRTC: no
+02:04:16:  * Scissor Rectangle: yes
+02:04:16:  * Hardware Occlusion Query: no
+02:04:16:  * User clip planes: yes
+02:04:16:  * VET_UBYTE4 vertex element type: yes
+02:04:16:  * Infinite far plane projection: yes
+02:04:16:  * Hardware render-to-texture: no
+02:04:16:  * Floating point textures: no
+02:04:16:  * Non-power-of-two textures: no
+02:04:16:  * Volume textures: yes
+02:04:16:  * Multiple Render Targets: 1
+02:04:16:    - With different bit depths: no
+02:04:16:  * Point Sprites: no
+02:04:16:  * Extended point parameters: no
+02:04:16:  * Max Point Size: 1
+02:04:16:  * Vertex texture fetch: no
+02:04:16:  * Number of world matrices: 0
+02:04:16:  * Number of texture units: 3
+02:04:16:  * Stencil buffer depth: 8
+02:04:16:  * Number of vertex blend matrices: 0
+02:04:16:  * Render to Vertex Buffer : no
+02:04:16:  * GL 1.5 without VBO workaround: no
+02:04:16:  * Frame Buffer objects: no
+02:04:16:  * Frame Buffer objects (ARB extension): no
+02:04:16:  * Frame Buffer objects (ATI extension): no
+02:04:16:  * PBuffer support: no
+02:04:16:  * GL 1.5 without HW-occlusion workaround: no
+02:04:16: Registering ResourceManager for type Texture
+02:04:16: DefaultWorkQueue('Root') initialising on thread 0x643850.
+02:04:16: DefaultWorkQueue('Root')::WorkerFunc - thread 0x7d4f10 starting.
+02:04:16: DefaultWorkQueue('Root')::WorkerFunc - thread 0x7d4c70 starting.
+02:04:16: Particle Renderer Type 'billboard' registered
+02:04:16: SceneManagerFactory for type 'OctreeSceneManager' registered.
+02:04:16: SceneManagerFactory for type 'TerrainSceneManager' registered.
+02:04:16: 
 
 
  ===================  Initializing MyGUI ===================
 
-23:50:10: Texture: core.png: Loading 1 faces(PF_A8R8G8B8,1024x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x256x1.
-23:50:10: Texture: core_pointer.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
-23:50:10: Texture: core_black_blue.png: Loading 1 faces(PF_A8R8G8B8,1024x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x256x1.
-23:50:10: Texture: logo.png: Loading 1 faces(PF_A8R8G8B8,853x797x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
-23:50:10: Texture: logoWh.png: Loading 1 faces(PF_A8R8G8B8,363x100x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x128x1.
-23:50:10: Parsing scripts for resource group Autodetect
-23:50:10: Finished parsing scripts for resource group Autodetect
-23:50:10: Parsing scripts for resource group Bootstrap
-23:50:10: Parsing script OgreCore.material
-23:50:10: Parsing script OgreProfiler.material
-23:50:10: Parsing script Ogre.fontdef
-23:50:10: Parsing script OgreDebugPanel.overlay
-23:50:10: Texture: New_Ogre_Border_Center.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
-23:50:10: Texture: New_Ogre_Border.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
-23:50:10: Texture: New_Ogre_Border_Break.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
-23:50:10: Texture: ogretext.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
-23:50:10: Parsing script OgreLoadingPanel.overlay
-23:50:10: Finished parsing scripts for resource group Bootstrap
-23:50:10: Parsing scripts for resource group General
-23:50:10: Parsing script Track.material
-23:50:10: Parsing script CloudySky.material
-23:50:10: Parsing script smoke.material
-23:50:10: Parsing script rain.material
-23:50:10: Parsing script rain.particle
-23:50:10: Parsing script smoke.particle
-23:50:10: Finished parsing scripts for resource group General
-23:50:10: Parsing scripts for resource group Internal
-23:50:10: Finished parsing scripts for resource group Internal
-23:50:10: Texture: clouds.jpg: Loading 1 faces(PF_R8G8B8,256x256x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
-23:50:10: Mesh: Loading Track.mesh.
-23:50:10: WARNING: Track.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
-23:50:10: Texture: grass3_cyc.jpg: Loading 1 faces(PF_R8G8B8,1474x1345x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,2048x2048x1.
-23:50:10: Mesh: Loading Sack.mesh.
-23:50:10: 
+02:04:16: Texture: core.png: Loading 1 faces(PF_A8R8G8B8,1024x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x256x1.
+02:04:16: Texture: core_pointer.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+02:04:16: Texture: core_black_blue.png: Loading 1 faces(PF_A8R8G8B8,1024x256x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x256x1.
+02:04:16: Texture: logo.png: Loading 1 faces(PF_A8R8G8B8,853x797x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,1024x1024x1.
+02:04:16: Texture: logoWh.png: Loading 1 faces(PF_A8R8G8B8,363x100x1) with  hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,512x128x1.
+02:04:16: Parsing scripts for resource group Autodetect
+02:04:16: Finished parsing scripts for resource group Autodetect
+02:04:16: Parsing scripts for resource group Bootstrap
+02:04:16: Parsing script OgreCore.material
+02:04:16: Parsing script OgreProfiler.material
+02:04:16: Parsing script Ogre.fontdef
+02:04:16: Parsing script OgreDebugPanel.overlay
+02:04:16: Texture: New_Ogre_Border_Center.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+02:04:16: Texture: New_Ogre_Border.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+02:04:16: Texture: New_Ogre_Border_Break.png: Loading 1 faces(PF_A8R8G8B8,32x32x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,32x32x1.
+02:04:16: Texture: ogretext.png: Loading 1 faces(PF_A8R8G8B8,256x128x1) with 5 hardware generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x128x1.
+02:04:16: Parsing script OgreLoadingPanel.overlay
+02:04:16: Finished parsing scripts for resource group Bootstrap
+02:04:16: Parsing scripts for resource group General
+02:04:16: Parsing script Costal.material
+02:04:16: Parsing script Track.material
+02:04:16: Parsing script CloudySky.material
+02:04:16: Parsing script smoke.material
+02:04:16: Parsing script rain.material
+02:04:16: Parsing script rain.particle
+02:04:16: Parsing script smoke.particle
+02:04:16: Finished parsing scripts for resource group General
+02:04:16: Parsing scripts for resource group Internal
+02:04:16: Finished parsing scripts for resource group Internal
+02:04:16: Texture: clouds.jpg: Loading 1 faces(PF_R8G8B8,256x256x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,256x256x1.
+02:04:16: Mesh: Loading Track.mesh.
+02:04:16: Texture: grass3_cyc.jpg: Loading 1 faces(PF_R8G8B8,1474x1345x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,2048x2048x1.
+02:04:16: Mesh: Loading Costal.mesh.
+02:04:16: WARNING: Costal.mesh is an older format ([MeshSerializer_v1.40]); you should upgrade it as soon as possible using the OgreMeshUpgrade tool.
+02:04:16: Texture: Untitled.png: Loading 1 faces(PF_R8G8B8,1024x1024x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,1024x1024x1.
+02:04:16: 
 
 
 =================== Initializing OIS ===================
 
-23:50:10: 
+02:04:16: 
 
 
 =================== Starting Ogre rendering system ===================
 
-23:50:10: Texture: spot_shadow_fade.png: Loading 1 faces(PF_R8G8B8,128x128x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
-23:50:12: Unregistering ResourceManager for type GpuProgram
-23:50:12: ******************************
+02:04:16: Texture: spot_shadow_fade.png: Loading 1 faces(PF_R8G8B8,128x128x1) with 5 hardware generated mipmaps from Image. Internal format is PF_X8R8G8B8,128x128x1.
+02:04:33: Unregistering ResourceManager for type GpuProgram
+02:04:33: ******************************
 *** Stopping GLX Subsystem ***
 ******************************
-23:50:12: Unregistering ResourceManager for type Texture
-23:50:12: Uninstalling plugin: GL RenderSystem
-23:50:12: ******************************
+02:04:33: Unregistering ResourceManager for type Texture
+02:04:33: Uninstalling plugin: GL RenderSystem
+02:04:33: ******************************
 *** Stopping GLX Subsystem ***
 ******************************
-23:50:12: Plugin successfully uninstalled
-23:50:12: Uninstalling plugin: ParticleFX
-23:50:12: Plugin successfully uninstalled
-23:50:12: Uninstalling plugin: Cg Program Manager
-23:50:12: Plugin successfully uninstalled
-23:50:12: Uninstalling plugin: Octree & Terrain Scene Manager
-23:50:12: Plugin successfully uninstalled
-23:50:12: DefaultWorkQueue('Root') shutting down on thread 0x643850.
-23:50:12: DefaultWorkQueue('Root')::WorkerFunc - thread 0x7d4c30 stopped.
-23:50:12: DefaultWorkQueue('Root')::WorkerFunc - thread 0x7d4f10 stopped.
+02:04:33: Plugin successfully uninstalled
+02:04:33: Uninstalling plugin: ParticleFX
+02:04:33: Plugin successfully uninstalled
+02:04:33: Uninstalling plugin: Cg Program Manager
+02:04:33: Plugin successfully uninstalled
+02:04:33: Uninstalling plugin: Octree & Terrain Scene Manager
+02:04:33: Plugin successfully uninstalled
+02:04:33: DefaultWorkQueue('Root') shutting down on thread 0x643850.
+02:04:33: DefaultWorkQueue('Root')::WorkerFunc - thread 0x7d4c70 stopped.
+02:04:33: DefaultWorkQueue('Root')::WorkerFunc - thread 0x7d4f10 stopped.

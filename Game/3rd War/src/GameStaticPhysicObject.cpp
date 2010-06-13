@@ -18,3 +18,10 @@ GameStaticPhysicObject::GameStaticPhysicObject(OgreOde::World *world,Ogre::Strin
 
  }
 
+
+ void GameStaticPhysicObject::setPosition(Ogre::Vector3 pos)
+ {
+    m_body->setPosition(pos);
+    m_node->setPosition(pos);
+  }
+
