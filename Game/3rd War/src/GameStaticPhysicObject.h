@@ -28,6 +28,9 @@ public:
          */
         inline OgreOde::Body* getBody() { return m_body; }
 
+
+        void setPosition(Ogre::Vector3 pos);
+
         /**
          * Set's its geometry
          * @param geom Geometry to be aplied (ODE geom).

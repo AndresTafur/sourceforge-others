@@ -81,6 +81,6 @@ private:
       */
       unsigned int m_currPoint;
 
-      //bool flag;
+      float m_factor;
 };
 #endif
