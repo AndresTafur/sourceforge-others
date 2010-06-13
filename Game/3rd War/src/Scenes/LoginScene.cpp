@@ -1,5 +1,6 @@
 #include "LoginScene.h"
 
+#include "GameStaticPhysicObject.h"
 
     LoginScene::LoginScene(Ogre::RenderWindow  *wnd)
     {
@@ -28,8 +29,8 @@
     {
         mCamera = mSceneMgr->createCamera("LoginSceneCamera");
 
-        mCamera->setPosition(Vector3(-200,0,100));
-        mCamera->lookAt(mCamera->getPosition() + Ogre::Vector3(0,0.7,-100));
+        mCamera->setPosition(Vector3(100,100,100));
+        mCamera->lookAt( Ogre::Vector3(0,30,0));
         mCamera->setNearClipDistance( 1 );
         mCamera->setFarClipDistance( 500 );
     }
@@ -40,7 +41,7 @@
      Viewport* vp = mWindow->addViewport(mCamera);
 
             vp->setOverlaysEnabled(true);
-            vp->setBackgroundColour(ColourValue(0,0,0));
+            vp->setBackgroundColour(ColourValue(0,100,0));
             mCamera->setAspectRatio(Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
 
     }
@@ -54,16 +55,14 @@
     void LoginScene::createScene()
     {
      OgreOde::EntityInformer ei;
-     ColourValue fadeColour(0.1, 0.1, 0.1);
+     GameStaticPhysicObject *barricada[100];
 
 
-
-            mWindow->getViewport(0)->setBackgroundColour(fadeColour);
-            mSceneMgr->setFog(FOG_LINEAR, fadeColour, 0.0, 10, 1000);
-            mSceneMgr->setAmbientLight(ColourValue(0.3, 0.3, 0.3));
+            mSceneMgr->setAmbientLight(ColourValue(1, 1, 1));
             mSceneMgr->setShadowTechnique(SHADOWTYPE_STENCIL_MODULATIVE);
             mSceneMgr->setShadowColour(ColourValue(0.5,0.5,0.5));
             mSceneMgr->setSkyDome(true,"Examples/CloudySky");
+
 
 
             m_world = new OgreOde::World(mSceneMgr);
@@ -75,8 +74,15 @@
 
 
             m_ground  = new GameObject(mSceneMgr,"Track.mesh");
-
             m_track = OgreOde::EntityInformer(m_ground->getEntity()).createStaticTriangleMesh(m_world, m_world->getDefaultSpace());
+
+
+             barricada[0]  = new   GameStaticPhysicObject(m_world,"Sack.mesh", "Sack0");
+             barricada[0]->getNode()->setPosition(Vector3(0,50,0));
+             barricada[1]  = new   GameStaticPhysicObject(m_world,"Sack.mesh", "Sack1");
+             barricada[1]->getNode()->setPosition(Vector3(0,100,0));
+
+
     }
 
 

@@ -12,9 +12,9 @@ GameStaticPhysicObject::GameStaticPhysicObject(OgreOde::World *world,Ogre::Strin
         m_geom = new OgreOde::BoxGeometry(size, world, world->getDefaultSpace());
 
         mass =  OgreOde::BoxMass(1,size);
-        mass.setDensity(1.0,size);
+        mass.setDensity(0.001,size);
         m_body->setMass(mass);
-        //m_geom->setBody(m_body);
-//        m_entity->setUserObject(m_geom);
+        m_geom->setBody(m_body);
+
  }
 

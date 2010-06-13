@@ -70,5 +70,17 @@ private:
      *  Current camera.
      */
     Camera *m_cam;
+
+    /**
+     * Trajectory
+     */
+     std::vector<Vector3> m_points;
+
+     /**
+      * Current trajectoy object.
+      */
+      unsigned int m_currPoint;
+
+      //bool flag;
 };
 #endif

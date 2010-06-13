@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1276316214 source:/thing/svn/warServer/MySQL/MySQL.cpp
+	"MySQL.h"
+
+1276316124 /thing/svn/warServer/MySQL/MySQL.h
+	<string>
+	"Query.h"
+
+1276315345 /thing/svn/warServer/MySQL/Query.h
+	<mysql/mysql.h>
+	<vector>
+	"ResultRow.h"
+
+1276317113 /thing/svn/warServer/MySQL/ResultRow.h
+	<map>
+	<string>
+
+1276317802 source:/thing/svn/warServer/MySQL/Query.cpp
+	"Query.h"
+
+1276317201 source:/thing/svn/warServer/MySQL/ResultRow.cpp
+	"ResultRow.h"
+
+1276319354 source:/thing/svn/warServer/main.cpp
+	"MySQL/MySQL.h"
+	<iostream>
+	<boost/asio.hpp>
+	"include/Server.h"
+
+1276319449 /thing/svn/warServer/include/Server.h
+	<boost/asio.hpp>
+	"ClientAttender.h"
+
+1276320208 /thing/svn/warServer/include/ClientAttender.h
+	<boost/asio.hpp>
+
