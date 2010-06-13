@@ -1,43 +1,54 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <MyGUI type="Layout">
-    <Widget type="Button" skin="Button" position="808 672 104 24" layer="Back">
+    <Widget type="Button" skin="Button" position="856 672 104 24" layer="Back" name="creditsBtn">
         <Property key="Widget_Caption" value="Credits"/>
     </Widget>
-    <Widget type="Window" skin="WindowCSX" position="16 376 240 256" layer="Back">
-        <Widget type="StaticText" skin="StaticText" position="4 17 216 352">
-            <Property key="Widget_Caption" value="This is an alpha version of 3rd war"/>
+    <Widget type="Window" skin="WindowCSX" position="16 316 260 216" layer="Back">
+        <Property key="Widget_Caption" value="3rdWar News"/>
+        <Widget type="StaticText" skin="StaticText" position="4 8 244 168">
+            <Property key="Widget_Caption" value="This is an alpha version of 3rd war\n\n* Server is up and running\n\n* Beta version will be \n   released soon!.\n\n* More info: whsystems.sf.net."/>
+            <Property key="Text_TextColour" value="BLACK"/>
         </Widget>
     </Widget>
-    <Widget type="Button" skin="Button" position="808 704 104 24" layer="Back">
+    <Widget type="Button" skin="Button" position="856 704 104 24" layer="Back" name="quitBtn">
         <Property key="Widget_Caption" value="Quit"/>
     </Widget>
-    <Widget type="Button" skin="Button" position="56 648 96 24" layer="Back">
+    <Widget type="Button" skin="Button" position="72 576 96 24" layer="Back" name="accountBtn">
         <Property key="Widget_Caption" value="Account"/>
     </Widget>
-    <Widget type="Button" skin="Button" position="808 640 104 24" layer="Back">
+    <Widget type="Button" skin="Button" position="856 640 104 24" layer="Back" name="termsBtn">
         <Property key="Widget_Caption" value="Terms"/>
     </Widget>
     <Widget type="StaticImage" skin="StaticImage" position="392 -8 272 208" layer="Back">
         <Property key="Image_Texture" value="logo.png"/>
         <UserString key="" value=""/>
     </Widget>
-    <Widget type="StaticImage" skin="StaticImage" position="0 736 120 32" layer="Back">
+    <Widget type="StaticImage" skin="StaticImage" position="40 736 120 32" layer="Back">
         <Property key="Image_Texture" value="logoWh.png"/>
     </Widget>
-    <Widget type="StaticText" skin="StaticText" position="608 304 96 24" layer="Back">
+    <Widget type="StaticText" skin="StaticText" position="526 294 42 24" layer="Back">
         <Property key="Widget_Caption" value="User:"/>
     </Widget>
-    <Widget type="Edit" skin="Edit" position="544 352 184 24" layer="Back"/>
-    <Widget type="StaticText" skin="StaticText" position="592 408 96 24" layer="Back">
+    <Widget type="Edit" skin="Edit" position="454 314 184 24" layer="Back" name="userVar">
+        <Property key="Text_TextColour" value="BLACK"/>
+    </Widget>
+    <Widget type="StaticText" skin="StaticText" position="510 358 72 24" layer="Back">
         <Property key="Widget_Caption" value="Password:"/>
     </Widget>
-    <Widget type="Edit" skin="Edit" position="544 448 184 24" layer="Back"/>
-    <Widget type="StaticText" skin="StaticText" position="608 504 96 24" layer="Back">
+    <Widget type="Edit" skin="Edit" position="454 378 184 24" layer="Back" name="passVar">
+        <Property key="Text_TextColour" value="BLACK"/>
+        <Property key="Edit_Password" value="true"/>
+    </Widget>
+    <Widget type="StaticText" skin="StaticText" position="518 418 56 24" layer="Back">
         <Property key="Widget_Caption" value="Server:"/>
     </Widget>
-    <Widget type="Edit" skin="Edit" position="544 536 184 24" layer="Back"/>
-    <Widget type="Button" skin="Button" position="584 592 88 24" layer="Back">
+    <Widget type="Edit" skin="Edit" position="454 438 184 24" layer="Back" name="serverVar">
+        <Property key="Text_TextColour" value="BLACK"/>
+    </Widget>
+    <Widget type="Button" skin="CheckBox" position="486 490 184 24" layer="Back" name="remSetBtn">
+        <Property key="Widget_Caption" value="Remember Settings"/>
+    </Widget>
+    <Widget type="Button" skin="Button" position="500 540 88 24" layer="Back" name="loginBTN">
         <Property key="Widget_Caption" value="Login"/>
-        <Property key="Widget_Enabled" value="false"/>
     </Widget>
 </MyGUI>
