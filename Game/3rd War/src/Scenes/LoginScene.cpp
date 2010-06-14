@@ -11,13 +11,6 @@
     }
 
 
-    void LoginScene::createFrameListener()
-    {
-        mFrameListener = new LoginListener(mWindow, mCamera,m_time_step,m_world,mSceneMgr);
-        Ogre::Root::getSingletonPtr()->addFrameListener(mFrameListener);
-        Ogre::Root::getSingletonPtr()->addFrameListener(this);
-    }
-
 
     void LoginScene::createGui()
     {
@@ -26,41 +19,53 @@
     }
 
 
-    void LoginScene::createCamera()
-    {
-        mCamera = mSceneMgr->createCamera("LoginSceneCamera");
 
-       // mCamera->setPosition(Vector3(0,0,0));//75,-7,-500
-        mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
-       // mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
-        mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
-
-        mCamera->setNearClipDistance( 1 );
-        mCamera->setFarClipDistance( 500 );
-    }
-
-
-    void LoginScene::createViewports()
-    {
-     Viewport* vp = mWindow->addViewport(mCamera);
-
-            vp->setOverlaysEnabled(true);
-            vp->setBackgroundColour(ColourValue(0,100,0));
-            mCamera->setAspectRatio(Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
-
-    }
-
-    void LoginScene::createSceneManager()
+    void LoginScene::createManagers()
     {
         mSceneMgr  = Ogre::Root::getSingletonPtr()->createSceneManager( "OctreeSceneManager", "3rd War" );
+        m_world    = new OgreOde::World(mSceneMgr);
+        m_world->setGravity(Vector3(0,-9.80665,0));
+        m_world->setCFM(10e-5);
+        m_world->setERP(0.8);
+        m_world->setAutoSleep(true);
+        m_world->setContactCorrectionVelocity(1.0);
+        m_world->getDefaultSpace()->setInternalCollisions(true);
+
+
+        mFrameListener = new LoginListener(mWindow, mCamera,m_time_step,m_world,mSceneMgr);
+        Ogre::Root::getSingletonPtr()->addFrameListener(mFrameListener);
+        Ogre::Root::getSingletonPtr()->addFrameListener(this);
+        m_world->setCollisionListener(mFrameListener);
     }
+
+
+
+    void LoginScene::createCameras()
+    {
+     Viewport* vp;
+
+          mCamera = mSceneMgr->createCamera("LoginSceneCamera");
+       // mCamera->setPosition(Vector3(0,0,0));//75,-7,-500
+          mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
+       // mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
+          mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
+          mCamera->setNearClipDistance( 1 );
+          mCamera->setFarClipDistance( 500 );
+
+
+          vp = mWindow->addViewport(mCamera);
+
+          vp->setOverlaysEnabled(true);
+          vp->setBackgroundColour(ColourValue(0,100,0));
+          mCamera->setAspectRatio(Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
+    }
+
 
 
     void LoginScene::createScene()
     {
      OgreOde::EntityInformer ei;
      GameStaticPhysicObject *barricada;
-     ColourValue fadeColour(0.8, 0.8, 0.8);
      GameObject *how;
 
 
@@ -74,32 +79,19 @@
             m_points.push_back( Vector3(95,0,-15) );
 
 
-            mSceneMgr->setFog(FOG_LINEAR, fadeColour, 0.0, 10, 1000);
+            mSceneMgr->setFog(FOG_LINEAR, ColourValue(0.8, 0.8, 0.8), 0.0, 10, 1000);
             mSceneMgr->setAmbientLight(ColourValue(1, 1, 1));
             mSceneMgr->setShadowTechnique(SHADOWTYPE_STENCIL_MODULATIVE);
             mSceneMgr->setShadowColour(ColourValue(0.5,0.5,0.5));
-            mSceneMgr->setSkyDome(true,"Examples/CloudySky");
+            mSceneMgr->setSkyDome(true,"CloudySky");
 
-
-
-            m_world = new OgreOde::World(mSceneMgr);
-            m_world->setGravity(Vector3(0,-9.80665,0));
-            m_world->setCFM(10e-5);
-            m_world->setERP(0.8);
-            m_world->setAutoSleep(true);
-            m_world->setContactCorrectionVelocity(1.0);
-
-
-                    m_ground  = new GameObject(mSceneMgr,"Track.mesh");
+            m_ground  = new GameObject(mSceneMgr,"Track.mesh");
             m_track = OgreOde::EntityInformer(m_ground->getEntity()).createStaticTriangleMesh(m_world, m_world->getDefaultSpace());
-
-
-
 
             for(int j=0;j<4;j++)
                 for(int i=0;i<10;i++)
                 {
-                    barricada  = new   GameStaticPhysicObject(m_world,"Costal.mesh", "",Vector3(21,1.8,9));
+                    barricada  = new   GameStaticPhysicObject(m_world,"Costal.mesh", "",0.002,Vector3(21,1.8,9));
                     barricada->setPosition(Vector3(22*i,-10+2*j,0));//20
                     m_meshes.push_back(barricada);
                 }
@@ -162,8 +154,8 @@
 
             if( !m_lauched || !m_change )
             {
-                if( val < 40)
-                    val+=0.8;
+                if( val < 5)
+                    val+=0.4;
                 mCamera->move(Vector3(0,0,val) );
                 mCamera->lookAt( Ogre::Vector3(95,7,7));
 

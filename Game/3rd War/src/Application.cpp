@@ -96,13 +96,10 @@
 
                 m_scenes.push_back( new LoginScene(mWindow) );
 
-                m_scenes[0]->createSceneManager();
-                m_scenes[0]->createCamera();
-                m_scenes[0]->createViewports();
+                m_scenes[0]->createManagers();
+                m_scenes[0]->createCameras();
                 m_scenes[0]->createGui();
                 m_scenes[0]->createScene();
-                m_scenes[0]->createFrameListener();
-
                 return true;
     }
 
