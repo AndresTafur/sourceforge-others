@@ -76,11 +76,12 @@
             m_ground  = new GameObject(mSceneMgr,"Track.mesh");
             m_track = OgreOde::EntityInformer(m_ground->getEntity()).createStaticTriangleMesh(m_world, m_world->getDefaultSpace());
 
-             for(int j=0;j<5;j++)
+             for(int j=0;j<4;j++)
                 for(int i=0;i<10;i++)
                 {
                     barricada[0]  = new   GameStaticPhysicObject(m_world,"Costal.mesh", "",Vector3(21,1.8,9));
                     barricada[0]->setPosition(Vector3(22*i,-10+2*j,0));//20
+                    barricada[0]->getBody()->addForce(Vector3(0,900,-900));
                 }
 
 

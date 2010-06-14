@@ -16,6 +16,7 @@
 					<Add option="-Wall" />
 					<Add option="-pg" />
 					<Add option="-g" />
+					<Add option="`pkg-config --cflags OGRE`" />
 					<Add option="`pkg-config --cflags MYGUI`" />
 					<Add option="`pkg-config --cflags OgreOde_Core`" />
 					<Add option="`pkg-config --cflags OgreOde_Loader`" />
@@ -27,7 +28,7 @@
 					<Add option="`pkg-config --libs OgreOde_Loader`" />
 					<Add option="`pkg-config --libs OgreOde_Prefab`" />
 					<Add option="`pkg-config --libs MYGUI`" />
-					<Add library="OgreMain" />
+					<Add option="`pkg-config --libs OGRE`" />
 					<Add library="OIS" />
 					<Add library="/usr/lib/libMyGUI.OgrePlatform.a" />
 					<Add directory="/usr/local/lib/" />
