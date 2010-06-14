@@ -3,13 +3,14 @@
 
 #include <Ogre.h>
 #include "../ApplicationFrameListener.h"
+#include "../GameObject.h"
 
 
 /**
  * @interface
  * Interface within commond scenes behaviour methods.
  */
-class SceneBase
+class SceneBase : public FrameListener
 {
 public:
 
@@ -76,5 +77,10 @@ SceneManager* mSceneMgr;
  * Current camera.
  */
 Camera* mCamera;
+
+/**
+ * Scene Meshes.
+ */
+ std::vector<GameObject*> m_meshes;
 };
 #endif
