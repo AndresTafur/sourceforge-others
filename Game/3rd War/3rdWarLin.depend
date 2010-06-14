@@ -2366,7 +2366,7 @@
 	"../ApplicationFrameListener.h"
 	"../GameObject.h"
 
-1276486418 /thing/svn/3rd War/src/Scenes/LoginScene.h
+1276492619 /thing/svn/3rd War/src/Scenes/LoginScene.h
 	<Ogre.h>
 	<MyGUI.h>
 	<MyGUI_OgrePlatform.h>
@@ -2419,7 +2419,7 @@
 1276283179 source:/thing/svn/3rd War/src/Gui/GUI.cpp
 	"Gui.h"
 
-1276488896 source:/thing/svn/3rd War/src/Scenes/LoginScene.cpp
+1276492469 source:/thing/svn/3rd War/src/Scenes/LoginScene.cpp
 	"LoginScene.h"
 	"GameStaticPhysicObject.h"
 
