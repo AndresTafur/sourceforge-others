@@ -86,19 +86,20 @@
                 if (!carryOn)
                     return false;
 
-                m_scenes.push_back( new LoginScene(mWindow) );
-
-                m_scenes[0]->createSceneManager();
-                m_scenes[0]->createCamera();
-                m_scenes[0]->createViewports();
-                m_scenes[0]->createGui();
-
                 // Set default mipmap level (NB some APIs ignore this)
                 TextureManager::getSingleton().setDefaultNumMipmaps(5);
 
                 // Create any resource listeners (for loading screens)
                 createResourceListener();
                 loadResources();
+
+
+                m_scenes.push_back( new LoginScene(mWindow) );
+
+                m_scenes[0]->createSceneManager();
+                m_scenes[0]->createCamera();
+                m_scenes[0]->createViewports();
+                m_scenes[0]->createGui();
                 m_scenes[0]->createScene();
                 m_scenes[0]->createFrameListener();
 
