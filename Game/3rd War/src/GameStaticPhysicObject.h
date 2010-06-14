@@ -20,7 +20,7 @@ public:
          * @param name Name to be assigned to this entity.
          * @param size (Optional) Size of the object (in Physics world).
          */
-        GameStaticPhysicObject(OgreOde::World *world,Ogre::String mesh, Ogre::String name, Ogre::Vector3 size = Ogre::Vector3(1,1,1));
+        GameStaticPhysicObject(OgreOde::World *world,Ogre::String mesh, Ogre::String name, float density = 0.001, Ogre::Vector3 size = Ogre::Vector3(1,1,1));
 
         /**
          * Obtains its ODE body.

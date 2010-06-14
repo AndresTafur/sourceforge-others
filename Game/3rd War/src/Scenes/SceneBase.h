@@ -14,11 +14,6 @@ class SceneBase : public FrameListener
 {
 public:
 
-    /**
-     * Creates Frame listener. Called first, when the framelistener has to be built.
-     * @see Application.
-     */
-    virtual void createFrameListener() = 0;
 
     /**
      * Creates Mygui. Called when the gui has to be built.
@@ -27,22 +22,17 @@ public:
     virtual void createGui() = 0;
 
     /**
-     * Creates the camera.
+     * Creates the managers. ODE World, Listeners should be placed here.
      * @see Application.
      */
-    virtual void createCamera() = 0;
+    virtual void createManagers() = 0;
 
     /**
-     * Creates every viewport.
+     * Creates every camera. Viewports also has to be placed here.
      * @see Application.
      */
-    virtual void createViewports() = 0;
+    virtual void createCameras() = 0;
 
-    /**
-     * Creates the scene manager for this scene.
-     * @see Application.
-     */
-    virtual void createSceneManager() = 0;
 
     /**
      * Creates the scene including mesh loading, lighting and physics.

@@ -27,12 +27,6 @@ class LoginScene : public SceneBase
 
     LoginScene(Ogre::RenderWindow *wnd);
 
-    /**
-     * Creates the LoginListener. Create the loginlistener called by Application.
-     * @see Application.
-     */
-
-    void createFrameListener();
 
     /**
      * Initializes Mygui. Starts mygui and load the the fault layout, called by Application.
@@ -42,27 +36,22 @@ class LoginScene : public SceneBase
 
     void createGui();
 
+
     /**
-     * Create camera. Create the camera and locate it within the world.
+     * Initializes all managers and listeners.
      * @see Application.
      */
 
-    void createCamera();
+    void createManagers();
 
-    /**
-     * Default constructor. Starts initial objects,Called by Application.
-     * @see Application.
-     */
-
-    void createViewports();
 
 
     /**
-     * Create the scene manager. Starts initial Octree scenario, called by Application.
+     * Create camera. Create the camera and locate it within the world, also creates viewports.
      * @see Application.
      */
 
-    void createSceneManager();
+    void createCameras();
 
     /**
      * Create the scene. load every mesh and start physics, called by Application.

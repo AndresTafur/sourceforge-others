@@ -21,7 +21,7 @@ using namespace OgreOde_Prefab;
 using namespace OgreOde_Loader;
 
 
-class ApplicationFrameListener: public FrameListener, public WindowEventListener
+class ApplicationFrameListener: public FrameListener, public WindowEventListener, public CollisionListener
 {
 public:
 	// Constructor takes a RenderWindow because it uses that to determine input context
@@ -33,6 +33,9 @@ public:
 	virtual ~ApplicationFrameListener();
 
 	virtual bool processUnbufferedKeyInput(const FrameEvent& evt) = 0;
+
+    virtual bool collision(Contact* contact) = 0;
+
 
     bool frameStarted(const FrameEvent &evt);
 	// Override frameRenderingQueued event to process that (don't care about frameEnded)

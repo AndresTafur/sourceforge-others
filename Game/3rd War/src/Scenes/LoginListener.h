@@ -48,6 +48,8 @@ public:
      */
     bool processUnbufferedMouseInput(const FrameEvent& evt);
 
+    bool collision(Contact* contact);
+
     /**
      *  Default destructor.
      */

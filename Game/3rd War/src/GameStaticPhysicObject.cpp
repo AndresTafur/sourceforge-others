@@ -2,7 +2,7 @@
 
 
 
-GameStaticPhysicObject::GameStaticPhysicObject(OgreOde::World *world,Ogre::String mesh, Ogre::String name, Ogre::Vector3 size) : GameObject(world->getSceneManager(),mesh,name)
+GameStaticPhysicObject::GameStaticPhysicObject(OgreOde::World *world,Ogre::String mesh, Ogre::String name,float density, Ogre::Vector3 size) : GameObject(world->getSceneManager(),mesh,name)
 {
   OgreOde::BoxMass mass;
 
@@ -12,7 +12,7 @@ GameStaticPhysicObject::GameStaticPhysicObject(OgreOde::World *world,Ogre::Strin
         m_geom = new OgreOde::BoxGeometry(size, world, world->getDefaultSpace());
 
         mass =  OgreOde::BoxMass(1,size);
-        mass.setDensity(0.001,size);
+        mass.setDensity(density,size);
         m_body->setMass(mass);
         m_geom->setBody(m_body);
 

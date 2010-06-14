@@ -16,7 +16,7 @@ LoginListener::LoginListener(RenderWindow* win, Camera* cam, Real time_step, Ogr
 
 
 
-            dummy = new GameStaticPhysicObject(world,"Dummy.mesh","",Vector3(2,2,2));
+            dummy = new GameStaticPhysicObject(world,"Dummy.mesh","",0.001,Vector3(2,2,2));
             dummy->setPosition(Vector3(102,30,-62));
 
 }
@@ -78,14 +78,6 @@ bool LoginListener::processUnbufferedKeyInput(const FrameEvent &event)
     	if(mKeyboard->isKeyDown(OIS::KC_P) )
                 fprintf(stderr,"%f, %f, %f",dummy->getNode()->getPosition().x,dummy->getNode()->getPosition().y,dummy->getNode()->getPosition().z);
 
-
-    /*
-        if( mKeyboard->isKeyDown(OIS::KC_N) )
-            SoundManager::getInstance()->playNextSong();
-        else if( mKeyboard->isKeyDown(OIS::KC_B) )
-            SoundManager::getInstance()->playPrevSong();
-*/
-
         if (mKeyboard->isKeyDown(OIS::KC_E))
              m_world->setShowDebugGeometries(!m_world->getShowDebugGeometries());
 
@@ -94,7 +86,12 @@ bool LoginListener::processUnbufferedKeyInput(const FrameEvent &event)
     return true;
 }
 
-
+bool LoginListener::collision(Contact* contact)
+{
+    contact->setBouncyness(0.3);
+    contact->setCoulombFriction(18.0);
+    return true;
+}
 
 LoginListener::~LoginListener()
 {
