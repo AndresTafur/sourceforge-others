@@ -1,9 +1,13 @@
 #ifndef _LOGINLISTENER_
 #define _LOGINLISTENER_
 
+#include <Ogre.h>
 #include <OgreOde_Prefab.h>
-#include "ApplicationFrameListener.h"
 #include <list>
+
+
+#include "ApplicationFrameListener.h"
+#include "GameStaticPhysicObject.h"
 
 
 /**
@@ -20,7 +24,7 @@ public:
      * @param time_step time of run.
      * @param world Physics world.
      */
-    LoginListener(RenderWindow* win, Camera* cam,Real time_step,OgreOde::World *world);
+    LoginListener(RenderWindow* win, Camera* cam,Real time_step,OgreOde::World *world,Ogre::SceneManager *sm);
 
 
     /**
@@ -71,16 +75,7 @@ private:
      */
     Camera *m_cam;
 
-    /**
-     * Trajectory
-     */
-     std::vector<Vector3> m_points;
 
-     /**
-      * Current trajectoy object.
-      */
-      unsigned int m_currPoint;
-
-      float m_factor;
+    GameStaticPhysicObject *dummy;
 };
 #endif

@@ -71,6 +71,9 @@ class LoginScene : public SceneBase
 
     void createScene();
 
+
+    bool frameStarted(const FrameEvent& evt);
+
     /**
      * Frees every resource used. Called by Application when finished.
      * @see Application.
@@ -100,6 +103,26 @@ class LoginScene : public SceneBase
    * Physics world timing.
    */
   Real m_time_step;
+
+  /**
+    * Trajectory
+    */
+  std::vector<Vector3> m_points;
+
+
+  /**
+    * Current trajectoy object.
+    */
+  unsigned int m_currPoint;
+
+
+  float m_factor;
+
+  bool m_lauched;
+
+  bool m_change;
+
+  float val;
 
 };
 #endif
