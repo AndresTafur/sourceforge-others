@@ -124,5 +124,7 @@ class LoginScene : public SceneBase
 
   float val;
 
+  float m_farClip;
+
 };
 #endif

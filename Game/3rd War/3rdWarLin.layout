@@ -41,10 +41,10 @@
 		<Cursor position="1712" topLine="45" />
 	</File>
 	<File name="src/Scenes/LoginScene.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="3257" topLine="78" />
+		<Cursor position="906" topLine="25" />
 	</File>
-	<File name="src/Scenes/LoginScene.h" open="0" top="0" tabpos="5">
-		<Cursor position="1999" topLine="89" />
+	<File name="src/Scenes/LoginScene.h" open="1" top="0" tabpos="5">
+		<Cursor position="2163" topLine="92" />
 	</File>
 	<File name="src/Scenes/SceneBase.h" open="1" top="0" tabpos="2">
 		<Cursor position="1511" topLine="50" />
