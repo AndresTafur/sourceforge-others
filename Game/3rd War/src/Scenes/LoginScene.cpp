@@ -32,7 +32,7 @@
 
        // mCamera->setPosition(Vector3(0,0,0));//75,-7,-500
         mCamera->setPosition(Vector3(75,-7,-500));//75,-7,-500
-    //    mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
+       // mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
         mCamera->lookAt( Ogre::Vector3(75,7,7));//75,7,7
 
         mCamera->setNearClipDistance( 1 );
