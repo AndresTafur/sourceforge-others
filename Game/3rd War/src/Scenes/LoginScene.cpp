@@ -31,7 +31,7 @@
         mCamera = mSceneMgr->createCamera("LoginSceneCamera");
 
        // mCamera->setPosition(Vector3(0,0,0));//75,-7,-500
-        mCamera->setPosition(Vector3(85,-7,-500));//75,-7,-500
+        mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
        // mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
         mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
 
@@ -71,7 +71,7 @@
             val = 0;
             m_farClip = 0;
 
-            m_points.push_back( Vector3(85,0,-25) );
+            m_points.push_back( Vector3(95,0,-15) );
 
 
             mSceneMgr->setFog(FOG_LINEAR, fadeColour, 0.0, 10, 1000);
@@ -165,7 +165,7 @@
                 if( val < 40)
                     val+=0.8;
                 mCamera->move(Vector3(0,0,val) );
-                mCamera->lookAt( Ogre::Vector3(75,7,7));
+                mCamera->lookAt( Ogre::Vector3(95,7,7));
 
             }
             else if( m_farClip < 0.8 )
