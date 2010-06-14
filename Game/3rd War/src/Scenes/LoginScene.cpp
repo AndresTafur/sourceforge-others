@@ -76,8 +76,6 @@
             val = 0;
             m_farClip = 0;
 
-            m_points.push_back( Vector3(95,0,-15) );
-
 
             mSceneMgr->setFog(FOG_LINEAR, ColourValue(0.8, 0.8, 0.8), 0.0, 10, 1000);
             mSceneMgr->setAmbientLight(ColourValue(1, 1, 1));
@@ -85,8 +83,7 @@
             mSceneMgr->setShadowColour(ColourValue(0.5,0.5,0.5));
             mSceneMgr->setSkyDome(true,"CloudySky");
 
-            m_ground  = new GameObject(mSceneMgr,"Track.mesh");
-            m_track = OgreOde::EntityInformer(m_ground->getEntity()).createStaticTriangleMesh(m_world, m_world->getDefaultSpace());
+            m_track = OgreOde::EntityInformer((new GameObject(mSceneMgr,"Track.mesh"))->getEntity()).createStaticTriangleMesh(m_world, m_world->getDefaultSpace());
 
             for(int j=0;j<4;j++)
                 for(int i=0;i<10;i++)
@@ -114,18 +111,10 @@
 
 
 
-            dist = mCamera->getPosition().distance(m_points[m_currPoint]);
+            dist = mCamera->getPosition().distance(Vector3(95,0,-15));
 
             if( 20 > dist && dist > -20 && !m_change)
-            {
-                m_currPoint++;
                 m_change = true;
-
-                if( m_currPoint == m_points.size()  )
-                    m_currPoint--;
-
-            }
-
 
             if( 45 > dist && dist > -45 && !m_lauched )
             {
@@ -139,17 +128,15 @@
                         if(j > 0)
                         {
                             if( i == 4 || i == 5 )
-                               obj->getBody()->addForce(expVect*15*j);
+                               obj->getBody()->addForce(expVect*18*j);
                             else if( i == 3 || i == 6 )
-                               obj->getBody()->addForce(expVect*10*j);
+                               obj->getBody()->addForce(expVect*13*j);
                             else if( i == 2 || i == 7 )
-                               obj->getBody()->addForce(expVect*7*j);
+                               obj->getBody()->addForce(expVect*10*j);
                         }
                         index++;
                     }
-
                 m_lauched  = true;
-
             }
 
             if( !m_lauched || !m_change )

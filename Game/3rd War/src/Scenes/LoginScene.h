@@ -60,8 +60,11 @@ class LoginScene : public SceneBase
 
     void createScene();
 
-
+    /**
+     * Manages the login scene movement frame by frame.
+     */
     bool frameStarted(const FrameEvent& evt);
+
 
     /**
      * Frees every resource used. Called by Application when finished.
@@ -72,19 +75,13 @@ class LoginScene : public SceneBase
 
  private:
 
-
-  /**
-   * Terrain object.
-   */
-  GameObject *m_ground;
-
   /**
    * Physics world.
    */
   OgreOde::World *m_world;
 
   /**
-   * Collision detector (of m_ground).
+   * Terrain object.
    */
   OgreOde::TriangleMeshGeometry *m_track;
 
@@ -94,25 +91,33 @@ class LoginScene : public SceneBase
   Real m_time_step;
 
   /**
-    * Trajectory
-    */
-  std::vector<Vector3> m_points;
-
-
-  /**
     * Current trajectoy object.
     */
   unsigned int m_currPoint;
 
-
+  /**
+   * Fade factor.
+   */
   float m_factor;
 
+  /**
+   * Sacks has been moved by explosion.
+   */
   bool m_lauched;
 
+  /**
+   * Camera state from running to ground.
+   */
   bool m_change;
 
+  /**
+   * Camera Acceleration .
+   */
   float val;
 
+   /**
+    * Far vision factor, after recovering the knowledge.
+    */
   float m_farClip;
 
 };
