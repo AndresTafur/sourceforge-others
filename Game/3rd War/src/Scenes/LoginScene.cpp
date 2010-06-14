@@ -104,7 +104,7 @@
                 }
 
             how  = new GameObject(mSceneMgr,"Howitzer.mesh");
-            how->getNode()->setPosition(50,0,20);
+            how->getNode()->setPosition(100,-4,10);
             how->getNode()->pitch(Degree(-81));
             m_meshes.push_back(how);
 
