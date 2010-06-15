@@ -2403,7 +2403,7 @@
 	<OIS/OIS.h>
 	"player/PlayerFlag.h"
 
-1276546773 /thing/svn/3rd War/src/GameStaticPhysicObject.h
+1276557982 /thing/svn/3rd War/src/GameStaticPhysicObject.h
 	"GameObject.h"
 	<OgreOde_Core.h>
 
@@ -2419,9 +2419,10 @@
 1276283179 source:/thing/svn/3rd War/src/Gui/GUI.cpp
 	"Gui.h"
 
-1276553341 source:/thing/svn/3rd War/src/Scenes/LoginScene.cpp
+1276557718 source:/thing/svn/3rd War/src/Scenes/LoginScene.cpp
 	"LoginScene.h"
 	"GameStaticPhysicObject.h"
+	"WeatherManager.h"
 
 1250992040 source:/thing/svn/3rd War/src/Tree.cpp
 	"Tree.h"
@@ -2449,4 +2450,10 @@
 
 1276204136 source:/thing/svn/3rd War/src/3rdWar.cpp
 	"Application.h"
+
+1276555302 /thing/svn/3rd War/src/WeatherManager.h
+	<Ogre.h>
+
+1276557781 source:/thing/svn/3rd War/src/WeatherManager.cpp
+	"WeatherManager.h"
 

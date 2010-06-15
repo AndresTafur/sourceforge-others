@@ -1,6 +1,7 @@
 #include "LoginScene.h"
 
 #include "GameStaticPhysicObject.h"
+#include "WeatherManager.h"
 
     LoginScene::LoginScene(Ogre::RenderWindow  *wnd)
     {
@@ -31,6 +32,9 @@
         m_world->setContactCorrectionVelocity(1.0);
         m_world->getDefaultSpace()->setInternalCollisions(true);
 
+        WeatherManager::getInstancePtr()->setRenderWindow(mWindow);
+        WeatherManager::getInstancePtr()->setSceneManager(mSceneMgr);
+
 
         mFrameListener = new LoginListener(mWindow, mCamera,m_time_step,m_world,mSceneMgr);
         Ogre::Root::getSingletonPtr()->addFrameListener(mFrameListener);
@@ -45,9 +49,9 @@
      Viewport* vp;
 
           mCamera = mSceneMgr->createCamera("LoginSceneCamera");
-       // mCamera->setPosition(Vector3(0,0,0));//75,-7,-500
+        // mCamera->setPosition(Vector3(0,0,0));//75,-7,-500
           mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
-       // mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
+        // mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
           mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
           mCamera->setNearClipDistance( 1 );
           mCamera->setFarClipDistance( 500 );
@@ -66,7 +70,7 @@
     {
      OgreOde::EntityInformer ei;
      GameStaticPhysicObject *barricada;
-     GameObject *how;
+     GameStaticPhysicObject *how;
 
 
             m_currPoint = 0;
@@ -77,8 +81,8 @@
             m_farClip = 0;
 
 
-            mSceneMgr->setFog(FOG_LINEAR, ColourValue(0.8, 0.8, 0.8), 0.0, 10, 1000);
-            mSceneMgr->setAmbientLight(ColourValue(1, 1, 1));
+            WeatherManager::getInstancePtr()->setFoggy();
+            //WeatherManager::getInstancePtr()->setRainy();
             mSceneMgr->setShadowTechnique(SHADOWTYPE_STENCIL_MODULATIVE);
             mSceneMgr->setShadowColour(ColourValue(0.5,0.5,0.5));
             mSceneMgr->setSkyDome(true,"CloudySky");
@@ -89,13 +93,12 @@
                 for(int i=0;i<10;i++)
                 {
                     barricada  = new   GameStaticPhysicObject(m_world,"Costal.mesh", "",0.002,Vector3(21,1.8,9));
-                    barricada->setPosition(Vector3(22*i,-10+2*j,0));//20
+                    barricada->setPosition(Vector3(22*i,-10+j,0));//20
                     m_meshes.push_back(barricada);
                 }
 
-            how  = new GameObject(mSceneMgr,"Howitzer.mesh");
-            how->getNode()->setPosition(100,-4,10);
-            how->getNode()->pitch(Degree(-81));
+            how  = new GameStaticPhysicObject(m_world,"Howitzer.mesh","",0.008,Vector3(21,10,25));
+            how->setPosition(Vector3(100,-7,15));
             m_meshes.push_back(how);
 
     }
@@ -108,7 +111,6 @@
      Vector3 expVect;
      int index = 0;
      GameStaticPhysicObject *obj;
-
 
 
             dist = mCamera->getPosition().distance(Vector3(95,0,-15));
@@ -124,15 +126,16 @@
                     {
                         obj = static_cast<GameStaticPhysicObject*>(m_meshes.at(index));
                         expVect = ( obj->getBody()->getPosition() - Vector3(102,-11,-62));
+                        expVect +=Vector3(0,100,0);
 
                         if(j > 0)
                         {
                             if( i == 4 || i == 5 )
-                               obj->getBody()->addForce(expVect*18*j);
+                               obj->getBody()->addForce(expVect*20*j);
                             else if( i == 3 || i == 6 )
-                               obj->getBody()->addForce(expVect*13*j);
+                               obj->getBody()->addForce(expVect*12*j);
                             else if( i == 2 || i == 7 )
-                               obj->getBody()->addForce(expVect*10*j);
+                               obj->getBody()->addForce( (expVect*7*j) );
                         }
                         index++;
                     }

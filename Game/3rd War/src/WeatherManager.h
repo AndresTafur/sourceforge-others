@@ -1,6 +1,7 @@
 #ifndef _WEATHER_MANAGER_H
 #define _WEATHER_MANAGER_H
 
+#include <Ogre.h>
 
 /**
  * Manages the Weather.
@@ -8,16 +9,31 @@
  //TODO: Termiar esto
 class WeatherManager
 {
+private:
+
+        WeatherManager();
+
 public:
 
-       //DARKNESS:
-       //ColourValue fadeColour(0.1, 0.1, 0.1); <--check where to put this thing :S
-       //     mWindow->getViewport(0)->setBackgroundColour(fadeColour);
-       //    mSceneMgr->setFog(FOG_LINEAR, fadeColour, 0.0, 10, 1000);
-       //  mSceneMgr->setAmbientLight(ColourValue(0.3, 0.3, 0.3));
+        static WeatherManager* getInstancePtr();
+
+        static WeatherManager& getInstance();
+
+        void setDarkness();
+
+        void setFoggy();
+
+        void setRainy();
+
+        inline void setRenderWindow(Ogre::RenderWindow *wnd) { m_window = wnd; }
+
+        inline void setSceneManager(Ogre::SceneManager *mgr) { m_sceneMgr = mgr; }
 
 
 private:
+Ogre::RenderWindow *m_window;
+Ogre::SceneManager *m_sceneMgr;
+static WeatherManager *sm_instance;
 };
 
 
