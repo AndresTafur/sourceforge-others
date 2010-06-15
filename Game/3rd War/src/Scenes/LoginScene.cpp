@@ -83,10 +83,10 @@
      Viewport* vp;
 
           mCamera = mSceneMgr->createCamera("LoginSceneCamera");
-        // mCamera->setPosition(Vector3(0,0,0));//75,-7,-500
-          mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
-        // mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
-          mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
+         mCamera->setPosition(Vector3(35,0,0));//75,-7,-500
+       //   mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
+         mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
+       //  mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
           mCamera->setNearClipDistance( 1 );
           mCamera->setFarClipDistance( 500 );
 
@@ -105,6 +105,8 @@
      OgreOde::EntityInformer ei;
      GameStaticPhysicObject *barricada;
      GameStaticPhysicObject *how;
+     GameObject *flag, *asta;
+
 
 
             m_currPoint = 0;
@@ -115,7 +117,7 @@
             m_farClip = 0;
 
 
-            WeatherManager::getInstancePtr()->setFoggy();
+          //  WeatherManager::getInstancePtr()->setFoggy();
             //WeatherManager::getInstancePtr()->setRainy();
             mSceneMgr->setShadowTechnique(SHADOWTYPE_STENCIL_MODULATIVE);
             mSceneMgr->setShadowColour(ColourValue(0.5,0.5,0.5));
@@ -135,6 +137,18 @@
             how->setPosition(Vector3(100,-7,15));
             m_meshes.push_back(how);
 
+
+            flag = new GameObject(mSceneMgr,"Bandera.mesh");
+            flag->getNode()->setPosition(110,10,15);
+            mAnimationState = flag->getEntity()->getAnimationState("OndearLow");
+            mAnimationState->setLoop(true);
+            mAnimationState->setEnabled(true);
+
+            asta = new GameObject(mSceneMgr,"Asta.mesh");
+            asta->getNode()->setPosition(110,10,15);
+
+
+
     }
 
 
@@ -146,6 +160,8 @@
      int index = 0;
      GameStaticPhysicObject *obj;
 
+            mAnimationState->addTime(evt.timeSinceLastFrame);
+/*
 
             dist = mCamera->getPosition().distance(Vector3(95,0,-15));
 
@@ -191,7 +207,7 @@
                 mCamera->lookAt( Ogre::Vector3(100,7,7));
                 m_farClip += 0.002;
             }
-
+*/
             return true;
     }
 
