@@ -15,8 +15,42 @@
 
     void LoginScene::createGui()
     {
-        ThirdWar::GUI::getInstancePtr()->initialize(mWindow,mSceneMgr);
-        ThirdWar::GUI::getInstancePtr()->load("Login.layout");
+      ThirdWar::GUI *gui = ThirdWar::GUI::getInstancePtr();
+      MyGUI::ButtonPtr btn = 0;
+      MyGUI::WindowPtr wnd = 0;
+      LoginListener *ptr = static_cast<LoginListener*>(mFrameListener);
+
+
+        gui->initialize(mWindow,mSceneMgr);
+        gui->load("Login.layout");
+
+        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("quitBtn"));
+        btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked );
+
+        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("accountBtn"));
+        btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked);
+
+
+        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("termsBtn"));
+        btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked );
+
+        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("creditsBtn"));
+        btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked);
+
+
+        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("loginBTN"));
+        btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked);
+
+        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("remSetBtn"));
+        btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked);
+
+
+        wnd = static_cast<MyGUI::WindowPtr>(gui->getWindow("registrationWnd"));
+        wnd->eventWindowButtonPressed = MyGUI::newDelegate(ptr, &LoginListener::notifyWindowPressed);
+
+        wnd = static_cast<MyGUI::WindowPtr>(gui->getWindow("creditWnd"));
+        wnd->eventWindowButtonPressed = MyGUI::newDelegate(ptr, &LoginListener::notifyWindowPressed);
+
     }
 
 
@@ -160,6 +194,7 @@
 
             return true;
     }
+
 
 
 

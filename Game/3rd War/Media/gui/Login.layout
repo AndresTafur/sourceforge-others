@@ -3,7 +3,7 @@
     <Widget type="Button" skin="Button" position="856 672 104 24" layer="Back" name="creditsBtn">
         <Property key="Widget_Caption" value="Credits"/>
     </Widget>
-    <Widget type="Window" skin="WindowCSX" position="16 316 260 216" layer="Back">
+    <Widget type="Window" skin="WindowC" position="16 316 260 216" layer="Back">
         <Property key="Widget_Caption" value="3rdWar News"/>
         <Widget type="StaticText" skin="StaticText" position="4 8 244 168">
             <Property key="Widget_Caption" value="This is an alpha version of 3rd war\n\n* Server is up and running\n\n* Beta version will be \n   released soon!.\n\n* More info: whsystems.sf.net."/>
@@ -28,12 +28,14 @@
     </Widget>
     <Widget type="StaticText" skin="StaticText" position="526 294 42 24" layer="Back">
         <Property key="Widget_Caption" value="User:"/>
+	<Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Edit" skin="Edit" position="454 314 184 24" layer="Back" name="userVar">
         <Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="StaticText" skin="StaticText" position="510 358 72 24" layer="Back">
         <Property key="Widget_Caption" value="Password:"/>
+	<Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Edit" skin="Edit" position="454 378 184 24" layer="Back" name="passVar">
         <Property key="Text_TextColour" value="BLACK"/>
@@ -41,14 +43,68 @@
     </Widget>
     <Widget type="StaticText" skin="StaticText" position="518 418 56 24" layer="Back">
         <Property key="Widget_Caption" value="Server:"/>
+	<Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Edit" skin="Edit" position="454 438 184 24" layer="Back" name="serverVar">
         <Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Button" skin="CheckBox" position="486 490 184 24" layer="Back" name="remSetBtn">
         <Property key="Widget_Caption" value="Remember Settings"/>
+	<Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Button" skin="Button" position="500 540 88 24" layer="Back" name="loginBTN">
         <Property key="Widget_Caption" value="Login"/>
+    </Widget>
+    <Widget type="Window" skin="WindowCSX" position="696 216 320 392" layer="Back" name="registrationWnd">
+        <Property key="Widget_Caption" value="Account Registration"/>
+        <Property key="Widget_Visible" value="false"/>
+        <Widget type="StaticText" skin="StaticText" position="100 33 44 15">
+            <Property key="Widget_Caption" value="User:"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+        </Widget>
+        <Widget type="Edit" skin="Edit" position="60 73 180 24" name="userRegisVar">
+            <Property key="Text_TextColour" value="BLACK"/>
+            <Property key="Edit_TabPrinting" value="false"/>
+        </Widget>
+        <Widget type="StaticText" skin="StaticText" position="92 105 76 15">
+            <Property key="Widget_Caption" value="Password:"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+        </Widget>
+        <Widget type="Edit" skin="Edit" position="60 129 180 24" name="passRegisVar">
+            <Property key="Edit_Password" value="true"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+            <Property key="Edit_TabPrinting" value="false"/>
+        </Widget>
+        <Widget type="StaticText" skin="StaticText" position="84 169 120 15">
+            <Property key="Widget_Caption" value="Confirm Password:"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+        </Widget>
+        <Widget type="Edit" skin="Edit" position="60 193 180 24" name="cPassRegisVar">
+            <Property key="Edit_Password" value="true"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+            <Property key="Edit_TabPrinting" value="false"/>
+        </Widget>
+        <Widget type="ComboBox" skin="ComboBox" position="60 265 180 24" name="nationRegisVar">
+            <Property key="ComboBox_AddItem" value=""/>
+            <Property key="ComboBox_AddItem" value="Rising sun"/>
+            <Property key="ComboBox_AddItem" value="Etereal Earth"/>
+            <Property key="Edit_Static" value="true"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+        </Widget>
+        <Widget type="Button" skin="Button" position="108 312 80 25" name="regisBtn">
+            <Property key="Widget_Caption" value="Register"/>
+        </Widget>
+        <Widget type="StaticText" skin="StaticText" position="100 233 68 16">
+            <Property key="Widget_Caption" value="Nation:"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+        </Widget>
+    </Widget>
+    <Widget type="Window" skin="WindowCSX" position="704 288 288 208" layer="Back" name="creditWnd">
+        <Property key="Widget_Caption" value="Credits"/>
+	<Property key="Widget_Visible" value="false"/>
+        <Widget type="StaticText" skin="StaticText" position="12 17 252 135">
+            <Property key="Widget_Caption" value="                     CREDITS\n\nGame made by: Dhwk &amp; Wookie Z.\n\nOriginal idea by: Dhwk &amp; Wookie Z.\n\nPOWERED BY OGRE 3D Engine."/>
+            <Property key="Text_TextColour" value="BLACK"/>	
+        </Widget>
     </Widget>
 </MyGUI>

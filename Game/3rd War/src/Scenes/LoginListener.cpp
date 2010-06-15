@@ -13,8 +13,8 @@ LoginListener::LoginListener(RenderWindow* win, Camera* cam, Real time_step, Ogr
             m_stepper->setAutomatic(OgreOde::StepHandler::AutoMode_PostFrame, Ogre::Root::getSingletonPtr());
             Root::getSingleton().setFrameSmoothingPeriod(5.0f);
 
-            dummy = new GameStaticPhysicObject(world,"Dummy.mesh","",0.001,Vector3(2,2,2));
-            dummy->setPosition(Vector3(102,30,-62));
+//            dummy = new GameStaticPhysicObject(world,"Dummy.mesh","",0.001,Vector3(2,2,2));
+//            dummy->setPosition(Vector3(102,30,-62));
 }
 
 
@@ -33,7 +33,6 @@ bool LoginListener::frameStarted(const FrameEvent& evt)
 
 bool LoginListener::processUnbufferedKeyInput(const FrameEvent &event)
 {
-
         if( mKeyboard->isKeyDown(OIS::KC_ESCAPE) || mKeyboard->isKeyDown(OIS::KC_Q) )
 			return false;
 
@@ -52,12 +51,56 @@ bool LoginListener::processUnbufferedKeyInput(const FrameEvent &event)
     return true;
 }
 
+
+
+    void LoginListener::buttonClicked(MyGUI::WidgetPtr _widget)
+    {
+      MyGUI::ButtonPtr btn =  static_cast<MyGUI::ButtonPtr>(_widget);
+
+        if( _widget == ThirdWar::GUI::getInstance().getWindow("quitBtn"))
+               Ogre::Root::getSingletonPtr()->queueEndRendering();
+
+        else if(  _widget == ThirdWar::GUI::getInstance().getWindow("accountBtn"))
+        {
+                static_cast<MyGUI::WindowPtr>(ThirdWar::GUI::getInstance().getWindow("registrationWnd"))->setVisibleSmooth(true);
+                _widget->setEnabled(false);
+        }
+        else if(  _widget == ThirdWar::GUI::getInstance().getWindow("creditsBtn"))
+        {
+                static_cast<MyGUI::WindowPtr>(ThirdWar::GUI::getInstance().getWindow("creditWnd"))->setVisibleSmooth(true);
+                _widget->setEnabled(false);
+        }
+        //TODO: terms
+        else if(  _widget == ThirdWar::GUI::getInstance().getWindow("remSetBtn"))
+                btn->setButtonPressed(!btn->getButtonPressed() );
+
+
+    }
+
+    void LoginListener::notifyWindowPressed(MyGUI::WidgetPtr _widget, const std::string& _name)
+    {
+      MyGUI::WindowPtr window = static_cast<MyGUI::WindowPtr>(_widget);
+
+            if (_name == "close")
+            {
+                    window->setVisibleSmooth(false);
+
+                    if( _widget ==  ThirdWar::GUI::getInstance().getWindow("registrationWnd") )
+                        static_cast<MyGUI::ButtonPtr>(ThirdWar::GUI::getInstance().getWindow("accountBtn"))->setEnabled(true);
+                    else if( _widget ==  ThirdWar::GUI::getInstance().getWindow("creditWnd") )
+                        static_cast<MyGUI::ButtonPtr>(ThirdWar::GUI::getInstance().getWindow("creditsBtn"))->setEnabled(true);
+            }
+    }
+
+
+
 bool LoginListener::collision(Contact* contact)
 {
     contact->setBouncyness(0.3);
     contact->setCoulombFriction(18.0);
     return true;
 }
+
 
 LoginListener::~LoginListener()
 {

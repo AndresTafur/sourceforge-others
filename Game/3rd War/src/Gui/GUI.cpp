@@ -48,12 +48,7 @@ ThirdWar::GUI* ThirdWar::GUI::sm_instance = 0;
         }
 
 
-        void ThirdWar::GUI::buttonClicked(MyGUI::WidgetPtr _widget)
-        {
-
-        }
-
-        MyGUI::WidgetPtr ThirdWar::GUI::getWindow(std::string str)
+            MyGUI::WidgetPtr ThirdWar::GUI::getWindow(std::string str)
         {
             MyGUI::Widget *wid = mGUI->findWidgetT(str,false);
 
@@ -102,7 +97,6 @@ ThirdWar::GUI* ThirdWar::GUI::sm_instance = 0;
         }
 
 
-
         void ThirdWar::GUI::clean()
         {
             mGUI->shutdown();
@@ -112,6 +106,7 @@ ThirdWar::GUI* ThirdWar::GUI::sm_instance = 0;
             delete mPlatform;
             mPlatform = 0;
         }
+
 
         void ThirdWar::GUI::destroy()
         {
