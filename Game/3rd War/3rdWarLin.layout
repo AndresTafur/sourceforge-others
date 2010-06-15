@@ -5,7 +5,7 @@
 		<Cursor position="16" topLine="0" />
 	</File>
 	<File name="src/Application.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="2581" topLine="78" />
+		<Cursor position="2651" topLine="27" />
 	</File>
 	<File name="src/Application.h" open="0" top="0" tabpos="0">
 		<Cursor position="1782" topLine="39" />
@@ -14,7 +14,7 @@
 		<Cursor position="1374" topLine="80" />
 	</File>
 	<File name="src/ApplicationFrameListener.h" open="0" top="0" tabpos="0">
-		<Cursor position="985" topLine="27" />
+		<Cursor position="505" topLine="9" />
 	</File>
 	<File name="src/GameObject.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="313" topLine="0" />
@@ -25,34 +25,34 @@
 	<File name="src/GameStaticPhysicObject.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="488" topLine="0" />
 	</File>
-	<File name="src/GameStaticPhysicObject.h" open="1" top="0" tabpos="4">
+	<File name="src/GameStaticPhysicObject.h" open="0" top="0" tabpos="4">
 		<Cursor position="721" topLine="2" />
 	</File>
 	<File name="src/Gui/GUI.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="658" topLine="9" />
+		<Cursor position="1244" topLine="22" />
 	</File>
 	<File name="src/Gui/Gui.h" open="0" top="0" tabpos="0">
 		<Cursor position="3967" topLine="18" />
 	</File>
 	<File name="src/Scenes/LoginListener.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="1766" topLine="35" />
+		<Cursor position="3654" topLine="0" />
 	</File>
 	<File name="src/Scenes/LoginListener.h" open="0" top="0" tabpos="3">
-		<Cursor position="1366" topLine="0" />
+		<Cursor position="1435" topLine="30" />
 	</File>
-	<File name="src/Scenes/LoginScene.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="4573" topLine="114" />
+	<File name="src/Scenes/LoginScene.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="497" topLine="83" />
 	</File>
-	<File name="src/Scenes/LoginScene.h" open="0" top="0" tabpos="5">
-		<Cursor position="1264" topLine="40" />
+	<File name="src/Scenes/LoginScene.h" open="1" top="1" tabpos="2">
+		<Cursor position="1265" topLine="49" />
 	</File>
-	<File name="src/Scenes/SceneBase.h" open="1" top="0" tabpos="3">
-		<Cursor position="45" topLine="0" />
+	<File name="src/Scenes/SceneBase.h" open="0" top="0" tabpos="3">
+		<Cursor position="45" topLine="30" />
 	</File>
 	<File name="src/WeatherManager.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1311" topLine="15" />
 	</File>
-	<File name="src/WeatherManager.h" open="1" top="0" tabpos="1">
+	<File name="src/WeatherManager.h" open="0" top="0" tabpos="1">
 		<Cursor position="579" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

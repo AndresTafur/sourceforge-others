@@ -41,6 +41,19 @@ public:
      */
     bool processUnbufferedKeyInput(const FrameEvent& evt);
 
+
+    /**
+     * Handles Buttons Clicked. MyGUI notifies through this, actions to be taken determined here.
+     */
+    void buttonClicked(MyGUI::WidgetPtr _widget);
+
+
+    /**
+     * Handles WindowClosed. MyGUI notifies through this, actions to be taken determined here.
+     */
+    void notifyWindowPressed(MyGUI::WidgetPtr _widget, const std::string& _name);
+
+
     /**
      *  Called when a frame has entered. Add unbuffered (non-gui) mouse handlers here.
      *  @param evt Frame information.
@@ -48,6 +61,9 @@ public:
      */
     bool processUnbufferedMouseInput(const FrameEvent& evt);
 
+    /**
+     * Physics Collision. Handles collision (adds friciton) called by OgreOde.
+     */
     bool collision(Contact* contact);
 
     /**
@@ -76,8 +92,5 @@ private:
      *  Current camera.
      */
     Camera *m_cam;
-
-
-    GameStaticPhysicObject *dummy;
 };
 #endif
