@@ -120,5 +120,7 @@ class LoginScene : public SceneBase
     */
   float m_farClip;
 
+  AnimationState *mAnimationState;
+
 };
 #endif
