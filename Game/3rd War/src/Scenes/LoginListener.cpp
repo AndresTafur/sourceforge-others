@@ -56,25 +56,53 @@ bool LoginListener::processUnbufferedKeyInput(const FrameEvent &event)
     void LoginListener::buttonClicked(MyGUI::WidgetPtr _widget)
     {
       MyGUI::ButtonPtr btn =  static_cast<MyGUI::ButtonPtr>(_widget);
-
-        if( _widget == ThirdWar::GUI::getInstance().getWindow("quitBtn"))
-               Ogre::Root::getSingletonPtr()->queueEndRendering();
-
-        else if(  _widget == ThirdWar::GUI::getInstance().getWindow("accountBtn"))
-        {
-                static_cast<MyGUI::WindowPtr>(ThirdWar::GUI::getInstance().getWindow("registrationWnd"))->setVisibleSmooth(true);
-                _widget->setEnabled(false);
-        }
-        else if(  _widget == ThirdWar::GUI::getInstance().getWindow("creditsBtn"))
-        {
-                static_cast<MyGUI::WindowPtr>(ThirdWar::GUI::getInstance().getWindow("creditWnd"))->setVisibleSmooth(true);
-                _widget->setEnabled(false);
-        }
-        //TODO: terms
-        else if(  _widget == ThirdWar::GUI::getInstance().getWindow("remSetBtn"))
-                btn->setButtonPressed(!btn->getButtonPressed() );
+      unsigned int xres, yres;
 
 
+
+                if( _widget == ThirdWar::GUI::getInstance().getWindow("quitBtn"))
+                        Ogre::Root::getSingletonPtr()->queueEndRendering();
+
+                else if(  _widget == ThirdWar::GUI::getInstance().getWindow("accountBtn"))
+                {
+                        static_cast<MyGUI::WindowPtr>(ThirdWar::GUI::getInstance().getWindow("registrationWnd"))->setVisibleSmooth(true);
+                        _widget->setEnabled(false);
+                }
+                else if(  _widget == ThirdWar::GUI::getInstance().getWindow("creditsBtn"))
+                {
+                        static_cast<MyGUI::WindowPtr>(ThirdWar::GUI::getInstance().getWindow("creditWnd"))->setVisibleSmooth(true);
+                        _widget->setEnabled(false);
+                }
+                else if(  _widget == ThirdWar::GUI::getInstance().getWindow("optionsBtn"))
+                {
+                        static_cast<MyGUI::WindowPtr>(ThirdWar::GUI::getInstance().getWindow("optionsWnd"))->setVisibleSmooth(true);
+                        _widget->setEnabled(false);
+                }
+                else if(  _widget == ThirdWar::GUI::getInstance().getWindow("optOkBtn"))
+                {
+                        MyGUI::ComboBoxPtr combo = static_cast<MyGUI::ComboBoxPtr>(ThirdWar::GUI::getInstance().getWindow("resolVar"));
+                        btn = static_cast<MyGUI::ButtonPtr>(ThirdWar::GUI::getInstance().getWindow("fullScrBtn"));
+
+                        if(  combo->getIndexSelected() == 0 )
+                        {
+                            xres = 800;yres = 600;
+                        }
+                        else if(  combo->getIndexSelected() == 1 )
+                        {
+                            xres = 1024;yres = 768;
+                        }
+                        else if(  combo->getIndexSelected() == 2 )
+                        {
+                            xres = 1440;yres = 900;
+                        }
+
+                        Ogre::Root::getSingletonPtr()->getAutoCreatedWindow()->setFullscreen(btn->getButtonPressed(), xres, yres);
+                        Ogre::Root::getSingleton().saveConfig();
+                }
+                else if(  _widget == ThirdWar::GUI::getInstance().getWindow("remSetBtn"))
+                    btn->setButtonPressed(!btn->getButtonPressed() );
+                else if(  _widget == ThirdWar::GUI::getInstance().getWindow("fullScrBtn"))
+                    btn->setButtonPressed(!btn->getButtonPressed() );
     }
 
     void LoginListener::notifyWindowPressed(MyGUI::WidgetPtr _widget, const std::string& _name)
@@ -89,6 +117,8 @@ bool LoginListener::processUnbufferedKeyInput(const FrameEvent &event)
                         static_cast<MyGUI::ButtonPtr>(ThirdWar::GUI::getInstance().getWindow("accountBtn"))->setEnabled(true);
                     else if( _widget ==  ThirdWar::GUI::getInstance().getWindow("creditWnd") )
                         static_cast<MyGUI::ButtonPtr>(ThirdWar::GUI::getInstance().getWindow("creditsBtn"))->setEnabled(true);
+                    else if( _widget ==  ThirdWar::GUI::getInstance().getWindow("optionsWnd") )
+                        static_cast<MyGUI::ButtonPtr>(ThirdWar::GUI::getInstance().getWindow("optionsBtn"))->setEnabled(true);
             }
     }
 

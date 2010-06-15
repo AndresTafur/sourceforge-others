@@ -16,8 +16,8 @@
     <Widget type="Button" skin="Button" position="72 576 96 24" layer="Back" name="accountBtn">
         <Property key="Widget_Caption" value="Account"/>
     </Widget>
-    <Widget type="Button" skin="Button" position="856 640 104 24" layer="Back" name="termsBtn">
-        <Property key="Widget_Caption" value="Terms"/>
+    <Widget type="Button" skin="Button" position="856 640 104 24" layer="Back" name="optionsBtn">
+        <Property key="Widget_Caption" value="Options"/>
     </Widget>
     <Widget type="StaticImage" skin="StaticImage" position="392 -8 272 208" layer="Back">
         <Property key="Image_Texture" value="logo.png"/>
@@ -28,14 +28,14 @@
     </Widget>
     <Widget type="StaticText" skin="StaticText" position="526 294 42 24" layer="Back">
         <Property key="Widget_Caption" value="User:"/>
-	<Property key="Text_TextColour" value="BLACK"/>
+        <Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Edit" skin="Edit" position="454 314 184 24" layer="Back" name="userVar">
         <Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="StaticText" skin="StaticText" position="510 358 72 24" layer="Back">
         <Property key="Widget_Caption" value="Password:"/>
-	<Property key="Text_TextColour" value="BLACK"/>
+        <Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Edit" skin="Edit" position="454 378 184 24" layer="Back" name="passVar">
         <Property key="Text_TextColour" value="BLACK"/>
@@ -43,14 +43,14 @@
     </Widget>
     <Widget type="StaticText" skin="StaticText" position="518 418 56 24" layer="Back">
         <Property key="Widget_Caption" value="Server:"/>
-	<Property key="Text_TextColour" value="BLACK"/>
+        <Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Edit" skin="Edit" position="454 438 184 24" layer="Back" name="serverVar">
         <Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Button" skin="CheckBox" position="486 490 184 24" layer="Back" name="remSetBtn">
         <Property key="Widget_Caption" value="Remember Settings"/>
-	<Property key="Text_TextColour" value="BLACK"/>
+        <Property key="Text_TextColour" value="BLACK"/>
     </Widget>
     <Widget type="Button" skin="Button" position="500 540 88 24" layer="Back" name="loginBTN">
         <Property key="Widget_Caption" value="Login"/>
@@ -101,10 +101,36 @@
     </Widget>
     <Widget type="Window" skin="WindowCSX" position="704 288 288 208" layer="Back" name="creditWnd">
         <Property key="Widget_Caption" value="Credits"/>
-	<Property key="Widget_Visible" value="false"/>
+        <Property key="Widget_Visible" value="false"/>
         <Widget type="StaticText" skin="StaticText" position="12 17 252 135">
             <Property key="Widget_Caption" value="                     CREDITS\n\nGame made by: Dhwk &amp; Wookie Z.\n\nOriginal idea by: Dhwk &amp; Wookie Z.\n\nPOWERED BY OGRE 3D Engine."/>
+            <Property key="Text_TextColour" value="BLACK"/>
+        </Widget>
+    </Widget>
+    <Widget type="Window" skin="WindowCSX" position="760 280 280 256" layer="Back" name="optionsWnd">
+        <Property key="Widget_Caption" value="Options"/>
+        <Property key="Widget_Visible" value="false"/>
+        <Widget type="ComboBox" skin="ComboBox" position="36 89 184 24" name="resolVar">
+            <Property key="ComboBox_AddItem" value="800x600"/>
+            <Property key="ComboBox_AddItem" value="1024x768"/>
+            <Property key="ComboBox_AddItem" value="1440x900"/>
+            <Property key="Edit_Static" value="true"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+        </Widget>
+        <Widget type="StaticText" skin="StaticText" position="36 65 84 15">
+            <Property key="Widget_Caption" value="Resolution:"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+        </Widget>
+        <Widget type="Button" skin="CheckBox" position="68 129 136 23" name="fullScrBtn">
+            <Property key="Widget_Caption" value="Full Screen"/>
             <Property key="Text_TextColour" value="BLACK"/>	
+        </Widget>
+        <Widget type="StaticText" skin="StaticText" position="68 17 124 16">
+            <Property key="Widget_Caption" value="Video Options"/>
+            <Property key="Text_TextColour" value="BLACK"/>
+        </Widget>
+        <Widget type="Button" skin="Button" position="92 177 72 24" name="optOkBtn">
+            <Property key="Widget_Caption" value="OK"/>
         </Widget>
     </Widget>
 </MyGUI>
