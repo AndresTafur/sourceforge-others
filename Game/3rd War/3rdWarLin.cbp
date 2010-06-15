@@ -66,6 +66,7 @@
 		<Unit filename="src/Scenes/LoginScene.cpp" />
 		<Unit filename="src/Scenes/LoginScene.h" />
 		<Unit filename="src/Scenes/SceneBase.h" />
+		<Unit filename="src/WeatherManager.cpp" />
 		<Unit filename="src/WeatherManager.h" />
 		<Extensions>
 			<code_completion />

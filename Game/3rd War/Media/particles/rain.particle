@@ -1,35 +1,33 @@
-
-// A downpour
-particle_system Rain
+particle_system LoginRain
 {
-    material        Droplet
-    particle_width  10
-    particle_height 100
+    material        LoginRainMaterial
+    particle_width  100
+    particle_height 300
     cull_each       true
-    quota           10000
+    quota           50000
     // Make common direction straight down (faster than self oriented)
     billboard_type  oriented_common
-    common_direction 0 -1 0.7
+    common_direction 0 -1 0
     
     // Area emitter
     emitter Box
     {
-        angle           30
-        emission_rate   1000
-        time_to_live    5
-        direction       0 -1 1
-        velocity    	50
+        angle           0
+        emission_rate   200
+        time_to_live    10
+        direction       0 -1 -1
+        velocity    	1000
         colour_range_start  0.3 1 0.3
         colour_range_end    0.7 1 0.7
-        width           5000
-        height          5000
-        depth           5
+        width           400
+        height          400
+        depth           0
     }
 
     // Gravity
     affector LinearForce
     {
-        force_vector      0 -200 0
+        force_vector      0 -1000 0
         force_application add
     }
 
