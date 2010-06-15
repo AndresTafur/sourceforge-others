@@ -31,7 +31,7 @@
         btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked);
 
 
-        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("termsBtn"));
+        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("optionsBtn"));
         btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked );
 
         btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("creditsBtn"));
@@ -44,11 +44,21 @@
         btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("remSetBtn"));
         btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked);
 
+        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("optOkBtn"));
+        btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked);
+
+        btn = static_cast<MyGUI::ButtonPtr>(gui->getWindow("fullScrBtn"));
+        btn->eventMouseButtonClick = MyGUI::newDelegate(ptr, &LoginListener::buttonClicked);
+        btn->setButtonPressed( Ogre::Root::getSingleton().getAutoCreatedWindow()->isFullScreen() );
+
 
         wnd = static_cast<MyGUI::WindowPtr>(gui->getWindow("registrationWnd"));
         wnd->eventWindowButtonPressed = MyGUI::newDelegate(ptr, &LoginListener::notifyWindowPressed);
 
         wnd = static_cast<MyGUI::WindowPtr>(gui->getWindow("creditWnd"));
+        wnd->eventWindowButtonPressed = MyGUI::newDelegate(ptr, &LoginListener::notifyWindowPressed);
+
+        wnd = static_cast<MyGUI::WindowPtr>(gui->getWindow("optionsWnd"));
         wnd->eventWindowButtonPressed = MyGUI::newDelegate(ptr, &LoginListener::notifyWindowPressed);
 
     }
@@ -83,9 +93,9 @@
      Viewport* vp;
 
           mCamera = mSceneMgr->createCamera("LoginSceneCamera");
-         mCamera->setPosition(Vector3(35,0,0));//75,-7,-500
+          mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
        //   mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
-         mCamera->lookAt( Ogre::Vector3(75,0,0));//75,7,7
+         mCamera->lookAt( Ogre::Vector3(75,5,10));//75,7,7
        //  mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
           mCamera->setNearClipDistance( 1 );
           mCamera->setFarClipDistance( 500 );
@@ -105,7 +115,7 @@
      OgreOde::EntityInformer ei;
      GameStaticPhysicObject *barricada;
      GameStaticPhysicObject *how;
-     GameObject *flag, *asta;
+     GameObject *asta,*flag;
 
 
 
@@ -137,18 +147,17 @@
             how->setPosition(Vector3(100,-7,15));
             m_meshes.push_back(how);
 
-
             flag = new GameObject(mSceneMgr,"Bandera.mesh");
-            flag->getNode()->setPosition(110,10,15);
+            flag->getNode()->setPosition(54,7,7);
+
+
+
             mAnimationState = flag->getEntity()->getAnimationState("OndearLow");
             mAnimationState->setLoop(true);
             mAnimationState->setEnabled(true);
 
             asta = new GameObject(mSceneMgr,"Asta.mesh");
-            asta->getNode()->setPosition(110,10,15);
-
-
-
+            asta->getNode()->setPosition(80,10,15);
     }
 
 
@@ -161,6 +170,9 @@
      GameStaticPhysicObject *obj;
 
             mAnimationState->addTime(evt.timeSinceLastFrame);
+
+
+
 /*
 
             dist = mCamera->getPosition().distance(Vector3(95,0,-15));
