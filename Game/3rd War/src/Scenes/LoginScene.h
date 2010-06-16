@@ -120,7 +120,10 @@ class LoginScene : public SceneBase
     */
   float m_farClip;
 
-  AnimationState *mAnimationState;
+  std::vector<AnimationState*> mAnimationStates;
+
+
+  GameObject *m_bullet;
 
 };
 #endif

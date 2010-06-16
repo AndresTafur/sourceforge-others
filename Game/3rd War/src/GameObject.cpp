@@ -16,6 +16,7 @@ GameObject::GameObject( Ogre::SceneManager *sceneMgr, Ogre::String mesh,std::str
         m_node   = sceneMgr->getRootSceneNode()->createChildSceneNode(name);
         m_node->attachObject(m_entity);
         m_entity->setCastShadows(true);
+        m_sceneMgr = sceneMgr;
 }
 
 
@@ -39,4 +40,6 @@ GameObject::GameObject(Ogre::SceneManager *sceneMgr, Ogre::Entity *entity,std::s
 
 GameObject::~GameObject()
 {
+        m_sceneMgr->destroyEntity(m_entity);
+        m_sceneMgr->destroySceneNode(m_node);
 }

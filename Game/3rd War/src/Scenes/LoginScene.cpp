@@ -93,10 +93,10 @@
      Viewport* vp;
 
           mCamera = mSceneMgr->createCamera("LoginSceneCamera");
-          mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
-       //   mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
-         mCamera->lookAt( Ogre::Vector3(75,5,10));//75,7,7
-       //  mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
+        //  mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
+          mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
+        // mCamera->lookAt( Ogre::Vector3(75,5,10));//75,7,7
+          mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
           mCamera->setNearClipDistance( 1 );
           mCamera->setFarClipDistance( 500 );
 
@@ -116,6 +116,7 @@
      GameStaticPhysicObject *barricada;
      GameStaticPhysicObject *how;
      GameObject *asta,*flag;
+     AnimationState *animationState;
 
 
 
@@ -127,7 +128,7 @@
             m_farClip = 0;
 
 
-          //  WeatherManager::getInstancePtr()->setFoggy();
+            WeatherManager::getInstancePtr()->setFoggy();
             //WeatherManager::getInstancePtr()->setRainy();
             mSceneMgr->setShadowTechnique(SHADOWTYPE_STENCIL_MODULATIVE);
             mSceneMgr->setShadowColour(ColourValue(0.5,0.5,0.5));
@@ -148,13 +149,20 @@
             m_meshes.push_back(how);
 
             flag = new GameObject(mSceneMgr,"Bandera.mesh");
-            flag->getNode()->setPosition(54,7,7);
+            //flag->getNode()->setPosition(54,7,7);
+            animationState = flag->getEntity()->getAnimationState("OndearLow");
+            animationState->setLoop(true);
+            animationState->setEnabled(true);
+            mAnimationStates.push_back(animationState);
 
+            m_bullet = new GameObject(mSceneMgr,"Bala.mesh");
+            m_bullet->getNode()->setPosition(54,7,7);
 
+            animationState = m_bullet->getEntity()->getAnimationState("GirarBone");
+            animationState->setLoop(true);
+            animationState->setEnabled(true);
+            mAnimationStates.push_back(animationState);
 
-            mAnimationState = flag->getEntity()->getAnimationState("OndearLow");
-            mAnimationState->setLoop(true);
-            mAnimationState->setEnabled(true);
 
             asta = new GameObject(mSceneMgr,"Asta.mesh");
             asta->getNode()->setPosition(80,10,15);
@@ -169,11 +177,9 @@
      int index = 0;
      GameStaticPhysicObject *obj;
 
-            mAnimationState->addTime(evt.timeSinceLastFrame);
 
-
-
-/*
+            for(unsigned int i=0; i< mAnimationStates.size();i++)
+                    mAnimationStates[i]->addTime(evt.timeSinceLastFrame);
 
             dist = mCamera->getPosition().distance(Vector3(95,0,-15));
 
@@ -210,6 +216,7 @@
                     val+=0.4;
                 mCamera->move(Vector3(0,0,val) );
                 mCamera->lookAt( Ogre::Vector3(95,7,7));
+                m_bullet->getNode()->setPosition(mCamera->getPosition()+Vector3(2,-2-val*0.005,8) );
 
             }
             else if( m_farClip < 0.8 )
@@ -218,8 +225,16 @@
                 mCamera->move( Vector3(65,-10,50) - mCamera->getPosition());
                 mCamera->lookAt( Ogre::Vector3(100,7,7));
                 m_farClip += 0.002;
+
+                if(m_bullet)
+                {
+                    mAnimationStates.pop_back();
+                    delete m_bullet;
+                    m_bullet = 0;
+                }
+
             }
-*/
+
             return true;
     }
 

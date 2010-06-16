@@ -64,6 +64,7 @@ public:
 protected:
 Ogre::SceneNode *m_node;
 Ogre::Entity    *m_entity;
+Ogre::SceneManager *m_sceneMgr;
 static unsigned int sm_num;
 };
 #endif
