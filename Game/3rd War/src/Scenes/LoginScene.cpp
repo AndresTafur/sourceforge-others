@@ -93,10 +93,10 @@
      Viewport* vp;
 
           mCamera = mSceneMgr->createCamera("LoginSceneCamera");
-          mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
-        //  mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
-          mCamera->lookAt( Ogre::Vector3(75,5,10));//75,7,7
-        //  mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
+        //  mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
+          mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
+        //  mCamera->lookAt( Ogre::Vector3(75,5,10));//75,7,7
+          mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
           mCamera->setNearClipDistance( 1 );
           mCamera->setFarClipDistance( 500 );
 
@@ -128,7 +128,7 @@
             m_farClip = 0;
 
 
-//            WeatherManager::getInstancePtr()->setFoggy();
+            WeatherManager::getInstancePtr()->setFoggy();
 //            WeatherManager::getInstancePtr()->setRainy();
             mSceneMgr->setShadowTechnique(SHADOWTYPE_STENCIL_MODULATIVE);
             mSceneMgr->setShadowColour(ColourValue(0.5,0.5,0.5));
@@ -149,7 +149,7 @@
             m_meshes.push_back(how);
 
             flag = new GameObject(mSceneMgr,"Bandera.mesh");
-            flag->getNode()->setPosition(174,27,7);
+            flag->getNode()->setPosition(144,27,7);
             animationState = flag->getEntity()->getAnimationState("OndearLow1");
             animationState->setLoop(true);
             animationState->setEnabled(true);
@@ -177,7 +177,7 @@
 
             for(unsigned int i=0; i< mAnimationStates.size();i++)
                     mAnimationStates[i]->addTime(evt.timeSinceLastFrame);
-/*
+
             dist = mCamera->getPosition().distance(Vector3(95,0,-15));
 
             if( 20 > dist && dist > -20 && !m_change)
@@ -231,7 +231,7 @@
                 }
 
             }
-*/
+
             return true;
     }
 
