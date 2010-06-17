@@ -6,6 +6,7 @@ material LoginRainMaterial
 		pass
 		{
 			scene_blend colour_blend
+			fog_override true exp 1 1 1 0.002 100 10000 
 			depth_write off
 
 			texture_unit

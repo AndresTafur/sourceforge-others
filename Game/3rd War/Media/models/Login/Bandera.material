@@ -21,7 +21,7 @@ material Asta
 	}
 }
 
-material BandTexture
+material Band
 {
 	receive_shadows on
 	technique
