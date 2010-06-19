@@ -21,16 +21,174 @@
 1276317201 source:/thing/svn/warServer/MySQL/ResultRow.cpp
 	"ResultRow.h"
 
-1276319354 source:/thing/svn/warServer/main.cpp
+1276320630 source:/thing/svn/warServer/main.cpp
 	"MySQL/MySQL.h"
 	<iostream>
-	<boost/asio.hpp>
-	"include/Server.h"
 
-1276319449 /thing/svn/warServer/include/Server.h
-	<boost/asio.hpp>
+1276740076 /thing/svn/warServer/include/Server.h
+	<sys/socket.h>
+	<sys/types.h>
+	<netinet/in.h>
+	"Thread.h"
+	"ClientAttenderBuilder.h"
+
+1276667437 /thing/svn/warServer/include/ClientAttender.h
+	"Client.h"
+
+1276316214 source:/thing/svn/warServer/src/MySQL/MySQL.cpp
+	"MySQL.h"
+
+1276316124 /thing/svn/warServer/src/MySQL/MySQL.h
+	<string>
+	"Query.h"
+
+1276315345 /thing/svn/warServer/src/MySQL/Query.h
+	<mysql/mysql.h>
+	<vector>
+	"ResultRow.h"
+
+1276317113 /thing/svn/warServer/src/MySQL/ResultRow.h
+	<map>
+	<string>
+
+1276317802 source:/thing/svn/warServer/src/MySQL/Query.cpp
+	"Query.h"
+
+1276317201 source:/thing/svn/warServer/src/MySQL/ResultRow.cpp
+	"ResultRow.h"
+
+1276650004 source:/thing/svn/warServer/src/whsockets/WhiteHawkClient.cpp
+	"WhiteHawkClient.h"
+
+1210204053 /thing/svn/warServer/src/whsockets/WhiteHawkClient.h
+	"WhiteHawkNetClientStream.h"
+
+1276649890 /thing/svn/warServer/src/whsockets/WhiteHawkNetClientStream.h
+	"WhiteHawkNetSocketStream.h"
+	"../Thread.h"
+
+1276651297 /thing/svn/warServer/src/whsockets/WhiteHawkNetSocketStream.h
+	"config.h"
+	"WhiteHawkNetEvtListener.h"
+	"WhiteHawkNetAddress.h"
+
+1210204053 /thing/svn/warServer/src/whsockets/config.h
+	<iostream>
+	<winsock2.h>
+	<sys/socket.h>
+	<netinet/in.h>
+	<arpa/inet.h>
+	<sys/types.h>
+	<netdb.h>
+	<unistd.h>
+
+1210204053 /thing/svn/warServer/src/whsockets/WhiteHawkNetEvtListener.h
+	"WhiteHawkNetObject.h"
+	"WhiteHawkNetEvt.h"
+
+1210204053 /thing/svn/warServer/src/whsockets/WhiteHawkNetObject.h
+	"config.h"
+
+1210204053 /thing/svn/warServer/src/whsockets/WhiteHawkNetEvt.h
+	"WhiteHawkNetObject.h"
+	"WhiteHawkNetData.h"
+
+1210204053 /thing/svn/warServer/src/whsockets/WhiteHawkNetData.h
+	"WhiteHawkNetObject.h"
+	"WhiteHawkNetAddress.h"
+
+1210204053 /thing/svn/warServer/src/whsockets/WhiteHawkNetAddress.h
+	"config.h"
+
+1276649955 /thing/svn/warServer/src/Thread.h
+	<boost/thread.hpp>
+
+1210204053 source:/thing/svn/warServer/src/whsockets/WhiteHawkClientSocket.cpp
+	"WhiteHawkClientSocket.h"
+
+1210204053 /thing/svn/warServer/src/whsockets/WhiteHawkClientSocket.h
+	"WhiteHawkNetClientStream.h"
+
+1210204053 source:/thing/svn/warServer/src/whsockets/WhiteHawkNetAddress.cpp
+	"WhiteHawkNetAddress.h"
+
+1276651383 source:/thing/svn/warServer/src/whsockets/WhiteHawkNetClientStream.cpp
+	"WhiteHawkNetClientStream.h"
+
+1210204053 source:/thing/svn/warServer/src/whsockets/WhiteHawkNetData.cpp
+	"WhiteHawkNetData.h"
+
+1210204053 source:/thing/svn/warServer/src/whsockets/WhiteHawkNetEvt.cpp
+	"WhiteHawkNetEvt.h"
+
+1210204053 source:/thing/svn/warServer/src/whsockets/WhiteHawkNetObject.cpp
+	"WhiteHawkNetObject.h"
+
+1210204053 source:/thing/svn/warServer/src/whsockets/WhiteHawkNetServerStream.cpp
+	"WhiteHawkNetServerStream.h"
+
+1276650044 /thing/svn/warServer/src/whsockets/WhiteHawkNetServerStream.h
+	"WhiteHawkNetServerListener.h"
+	"WhiteHawkNetSocketStream.h"
+	"WhiteHawkClientSocket.h"
+
+1210204053 /thing/svn/warServer/src/whsockets/WhiteHawkNetServerListener.h
+	"WhiteHawkNetEvtListener.h"
+
+1276651291 source:/thing/svn/warServer/src/whsockets/WhiteHawkNetSocketStream.cpp
+	"WhiteHawkNetSocketStream.h"
+
+1276651214 source:/thing/svn/warServer/src/whsockets/WhiteHawkServer.cpp
+	"WhiteHawkServer.h"
+
+1276650920 /thing/svn/warServer/src/whsockets/WhiteHawkServer.h
+	"WhiteHawkNetServerStream.h"
+	"WhiteHawkClientSocket.h"
+	"../Thread.h"
+
+1276655441 source:/thing/svn/warServer/src/Thread.cpp
+	"Thread.h"
+
+1276668109 source:/thing/svn/warServer/src/main.cpp
+	"MySQL/MySQL.h"
+	<iostream>
+	"Server.h"
+
+1210204053 /thing/svn/warServer/src/whsockets/WhiteHawkNet.h
+	"WhiteHawkNetAddress.h"
+	"WhiteHawkNetObject.h"
+	"WhiteHawkNetData.h"
+	"WhiteHawkNetEvt.h"
+	"WhiteHawkNetEvtListener.h"
+	"WhiteHawkNetServerListener.h"
+	"WhiteHawkNetSocketStream.h"
+	"WhiteHawkNetServerStream.h"
+	"WhiteHawkNetClientStream.h"
+	"WhiteHawkNetServerStream.h"
+	"WhiteHawkClientSocket.h"
+	"WhiteHawkClient.h"
+	"WhiteHawkServer.h"
+
+1276656583 /thing/svn/warServer/include/Thread.h
+	<boost/thread.hpp>
+
+1276666769 source:/thing/svn/warServer/src/sock/Server.cpp
+	"Server.h"
+	<iostream>
+
+1276740260 source:/thing/svn/warServer/src/Client.cpp
+	"Client.h"
+
+1276740186 /thing/svn/warServer/include/Client.h
+	<sys/socket.h>
+	<sys/types.h>
+	<netinet/in.h>
+	"Thread.h"
+
+1276663485 /thing/svn/warServer/include/ClientAttenderBuilder.h
 	"ClientAttender.h"
 
-1276320208 /thing/svn/warServer/include/ClientAttender.h
-	<boost/asio.hpp>
+1276699359 source:/thing/svn/warServer/src/ClientAttender.cpp
+	"ClientAttender.h"
+	<iostream>
 

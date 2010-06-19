@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -33,14 +34,25 @@
 		</Compiler>
 		<Linker>
 			<Add library="mysqlclient" />
+			<Add library="boost_thread" />
+			<Add library="boost_system" />
 		</Linker>
-		<Unit filename="MySQL/MySQL.cpp" />
-		<Unit filename="MySQL/MySQL.h" />
-		<Unit filename="MySQL/Query.cpp" />
-		<Unit filename="MySQL/Query.h" />
-		<Unit filename="MySQL/ResultRow.cpp" />
-		<Unit filename="MySQL/ResultRow.h" />
-		<Unit filename="main.cpp" />
+		<Unit filename="include/Client.h" />
+		<Unit filename="include/ClientAttender.h" />
+		<Unit filename="include/ClientAttenderBuilder.h" />
+		<Unit filename="include/Server.h" />
+		<Unit filename="include/Thread.h" />
+		<Unit filename="src/Client.cpp" />
+		<Unit filename="src/ClientAttender.cpp" />
+		<Unit filename="src/MySQL/MySQL.cpp" />
+		<Unit filename="src/MySQL/MySQL.h" />
+		<Unit filename="src/MySQL/Query.cpp" />
+		<Unit filename="src/MySQL/Query.h" />
+		<Unit filename="src/MySQL/ResultRow.cpp" />
+		<Unit filename="src/MySQL/ResultRow.h" />
+		<Unit filename="src/Thread.cpp" />
+		<Unit filename="src/main.cpp" />
+		<Unit filename="src/sock/Server.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />
