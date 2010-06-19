@@ -93,7 +93,7 @@
      Viewport* vp;
 
           mCamera = mSceneMgr->createCamera("LoginSceneCamera");
-        //  mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
+         //  mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
           mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
         //  mCamera->lookAt( Ogre::Vector3(75,5,10));//75,7,7
           mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
@@ -120,7 +120,7 @@
      OgreOde::EntityInformer ei;
      GameStaticPhysicObject *barricada;
      GameStaticPhysicObject *how;
-     GameObject *asta,*flag;
+     GameObject *asta,*flag, *grass;
      AnimationState *animationState;
 
 
@@ -157,20 +157,33 @@
             m_meshes.push_back(how);
 
             flag = new GameObject(mSceneMgr,"Bandera.mesh");
-            flag->getNode()->setPosition(144,37,0);
+            flag->getNode()->setPosition(154,50,0);
             animationState = flag->getEntity()->getAnimationState("OndearLow3");
             animationState->setLoop(true);
             animationState->setEnabled(true);
             mAnimationStates.push_back(animationState);
+            m_meshes.push_back(flag);
+
+            asta = new GameObject(mSceneMgr,"Asta.mesh");
+            asta->getNode()->setPosition(154,70,0);
+            m_meshes.push_back(asta);
+
 
             m_bullet = new GameObject(mSceneMgr,"Bala.mesh");
             m_bullet->getNode()->setPosition(154,7,7);
-
             animationState = m_bullet->getEntity()->getAnimationState("GirarBone");
             animationState->setLoop(true);
             animationState->setEnabled(true);
             mAnimationStates.push_back(animationState);
+            m_meshes.push_back(m_bullet);
 
+/*
+            grass = new GameObject(mSceneMgr,"Grass.mesh");
+            grass->getNode()->setPosition(90,-7,15);
+            grass->getNode()->rotate(Vector3(0,1,0),Degree(270));
+            animationState = grass->getEntity()->getAnimationState("OndearPLow");
+            mAnimationStates.push_back(animationState);
+            m_meshes.push_back(grass);*/
     }
 
 
