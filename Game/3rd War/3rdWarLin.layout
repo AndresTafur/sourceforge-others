@@ -34,14 +34,14 @@
 	<File name="src/Gui/Gui.h" open="0" top="0" tabpos="0">
 		<Cursor position="3967" topLine="18" />
 	</File>
-	<File name="src/Scenes/LoginListener.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="872" topLine="0" />
+	<File name="src/Scenes/LoginListener.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="1023" topLine="3" />
 	</File>
 	<File name="src/Scenes/LoginListener.h" open="0" top="0" tabpos="3">
 		<Cursor position="1899" topLine="61" />
 	</File>
 	<File name="src/Scenes/LoginScene.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="6041" topLine="134" />
+		<Cursor position="4274" topLine="91" />
 	</File>
 	<File name="src/Scenes/LoginScene.h" open="0" top="0" tabpos="2">
 		<Cursor position="2095" topLine="93" />
