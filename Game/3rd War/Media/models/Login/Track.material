@@ -7,7 +7,7 @@ material Material
 		{
 			texture_unit
 			{
-				texture grass3_cyc.jpg
+				texture grass3_cyc.png
 				tex_address_mode clamp
 			}
 		}
