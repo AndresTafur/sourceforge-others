@@ -106,6 +106,11 @@
           vp->setOverlaysEnabled(true);
           vp->setBackgroundColour(ColourValue(0,100,0));
           mCamera->setAspectRatio(Real(vp->getActualWidth()) / Real(vp->getActualHeight()));
+
+          Ogre::CompositorManager::getSingleton().addCompositor(vp, "OldTVCompositor");
+          Ogre::CompositorManager::getSingleton().setCompositorEnabled(vp, "OldTVCompositor", true);
+
+
     }
 
 
@@ -134,6 +139,9 @@
             mSceneMgr->setShadowColour(ColourValue(0.5,0.5,0.5));
             mSceneMgr->setSkyDome(true,"CloudySky");
 
+
+
+
             m_track = OgreOde::EntityInformer((new GameObject(mSceneMgr,"Track.mesh"))->getEntity()).createStaticTriangleMesh(m_world, m_world->getDefaultSpace());
 
             for(int j=0;j<4;j++)
@@ -149,8 +157,8 @@
             m_meshes.push_back(how);
 
             flag = new GameObject(mSceneMgr,"Bandera.mesh");
-            flag->getNode()->setPosition(144,27,7);
-            animationState = flag->getEntity()->getAnimationState("OndearLow1");
+            flag->getNode()->setPosition(144,37,0);
+            animationState = flag->getEntity()->getAnimationState("OndearLow3");
             animationState->setLoop(true);
             animationState->setEnabled(true);
             mAnimationStates.push_back(animationState);
