@@ -93,7 +93,7 @@
      Viewport* vp;
 
           mCamera = mSceneMgr->createCamera("LoginSceneCamera");
-         //  mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
+        //  mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
           mCamera->setPosition(Vector3(95,-7,-500));//75,-7,-500
         //  mCamera->lookAt( Ogre::Vector3(75,5,10));//75,7,7
           mCamera->lookAt( Ogre::Vector3(85,7,7));//75,7,7
@@ -177,11 +177,17 @@
             mAnimationStates.push_back(animationState);
             m_meshes.push_back(m_bullet);
 
+
+            m_casco = new GameObject(mSceneMgr,"Casco.mesh");
+            m_casco->getNode()->setPosition(Vector3(45,5,10));
+
 /*
             grass = new GameObject(mSceneMgr,"Grass.mesh");
-            grass->getNode()->setPosition(90,-7,15);
+            grass->getNode()->setPosition(80,-7,15);
             grass->getNode()->rotate(Vector3(0,1,0),Degree(270));
             animationState = grass->getEntity()->getAnimationState("OndearPLow");
+            animationState->setLoop(true);
+            animationState->setEnabled(true);
             mAnimationStates.push_back(animationState);
             m_meshes.push_back(grass);*/
     }

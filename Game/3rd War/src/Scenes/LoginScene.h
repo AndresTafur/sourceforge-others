@@ -6,7 +6,7 @@
 #include <MyGUI_OgrePlatform.h>
 
 
-#include "GameObject.h"
+#include "GameStaticPhysicObject.h"
 #include "SceneBase.h"
 #include "LoginListener.h"
 
@@ -124,6 +124,9 @@ class LoginScene : public SceneBase
 
 
   GameObject *m_bullet;
+
+
+  GameObject *m_casco;
 
 };
 #endif

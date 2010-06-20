@@ -2366,11 +2366,11 @@
 	"../ApplicationFrameListener.h"
 	"../GameObject.h"
 
-1276659497 /thing/svn/3rd War/src/Scenes/LoginScene.h
+1276932469 /thing/svn/3rd War/src/Scenes/LoginScene.h
 	<Ogre.h>
 	<MyGUI.h>
 	<MyGUI_OgrePlatform.h>
-	"GameObject.h"
+	"GameStaticPhysicObject.h"
 	"SceneBase.h"
 	"LoginListener.h"
 
