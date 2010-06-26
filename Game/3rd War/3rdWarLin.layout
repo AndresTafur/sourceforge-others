@@ -4,14 +4,14 @@
 	<File name="src/3rdWar.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="16" topLine="0" />
 	</File>
-	<File name="src/Application.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="2651" topLine="27" />
+	<File name="src/Application.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="2651" topLine="75" />
 	</File>
 	<File name="src/Application.h" open="0" top="0" tabpos="0">
 		<Cursor position="1782" topLine="39" />
 	</File>
 	<File name="src/ApplicationFrameListener.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1374" topLine="80" />
+		<Cursor position="1374" topLine="8" />
 	</File>
 	<File name="src/ApplicationFrameListener.h" open="0" top="0" tabpos="0">
 		<Cursor position="505" topLine="9" />
@@ -34,16 +34,16 @@
 	<File name="src/Gui/Gui.h" open="0" top="0" tabpos="0">
 		<Cursor position="3967" topLine="18" />
 	</File>
-	<File name="src/Scenes/LoginListener.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="1023" topLine="3" />
+	<File name="src/Scenes/LoginListener.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="3618" topLine="72" />
 	</File>
 	<File name="src/Scenes/LoginListener.h" open="0" top="0" tabpos="3">
 		<Cursor position="1899" topLine="61" />
 	</File>
-	<File name="src/Scenes/LoginScene.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="6808" topLine="163" />
+	<File name="src/Scenes/LoginScene.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="4898" topLine="0" />
 	</File>
-	<File name="src/Scenes/LoginScene.h" open="1" top="0" tabpos="2">
+	<File name="src/Scenes/LoginScene.h" open="0" top="0" tabpos="2">
 		<Cursor position="2117" topLine="96" />
 	</File>
 	<File name="src/Scenes/SceneBase.h" open="0" top="0" tabpos="3">

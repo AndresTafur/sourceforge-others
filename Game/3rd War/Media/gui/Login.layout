@@ -50,7 +50,7 @@
     </Widget>
     <Widget type="Button" skin="CheckBox" position="486 490 184 24" layer="Back" name="remSetBtn">
         <Property key="Widget_Caption" value="Remember Settings"/>
-        <Property key="Text_TextColour" value="BLACK"/>
+        <Property key="Text_TextColour"/>
     </Widget>
     <Widget type="Button" skin="Button" position="500 540 88 24" layer="Back" name="loginBTN">
         <Property key="Widget_Caption" value="Login"/>

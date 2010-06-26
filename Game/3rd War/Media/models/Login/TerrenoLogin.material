@@ -1,4 +1,4 @@
-material Material
+material TerrenoLoginTex
 {
 	receive_shadows on
 	technique
