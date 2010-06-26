@@ -12,9 +12,6 @@ LoginListener::LoginListener(RenderWindow* win, Camera* cam, Real time_step, Ogr
             m_stepper = new OgreOde::ForwardFixedStepHandler(m_world, StepHandler::QuickStep, time_step, 0.25, 1);
             m_stepper->setAutomatic(OgreOde::StepHandler::AutoMode_PostFrame, Ogre::Root::getSingletonPtr());
             Root::getSingleton().setFrameSmoothingPeriod(5.0f);
-
-//            dummy = new GameStaticPhysicObject(world,"Dummy.mesh","",0.001,Vector3(2,2,2));
-//            dummy->setPosition(Vector3(102,30,-62));
 }
 
 
@@ -59,7 +56,6 @@ bool LoginListener::processUnbufferedKeyInput(const FrameEvent &event)
       unsigned int xres, yres;
 
 
-
                 if( _widget == ThirdWar::GUI::getInstance().getWindow("quitBtn"))
                         Ogre::Root::getSingletonPtr()->queueEndRendering();
 
@@ -95,7 +91,6 @@ bool LoginListener::processUnbufferedKeyInput(const FrameEvent &event)
                         {
                             xres = 1440;yres = 900;
                         }
-
                         Ogre::Root::getSingletonPtr()->getAutoCreatedWindow()->setFullscreen(btn->getButtonPressed(), xres, yres);
                         Ogre::Root::getSingleton().saveConfig();
                 }
