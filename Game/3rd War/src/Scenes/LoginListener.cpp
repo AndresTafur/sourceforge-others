@@ -24,6 +24,8 @@ bool LoginListener::frameStarted(const FrameEvent& evt)
         if (mTimeUntilNextToggle <= 0)
             mTimeUntilNextToggle = 0.5;
 
+
+
         return true;
 }
 
@@ -100,19 +102,17 @@ bool LoginListener::processUnbufferedKeyInput(const FrameEvent &event)
                     btn->setButtonPressed(!btn->getButtonPressed() );
     }
 
-    void LoginListener::notifyWindowPressed(MyGUI::WidgetPtr _widget, const std::string& _name)
+    void LoginListener::notifyWindowPressed(MyGUI::WindowPtr window, const std::string& _name)
     {
-      MyGUI::WindowPtr window = static_cast<MyGUI::WindowPtr>(_widget);
-
             if (_name == "close")
             {
                     window->setVisibleSmooth(false);
 
-                    if( _widget ==  ThirdWar::GUI::getInstance().getWindow("registrationWnd") )
+                    if( window ==  ThirdWar::GUI::getInstance().getWindow("registrationWnd") )
                         static_cast<MyGUI::ButtonPtr>(ThirdWar::GUI::getInstance().getWindow("accountBtn"))->setEnabled(true);
-                    else if( _widget ==  ThirdWar::GUI::getInstance().getWindow("creditWnd") )
+                    else if( window ==  ThirdWar::GUI::getInstance().getWindow("creditWnd") )
                         static_cast<MyGUI::ButtonPtr>(ThirdWar::GUI::getInstance().getWindow("creditsBtn"))->setEnabled(true);
-                    else if( _widget ==  ThirdWar::GUI::getInstance().getWindow("optionsWnd") )
+                    else if( window ==  ThirdWar::GUI::getInstance().getWindow("optionsWnd") )
                         static_cast<MyGUI::ButtonPtr>(ThirdWar::GUI::getInstance().getWindow("optionsBtn"))->setEnabled(true);
             }
     }

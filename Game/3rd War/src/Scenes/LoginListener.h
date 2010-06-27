@@ -51,7 +51,7 @@ public:
     /**
      * Handles WindowClosed. MyGUI notifies through this, actions to be taken determined here.
      */
-    void notifyWindowPressed(MyGUI::WidgetPtr _widget, const std::string& _name);
+    void notifyWindowPressed(MyGUI::WindowPtr window, const std::string& _name);
 
 
     /**
@@ -62,7 +62,7 @@ public:
     bool processUnbufferedMouseInput(const FrameEvent& evt);
 
     /**
-     * Physics Collision. Handles collision (adds friciton) called by OgreOde.
+     * Physics Collision. Handles collision (also adds friciton) called by OgreOde.
      */
     bool collision(Contact* contact);
 

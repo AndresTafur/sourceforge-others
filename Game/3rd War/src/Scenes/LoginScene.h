@@ -1,4 +1,4 @@
-#ifndef _LOGIN_SCENE_H
+#ifndef  _LOGIN_SCENE_H
 #define  _LOGIN_SCENE_H
 
 #include <Ogre.h>
@@ -125,8 +125,7 @@ class LoginScene : public SceneBase
 
   GameObject *m_bullet;
 
-
-  GameObject *m_casco;
+  GameStaticPhysicObject *m_casco;
 
 };
 #endif

@@ -4,7 +4,7 @@
 	<File name="src/3rdWar.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="16" topLine="0" />
 	</File>
-	<File name="src/Application.cpp" open="1" top="1" tabpos="3">
+	<File name="src/Application.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="2651" topLine="75" />
 	</File>
 	<File name="src/Application.h" open="0" top="0" tabpos="0">
@@ -29,30 +29,30 @@
 		<Cursor position="721" topLine="2" />
 	</File>
 	<File name="src/Gui/GUI.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="1244" topLine="22" />
+		<Cursor position="464" topLine="0" />
 	</File>
 	<File name="src/Gui/Gui.h" open="0" top="0" tabpos="0">
-		<Cursor position="3967" topLine="18" />
+		<Cursor position="42" topLine="5" />
 	</File>
-	<File name="src/Scenes/LoginListener.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="3618" topLine="72" />
+	<File name="src/Scenes/LoginListener.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="65" topLine="0" />
 	</File>
 	<File name="src/Scenes/LoginListener.h" open="0" top="0" tabpos="3">
-		<Cursor position="1899" topLine="61" />
+		<Cursor position="1404" topLine="31" />
 	</File>
-	<File name="src/Scenes/LoginScene.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="4898" topLine="0" />
+	<File name="src/Scenes/LoginScene.cpp" open="1" top="1" tabpos="0">
+		<Cursor position="6712" topLine="136" />
 	</File>
-	<File name="src/Scenes/LoginScene.h" open="0" top="0" tabpos="2">
-		<Cursor position="2117" topLine="96" />
+	<File name="src/Scenes/LoginScene.h" open="0" top="0" tabpos="3">
+		<Cursor position="8" topLine="95" />
 	</File>
 	<File name="src/Scenes/SceneBase.h" open="0" top="0" tabpos="3">
 		<Cursor position="45" topLine="30" />
 	</File>
 	<File name="src/WeatherManager.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1311" topLine="15" />
+		<Cursor position="1311" topLine="2" />
 	</File>
 	<File name="src/WeatherManager.h" open="0" top="0" tabpos="1">
-		<Cursor position="579" topLine="0" />
+		<Cursor position="106" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

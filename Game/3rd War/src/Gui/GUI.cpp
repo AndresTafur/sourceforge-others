@@ -3,7 +3,7 @@
 
 ThirdWar::GUI* ThirdWar::GUI::sm_instance = 0;
 
-        //TODO: Change resolution (get it from ogre)
+        //TODO: Update widget locations given ogre resolution
         ThirdWar::GUI::GUI()
         {
 
