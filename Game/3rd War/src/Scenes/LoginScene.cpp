@@ -91,9 +91,9 @@
 
           mCamera = mSceneMgr->createCamera("LoginSceneCamera");
         //  mCamera->setPosition(Vector3(35,5,10));//75,-7,-500
-          mCamera->setPosition(Vector3(90,7,-500));//75,-7,-500
+          mCamera->setPosition(Vector3(90,0,-500));//75,-7,-500
         //  mCamera->lookAt( Ogre::Vector3(75,5,10));//75,7,7
-          mCamera->lookAt( Ogre::Vector3(110,7,7));//75,7,7
+          mCamera->lookAt( Ogre::Vector3(110,0,7));//75,7,7
           mCamera->setNearClipDistance( 1 );
           mCamera->setFarClipDistance( 500 );
 
@@ -156,6 +156,9 @@
             asta->getNode()->setPosition(150,70,15);
             m_meshes.push_back(asta);
 
+            m_casco = new GameStaticPhysicObject(m_world,"Casco.mesh", "",0.002,Vector3(1.4,1.4,1.4));
+            m_casco->setPosition(Vector3(0,0,0));
+            m_meshes.push_back(m_casco);
 
             m_bullet = new GameObject(mSceneMgr,"Bala.mesh");
             m_bullet->getNode()->setPosition(0,0,0);
@@ -177,12 +180,13 @@
      GameStaticPhysicObject *obj;
 
 
+
             for(unsigned int i=0; i< mAnimationStates.size();i++)
                     mAnimationStates[i]->addTime(evt.timeSinceLastFrame);
 
             dist = mCamera->getPosition().distance(Vector3(90,0,-15));
 
-            if( 18 > dist && dist > -18 && !m_change)  //switch from follow to static camera
+            if( 7 > dist && dist > -7 && !m_change)  //switch from follow to static camera
                 m_change = true;
 
             if( 45 > dist && dist > -45 && !m_lauched )
@@ -192,7 +196,7 @@
                     for(int i=0;i<10;i++,index++)
                     {
                         obj     = static_cast<GameStaticPhysicObject*>(m_meshes.at(index));
-                        expVect = obj->getBody()->getPosition() - Vector3(0,0,-62) + Vector3(0,50,5);  //Explosion force
+                        expVect = obj->getBody()->getPosition() - Vector3(0,0,-62) + Vector3(0,20,5);  //Explosion force
 
                         if( i == 4 || i == 5 )
                                obj->getBody()->addForce(expVect*20*j); //force stronger on the upper part of the barricade
@@ -219,18 +223,13 @@
 
                 if(m_bullet)
                 {
-                  GameStaticPhysicObject *casco;
-
                         mAnimationStates.pop_back();
                         delete m_bullet;
                         m_bullet = 0;
 
-                        casco = new GameStaticPhysicObject(m_world,"Casco.mesh", "",0.002,Vector3(1,1,1));
-                        casco->setPosition(Vector3(85,40,27));
-                        casco->getBody()->setTorque(Vector3(0.5,0,0.5));
-                        m_meshes.push_back(casco);
+                        m_casco->setPosition(Vector3(84,40,27));
+                        m_casco->getBody()->setTorque(Vector3(0.4,0,0.4));
                 }
-
             }
             return true;
     }

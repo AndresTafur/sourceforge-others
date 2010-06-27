@@ -1,5 +1,5 @@
-#ifndef _KOR_GUI_H_
-#define _KOR_GUI_H_
+#ifndef _THIRDWAR_GUI_H_
+#define _THIRDWAR_GUI_H_
 
 
 

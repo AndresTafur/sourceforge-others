@@ -7,7 +7,7 @@ material TerrenoLoginTex
 		{
 			texture_unit
 			{
-				texture grass3_cyc.png
+				texture grass3_cyc.jpg
 				tex_address_mode clamp
 			}
 		}
